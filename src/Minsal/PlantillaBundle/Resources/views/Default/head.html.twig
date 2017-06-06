@@ -1,0 +1,82 @@
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>SCE</b></span>
+      <!-- logo for regular state and mobile devices <span class="logo-lg"><b>SCE</b></span>-->      
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <img src="{{ asset('assets/') }}img/logo.png" height="50" width="120" alt="" /><span class="logo-lg"><b> {{ nombre }}</b></span>
+        
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          {% set user = { username: app.session.get('username'), id: app.session.get('id'), correo: app.session.get('username'), nombre: app.session.get('name') } %}
+          {% if user is defined %}
+            {% if is_granted('ROLE_ADMIN') %}
+			<!-- Messages: style can be found in dropdown.less-->
+			<!-- Notifications: style can be found in dropdown.less -->
+			<li class="dropdown notifications-menu">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<i class="fa fa-bell-o"></i>Administracion y seguridad
+				</a>
+				<ul class="dropdown-menu">
+				<li class="header">Configuraciones</li>
+				<li>
+					<ul class="menu">
+						<li><a href="#">Roles de usuaria</a></li>
+						<li><a href="#">Usuarias del sistema</a></li>
+						<li><a href="#">Roles de usuaria</a></li>
+						<li><a href="#">Accesos a enlaces (url)</a></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+            {% endif %}
+
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">Nombre de empleada o empleado</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <p>
+                  Nombre del empleado o la emplreada - Cargo
+                  <small>Region a la que pertenece</small>
+                  <small>SIBASI a la que pertenece</small>
+                  <small>Establecimiento</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Salir</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+          
+          {% else %}
+			<li class="grey"><a href=""> <i class="icon-off"></i> Entrar al sistema.</a></li>
+		  {% endif %}
+        </ul>
+      </div>
+     </nav>
+  </header>
