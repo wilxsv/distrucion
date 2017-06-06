@@ -1,3 +1,19 @@
+minsal_rutina:
+    resource: "@MinsalRutinaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+minsal_reporte:
+    resource: "@MinsalReporteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+minsal_plantilla:
+    resource: "@MinsalPlantillaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+minsal_core:
+    resource: "@MinsalCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

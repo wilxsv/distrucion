@@ -1,0 +1,3 @@
+minsal_reporte_homepage:
+    path:     /
+    defaults: { _controller: MinsalReporteBundle:Default:index }

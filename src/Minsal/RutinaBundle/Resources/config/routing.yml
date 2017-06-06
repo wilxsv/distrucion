@@ -1,0 +1,3 @@
+minsal_rutina_homepage:
+    path:     /
+    defaults: { _controller: MinsalRutinaBundle:Default:index }
