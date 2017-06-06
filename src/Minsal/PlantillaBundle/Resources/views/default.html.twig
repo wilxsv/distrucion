@@ -4,10 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://wrappixel.com/ampleadmin/ampleadmin-html/plugins/images/favicon.png">
-    <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>:: {% block title_page %}{% endblock %} | Sistema Nacional de Abastecimiento :: SINAB</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('assets/') }}distro/css/bootstrap.css" rel="stylesheet">
     <!-- animation CSS -->
@@ -34,25 +31,15 @@
 </head>
 
 <body class="fix-header">
-    <!-- ============================================================== -->
-    <!-- Preloader -->
-    <!-- ============================================================== -->
     <div class="preloader" style="display: none;">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
         </svg>
     </div>
-    <!-- ============================================================== -->
-    <!-- Wrapper -->
-    <!-- ============================================================== -->
     <div id="wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
-                    <!-- Logo -->
                     <a class="logo" href="https://wrappixel.com/ampleadmin/ampleadmin-html/ampleadmin-horizontal-nav/index.html">
                         <!-- Logo icon image, you can use font-icon also --><b>
                         <!--This is dark logo icon--><img src="images/admin-logo.png" alt="home" class="dark-logo"><!--This is light logo icon--><img src="images/admin-logo-dark.png" alt="home" class="light-logo">
