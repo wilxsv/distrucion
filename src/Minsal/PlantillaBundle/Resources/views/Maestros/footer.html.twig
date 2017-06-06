@@ -1,0 +1,89 @@
+<!--basic scripts-->
+<!--[if !IE]>-->
+ <script src="{{ asset('assets/') }}js/jquery-2.0.3.min.js"></script>
+<!--<![endif]-->
+
+<!--[if IE]>--> <script src="{{ asset('assets/') }}js/jquery/jquery.min.1.10.2.js"></script> <![endif]-->
+
+<!--[if !IE]>-->
+<script type="text/javascript">
+  window.jQuery || document.write("<script src='{{ asset('assets/') }}js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+<!--<![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+window.jQuery || document.write("<script src='{{ asset('assets/') }}js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+  if("ontouchend" in document) document.write("<script src='{{ asset('assets/') }}js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="{{ asset('assets/') }}js/bootstrap.min.js"></script>
+
+<!--page specific plugin scripts-->
+<script src="{{ asset('assets/') }}js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('assets/') }}js/jquery.dataTables.bootstrap.js"></script>
+<!--ace scripts-->
+<script src="{{ asset('assets/') }}js/ace-elements.min.js"></script>
+<script src="{{ asset('assets/') }}js/ace.min.js"></script>
+
+<script type="text/javascript">
+			$(function() {
+				var oTable1 = $('#sample-table-2').dataTable( {
+				"aoColumns": [
+			      { "bSortable": false },
+			      null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null,
+				  { "bSortable": false }
+				] } );
+
+
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+
+				});
+
+
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+
+					var off2 = $source.offset();
+					var w2 = $source.width();
+
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+			})
+		</script>
+		
+			<div class="footer bottom">
+				<div class="footer-inner">
+    <div class="footer-content">
+     <div class="span3">
+     </div>
+     <div class="span3">
+      <b>Ministerio de Salud<br />
+      Republica de El Salvador, C. A.<br />
+      Calle Arce No.827, San Salvador, El Salvador, C.A.<br />
+      <a title="Política de Seguridad y Privacidad del MINSAL - El Salvador" href="http://www.salud.gob.sv/?p=2847">Política de Seguridad y Privacidad</a>
+     </div>
+     <div class="span3">
+      Contenido publicado bajo <a href="http://creativecommons.org/licenses/by-sa/3.0/es/deed.es" rel="license" target="_new">licencia Creative Commons Atribución-CompartirIgual 3.0 Unported</a><br />
+      <img src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" style="border-width:0" alt="Licencia Creative Commons"> (salvo donde específicamente se indiquen otros términos de licenciamiento)
+     </div>
+     <div class="span3">
+      Este sitio está totalmente basado en <a href="http://es.wikipedia.org/wiki/Software_libre" target="_new">Software Libre</a> <a href="http://www.debian.org" target="_new">Debian GNU/Linux</a>, <a href="" target="_new">Symfony2</a>,<a href="" target="_new">PostgreSQL</a> entre otros ]
+     </div>
+ </div>
+				</div>
+			</div>

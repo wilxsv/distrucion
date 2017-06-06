@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+    <title>:: {% block title_page %}{% endblock %} | Sistema de Administración	de Catálogos maestros :: Maestros</title>
+		<meta name="description" content="" />
+		{% block head_js %}{% endblock %}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--basic styles-->
+		<link href="{{ asset('assets/') }}css/bootstrap.min.css" rel="stylesheet" />
+		<link href="{{ asset('assets/') }}css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="{{ asset('assets/') }}css/font-awesome.min.css" />
+		<!--[if IE 7]>  <link rel="stylesheet" href="{{ asset('assets/') }}css/font-awesome-ie7.min.css" />	<![endif]-->
+		<!--page specific plugin styles-->
+		<link rel="stylesheet" href="{{ asset('assets/') }}css/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/') }}css/jquery.gritter.css" />
+		<!--fonts-->
+				<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+		<!--ace styles-->
+		<link rel="stylesheet" href="{{ asset('assets/') }}css/ace.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/') }}css/ace-responsive.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/') }}css/ace-skins.min.css" />
+		<!--[if lte IE 8]> <link rel="stylesheet" href="{{ asset('assets/') }}css/ace-ie.min.css" /> <![endif]-->
+		<!--inline styles related to this page-->
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  
+	</head>
+
+	<body>
+		<div class="navbar">
+			<!-- head -->
+			{% include 'MinsalPlantillaBundle::Maestros/head.html.twig' %}
+		  <!-- //head -->
+		</div>
+
+		<div class="main-container ace-save-state">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				</div><!--#sidebar-shortcuts-->
+
+				<ul class="nav nav-list">
+					{% include 'MinsalPlantillaBundle::Maestros/menu.html.twig' %}
+				</ul><!--/.nav-list-->
+
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left"></i>
+				</div>
+			</div>
+
+			<div class="main-content">
+				<!-- breadcrumb -->
+					{% include 'MinsalPlantillaBundle::Maestros/breadcrumb.html.twig' %}
+				<!-- //breadcrumb -->
+				<div class="page-content">
+					<div class="row-fluid">
+						<div class="span12">
+							<!--PAGE CONTENT BEGINS-->
+							{# if app.request.attributes.get('_route') in app.session.get('pass') or app.request.attributes.get('_route') == 'maestro_homepage' or app.request.attributes.get('_route') == 'maestro_core_ayuda'#}
+							  <h3 class="header smaller lighter blue">
+								{% block title %}{% endblock %}
+							  </h3>
+								{% block body %}
+								{% endblock %}
+							{#else#}
+								{#include 'MinsalPlantillaBundle::Maestros/error.html.twig'#}
+							{#endif#}
+							<!--PAGE CONTENT ENDS-->
+							
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+		<!--inline scripts related to this page-->
+		<!-- footer -->
+    {% include 'MinsalPlantillaBundle::Maestros/footer.html.twig' %}
+    <!-- //footer -->
+		{% block footer_js %}{% endblock %}
+	</body>
+</html>

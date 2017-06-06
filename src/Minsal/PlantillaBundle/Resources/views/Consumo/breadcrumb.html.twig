@@ -1,0 +1,14 @@
+{% set msg_breadcrumb = {
+    l1: { nombre: "Inicio", url: "", desc: "Inicio de sistema" },
+    l2: { nombre: "Primer Nivel", url: "", desc : "Nivel 2 de sistema" },
+    l3: { nombre: "Segundo Nivel", url: "", desc : "Nivel 3 de sistema" },
+    l4: { nombre: "Tercer Nivel", url: "", desc : "Nivel 4" }
+} %}
+{% set msg_breadcrumb = null %}
+{% if msg_breadcrumb is defined %}
+ <ol class="breadcrumb">
+	{% for item in msg_breadcrumb %}
+		<li><a href="{{ item.url }}">{{ item.nombre }}</a></li>
+	{% endfor %}
+ </ol>
+{% endif %}

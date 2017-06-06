@@ -1,0 +1,9 @@
+<li><a href="{{ path('maestro_homepage') }}"><i class="icon-sitemap"></i><span class="menu-text"> Catalogo</span></a></li>
+<!--<li><a href="{{ path('establecimiento_index', {'type': 3}) }}"><i class="icon-user-md"></i><span class="menu-text"> ECOS </span></a></li>
+<li><a href="{{ path('establecimiento_mapa', {'type': 3}) }}"><i class="icon-map-marker"></i> Mapa</a></li>-->
+{% if app.user %}<!--/get role-->
+ {{ app.session.get('menu') | raw }}
+</li>
+{% endif %}<!--/get role-->
+<li><a href="{{ path('maestro_core_ayuda') }}"><i class="icon-medkit"></i><span class="menu-text"> Ayuda</span></a></li>
+<li><a href="{{ path('maestro_core_feed') }}"><i class="icon-rss"></i><span class="menu-text"> feed</span></a></li>
