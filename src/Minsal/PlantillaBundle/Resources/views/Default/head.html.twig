@@ -1,82 +1,63 @@
-
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>SCE</b></span>
-      <!-- logo for regular state and mobile devices <span class="logo-lg"><b>SCE</b></span>-->      
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <img src="{{ asset('assets/') }}img/logo.png" height="50" width="120" alt="" /><span class="logo-lg"><b> {{ nombre }}</b></span>
-        
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- User Account: style can be found in dropdown.less -->
-          {% set user = { username: app.session.get('username'), id: app.session.get('id'), correo: app.session.get('username'), nombre: app.session.get('name') } %}
-          {% if user is defined %}
+<div class="top-left-part">
+    <a class="logo" href="{{ path('homepage') }}" title="{{ nombre }}">
+        <!-- Logo icon image, you can use font-icon also --><b>
+        <!--This is dark logo icon--><img src="{{ asset('assets/') }}distro/images/admin-logo.png" alt="home" class="dark-logo"><!--This is light logo icon--><img src="{{ asset('assets/') }}distro/images/admin-logo-dark.png" alt="home" class="light-logo">
+     </b>
+        <!-- Logo text image you can use text also --><span class="hidden-xs">
+        <!--This is dark logo text--><img src="{{ asset('assets/') }}distro/images/admin-text.png" alt="home" class="dark-logo"><!--This is light logo text--><img src="{{ asset('assets/') }}distro/images/admin-text-dark.png" alt="home" class="light-logo">
+     </span> </a>
+</div>
+<!-- /Logo -->
+<!-- Search input and Toggle icon -->
+<ul class="nav navbar-top-links navbar-left">
+    <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>                    
+</ul>
+<ul class="nav navbar-top-links navbar-right pull-right active">
+    <li class="in">
+        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+            <input placeholder="Buscar..." class="form-control" type="text"> <a href="" class="active"><i class="fa fa-search"></i></a> </form>
+    </li>
+    
+    
+     {% set user = { username: app.session.get('username'), id: app.session.get('id'), correo: app.session.get('username'), nombre: app.session.get('name') } %}
+     {% if user is defined %}
+    <li class="dropdown">
+        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="javascript:void(0)"> 
+<!--            <img src="{{ asset('assets/') }}distro/images/varun.jpg" alt="user-img" class="img-circle" width="36">-->
+            <b >
+                {% if app.user %}{{ app.user.username }} {% else %} Invitado{% endif %}
+            </b><span class="caret"></span> </a>
+        <ul class="dropdown-menu dropdown-user ">
+            <li>
+                <div class="dw-user-box">
+<!-- imagen de usuario
+<div class="u-img"><img src="{{ asset('assets/') }}distro/images/varun.jpg" alt="user"></div>-->
+                    
+                    <div class="u-text">
+                        <h4>
+                            {% if app.user %}{{ app.user.username }} {% else %} Invitado{% endif %}
+                        </h4>
+<!-- correo y botón de perfil
+                        <p class="text-muted">varun@gmail.com</p>
+                        <a href="https://wrappixel.com/ampleadmin/ampleadmin-html/ampleadmin-horizontal-nav/profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+-->
+                    </div>
+                </div>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:void(0)"><i class="ti-user"></i> Perfil</a></li>
             {% if is_granted('ROLE_ADMIN') %}
-			<!-- Messages: style can be found in dropdown.less-->
-			<!-- Notifications: style can be found in dropdown.less -->
-			<li class="dropdown notifications-menu">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-bell-o"></i>Administracion y seguridad
-				</a>
-				<ul class="dropdown-menu">
-				<li class="header">Configuraciones</li>
-				<li>
-					<ul class="menu">
-						<li><a href="#">Roles de usuaria</a></li>
-						<li><a href="#">Usuarias del sistema</a></li>
-						<li><a href="#">Roles de usuaria</a></li>
-						<li><a href="#">Accesos a enlaces (url)</a></li>
-					</ul>
-				</li>
-				</ul>
-			</li>
+            
+<!-- enlaces propios de administración
+            <li><a href="javascript:void(0)"><i class="ti-settings"></i> Configuración del Sistema</a></li>
+-->
             {% endif %}
-
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs">Nombre de empleada o empleado</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <p>
-                  Nombre del empleado o la emplreada - Cargo
-                  <small>Region a la que pertenece</small>
-                  <small>SIBASI a la que pertenece</small>
-                  <small>Establecimiento</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Salir</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
-          
-          {% else %}
-			<li class="grey"><a href=""> <i class="icon-off"></i> Entrar al sistema.</a></li>
-		  {% endif %}
+            <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Salir del sistema</a></li>
         </ul>
-      </div>
-     </nav>
-  </header>
+        <!-- /.dropdown-user -->
+    </li>   
+    {% else %}
+    <li class="in"><a href="javascript:void(0)" ><b> Entrar al sistema</b></a></li>
+    {% endif %}
+    <!-- /.dropdown -->
+</ul>
