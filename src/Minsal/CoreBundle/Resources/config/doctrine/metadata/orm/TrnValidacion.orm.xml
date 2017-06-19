@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TrnValidacion" table="trn_validacion">
+    <indexes>
+      <index name="IDX_EA1D469C2830D723" columns="trn_detalleid"/>
+      <index name="IDX_EA1D469C140FD2A0" columns="seg_usuarioid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="trn_validacion_id" columns="id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="estadoVerificado" type="boolean" column="estado_verificado" nullable="true"/>
+    <field name="fechaModificación" type="integer" column="fecha_modificación" nullable="true"/>
+    <many-to-one field="trnDetalleid" target-entity="TrnDetalle">
+      <join-columns>
+        <join-column name="trn_detalleid" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="segUsuarioid" target-entity="SegUsuario">
+      <join-columns>
+        <join-column name="seg_usuarioid" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

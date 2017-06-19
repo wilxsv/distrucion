@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TrnDetalle" table="trn_detalle">
+    <indexes>
+      <index name="IDX_D232DD2A3CF50ACD" columns="trn_distribucionid"/>
+      <index name="IDX_D232DD2A93154E863CF50ACD" columns="api_establecimientoid,trn_distribucionid"/>
+      <index name="IDX_D232DD2AA645FFDB3CF50ACD" columns="api_productoid,trn_distribucionid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="trn_detalle_id" columns="id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="cpm" type="decimal" column="cpm" precision="15" scale="2" nullable="false"/>
+    <field name="cantidadDistribuir" type="decimal" column="cantidad_distribuir" precision="15" scale="2" nullable="false"/>
+    <field name="cantidadSugerida" type="decimal" column="cantidad_sugerida" precision="15" scale="2" nullable="false"/>
+    <field name="existenciaAlmacenes" type="decimal" column="existencia_almacenes" precision="15" scale="2" nullable="false"/>
+    <field name="existenciaFarmacia" type="decimal" column="existencia_farmacia" precision="15" scale="2" nullable="false"/>
+    <field name="verificar" type="boolean" column="verificar" nullable="true"/>
+    <field name="observacion" type="text" column="observacion" nullable="true"/>
+    <field name="fechaCreacion" type="date" column="fecha_creacion" nullable="false"/>
+    <field name="fechaModificacion" type="date" column="fecha_modificacion" nullable="true"/>
+    <many-to-one field="trnDistribucionid" target-entity="TrnDistribucion">
+      <join-columns>
+        <join-column name="trn_distribucionid" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="apiEstablecimientoid" target-entity="TrnEstablecimientosdistribucion">
+      <join-columns>
+        <join-column name="api_establecimientoid" referenced-column-name="api_establecimientoid"/>
+        <join-column name="trn_distribucionid" referenced-column-name="trn_distribucionid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="apiProductoid" target-entity="TrnProductos">
+      <join-columns>
+        <join-column name="api_productoid" referenced-column-name="api_productoid"/>
+        <join-column name="trn_distribucionid" referenced-column-name="trn_distribucionid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

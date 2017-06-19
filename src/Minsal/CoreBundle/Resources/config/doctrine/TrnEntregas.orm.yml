@@ -1,0 +1,48 @@
+Minsal\CoreBundle\Entity\TrnEntregas:
+    type: entity
+    table: trn_entregas
+    indexes:
+        IDX_3CBBE85914610463CF50ACD:
+            columns:
+                - trn_productosdistribucionapi_productoid
+                - trn_distribucionid
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cantidadDistribuida:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 2
+            column: cantidad_distribuida
+        fechaDocumento:
+            type: date
+            nullable: true
+            column: fecha_documento
+        fechaCreacion:
+            type: date
+            nullable: false
+            column: fecha_creacion
+        fechaModificacion:
+            type: date
+            nullable: true
+            column: fecha_modificacion
+    manyToOne:
+        trnProductosdistribucionapiProductoid:
+            targetEntity: TrnProductos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trn_productosdistribucionapi_productoid:
+                    referencedColumnName: api_productoid
+                trn_distribucionid:
+                    referencedColumnName: trn_distribucionid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

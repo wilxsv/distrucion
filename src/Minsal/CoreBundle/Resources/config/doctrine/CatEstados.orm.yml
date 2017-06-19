@@ -1,0 +1,18 @@
+Minsal\CoreBundle\Entity\CatEstados:
+    type: entity
+    table: cat_estados
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        estado:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+    lifecycleCallbacks: {  }

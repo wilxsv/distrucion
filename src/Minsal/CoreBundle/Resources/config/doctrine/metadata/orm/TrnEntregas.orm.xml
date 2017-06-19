@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TrnEntregas" table="trn_entregas">
+    <indexes>
+      <index name="IDX_3CBBE85914610463CF50ACD" columns="trn_productosdistribucionapi_productoid,trn_distribucionid"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="cantidadDistribuida" type="decimal" column="cantidad_distribuida" precision="15" scale="2" nullable="true"/>
+    <field name="fechaDocumento" type="date" column="fecha_documento" nullable="true"/>
+    <field name="fechaCreacion" type="date" column="fecha_creacion" nullable="false"/>
+    <field name="fechaModificacion" type="date" column="fecha_modificacion" nullable="true"/>
+    <many-to-one field="trnProductosdistribucionapiProductoid" target-entity="TrnProductos">
+      <join-columns>
+        <join-column name="trn_productosdistribucionapi_productoid" referenced-column-name="api_productoid"/>
+        <join-column name="trn_distribucionid" referenced-column-name="trn_distribucionid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

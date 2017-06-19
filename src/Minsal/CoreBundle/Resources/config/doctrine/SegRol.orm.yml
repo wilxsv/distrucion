@@ -1,0 +1,38 @@
+Minsal\CoreBundle\Entity\SegRol:
+    type: entity
+    table: seg_rol
+    uniqueConstraints:
+        seg_rol_id:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        fechaCreacion:
+            type: date
+            nullable: false
+            column: fecha_creacion
+        fechaModificacion:
+            type: date
+            nullable: true
+            column: fecha_modificacion
+    manyToMany:
+        segUsuarioid:
+            targetEntity: SegUsuario
+            cascade: {  }
+            mappedBy: segRolid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
