@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trnentregas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cantidaddistribuida</th>
+                <th>Fechadocumento</th>
+                <th>Fechacreacion</th>
+                <th>Fechamodificacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trnEntrega in trnEntregas %}
+            <tr>
+                <td><a href="{{ path('trnentregas_show', { 'id': trnEntrega.id }) }}">{{ trnEntrega.id }}</a></td>
+                <td>{{ trnEntrega.cantidadDistribuida }}</td>
+                <td>{% if trnEntrega.fechaDocumento %}{{ trnEntrega.fechaDocumento|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnEntrega.fechaCreacion %}{{ trnEntrega.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnEntrega.fechaModificacion %}{{ trnEntrega.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trnentregas_show', { 'id': trnEntrega.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trnentregas_edit', { 'id': trnEntrega.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trnentregas_new') }}">Create a new trnEntrega</a>
+        </li>
+    </ul>
+{% endblock %}

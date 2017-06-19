@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Segusuario</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ segUsuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ segUsuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ segUsuario.password }}</td>
+            </tr>
+            <tr>
+                <th>Tokensinab</th>
+                <td>{{ segUsuario.tokenSinab }}</td>
+            </tr>
+            <tr>
+                <th>Establecimientoid</th>
+                <td>{{ segUsuario.establecimientoid }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if segUsuario.fechaCreacion %}{{ segUsuario.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechamodificacion</th>
+                <td>{% if segUsuario.fechaModificacion %}{{ segUsuario.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ segUsuario.salt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('segusuario_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('segusuario_edit', { 'id': segUsuario.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

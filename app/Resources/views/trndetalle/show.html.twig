@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trndetalle</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trnDetalle.id }}</td>
+            </tr>
+            <tr>
+                <th>Cpm</th>
+                <td>{{ trnDetalle.cpm }}</td>
+            </tr>
+            <tr>
+                <th>Cantidaddistribuir</th>
+                <td>{{ trnDetalle.cantidadDistribuir }}</td>
+            </tr>
+            <tr>
+                <th>Cantidadsugerida</th>
+                <td>{{ trnDetalle.cantidadSugerida }}</td>
+            </tr>
+            <tr>
+                <th>Existenciaalmacenes</th>
+                <td>{{ trnDetalle.existenciaAlmacenes }}</td>
+            </tr>
+            <tr>
+                <th>Existenciafarmacia</th>
+                <td>{{ trnDetalle.existenciaFarmacia }}</td>
+            </tr>
+            <tr>
+                <th>Verificar</th>
+                <td>{% if trnDetalle.verificar %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Observacion</th>
+                <td>{{ trnDetalle.observacion }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if trnDetalle.fechaCreacion %}{{ trnDetalle.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechamodificacion</th>
+                <td>{% if trnDetalle.fechaModificacion %}{{ trnDetalle.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trndetalle_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('trndetalle_edit', { 'id': trnDetalle.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

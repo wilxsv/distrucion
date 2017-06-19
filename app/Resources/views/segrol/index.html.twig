@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Segrols list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fechacreacion</th>
+                <th>Fechamodificacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for segRol in segRols %}
+            <tr>
+                <td><a href="{{ path('segrol_show', { 'id': segRol.id }) }}">{{ segRol.id }}</a></td>
+                <td>{{ segRol.nombre }}</td>
+                <td>{% if segRol.fechaCreacion %}{{ segRol.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if segRol.fechaModificacion %}{{ segRol.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('segrol_show', { 'id': segRol.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('segrol_edit', { 'id': segRol.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('segrol_new') }}">Create a new segRol</a>
+        </li>
+    </ul>
+{% endblock %}

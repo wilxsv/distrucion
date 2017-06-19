@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Segrol</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ segRol.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ segRol.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if segRol.fechaCreacion %}{{ segRol.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechamodificacion</th>
+                <td>{% if segRol.fechaModificacion %}{{ segRol.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('segrol_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('segrol_edit', { 'id': segRol.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
