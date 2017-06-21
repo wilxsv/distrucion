@@ -1,12 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Trndistribucion creation</h1>
+    <h3>Nueva Asignación</h3>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+    <div class="wizard">
+
+        <ul class="wizard-steps" role="tablist">
+            <li class="active done current" role="tab" aria-expanded="true">
+                <h4><span>1</span>Tipos</h4> </li>
+            <li role="tab" class="disabled" aria-expanded="false">
+                <h4><span>2</span>Generalidades</h4> </li>
+            <li role="tab" class="disabled" aria-expanded="false">
+                <h4><span>3</span>Productos</h4> </li>
+            <li role="tab" class="disabled" aria-expanded="false">
+                <h4><span>4</span>Establecimientos</h4> </li>
+        </ul>
+        {{ form_start(form, {'attr' : { 'class': 'form-horizontal'}}) }}
+        <div class="wizard-content">
+            <div class="wizard-pane active" role="tabpanel" aria-expanded="true">
+                <p>Seleccione tipo de asignación<p>
+                <div class="form-group">
+
+                    <div class="radio radio-success">
+                        <input name="tipos" id="radio1" value="0" checked="" type="radio">
+                        <label for="radio1"> Por análisis estadístico </label>
+                    </div>
+                    <div class="radio">
+                        <input name="tipos" id="radio2" value="1" checked="" type="radio">
+                        <label for="radio2"> Por productos </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+                {{ form_widget(form) }}
+            </div>
+
+            <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+            </div>
+
+            <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+            </div>
+        </div>
+
+        <div class="wizard-buttons">
+            <a class="wizard-back" href="#exampleValidator" data-wizard="back" role="button">Atras</a>
+            <a class="wizard-next" href="#exampleValidator" data-wizard="next" role="button">Siguiente</a>
+            <a class="wizard-finish hide" href="#exampleValidator" data-wizard="finish" role="button">Finalizar</a></div>
         <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+    </div>
 
     <ul>
         <li>
