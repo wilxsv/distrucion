@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
+{% block viewtitle %} Agregar Asignación {% endblock %}   
+
+{% block navigationlink %}
+
+    <a class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" 
+       href="{{ path('trndistribucion_index') }}">Volver a listado</a>
+
+{% endblock %}
 
 {% block body %}
     <h3>Nueva Asignación</h3>
 
-    <div class="wizard">
+    <div id="asignacionWizard" class="wizard">
 
         <ul class="wizard-steps" role="tablist">
             <li class="active done current" role="tab" aria-expanded="true">
@@ -25,7 +33,7 @@
                         <input name="tipos" id="radio1" value="0" checked="" type="radio">
                         <label for="radio1"> Por análisis estadístico </label>
                     </div>
-                    <div class="radio">
+                    <div class="radio radio-success">
                         <input name="tipos" id="radio2" value="1" checked="" type="radio">
                         <label for="radio2"> Por productos </label>
                     </div>
@@ -34,27 +42,79 @@
             </div>
 
             <div class="wizard-pane" role="tabpanel" aria-expanded="false">
-                {{ form_widget(form) }}
+                <!-- <div class="form-group">
+                                     <label class="col-md-12">Default Text <span class="help"> e.g. "George deo"</span></label>
+                                     <div class="col-md-12">
+                                         <input class="form-control" value="George deo..." type="text"> </div>
+                                 </div>
+                <div class="form-group">
+                                     <label class="col-md-12">Text area</label>
+                                     <div class="col-md-12">
+                                         <textarea class="form-control" rows="5"></textarea>
+                                     </div>
+                                 </div>
+                -->
+                <div class="form-group ">
+                    {{ form_label(form.descripcion) }}
+                    <div class="ol-md-12">
+                        <span class="span12 input-icon input-icon-right">
+                            {{ form_widget(form.descripcion) }}
+                        </span>
+                            {{ form_errors(form.descripcion) }}
+                    </div>
+                </div>
+                <div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.fechacorte)}}
+                            <div>
+                                {{ form_widget(form.fechacorte) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(form.apiSuministroid)}}
+                            <div>
+                                {{ form_widget(form.apiSuministroid) }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 pull-right">
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+                </div>
+
+                <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+                </div>
             </div>
 
-            <div class="wizard-pane" role="tabpanel" aria-expanded="false">
-            </div>
 
-            <div class="wizard-pane" role="tabpanel" aria-expanded="false">
-            </div>
+            <input type="submit" value="Create" />
+            {{ form_end(form) }}
         </div>
 
-        <div class="wizard-buttons">
-            <a class="wizard-back" href="#exampleValidator" data-wizard="back" role="button">Atras</a>
-            <a class="wizard-next" href="#exampleValidator" data-wizard="next" role="button">Siguiente</a>
-            <a class="wizard-finish hide" href="#exampleValidator" data-wizard="finish" role="button">Finalizar</a></div>
-        <input type="submit" value="Create" />
-        {{ form_end(form) }}
-    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('trndistribucion_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}
+
+
+
+
+    {% endblock %}
+    {% block footer_js %}
+        <script type="text/javascript">
+            (function () {
+                $('#asignacionWizard').wizard({
+                    onFinish: function () {
+                        swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+                    }, buttonLabels: {
+                        next: 'Siguiente',
+                        back: 'Atras',
+                        finish: 'Finalizar'
+                    }
+                });
+            })();
+        </script>
+    {% endblock %}

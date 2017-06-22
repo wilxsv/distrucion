@@ -12,8 +12,21 @@ class TrnDistribucionType extends AbstractType
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('apiSuministroid')->add('apiAlmacenid')->add('apiProgramaid')->add('descripcion')->add('fechadistribucion')->add('apiGruposuministroid')->add('apiSubgruposuministroid')->add('fechacorte')->add('mesesCpm')->add('mesesDistribucion')->add('mesesAdministracion')->add('mesesSeguridad')->add('fechaCreacion')->add('fechaModificacion')->add('segUsuarioid')->add('catEstadoid');
+    {        
+        $builder->add('apiSuministroid')
+                ->add('apiAlmacenid')
+                ->add('apiProgramaid')
+                ->add('descripcion', 'text',array('attr' => array('style' => 'width: 100%')))
+                ->add('fechadistribucion')
+                ->add('apiGruposuministroid')
+                ->add('apiSubgruposuministroid')
+                ->add('fechacorte', 'date', 
+                        array(
+                            'label'=>'Fecha de corte',
+                            'format' => 'ddMMyyyy'                            
+                            ))
+                ->add('mesesCpm')->add('mesesDistribucion')->add('mesesAdministracion')->add('mesesSeguridad')->add('fechaCreacion')->add('fechaModificacion')->add('segUsuarioid')->add('catEstadoid');
+     
     }
     
     /**
