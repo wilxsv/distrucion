@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trndetalles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cpm</th>
+                <th>Cantidaddistribuir</th>
+                <th>Cantidadsugerida</th>
+                <th>Existenciaalmacenes</th>
+                <th>Existenciafarmacia</th>
+                <th>Verificar</th>
+                <th>Observacion</th>
+                <th>Fechacreacion</th>
+                <th>Fechamodificacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trnDetalle in trnDetalles %}
+            <tr>
+                <td><a href="{{ path('trndetalle_show', { 'id': trnDetalle.id }) }}">{{ trnDetalle.id }}</a></td>
+                <td>{{ trnDetalle.cpm }}</td>
+                <td>{{ trnDetalle.cantidadDistribuir }}</td>
+                <td>{{ trnDetalle.cantidadSugerida }}</td>
+                <td>{{ trnDetalle.existenciaAlmacenes }}</td>
+                <td>{{ trnDetalle.existenciaFarmacia }}</td>
+                <td>{% if trnDetalle.verificar %}Yes{% else %}No{% endif %}</td>
+                <td>{{ trnDetalle.observacion }}</td>
+                <td>{% if trnDetalle.fechaCreacion %}{{ trnDetalle.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnDetalle.fechaModificacion %}{{ trnDetalle.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trndetalle_show', { 'id': trnDetalle.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trndetalle_edit', { 'id': trnDetalle.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trndetalle_new') }}">Create a new trnDetalle</a>
+        </li>
+    </ul>
+{% endblock %}

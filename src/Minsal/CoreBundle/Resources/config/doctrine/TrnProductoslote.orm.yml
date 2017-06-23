@@ -1,0 +1,31 @@
+Minsal\CoreBundle\Entity\TrnProductoslote:
+    type: entity
+    table: trn_productoslote
+    indexes:
+        IDX_CEB516743CF50ACD:
+            columns:
+                - trn_distribucionid
+    uniqueConstraints:
+        trn_productoslote_api_loteid:
+            columns:
+                - api_loteid
+    id:
+        apiLoteid:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: api_loteid
+            generator:
+                strategy: SEQUENCE
+    manyToOne:
+        trnDistribucionid:
+            targetEntity: TrnDistribucion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trn_distribucionid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trnvalidacions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Estadoverificado</th>
+                <th>Fechamodificación</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trnValidacion in trnValidacions %}
+            <tr>
+                <td><a href="{{ path('trnvalidacion_show', { 'id': trnValidacion.id }) }}">{{ trnValidacion.id }}</a></td>
+                <td>{% if trnValidacion.estadoVerificado %}Yes{% else %}No{% endif %}</td>
+                <td>{{ trnValidacion.fechaModificación }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trnvalidacion_show', { 'id': trnValidacion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trnvalidacion_edit', { 'id': trnValidacion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trnvalidacion_new') }}">Create a new trnValidacion</a>
+        </li>
+    </ul>
+{% endblock %}

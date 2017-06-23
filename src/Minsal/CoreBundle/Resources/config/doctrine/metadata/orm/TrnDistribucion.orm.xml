@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TrnDistribucion" table="trn_distribucion">
+    <indexes>
+      <index name="IDX_32D979D3140FD2A0" columns="seg_usuarioid"/>
+      <index name="IDX_32D979D39F4F768F" columns="cat_estadoid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="trn_distribucion_id" columns="id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="apiSuministroid" type="integer" column="api_suministroid" nullable="true"/>
+    <field name="apiAlmacenid" type="integer" column="api_almacenid" nullable="false"/>
+    <field name="apiProgramaid" type="integer" column="api_programaid" nullable="true"/>
+    <field name="descripcion" type="text" column="descripcion" nullable="false"/>
+    <field name="fechadistribucion" type="date" column="fechadistribucion" nullable="false"/>
+    <field name="apiGruposuministroid" type="integer" column="api_gruposuministroid" nullable="true"/>
+    <field name="apiSubgruposuministroid" type="integer" column="api_subgruposuministroid" nullable="true"/>
+    <field name="fechacorte" type="date" column="fechacorte" nullable="true"/>
+    <field name="mesesCpm" type="smallint" column="meses_cpm" nullable="true"/>
+    <field name="mesesDistribucion" type="smallint" column="meses_distribucion" nullable="true"/>
+    <field name="mesesAdministracion" type="smallint" column="meses_administracion" nullable="true"/>
+    <field name="mesesSeguridad" type="smallint" column="meses_seguridad" nullable="true"/>
+    <field name="fechaCreacion" type="date" column="fecha_creacion" nullable="false"/>
+    <field name="fechaModificacion" type="date" column="fecha_modificacion" nullable="true"/>
+    <many-to-one field="segUsuarioid" target-entity="SegUsuario">
+      <join-columns>
+        <join-column name="seg_usuarioid" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="catEstadoid" target-entity="CatEstados">
+      <join-columns>
+        <join-column name="cat_estadoid" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

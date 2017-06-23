@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Asignaciones</h3>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Apisuministroid</th>
+                <th>Apialmacenid</th>
+                <th>Apiprogramaid</th>
+                <th>Descripcion</th>
+                <th>Fechadistribucion</th>
+                <th>Apigruposuministroid</th>
+                <th>Apisubgruposuministroid</th>
+                <th>Fechacorte</th>
+                <th>Mesescpm</th>
+                <th>Mesesdistribucion</th>
+                <th>Mesesadministracion</th>
+                <th>Mesesseguridad</th>
+                <th>Fechacreacion</th>
+                <th>Fechamodificacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trnDistribucion in trnDistribucions %}
+            <tr>
+                <td><a href="{{ path('trndistribucion_show', { 'id': trnDistribucion.id }) }}">{{ trnDistribucion.id }}</a></td>
+                <td>{{ trnDistribucion.apiSuministroid }}</td>
+                <td>{{ trnDistribucion.apiAlmacenid }}</td>
+                <td>{{ trnDistribucion.apiProgramaid }}</td>
+                <td>{{ trnDistribucion.descripcion }}</td>
+                <td>{% if trnDistribucion.fechadistribucion %}{{ trnDistribucion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trnDistribucion.apiGruposuministroid }}</td>
+                <td>{{ trnDistribucion.apiSubgruposuministroid }}</td>
+                <td>{% if trnDistribucion.fechacorte %}{{ trnDistribucion.fechacorte|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trnDistribucion.mesesCpm }}</td>
+                <td>{{ trnDistribucion.mesesDistribucion }}</td>
+                <td>{{ trnDistribucion.mesesAdministracion }}</td>
+                <td>{{ trnDistribucion.mesesSeguridad }}</td>
+                <td>{% if trnDistribucion.fechaCreacion %}{{ trnDistribucion.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnDistribucion.fechaModificacion %}{{ trnDistribucion.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trndistribucion_show', { 'id': trnDistribucion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trndistribucion_edit', { 'id': trnDistribucion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trndistribucion_new') }}">Create a new trnDistribucion</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trnentrega</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trnEntrega.id }}</td>
+            </tr>
+            <tr>
+                <th>Cantidaddistribuida</th>
+                <td>{{ trnEntrega.cantidadDistribuida }}</td>
+            </tr>
+            <tr>
+                <th>Fechadocumento</th>
+                <td>{% if trnEntrega.fechaDocumento %}{{ trnEntrega.fechaDocumento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if trnEntrega.fechaCreacion %}{{ trnEntrega.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechamodificacion</th>
+                <td>{% if trnEntrega.fechaModificacion %}{{ trnEntrega.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trnentregas_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('trnentregas_edit', { 'id': trnEntrega.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

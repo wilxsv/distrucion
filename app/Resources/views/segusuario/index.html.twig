@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Lista de usuarios</h3>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Password</th>
+                <th>Tokensinab</th>
+                <th>Establecimientoid</th>
+                <th>Fechacreacion</th>
+                <th>Fechamodificacion</th>
+                <th>Salt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for segUsuario in segUsuarios %}
+            <tr>
+                <td><a href="{{ path('segusuario_show', { 'id': segUsuario.id }) }}">{{ segUsuario.id }}</a></td>
+                <td>{{ segUsuario.nombre }}</td>
+                <td>{{ segUsuario.password }}</td>
+                <td>{{ segUsuario.tokenSinab }}</td>
+                <td>{{ segUsuario.establecimientoid }}</td>
+                <td>{% if segUsuario.fechaCreacion %}{{ segUsuario.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if segUsuario.fechaModificacion %}{{ segUsuario.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ segUsuario.salt }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('segusuario_show', { 'id': segUsuario.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('segusuario_edit', { 'id': segUsuario.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('segusuario_new') }}">Create a new segUsuario</a>
+        </li>
+    </ul>
+{% endblock %}

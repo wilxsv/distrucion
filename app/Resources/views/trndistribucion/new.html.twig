@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+{% block viewtitle %} Agregar Asignación {% endblock %}   
+
+{% block navigationlink %}
+
+    <a class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" 
+       href="{{ path('trndistribucion_index') }}">Volver a listado</a>
+
+{% endblock %}
+
+{% block body %}
+    <h3>Nueva Asignación</h3>
+
+    <div id="asignacionWizard" class="wizard">
+
+        <ul class="wizard-steps" role="tablist">
+            <li class="active done current" role="tab" aria-expanded="true">
+                <h4><span>1</span>Tipos</h4> </li>
+            <li role="tab" class="disabled" aria-expanded="false">
+                <h4><span>2</span>Generalidades</h4> </li>
+            <li role="tab" class="disabled" aria-expanded="false">
+                <h4><span>3</span>Productos</h4> </li>
+            <li role="tab" class="disabled" aria-expanded="false">
+                <h4><span>4</span>Establecimientos</h4> </li>
+        </ul>
+        {{ form_start(form, {'attr' : { 'class': 'form-horizontal'}}) }}
+        <div class="wizard-content">
+            <div class="wizard-pane active" role="tabpanel" aria-expanded="true">
+                <p>Seleccione tipo de asignación<p>
+                <div class="form-group">
+                    <div class="radio radio-success">
+                        <input name="tipos" id="radio1" value="0" checked="" type="radio">
+                        <label for="radio1"> Por análisis estadístico </label>
+                    </div>
+                    <div class="radio radio-success">
+                        <input name="tipos" id="radio2" value="1" checked="" type="radio">
+                        <label for="radio2"> Por productos </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            {{ form_label(form.descripcion) }}
+                            <div class="ol-md-12">
+                                <span class="span12 input-icon input-icon-right">
+                                    {{ form_widget(form.descripcion) }}
+                                </span>
+                                {{ form_errors(form.descripcion) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.fechacorte)}}
+                            <div class='input-group date' id='dpcorte'>
+                                <span class="span12 input-icon input-icon-right">
+                                    {{ form_widget(form.fechacorte) }}
+                                </span>
+                                {{ form_errors(form.fechacorte) }}
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>                                        
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6"> <h4>Cálculo de CPM</h4></div>
+                </div>       
+                <div class="row">
+                    <div class="col-md-6">           
+                        <div class="form-group">
+                            {{form_label(form.apiSuministroid)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.apiSuministroid) }}
+                            </span>
+                            {{ form_errors(form.apiSuministroid) }}    
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           
+                            {{form_label(form.mesesCpm)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.mesesCpm) }}
+                            </span>
+                            {{ form_errors(form.mesesCpm) }}    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">      
+                    <div class="col-md-6"> 
+                        <div class="form-group">
+                            {{form_label(form.apiGruposuministroid)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.apiGruposuministroid) }}
+                            </span>
+                            {{ form_errors(form.apiGruposuministroid) }}    
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            {{form_label(form.mesesDistribucion)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.mesesDistribucion) }}
+                            </span>
+                            {{ form_errors(form.mesesDistribucion) }}    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"> 
+                        <div class="form-group">
+                            {{form_label(form.apiSubgruposuministroid)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.apiSubgruposuministroid) }}
+                            </span>
+                            {{ form_errors(form.apiSubgruposuministroid) }}    
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{form_label(form.mesesAdministracion)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.mesesAdministracion) }}
+                            </span>
+                            {{ form_errors(form.mesesAdministracion) }}    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{form_label(form.apiProgramaid)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.apiProgramaid) }}
+                            </span>
+                            {{ form_errors(form.apiProgramaid) }}    
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{form_label(form.mesesSeguridad)}}
+                            <span class="span12 input-icon input-icon-right">
+                                {{ form_widget(form.mesesSeguridad) }}
+                            </span>
+                            {{ form_errors(form.mesesSeguridad) }}    
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+        </div>
+
+        <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+        </div>
+    </div>
+
+
+    <!-- <input type="submit" value="Create" />-->
+    {{ form_end(form) }}
+</div>
+
+
+
+
+
+
+{% endblock %}
+{% block footer_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            $('#asignacionWizard').wizard({
+                onFinish: function () {
+                    swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+                }, buttonLabels: {
+                    next: 'Siguiente',
+                    back: 'Atras',
+                    finish: 'Finalizar'
+                }
+            });
+            $('#dpcorte').datetimepicker({
+                viewMode: 'years',
+                format: 'MM/YYYY',
+                showTodayButton: true
+            });
+        })();
+    </script>
+{% endblock %}

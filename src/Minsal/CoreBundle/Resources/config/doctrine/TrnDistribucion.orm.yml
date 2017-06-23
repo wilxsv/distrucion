@@ -1,0 +1,108 @@
+Minsal\CoreBundle\Entity\TrnDistribucion:
+    type: entity
+    table: trn_distribucion
+    indexes:
+        IDX_32D979D3140FD2A0:
+            columns:
+                - seg_usuarioid
+        IDX_32D979D39F4F768F:
+            columns:
+                - cat_estadoid
+    uniqueConstraints:
+        trn_distribucion_id:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        apiSuministroid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: api_suministroid
+        apiAlmacenid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: api_almacenid
+        apiProgramaid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: api_programaid
+        descripcion:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        fechadistribucion:
+            type: date
+            nullable: false
+            comment: 'esta fecha se captura desde el sistema'
+        apiGruposuministroid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: api_gruposuministroid
+        apiSubgruposuministroid:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: api_subgruposuministroid
+        fechacorte:
+            type: date
+            nullable: true
+        mesesCpm:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_cpm
+        mesesDistribucion:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_distribucion
+        mesesAdministracion:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_administracion
+        mesesSeguridad:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_seguridad
+        fechaCreacion:
+            type: date
+            nullable: false
+            column: fecha_creacion
+        fechaModificacion:
+            type: date
+            nullable: true
+            column: fecha_modificacion
+    manyToOne:
+        segUsuarioid:
+            targetEntity: SegUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                seg_usuarioid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        catEstadoid:
+            targetEntity: CatEstados
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_estadoid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

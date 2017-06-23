@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trnproductos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Apiproductoid</th>
+                <th>Fechamodificacion</th>
+                <th>Fechacreacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trnProducto in trnProductos %}
+            <tr>
+                <td><a href="{{ path('trnproductos_show', { 'apiProductoid': trnProducto.apiProductoid }) }}">{{ trnProducto.apiProductoid }}</a></td>
+                <td>{% if trnProducto.fechaModificacion %}{{ trnProducto.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnProducto.fechaCreacion %}{{ trnProducto.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trnproductos_show', { 'apiProductoid': trnProducto.apiProductoid }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trnproductos_edit', { 'apiProductoid': trnProducto.apiProductoid }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trnproductos_new') }}">Create a new trnProducto</a>
+        </li>
+    </ul>
+{% endblock %}

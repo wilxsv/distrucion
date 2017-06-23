@@ -1,0 +1,67 @@
+Minsal\CoreBundle\Entity\SegUsuario:
+    type: entity
+    table: seg_usuario
+    uniqueConstraints:
+        seg_usuario_id:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        tokenSinab:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: token_sinab
+        establecimientoid:
+            type: integer
+            nullable: false
+            unsigned: false
+        fechaCreacion:
+            type: date
+            nullable: false
+            column: fecha_creacion
+        fechaModificacion:
+            type: date
+            nullable: false
+            column: fecha_modificacion
+        salt:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+    manyToMany:
+        segRolid:
+            targetEntity: SegRol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: segUsuarioid
+            joinTable:
+                name: seg_usuarios_roles
+                joinColumns:
+                    -
+                        name: seg_usuarioid
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: seg_rolid
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

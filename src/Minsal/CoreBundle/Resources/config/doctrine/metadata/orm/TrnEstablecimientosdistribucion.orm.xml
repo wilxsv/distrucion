@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="TrnEstablecimientosdistribucion" table="trn_establecimientosdistribucion">
+    <indexes>
+      <index name="IDX_B143CDBF3CF50ACD" columns="trn_distribucionid"/>
+    </indexes>
+    <id name="apiEstablecimientoid" type="integer" column="api_establecimientoid"/>
+    <id name="trnDistribucionid" association-key="true"/>
+    <one-to-one field="trnDistribucionid" target-entity="TrnDistribucion">
+      <join-columns>
+        <join-column name="trn_distribucionid" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>
