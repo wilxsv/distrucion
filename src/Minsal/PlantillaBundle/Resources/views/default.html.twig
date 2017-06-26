@@ -7,7 +7,7 @@
         <title>:: {% block title_page %}{% endblock %} | Sistema Nacional de Abastecimiento :: SINAB</title>
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset('assets/') }}distro/css/bootstrap.css" rel="stylesheet">
-        
+
         <!-- animation CSS -->
         <link href="{{ asset('assets/') }}distro/css/animate.css" rel="stylesheet">
         <!-- Menu CSS -->
@@ -19,12 +19,18 @@
         <link href="{{ asset('assets/') }}distro/css/megna-dark.css" id="theme" rel="stylesheet">
         <link href="{{ asset('assets/') }}distro/css/wizard.css" media="all" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+        <link href="{{ asset('assets/') }}distro/css/custom-select.css" rel="stylesheet" type="text/css">
+
+        <link href="A{{ asset('assets/') }}distro/css/bootstrap-select.css" rel="stylesheet">
         <link href="{{ asset('assets/') }}distro/css/simple-line-icons.css" media="all" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/') }}distro/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/') }}distro/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="{{ asset('assets/') }}distro/themify-icons.css">
+        <link href="{{ asset('assets/') }}distro/themify-icons.css" rel="stylesheet" >
+        <link href="{{ asset('assets/') }}distro/css/multi-select.css" rel="stylesheet" type="text/css" />
         <!-- Custom CSS -->
         <link href="{{ asset('assets/') }}distro/css/style.css" rel="stylesheet">
+        <!-- color CSS -->
+        <link href="{{ asset('assets/') }}distro/css/megna-dark.css" id="theme" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -76,53 +82,53 @@
                             {% block viewtitle %}{% endblock %}
                         </h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">                         
-                        {% block navigationlink %}{% endblock %}
-                        {% include 'MinsalPlantillaBundle::Default/breadcrumb.html.twig' %}
-                    </div>
-                    <!-- /.col-lg-12 -->
+                    {% block navigationlink %}{% endblock %}
+                    {% include 'MinsalPlantillaBundle::Default/breadcrumb.html.twig' %}
                 </div>
+                <!-- /.col-lg-12 -->
+            </div>
 
-                <!-- .row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
+            <!-- .row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="white-box">
 
-                        {% block body %}{% endblock %}
-                        <!--<p class="text-muted m-b-30 font-13"> Bootstrap Elements </p>-->
-                    </div>
+                    {% block body %}{% endblock %}
+                    <!--<p class="text-muted m-b-30 font-13"> Bootstrap Elements </p>-->
                 </div>
             </div>
-            <!-- /.row -->
-
-            <!-- /.container-fluid text-center-->
-            <footer class="footer text-center"> {% include 'MinsalPlantillaBundle::Default/footer.html.twig' %}</footer>
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.row -->
+
+        <!-- /.container-fluid text-center-->
+        <footer class="footer text-center"> {% include 'MinsalPlantillaBundle::Default/footer.html.twig' %}</footer>
     </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="{{ asset('assets/') }}distro/js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('assets/') }}distro/js/bootstrap_002.js"></script>    
-    <!-- Menu Plugin JavaScript -->
-    <script src="{{ asset('assets/') }}distro/js/sidebar-nav.js"></script>
-    <!--slimscroll JavaScript -->
-    <script src="{{ asset('assets/') }}distro/js/jquery_002.js"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('assets/') }}distro/js/waves.js"></script>
-    <!-- Form Wizard JavaScript -->
-    <script src="{{ asset('assets/') }}distro/js/jquery-wizard.js"></script>
-    <!-- FormValidation plugin and the class supports validating Bootstrap form -->
-    <script src="{{ asset('assets/') }}distro/js/formValidation.js"></script>
-    <script src="{{ asset('assets/') }}distro/js/bootstrap.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('assets/') }}distro/js/custom.js"></script>
-    <script src="{{ asset('assets/') }}distro/js/jasny-bootstrap.js"></script>
-    <!--Style Switcher -->
-    <script src="{{ asset('assets/') }}distro/js/jkuery.js"></script>
-    <!-- Sweet-Alert  -->
-    <script src="{{ asset('assets/') }}distro/js/sweetalert.js"></script>
-    
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="{{ asset('assets/') }}distro/js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('assets/') }}distro/js/bootstrap_002.js"></script>    
+<!-- Menu Plugin JavaScript -->
+<script src="{{ asset('assets/') }}distro/js/sidebar-nav.js"></script>
+<!--slimscroll JavaScript -->
+<script src="{{ asset('assets/') }}distro/js/jquery_002.js"></script>
+<!--Wave Effects -->
+<script src="{{ asset('assets/') }}distro/js/waves.js"></script>
+<!-- Form Wizard JavaScript -->
+<script src="{{ asset('assets/') }}distro/js/jquery-wizard.js"></script>
+<!-- FormValidation plugin and the class supports validating Bootstrap form -->
+<script src="{{ asset('assets/') }}distro/js/formValidation.js"></script>
+<script src="{{ asset('assets/') }}distro/js/bootstrap.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('assets/') }}distro/js/custom.js"></script>
+<script src="{{ asset('assets/') }}distro/js/jasny-bootstrap.js"></script>
+<!--Style Switcher -->
+<script src="{{ asset('assets/') }}distro/js/jkuery.js"></script>
+<!-- Sweet-Alert  -->
+<script src="{{ asset('assets/') }}distro/js/sweetalert.js"></script>
+
 {% block footer_js %}{% endblock %}
 
 </body></html>
