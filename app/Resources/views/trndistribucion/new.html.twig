@@ -5,6 +5,7 @@
     <link href="{{ asset('assets/') }}distro/css/custom-select.css" rel="stylesheet" type="text/css">
     <link href="A{{ asset('assets/') }}distro/css/bootstrap-select.css" rel="stylesheet">
     <link href="{{ asset('assets/') }}distro/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/') }}distro/css/varios.css" rel="stylesheet" type="text/css" />
 {% endblock%}
 
 {% block viewtitle %} Agregar Asignación {% endblock %}   
@@ -241,11 +242,14 @@
                 return false;
             });
             
-            $('input[name=gender]').click(function() {
+            $('input[name=tipos]').click(function() {
                 //0 con analisis
                 //1 por producto
-                if ($('input[name=tipos]:checked').val() > 0){
-                    $('. opcional').hide();
+               
+                if ($('input[name=tipos]:checked').val() > 0){                    
+                    $('div.opcional').addClass('oculto');
+                }else{
+                    $('div.opcional').removeClass('oculto');
                 };
             });
             

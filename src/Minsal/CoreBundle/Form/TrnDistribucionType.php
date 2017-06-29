@@ -27,10 +27,10 @@ class TrnDistribucionType extends AbstractType
                 ->add('apiSubgruposuministroid','choice',array('label'=>'SubGrupo', 'placeholder' => 'Eliga un subgrupo', 'attr' => array('style' => 'width: 100%')))
                 ->add('fechacorte', 'date', array('label'=>'Fecha de corte','format' => 'dd/MM/yyyy','input' => 'datetime','widget' => 'single_text', 
                     'attr' => array('class'=>'form-control', 'style' => 'width: 100%', 'placeholder'=>'Mes/Año')))
-                ->add('mesesCpm', 'integer', array('label'=>'Meses para calcular CPM'))
-                ->add('mesesDistribucion','integer', array('label'=>'Meses a asignar'))
-                ->add('mesesAdministracion','integer', array('label'=>'Meses a administrar'))
-                ->add('mesesSeguridad','integer', array('label'=>'Meses de seguridad'));
+                ->add('mesesCpm', 'integer', array('label'=>'Meses para calcular CPM', 'attr' => array('style' => 'width: 100%')))
+                ->add('mesesDistribucion','integer', array('label'=>'Meses a asignar','attr' => array('style' => 'width: 100%')))
+                ->add('mesesAdministracion','integer', array('label'=>'Meses a administrar','attr' => array('style' => 'width: 100%')))
+                ->add('mesesSeguridad','integer', array('label'=>'Meses de seguridad','attr' => array('style' => 'width: 100%')));
                // ->add('fechaCreacion')->add('fechaModificacion')->add('segUsuarioid')->add('catEstadoid');
         
      
