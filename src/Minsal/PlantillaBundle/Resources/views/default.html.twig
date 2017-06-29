@@ -13,24 +13,20 @@
         <!-- Menu CSS -->
         <link href="{{ asset('assets/') }}distro/css/sidebar-nav.css" rel="stylesheet">
         <!-- animation CSS -->
-        <link href="{{ asset('assets/') }}distro/css/animate.css" rel="stylesheet">
-
-        <!-- color CSS -->
-        <link href="{{ asset('assets/') }}distro/css/megna-dark.css" id="theme" rel="stylesheet">
-        <link href="{{ asset('assets/') }}distro/css/wizard.css" media="all" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-        <link href="{{ asset('assets/') }}distro/css/custom-select.css" rel="stylesheet" type="text/css">
-
-        <link href="A{{ asset('assets/') }}distro/css/bootstrap-select.css" rel="stylesheet">
+        <link href="{{ asset('assets/') }}distro/css/animate.css" rel="stylesheet">        
+       
         <link href="{{ asset('assets/') }}distro/css/simple-line-icons.css" media="all" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/') }}distro/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/') }}distro/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/') }}distro/themify-icons.css" rel="stylesheet" >
-        <link href="{{ asset('assets/') }}distro/css/multi-select.css" rel="stylesheet" type="text/css" />
+        
+        <!-- carga dinámica de CSS -->
+        {% block header_css %}{% endblock %}
         <!-- Custom CSS -->
         <link href="{{ asset('assets/') }}distro/css/style.css" rel="stylesheet">
         <!-- color CSS -->
         <link href="{{ asset('assets/') }}distro/css/megna-dark.css" id="theme" rel="stylesheet">
+       
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>

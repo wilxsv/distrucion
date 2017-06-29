@@ -1,4 +1,12 @@
 {% extends 'base.html.twig' %}
+{% block header_css %}
+    <link href="{{ asset('assets/') }}distro/css/wizard.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link href="{{ asset('assets/') }}distro/css/custom-select.css" rel="stylesheet" type="text/css">
+    <link href="A{{ asset('assets/') }}distro/css/bootstrap-select.css" rel="stylesheet">
+    <link href="{{ asset('assets/') }}distro/css/multi-select.css" rel="stylesheet" type="text/css" />
+{% endblock%}
+
 {% block viewtitle %} Agregar Asignación {% endblock %}   
 
 {% block navigationlink %}
@@ -27,23 +35,23 @@
         <div class="wizard-content">
             <div class="wizard-pane active" role="tabpanel" aria-expanded="true">
                 <h5 class="box-title">Seleccione tipo de asignación</h5>
-                
 
-                    <div class="form-group" id="gbradio" style="margin-top:10px ">
-                        <div class="radio radio-success">
-                            <input name="tipos" id="radio1" value="0" checked="" type="radio">
-                            <label for="radio1"> Por análisis estadístico </label>
-                        </div>
-                        <div class="radio radio-success">
-                            <input name="tipos" id="radio2" value="1" checked="" type="radio">
-                            <label for="radio2"> Por productos </label>
-                        </div>
 
+                <div class="form-group" id="gbradio" style="margin-top:10px ">
+                    <div class="radio radio-success">
+                        <input name="tipos" id="radio1" value="0" checked="checked" type="radio">
+                        <label for="radio1"> Por análisis estadístico </label>
                     </div>
+                    <div class="radio radio-success">
+                        <input name="tipos" id="radio2" value="1" checked="" type="radio">
+                        <label for="radio2"> Por productos </label>
+                    </div>
+
+                </div>
             </div>
 
             <div class="wizard-pane" role="tabpanel" aria-expanded="false">
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group ">
@@ -67,15 +75,14 @@
                                 </span>
                                 {{ form_errors(form.fechacorte) }}
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar">
-                                    </span>                                        
+                                    <i class="icon-calender"></i>
                                 </span>
                             </div>
-                              
-                                
+
+
                         </div>
                     </div>
-                    <div class="col-md-6"> <h4>Cálculo de CPM</h4></div>
+                    <div class="col-md-6 opcional"> <h4>Cálculo de CPM</h4></div>
                 </div>       
                 <div class="row">
                     <div class="col-md-6">           
@@ -87,7 +94,7 @@
                             {{ form_errors(form.apiSuministroid) }}    
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 opcional">
                         <div class="form-group">
 
                             {{form_label(form.mesesCpm)}}
@@ -108,7 +115,7 @@
                             {{ form_errors(form.apiGruposuministroid) }}    
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 opcional">
                         <div class="form-group">
 
                             {{form_label(form.mesesDistribucion)}}
@@ -129,7 +136,7 @@
                             {{ form_errors(form.apiSubgruposuministroid) }}    
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 opcional">
                         <div class="form-group">
                             {{form_label(form.mesesAdministracion)}}
                             <span class="span12 input-icon input-icon-right">
@@ -149,7 +156,7 @@
                             {{ form_errors(form.apiProgramaid) }}    
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 opcional">
                         <div class="form-group">
                             {{form_label(form.mesesSeguridad)}}
                             <span class="span12 input-icon input-icon-right">
@@ -177,7 +184,7 @@
                     <option value="Audi">Audi</option><option value="BMW">BMW</option><option value="Buick">Buick</option><option value="Cadillac">Cadillac</option><option value="Chevrolet">Chevrolet</option><option value="Chrysler">Chrysler</option><option value="Dodge">Dodge</option><option value="Fiat">Fiat</option><option value="Ford">Ford</option><option value="GMC">GMC</option><option value="Honda">Honda</option><option value="Hyundai">Hyundai</option><option value="Infiniti">Infiniti</option><option value="Jaguar">Jaguar</option><option value="Jeep">Jeep</option><option value="Kia">Kia</option><option value="Land Rover">Land Rover</option><option value="Lexus">Lexus</option><option value="Lincoln">Lincoln</option><option value="Mazda">Mazda</option><option value="Mercedes-Benz">Mercedes-Benz</option><option value="Mini">Mini</option><option value="Mitsubishi">Mitsubishi</option><option value="Nissan">Nissan</option><option value="Porsche">Porsche</option><option value="Ram">Ram</option><option value="Scion">Scion</option><option value="Smart">Smart</option><option value="Subaru">Subaru</option><option value="Suzuki">Suzuki</option><option value="Toyota">Toyota</option><option value="Volkswagen">Volkswagen</option><option value="Volvo">Volvo</option>
                 </select>
 
-                
+
 
             </div>
 
@@ -216,6 +223,8 @@
                     finish: 'Finalizar'
                 }
             });
+            
+            
             $('#dpcorte').datetimepicker({
                 viewMode: 'years',
                 format: 'MM/YYYY',
@@ -231,18 +240,15 @@
                 $('#public-methods').multiSelect('deselect_all');
                 return false;
             });
-            /*$('#refresh').on('click', function () {
-                $('#public-methods').multiSelect('refresh');
-                return false;
+            
+            $('input[name=gender]').click(function() {
+                //0 con analisis
+                //1 por producto
+                if ($('input[name=tipos]:checked').val() > 0){
+                    $('. opcional').hide();
+                };
             });
-            $('#add-option').on('click', function () {
-             $('#public-methods').multiSelect('addOption', {
-             value: 42
-             , text: 'test 42'
-             , index: 0
-             });
-             return false;
-             });*/
+            
         })();
     </script>
 {% endblock %}

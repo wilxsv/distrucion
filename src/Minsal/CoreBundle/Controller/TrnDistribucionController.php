@@ -42,6 +42,20 @@ class TrnDistribucionController extends Controller
         $trnDistribucion = new Trndistribucion();
         $form = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
         $form->handleRequest($request);
+        
+        $url = "http://192.168.1.10:8080/v1/info/servicios";
+        $data = array('tocken' => 'eccbc87e4b5ce2fe28308fd9f2a7baf3', 'maestro' => 'establecimiento');
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $json = file_get_contents($url, false, $context);        
+        $result = $serializer->deserialize($result,true);
+        //todo.
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -53,6 +67,7 @@ class TrnDistribucionController extends Controller
 
         return $this->render('trndistribucion/new.html.twig', array(
             'trnDistribucion' => $trnDistribucion,
+            'arrSuministros' => $result,
             'form' => $form->createView(),
         ));
     }
