@@ -65,6 +65,10 @@
                 <th>Fechamodificacion</th>
                 <td>{% if trnDistribucion.fechaModificacion %}{{ trnDistribucion.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>Productos</th>
+                <td>{{ trnDistribucion.ctlInsumo| join(' <br/> ') | raw }}</td>
+            </tr>
         </tbody>
     </table>
 

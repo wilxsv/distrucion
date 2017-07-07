@@ -61,6 +61,13 @@ class TrnDistribucionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($trnDistribucion);
             $em->flush();
+            
+            
+ //           $trnDistribucion->setRegistroSchema(new \DateTime('now'));
+   //         $ctlEstablecimiento->setUserIdSchema($this->getUser()->getId());
+     //       $ctlEstablecimiento->setIpUserSchema($request->getClientIp());
+       //     $ctlEstablecimiento->setEstadoSchema(1);
+         //   $ctlEstablecimiento->setEnableSchema(0);
 
             return $this->redirectToRoute('trndistribucion_show', array('id' => $trnDistribucion->getId()));
         }

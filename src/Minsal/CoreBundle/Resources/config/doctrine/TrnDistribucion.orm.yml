@@ -2,12 +2,18 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
     type: entity
     table: trn_distribucion
     indexes:
-        IDX_32D979D3140FD2A0:
-            columns:
-                - seg_usuarioid
         IDX_32D979D39F4F768F:
             columns:
                 - cat_estadoid
+        IDX_32D979D3140FD2A0:
+            columns:
+                - seg_usuarioid
+        IDX_32D979D35F311932:
+            columns:
+                - api_suministroid
+        IDX_32D979D376A39933:
+            columns:
+                - api_gruposuministroid
     uniqueConstraints:
         trn_distribucion_id:
             columns:
@@ -21,11 +27,6 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
             generator:
                 strategy: SEQUENCE
     fields:
-        apiSuministroid:
-            type: integer
-            nullable: true
-            unsigned: false
-            column: api_suministroid
         apiAlmacenid:
             type: integer
             nullable: false
@@ -45,16 +46,6 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
             type: date
             nullable: false
             comment: 'esta fecha se captura desde el sistema'
-        apiGruposuministroid:
-            type: integer
-            nullable: true
-            unsigned: false
-            column: api_gruposuministroid
-        apiSubgruposuministroid:
-            type: integer
-            nullable: true
-            unsigned: false
-            column: api_subgruposuministroid
         fechacorte:
             type: date
             nullable: true
@@ -87,15 +78,6 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
             nullable: true
             column: fecha_modificacion
     manyToOne:
-        segUsuarioid:
-            targetEntity: SegUsuario
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                seg_usuarioid:
-                    referencedColumnName: id
-            orphanRemoval: false
         catEstadoid:
             targetEntity: CatEstados
             cascade: {  }
@@ -105,4 +87,48 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
                 cat_estadoid:
                     referencedColumnName: id
             orphanRemoval: false
+        segUsuarioid:
+            targetEntity: SegUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                seg_usuarioid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        apiSuministroid:
+            targetEntity: CtlSuministro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                api_suministroid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        apiGruposuministroid:
+            targetEntity: CtlGrupo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                api_gruposuministroid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        ctlInsumo:
+            targetEntity: CtlInsumo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: trnDistribucion
+            joinTable:
+                name: distribucion_producto
+                joinColumns:
+                    -
+                        name: trn_distribucion_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: ctl_insumo_id
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }

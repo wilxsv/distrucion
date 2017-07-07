@@ -6,6 +6,10 @@ Minsal\CoreBundle\Entity\TrnEntregas:
             columns:
                 - trn_productosdistribucionapi_productoid
                 - trn_distribucionid
+    uniqueConstraints:
+        trn_entregas_id:
+            columns:
+                - id
     id:
         id:
             type: integer
