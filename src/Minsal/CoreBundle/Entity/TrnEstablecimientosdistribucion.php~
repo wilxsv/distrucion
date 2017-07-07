@@ -5,14 +5,14 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TrnProductoslote
+ * TrnEstablecimientosdistribucion
  */
-class TrnProductoslote
+class TrnEstablecimientosdistribucion
 {
     /**
      * @var integer
      */
-    private $apiLoteid;
+    private $apiEstablecimientoid;
 
     /**
      * @var \Minsal\CoreBundle\Entity\TrnDistribucion
@@ -21,20 +21,33 @@ class TrnProductoslote
 
 
     /**
-     * Get apiLoteid
+     * Set apiEstablecimientoid
+     *
+     * @param integer $apiEstablecimientoid
+     * @return TrnEstablecimientosdistribucion
+     */
+    public function setApiEstablecimientoid($apiEstablecimientoid)
+    {
+        $this->apiEstablecimientoid = $apiEstablecimientoid;
+
+        return $this;
+    }
+
+    /**
+     * Get apiEstablecimientoid
      *
      * @return integer 
      */
-    public function getApiLoteid()
+    public function getApiEstablecimientoid()
     {
-        return $this->apiLoteid;
+        return $this->apiEstablecimientoid;
     }
 
     /**
      * Set trnDistribucionid
      *
      * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid
-     * @return TrnProductoslote
+     * @return TrnEstablecimientosdistribucion
      */
     public function setTrnDistribucionid(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid = null)
     {
@@ -51,33 +64,5 @@ class TrnProductoslote
     public function getTrnDistribucionid()
     {
         return $this->trnDistribucionid;
-    }
-    /**
-     * @var \Minsal\CoreBundle\Entity\TrnProductos
-     */
-    private $apiProductoid;
-
-
-    /**
-     * Set apiProductoid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnProductos $apiProductoid
-     * @return TrnProductoslote
-     */
-    public function setApiProductoid(\Minsal\CoreBundle\Entity\TrnProductos $apiProductoid = null)
-    {
-        $this->apiProductoid = $apiProductoid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiProductoid
-     *
-     * @return \Minsal\CoreBundle\Entity\TrnProductos 
-     */
-    public function getApiProductoid()
-    {
-        return $this->apiProductoid;
     }
 }

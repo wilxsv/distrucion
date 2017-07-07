@@ -1,0 +1,62 @@
+Minsal\CoreBundle\Entity\CtlGrupo:
+    type: entity
+    table: ctl_grupo
+    indexes:
+        IDX_501FC6D89C833003:
+            columns:
+                - grupo_id
+        IDX_501FC6D86D7078B6:
+            columns:
+                - suministro_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombreGrupo:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: nombre_grupo
+        registroSchema:
+            type: datetime
+            nullable: true
+            default: '(now())::timestamp(0) without time zone'
+            column: registro_schema
+        enableSchema:
+            type: integer
+            nullable: true
+            unsigned: false
+            default: '0'
+            column: enable_schema
+        codigoGrupo:
+            type: bigint
+            nullable: true
+            unsigned: false
+            default: '0'
+            column: codigo_grupo
+    manyToOne:
+        grupo:
+            targetEntity: CtlGrupo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                grupo_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        suministro:
+            targetEntity: CtlSuministro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                suministro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
