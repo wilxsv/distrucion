@@ -40,7 +40,7 @@ class CtlGrupo
     private $grupo;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\CtlSuministro
+     * @var \Minsal\CoreBundle\Entity\CatSuministro
      */
     private $suministro;
 
@@ -173,10 +173,10 @@ class CtlGrupo
     /**
      * Set suministro
      *
-     * @param \Minsal\CoreBundle\Entity\CtlSuministro $suministro
+     * @param \Minsal\CoreBundle\Entity\CatSuministro $suministro
      * @return CtlGrupo
      */
-    public function setSuministro(\Minsal\CoreBundle\Entity\CtlSuministro $suministro = null)
+    public function setSuministro(\Minsal\CoreBundle\Entity\CatSuministro $suministro = null)
     {
         $this->suministro = $suministro;
 
@@ -186,15 +186,14 @@ class CtlGrupo
     /**
      * Get suministro
      *
-     * @return \Minsal\CoreBundle\Entity\CtlSuministro 
+     * @return \Minsal\CoreBundle\Entity\CatSuministro 
      */
     public function getSuministro()
     {
         return $this->suministro;
     }
     
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getNombreGrupo();
     }
 }

@@ -266,8 +266,7 @@ class SegUsuario
         return $this->segRolid;
     }
     
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getNombre();
     }
 }

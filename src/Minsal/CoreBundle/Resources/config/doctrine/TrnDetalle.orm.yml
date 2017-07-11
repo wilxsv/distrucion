@@ -2,16 +2,9 @@ Minsal\CoreBundle\Entity\TrnDetalle:
     type: entity
     table: trn_detalle
     indexes:
-        IDX_D232DD2A3CF50ACD:
+        IDX_D232DD2ABC0DA83B3CF50ACD:
             columns:
-                - trn_distribucionid
-        IDX_D232DD2AA645FFDB3CF50ACD:
-            columns:
-                - api_productoid
-                - trn_distribucionid
-        IDX_D232DD2A93154E863CF50ACD:
-            columns:
-                - api_establecimientoid
+                - cat_productoid
                 - trn_distribucionid
     uniqueConstraints:
         trn_detalle_id:
@@ -55,6 +48,11 @@ Minsal\CoreBundle\Entity\TrnDetalle:
             precision: 15
             scale: 2
             column: existencia_farmacia
+        apiEstablecimientoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: api_establecimientoid
         verificar:
             type: boolean
             nullable: true
@@ -72,35 +70,15 @@ Minsal\CoreBundle\Entity\TrnDetalle:
             nullable: true
             column: fecha_modificacion
     manyToOne:
-        trnDistribucionid:
-            targetEntity: TrnDistribucion
+        catProductoid:
+            targetEntity: DistribucionProducto
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
+                cat_productoid:
+                    referencedColumnName: ctl_insumo_id
                 trn_distribucionid:
-                    referencedColumnName: id
-            orphanRemoval: false
-        apiProductoid:
-            targetEntity: TrnProductos
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                api_productoid:
-                    referencedColumnName: api_productoid
-                trn_distribucionid:
-                    referencedColumnName: trn_distribucionid
-            orphanRemoval: false
-        apiEstablecimientoid:
-            targetEntity: TrnEstablecimientosdistribucion
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                api_establecimientoid:
-                    referencedColumnName: api_establecimientoid
-                trn_distribucionid:
-                    referencedColumnName: trn_distribucionid
+                    referencedColumnName: trn_distribucion_id
             orphanRemoval: false
     lifecycleCallbacks: {  }

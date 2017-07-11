@@ -1,3 +1,7 @@
+minsal_core_trndistribucion:
+    resource: "@MinsalCoreBundle/Resources/config/routing/trndistribucion.yml"
+    prefix:   /trndistribucion
+
 minsal_core_homepage:
     path:     /
     defaults: { _controller: MinsalCoreBundle:Default:index }

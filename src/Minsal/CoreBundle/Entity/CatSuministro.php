@@ -5,9 +5,9 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CtlSuministro
+ * CatSuministro
  */
-class CtlSuministro
+class CatSuministro
 {
     /**
      * @var integer
@@ -70,7 +70,7 @@ class CtlSuministro
     private $rolValidaSuministro;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\CtlSuministro
+     * @var \Minsal\CoreBundle\Entity\CatSuministro
      */
     private $ctlSuministroid;
 
@@ -89,7 +89,7 @@ class CtlSuministro
      * Set nombreSuministro
      *
      * @param string $nombreSuministro
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setNombreSuministro($nombreSuministro)
     {
@@ -112,7 +112,7 @@ class CtlSuministro
      * Set detalleSuministro
      *
      * @param string $detalleSuministro
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setDetalleSuministro($detalleSuministro)
     {
@@ -135,7 +135,7 @@ class CtlSuministro
      * Set registroSchema
      *
      * @param \DateTime $registroSchema
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setRegistroSchema($registroSchema)
     {
@@ -158,7 +158,7 @@ class CtlSuministro
      * Set detalleSchema
      *
      * @param string $detalleSchema
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setDetalleSchema($detalleSchema)
     {
@@ -181,7 +181,7 @@ class CtlSuministro
      * Set userIdSchema
      *
      * @param integer $userIdSchema
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setUserIdSchema($userIdSchema)
     {
@@ -204,7 +204,7 @@ class CtlSuministro
      * Set ipUserSchema
      *
      * @param string $ipUserSchema
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setIpUserSchema($ipUserSchema)
     {
@@ -227,7 +227,7 @@ class CtlSuministro
      * Set estadoSchema
      *
      * @param integer $estadoSchema
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setEstadoSchema($estadoSchema)
     {
@@ -250,7 +250,7 @@ class CtlSuministro
      * Set enableSchema
      *
      * @param integer $enableSchema
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setEnableSchema($enableSchema)
     {
@@ -273,7 +273,7 @@ class CtlSuministro
      * Set codificacionSuministro
      *
      * @param integer $codificacionSuministro
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setCodificacionSuministro($codificacionSuministro)
     {
@@ -296,7 +296,7 @@ class CtlSuministro
      * Set rolSolicitaSuministro
      *
      * @param integer $rolSolicitaSuministro
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setRolSolicitaSuministro($rolSolicitaSuministro)
     {
@@ -319,7 +319,7 @@ class CtlSuministro
      * Set rolValidaSuministro
      *
      * @param integer $rolValidaSuministro
-     * @return CtlSuministro
+     * @return CatSuministro
      */
     public function setRolValidaSuministro($rolValidaSuministro)
     {
@@ -341,10 +341,10 @@ class CtlSuministro
     /**
      * Set ctlSuministroid
      *
-     * @param \Minsal\CoreBundle\Entity\CtlSuministro $ctlSuministroid
-     * @return CtlSuministro
+     * @param \Minsal\CoreBundle\Entity\CatSuministro $ctlSuministroid
+     * @return CatSuministro
      */
-    public function setCtlSuministroid(\Minsal\CoreBundle\Entity\CtlSuministro $ctlSuministroid = null)
+    public function setCtlSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $ctlSuministroid = null)
     {
         $this->ctlSuministroid = $ctlSuministroid;
 
@@ -354,15 +354,14 @@ class CtlSuministro
     /**
      * Get ctlSuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CtlSuministro 
+     * @return \Minsal\CoreBundle\Entity\CatSuministro 
      */
     public function getCtlSuministroid()
     {
         return $this->ctlSuministroid;
     }
     
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getNombreSuministro();
     }
 }

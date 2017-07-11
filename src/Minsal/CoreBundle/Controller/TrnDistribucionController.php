@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnDistribucion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trndistribucion controller.
  *
- * @Route("trndistribucion")
  */
 class TrnDistribucionController extends Controller
 {
     /**
      * Lists all trnDistribucion entities.
      *
-     * @Route("/", name="trndistribucion_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,47 +30,23 @@ class TrnDistribucionController extends Controller
     /**
      * Creates a new trnDistribucion entity.
      *
-     * @Route("/new", name="trndistribucion_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
         $trnDistribucion = new Trndistribucion();
         $form = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
         $form->handleRequest($request);
-        /*
-        $url = "http://192.168.1.10:8080/v1/info/servicios";
-        $data = array('tocken' => 'eccbc87e4b5ce2fe28308fd9f2a7baf3', 'maestro' => 'establecimiento');
-        $options = array(
-            'http' => array(
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'GET',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $json = file_get_contents($url, false, $context);        
-        $result = $serializer->deserialize($result,true);
-        //todo.*/
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($trnDistribucion);
             $em->flush();
-            
-            
- //           $trnDistribucion->setRegistroSchema(new \DateTime('now'));
-   //         $ctlEstablecimiento->setUserIdSchema($this->getUser()->getId());
-     //       $ctlEstablecimiento->setIpUserSchema($request->getClientIp());
-       //     $ctlEstablecimiento->setEstadoSchema(1);
-         //   $ctlEstablecimiento->setEnableSchema(0);
 
             return $this->redirectToRoute('trndistribucion_show', array('id' => $trnDistribucion->getId()));
         }
 
         return $this->render('trndistribucion/new.html.twig', array(
             'trnDistribucion' => $trnDistribucion,
-           // 'arrSuministros' => $result,
             'form' => $form->createView(),
         ));
     }
@@ -82,8 +54,6 @@ class TrnDistribucionController extends Controller
     /**
      * Finds and displays a trnDistribucion entity.
      *
-     * @Route("/{id}", name="trndistribucion_show")
-     * @Method("GET")
      */
     public function showAction(TrnDistribucion $trnDistribucion)
     {
@@ -98,8 +68,6 @@ class TrnDistribucionController extends Controller
     /**
      * Displays a form to edit an existing trnDistribucion entity.
      *
-     * @Route("/{id}/edit", name="trndistribucion_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnDistribucion $trnDistribucion)
     {
@@ -123,8 +91,6 @@ class TrnDistribucionController extends Controller
     /**
      * Deletes a trnDistribucion entity.
      *
-     * @Route("/{id}", name="trndistribucion_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnDistribucion $trnDistribucion)
     {

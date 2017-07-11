@@ -1,13 +1,10 @@
-Minsal\CoreBundle\Entity\CtlEstablecimiento:
+Minsal\CoreBundle\Entity\CatEstablecimiento:
     type: entity
-    table: ctl_establecimiento
+    table: cat_establecimiento
     indexes:
         idx_332bd42c7ead49c7:
             columns:
                 - id_municipio
-        IDX_332BD42C3544B551:
-            columns:
-                - id_establecimiento_padre
     id:
         id:
             type: integer
@@ -83,6 +80,12 @@ Minsal\CoreBundle\Entity\CtlEstablecimiento:
             nullable: true
             unsigned: false
             column: id_cat_nivel_minsal
+        idEstablecimientoPadre:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Llave foranea que identifica administrativamente al pertenece dicho municipio'
+            column: id_establecimiento_padre
         registroSchema:
             type: datetime
             nullable: true
@@ -93,14 +96,21 @@ Minsal\CoreBundle\Entity\CtlEstablecimiento:
             unsigned: false
             default: '0'
             column: enable_schema
-    manyToOne:
-        idEstablecimientoPadre:
-            targetEntity: CtlEstablecimiento
+    manyToMany:
+        trnDistribucionid:
+            targetEntity: TrnDistribucion
             cascade: {  }
             mappedBy: null
-            inversedBy: null
-            joinColumns:
-                id_establecimiento_padre:
-                    referencedColumnName: id
-            orphanRemoval: false
+            inversedBy: apiEstablecimientoid
+            joinTable:
+                name: trn_establecimientosdistribucion
+                joinColumns:
+                    -
+                        name: api_establecimientoid
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: trn_distribucionid
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }

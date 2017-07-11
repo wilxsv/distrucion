@@ -2,14 +2,9 @@ Minsal\CoreBundle\Entity\TrnEntregas:
     type: entity
     table: trn_entregas
     indexes:
-        IDX_3CBBE85914610463CF50ACD:
+        IDX_3CBBE8592830D723:
             columns:
-                - trn_productosdistribucionapi_productoid
-                - trn_distribucionid
-    uniqueConstraints:
-        trn_entregas_id:
-            columns:
-                - id
+                - trn_detalleid
     id:
         id:
             type: integer
@@ -38,15 +33,13 @@ Minsal\CoreBundle\Entity\TrnEntregas:
             nullable: true
             column: fecha_modificacion
     manyToOne:
-        trnProductosdistribucionapiProductoid:
-            targetEntity: TrnProductos
+        trnDetalleid:
+            targetEntity: TrnDetalle
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                trn_productosdistribucionapi_productoid:
-                    referencedColumnName: api_productoid
-                trn_distribucionid:
-                    referencedColumnName: trn_distribucionid
+                trn_detalleid:
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

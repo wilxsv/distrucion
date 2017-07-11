@@ -1,6 +1,6 @@
-Minsal\CoreBundle\Entity\CtlInsumo:
+Minsal\CoreBundle\Entity\CatInsumo:
     type: entity
-    table: ctl_insumo
+    table: cat_insumo
     indexes:
         ctl_insumo_nombre_largo_key:
             columns:

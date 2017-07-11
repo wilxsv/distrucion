@@ -1,8 +1,8 @@
-Minsal\CoreBundle\Entity\CtlSuministro:
+Minsal\CoreBundle\Entity\CatSuministro:
     type: entity
-    table: ctl_suministro
+    table: cat_suministro
     indexes:
-        IDX_23741A44D64E375F:
+        IDX_8048948FD64E375F:
             columns:
                 - ctl_suministroid
     uniqueConstraints:
@@ -87,7 +87,7 @@ Minsal\CoreBundle\Entity\CtlSuministro:
             column: rol_valida_suministro
     manyToOne:
         ctlSuministroid:
-            targetEntity: CtlSuministro
+            targetEntity: CatSuministro
             cascade: {  }
             mappedBy: null
             inversedBy: null

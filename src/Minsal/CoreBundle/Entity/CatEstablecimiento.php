@@ -5,9 +5,9 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CtlEstablecimiento
+ * CatEstablecimiento
  */
-class CtlEstablecimiento
+class CatEstablecimiento
 {
     /**
      * @var integer
@@ -70,6 +70,11 @@ class CtlEstablecimiento
     private $idCatNivelMinsal;
 
     /**
+     * @var integer
+     */
+    private $idEstablecimientoPadre;
+
+    /**
      * @var \DateTime
      */
     private $registroSchema;
@@ -80,10 +85,17 @@ class CtlEstablecimiento
     private $enableSchema;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\CtlEstablecimiento
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $idEstablecimientoPadre;
+    private $trnDistribucionid;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->trnDistribucionid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -99,7 +111,7 @@ class CtlEstablecimiento
      * Set idTipoEstablecimiento
      *
      * @param integer $idTipoEstablecimiento
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setIdTipoEstablecimiento($idTipoEstablecimiento)
     {
@@ -122,7 +134,7 @@ class CtlEstablecimiento
      * Set nombre
      *
      * @param string $nombre
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setNombre($nombre)
     {
@@ -145,7 +157,7 @@ class CtlEstablecimiento
      * Set direccion
      *
      * @param string $direccion
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setDireccion($direccion)
     {
@@ -168,7 +180,7 @@ class CtlEstablecimiento
      * Set telefono
      *
      * @param string $telefono
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setTelefono($telefono)
     {
@@ -191,7 +203,7 @@ class CtlEstablecimiento
      * Set fax
      *
      * @param string $fax
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setFax($fax)
     {
@@ -214,7 +226,7 @@ class CtlEstablecimiento
      * Set latitud
      *
      * @param string $latitud
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setLatitud($latitud)
     {
@@ -237,7 +249,7 @@ class CtlEstablecimiento
      * Set longitud
      *
      * @param string $longitud
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setLongitud($longitud)
     {
@@ -260,7 +272,7 @@ class CtlEstablecimiento
      * Set idInstitucion
      *
      * @param integer $idInstitucion
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setIdInstitucion($idInstitucion)
     {
@@ -283,7 +295,7 @@ class CtlEstablecimiento
      * Set idMunicipio
      *
      * @param integer $idMunicipio
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setIdMunicipio($idMunicipio)
     {
@@ -306,7 +318,7 @@ class CtlEstablecimiento
      * Set anioApertura
      *
      * @param integer $anioApertura
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setAnioApertura($anioApertura)
     {
@@ -329,7 +341,7 @@ class CtlEstablecimiento
      * Set idCatNivelMinsal
      *
      * @param integer $idCatNivelMinsal
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setIdCatNivelMinsal($idCatNivelMinsal)
     {
@@ -349,10 +361,33 @@ class CtlEstablecimiento
     }
 
     /**
+     * Set idEstablecimientoPadre
+     *
+     * @param integer $idEstablecimientoPadre
+     * @return CatEstablecimiento
+     */
+    public function setIdEstablecimientoPadre($idEstablecimientoPadre)
+    {
+        $this->idEstablecimientoPadre = $idEstablecimientoPadre;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstablecimientoPadre
+     *
+     * @return integer 
+     */
+    public function getIdEstablecimientoPadre()
+    {
+        return $this->idEstablecimientoPadre;
+    }
+
+    /**
      * Set registroSchema
      *
      * @param \DateTime $registroSchema
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setRegistroSchema($registroSchema)
     {
@@ -375,7 +410,7 @@ class CtlEstablecimiento
      * Set enableSchema
      *
      * @param integer $enableSchema
-     * @return CtlEstablecimiento
+     * @return CatEstablecimiento
      */
     public function setEnableSchema($enableSchema)
     {
@@ -395,25 +430,39 @@ class CtlEstablecimiento
     }
 
     /**
-     * Set idEstablecimientoPadre
+     * Add trnDistribucionid
      *
-     * @param \Minsal\CoreBundle\Entity\CtlEstablecimiento $idEstablecimientoPadre
-     * @return CtlEstablecimiento
+     * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid
+     * @return CatEstablecimiento
      */
-    public function setIdEstablecimientoPadre(\Minsal\CoreBundle\Entity\CtlEstablecimiento $idEstablecimientoPadre = null)
+    public function addTrnDistribucionid(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid)
     {
-        $this->idEstablecimientoPadre = $idEstablecimientoPadre;
+        $this->trnDistribucionid[] = $trnDistribucionid;
 
         return $this;
     }
 
     /**
-     * Get idEstablecimientoPadre
+     * Remove trnDistribucionid
      *
-     * @return \Minsal\CoreBundle\Entity\CtlEstablecimiento 
+     * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid
      */
-    public function getIdEstablecimientoPadre()
+    public function removeTrnDistribucionid(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid)
     {
-        return $this->idEstablecimientoPadre;
+        $this->trnDistribucionid->removeElement($trnDistribucionid);
+    }
+
+    /**
+     * Get trnDistribucionid
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTrnDistribucionid()
+    {
+        return $this->trnDistribucionid;
+    }
+    
+    public function __toString() {
+        return $this->getNombre();
     }
 }

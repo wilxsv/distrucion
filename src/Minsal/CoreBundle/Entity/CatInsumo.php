@@ -5,9 +5,9 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CtlInsumo
+ * CatInsumo
  */
-class CtlInsumo
+class CatInsumo
 {
     /**
      * @var integer
@@ -76,7 +76,7 @@ class CtlInsumo
      * Set codigoNu
      *
      * @param string $codigoNu
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setCodigoNu($codigoNu)
     {
@@ -99,7 +99,7 @@ class CtlInsumo
      * Set grupoid
      *
      * @param integer $grupoid
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setGrupoid($grupoid)
     {
@@ -122,7 +122,7 @@ class CtlInsumo
      * Set codigoSinab
      *
      * @param string $codigoSinab
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setCodigoSinab($codigoSinab)
     {
@@ -145,7 +145,7 @@ class CtlInsumo
      * Set listadoOficial
      *
      * @param boolean $listadoOficial
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setListadoOficial($listadoOficial)
     {
@@ -168,7 +168,7 @@ class CtlInsumo
      * Set nombreLargoInsumo
      *
      * @param string $nombreLargoInsumo
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setNombreLargoInsumo($nombreLargoInsumo)
     {
@@ -191,7 +191,7 @@ class CtlInsumo
      * Set registroSchema
      *
      * @param \DateTime $registroSchema
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setRegistroSchema($registroSchema)
     {
@@ -214,7 +214,7 @@ class CtlInsumo
      * Set enableSchema
      *
      * @param integer $enableSchema
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function setEnableSchema($enableSchema)
     {
@@ -237,7 +237,7 @@ class CtlInsumo
      * Add trnDistribucion
      *
      * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucion
-     * @return CtlInsumo
+     * @return CatInsumo
      */
     public function addTrnDistribucion(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucion)
     {
@@ -266,8 +266,7 @@ class CtlInsumo
         return $this->trnDistribucion;
     }
     
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getNombreLargoInsumo();
     }
 }

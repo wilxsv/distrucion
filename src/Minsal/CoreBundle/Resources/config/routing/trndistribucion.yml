@@ -1,0 +1,24 @@
+trndistribucion_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:index" }
+    methods:  GET
+
+trndistribucion_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:show" }
+    methods:  GET
+
+trndistribucion_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:new" }
+    methods:  [GET, POST]
+
+trndistribucion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:edit" }
+    methods:  [GET, POST]
+
+trndistribucion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:delete" }
+    methods:  DELETE

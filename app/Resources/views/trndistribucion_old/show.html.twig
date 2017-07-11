@@ -10,8 +10,16 @@
                 <td>{{ trnDistribucion.id }}</td>
             </tr>
             <tr>
+                <th>Apisuministroid</th>
+                <td>{{ trnDistribucion.apiSuministroid }}</td>
+            </tr>
+            <tr>
                 <th>Apialmacenid</th>
                 <td>{{ trnDistribucion.apiAlmacenid }}</td>
+            </tr>
+            <tr>
+                <th>Apiprogramaid</th>
+                <td>{{ trnDistribucion.apiProgramaid }}</td>
             </tr>
             <tr>
                 <th>Descripcion</th>
@@ -20,6 +28,14 @@
             <tr>
                 <th>Fechadistribucion</th>
                 <td>{% if trnDistribucion.fechadistribucion %}{{ trnDistribucion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Apigruposuministroid</th>
+                <td>{{ trnDistribucion.apiGruposuministroid }}</td>
+            </tr>
+            <tr>
+                <th>Apisubgruposuministroid</th>
+                <td>{{ trnDistribucion.apiSubgruposuministroid }}</td>
             </tr>
             <tr>
                 <th>Fechacorte</th>
@@ -48,6 +64,10 @@
             <tr>
                 <th>Fechamodificacion</th>
                 <td>{% if trnDistribucion.fechaModificacion %}{{ trnDistribucion.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Productos</th>
+                <td>{{ trnDistribucion.ctlInsumo| join(' <br/> ') | raw }}</td>
             </tr>
         </tbody>
     </table>

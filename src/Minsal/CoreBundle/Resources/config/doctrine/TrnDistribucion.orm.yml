@@ -8,12 +8,15 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
         IDX_32D979D3140FD2A0:
             columns:
                 - seg_usuarioid
-        IDX_32D979D35F311932:
-            columns:
-                - api_suministroid
         IDX_32D979D376A39933:
             columns:
                 - api_gruposuministroid
+        IDX_32D979D3F44034C1:
+            columns:
+                - cat_suministroid
+        IDX_32D979D3CDAFE461:
+            columns:
+                - cat_programaid
     uniqueConstraints:
         trn_distribucion_id:
             columns:
@@ -32,11 +35,6 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
             nullable: false
             unsigned: false
             column: api_almacenid
-        apiProgramaid:
-            type: integer
-            nullable: true
-            unsigned: false
-            column: api_programaid
         descripcion:
             type: text
             nullable: false
@@ -96,15 +94,6 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
                 seg_usuarioid:
                     referencedColumnName: id
             orphanRemoval: false
-        apiSuministroid:
-            targetEntity: CtlSuministro
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                api_suministroid:
-                    referencedColumnName: id
-            orphanRemoval: false
         apiGruposuministroid:
             targetEntity: CtlGrupo
             cascade: {  }
@@ -114,9 +103,27 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
                 api_gruposuministroid:
                     referencedColumnName: id
             orphanRemoval: false
+        catSuministroid:
+            targetEntity: CatSuministro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_suministroid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        catProgramaid:
+            targetEntity: CatProgramas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_programaid:
+                    referencedColumnName: id
+            orphanRemoval: false
     manyToMany:
         ctlInsumo:
-            targetEntity: CtlInsumo
+            targetEntity: CatInsumo
             cascade: {  }
             mappedBy: null
             inversedBy: trnDistribucion
@@ -130,5 +137,12 @@ Minsal\CoreBundle\Entity\TrnDistribucion:
                     -
                         name: ctl_insumo_id
                         referencedColumnName: id
+            orderBy: null
+        apiEstablecimientoid:
+            targetEntity: CatEstablecimiento
+            cascade: {  }
+            mappedBy: trnDistribucionid
+            inversedBy: null
+            joinTable: null
             orderBy: null
     lifecycleCallbacks: {  }

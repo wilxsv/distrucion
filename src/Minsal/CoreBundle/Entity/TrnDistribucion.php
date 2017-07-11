@@ -17,17 +17,7 @@ class TrnDistribucion
     /**
      * @var integer
      */
-    private $apiSuministroid;
-
-    /**
-     * @var integer
-     */
     private $apiAlmacenid;
-
-    /**
-     * @var integer
-     */
-    private $apiProgramaid;
 
     /**
      * @var string
@@ -38,16 +28,6 @@ class TrnDistribucion
      * @var \DateTime
      */
     private $fechadistribucion;
-
-    /**
-     * @var integer
-     */
-    private $apiGruposuministroid;
-
-    /**
-     * @var integer
-     */
-    private $apiSubgruposuministroid;
 
     /**
      * @var \DateTime
@@ -85,15 +65,48 @@ class TrnDistribucion
     private $fechaModificacion;
 
     /**
+     * @var \Minsal\CoreBundle\Entity\CatEstados
+     */
+    private $catEstadoid;
+
+    /**
      * @var \Minsal\CoreBundle\Entity\SegUsuario
      */
     private $segUsuarioid;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\CatEstados
+     * @var \Minsal\CoreBundle\Entity\CtlGrupo
      */
-    private $catEstadoid;
+    private $apiGruposuministroid;
 
+    /**
+     * @var \Minsal\CoreBundle\Entity\CatSuministro
+     */
+    private $catSuministroid;
+
+    /**
+     * @var \Minsal\CoreBundle\Entity\CatProgramas
+     */
+    private $catProgramaid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ctlInsumo;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $apiEstablecimientoid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ctlInsumo = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->apiEstablecimientoid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -103,29 +116,6 @@ class TrnDistribucion
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set apiSuministroid
-     *
-     * @param integer $apiSuministroid
-     * @return TrnDistribucion
-     */
-    public function setApiSuministroid($apiSuministroid)
-    {
-        $this->apiSuministroid = $apiSuministroid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiSuministroid
-     *
-     * @return integer 
-     */
-    public function getApiSuministroid()
-    {
-        return $this->apiSuministroid;
     }
 
     /**
@@ -149,29 +139,6 @@ class TrnDistribucion
     public function getApiAlmacenid()
     {
         return $this->apiAlmacenid;
-    }
-
-    /**
-     * Set apiProgramaid
-     *
-     * @param integer $apiProgramaid
-     * @return TrnDistribucion
-     */
-    public function setApiProgramaid($apiProgramaid)
-    {
-        $this->apiProgramaid = $apiProgramaid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiProgramaid
-     *
-     * @return integer 
-     */
-    public function getApiProgramaid()
-    {
-        return $this->apiProgramaid;
     }
 
     /**
@@ -218,52 +185,6 @@ class TrnDistribucion
     public function getFechadistribucion()
     {
         return $this->fechadistribucion;
-    }
-
-    /**
-     * Set apiGruposuministroid
-     *
-     * @param integer $apiGruposuministroid
-     * @return TrnDistribucion
-     */
-    public function setApiGruposuministroid($apiGruposuministroid)
-    {
-        $this->apiGruposuministroid = $apiGruposuministroid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiGruposuministroid
-     *
-     * @return integer 
-     */
-    public function getApiGruposuministroid()
-    {
-        return $this->apiGruposuministroid;
-    }
-
-    /**
-     * Set apiSubgruposuministroid
-     *
-     * @param integer $apiSubgruposuministroid
-     * @return TrnDistribucion
-     */
-    public function setApiSubgruposuministroid($apiSubgruposuministroid)
-    {
-        $this->apiSubgruposuministroid = $apiSubgruposuministroid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiSubgruposuministroid
-     *
-     * @return integer 
-     */
-    public function getApiSubgruposuministroid()
-    {
-        return $this->apiSubgruposuministroid;
     }
 
     /**
@@ -428,6 +349,29 @@ class TrnDistribucion
     }
 
     /**
+     * Set catEstadoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatEstados $catEstadoid
+     * @return TrnDistribucion
+     */
+    public function setCatEstadoid(\Minsal\CoreBundle\Entity\CatEstados $catEstadoid = null)
+    {
+        $this->catEstadoid = $catEstadoid;
+
+        return $this;
+    }
+
+    /**
+     * Get catEstadoid
+     *
+     * @return \Minsal\CoreBundle\Entity\CatEstados 
+     */
+    public function getCatEstadoid()
+    {
+        return $this->catEstadoid;
+    }
+
+    /**
      * Set segUsuarioid
      *
      * @param \Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid
@@ -451,47 +395,81 @@ class TrnDistribucion
     }
 
     /**
-     * Set catEstadoid
+     * Set apiGruposuministroid
      *
-     * @param \Minsal\CoreBundle\Entity\CatEstados $catEstadoid
+     * @param \Minsal\CoreBundle\Entity\CtlGrupo $apiGruposuministroid
      * @return TrnDistribucion
      */
-    public function setCatEstadoid(\Minsal\CoreBundle\Entity\CatEstados $catEstadoid = null)
+    public function setApiGruposuministroid(\Minsal\CoreBundle\Entity\CtlGrupo $apiGruposuministroid = null)
     {
-        $this->catEstadoid = $catEstadoid;
+        $this->apiGruposuministroid = $apiGruposuministroid;
 
         return $this;
     }
 
     /**
-     * Get catEstadoid
+     * Get apiGruposuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CatEstados 
+     * @return \Minsal\CoreBundle\Entity\CtlGrupo 
      */
-    public function getCatEstadoid()
+    public function getApiGruposuministroid()
     {
-        return $this->catEstadoid;
+        return $this->apiGruposuministroid;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $ctlInsumo;
 
     /**
-     * Constructor
+     * Set catSuministroid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatSuministro $catSuministroid
+     * @return TrnDistribucion
      */
-    public function __construct()
+    public function setCatSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $catSuministroid = null)
     {
-        $this->ctlInsumo = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->catSuministroid = $catSuministroid;
+
+        return $this;
+    }
+
+    /**
+     * Get catSuministroid
+     *
+     * @return \Minsal\CoreBundle\Entity\CatSuministro 
+     */
+    public function getCatSuministroid()
+    {
+        return $this->catSuministroid;
+    }
+
+    /**
+     * Set catProgramaid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProgramas $catProgramaid
+     * @return TrnDistribucion
+     */
+    public function setCatProgramaid(\Minsal\CoreBundle\Entity\CatProgramas $catProgramaid = null)
+    {
+        $this->catProgramaid = $catProgramaid;
+
+        return $this;
+    }
+
+    /**
+     * Get catProgramaid
+     *
+     * @return \Minsal\CoreBundle\Entity\CatProgramas 
+     */
+    public function getCatProgramaid()
+    {
+        return $this->catProgramaid;
     }
 
     /**
      * Add ctlInsumo
      *
-     * @param \Minsal\CoreBundle\Entity\CtlInsumo $ctlInsumo
+     * @param \Minsal\CoreBundle\Entity\CatInsumo $ctlInsumo
      * @return TrnDistribucion
      */
-    public function addCtlInsumo(\Minsal\CoreBundle\Entity\CtlInsumo $ctlInsumo)
+    public function addCtlInsumo(\Minsal\CoreBundle\Entity\CatInsumo $ctlInsumo)
     {
         $this->ctlInsumo[] = $ctlInsumo;
 
@@ -501,9 +479,9 @@ class TrnDistribucion
     /**
      * Remove ctlInsumo
      *
-     * @param \Minsal\CoreBundle\Entity\CtlInsumo $ctlInsumo
+     * @param \Minsal\CoreBundle\Entity\CatInsumo $ctlInsumo
      */
-    public function removeCtlInsumo(\Minsal\CoreBundle\Entity\CtlInsumo $ctlInsumo)
+    public function removeCtlInsumo(\Minsal\CoreBundle\Entity\CatInsumo $ctlInsumo)
     {
         $this->ctlInsumo->removeElement($ctlInsumo);
     }
@@ -516,5 +494,38 @@ class TrnDistribucion
     public function getCtlInsumo()
     {
         return $this->ctlInsumo;
+    }
+
+    /**
+     * Add apiEstablecimientoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatEstablecimiento $apiEstablecimientoid
+     * @return TrnDistribucion
+     */
+    public function addApiEstablecimientoid(\Minsal\CoreBundle\Entity\CatEstablecimiento $apiEstablecimientoid)
+    {
+        $this->apiEstablecimientoid[] = $apiEstablecimientoid;
+
+        return $this;
+    }
+
+    /**
+     * Remove apiEstablecimientoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatEstablecimiento $apiEstablecimientoid
+     */
+    public function removeApiEstablecimientoid(\Minsal\CoreBundle\Entity\CatEstablecimiento $apiEstablecimientoid)
+    {
+        $this->apiEstablecimientoid->removeElement($apiEstablecimientoid);
+    }
+
+    /**
+     * Get apiEstablecimientoid
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getApiEstablecimientoid()
+    {
+        return $this->apiEstablecimientoid;
     }
 }

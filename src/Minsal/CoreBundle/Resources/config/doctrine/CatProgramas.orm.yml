@@ -1,0 +1,28 @@
+Minsal\CoreBundle\Entity\CatProgramas:
+    type: entity
+    table: cat_programas
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        registroSchema:
+            type: datetime
+            nullable: true
+            column: registro_schema
+        enableSchema:
+            type: integer
+            nullable: true
+            unsigned: false
+            default: '0'
+            column: enable_schema
+    lifecycleCallbacks: {  }

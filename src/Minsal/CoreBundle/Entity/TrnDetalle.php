@@ -40,6 +40,11 @@ class TrnDetalle
     private $existenciaFarmacia;
 
     /**
+     * @var integer
+     */
+    private $apiEstablecimientoid;
+
+    /**
      * @var boolean
      */
     private $verificar;
@@ -60,19 +65,9 @@ class TrnDetalle
     private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\TrnDistribucion
+     * @var \Minsal\CoreBundle\Entity\DistribucionProducto
      */
-    private $trnDistribucionid;
-
-    /**
-     * @var \Minsal\CoreBundle\Entity\TrnEstablecimientosdistribucion
-     */
-    private $apiEstablecimientoid;
-
-    /**
-     * @var \Minsal\CoreBundle\Entity\TrnProductos
-     */
-    private $apiProductoid;
+    private $catProductoid;
 
 
     /**
@@ -201,6 +196,29 @@ class TrnDetalle
     }
 
     /**
+     * Set apiEstablecimientoid
+     *
+     * @param integer $apiEstablecimientoid
+     * @return TrnDetalle
+     */
+    public function setApiEstablecimientoid($apiEstablecimientoid)
+    {
+        $this->apiEstablecimientoid = $apiEstablecimientoid;
+
+        return $this;
+    }
+
+    /**
+     * Get apiEstablecimientoid
+     *
+     * @return integer 
+     */
+    public function getApiEstablecimientoid()
+    {
+        return $this->apiEstablecimientoid;
+    }
+
+    /**
      * Set verificar
      *
      * @param boolean $verificar
@@ -293,71 +311,25 @@ class TrnDetalle
     }
 
     /**
-     * Set trnDistribucionid
+     * Set catProductoid
      *
-     * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid
+     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $catProductoid
      * @return TrnDetalle
      */
-    public function setTrnDistribucionid(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid = null)
+    public function setCatProductoid(\Minsal\CoreBundle\Entity\DistribucionProducto $catProductoid = null)
     {
-        $this->trnDistribucionid = $trnDistribucionid;
+        $this->catProductoid = $catProductoid;
 
         return $this;
     }
 
     /**
-     * Get trnDistribucionid
+     * Get catProductoid
      *
-     * @return \Minsal\CoreBundle\Entity\TrnDistribucion 
+     * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
      */
-    public function getTrnDistribucionid()
+    public function getCatProductoid()
     {
-        return $this->trnDistribucionid;
-    }
-
-    /**
-     * Set apiEstablecimientoid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnEstablecimientosdistribucion $apiEstablecimientoid
-     * @return TrnDetalle
-     */
-    public function setApiEstablecimientoid(\Minsal\CoreBundle\Entity\TrnEstablecimientosdistribucion $apiEstablecimientoid = null)
-    {
-        $this->apiEstablecimientoid = $apiEstablecimientoid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiEstablecimientoid
-     *
-     * @return \Minsal\CoreBundle\Entity\TrnEstablecimientosdistribucion 
-     */
-    public function getApiEstablecimientoid()
-    {
-        return $this->apiEstablecimientoid;
-    }
-
-    /**
-     * Set apiProductoid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnProductos $apiProductoid
-     * @return TrnDetalle
-     */
-    public function setApiProductoid(\Minsal\CoreBundle\Entity\TrnProductos $apiProductoid = null)
-    {
-        $this->apiProductoid = $apiProductoid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiProductoid
-     *
-     * @return \Minsal\CoreBundle\Entity\TrnProductos 
-     */
-    public function getApiProductoid()
-    {
-        return $this->apiProductoid;
+        return $this->catProductoid;
     }
 }

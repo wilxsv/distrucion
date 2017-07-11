@@ -35,9 +35,9 @@ class TrnEntregas
     private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\TrnProductos
+     * @var \Minsal\CoreBundle\Entity\TrnDetalle
      */
-    private $trnProductosdistribucionapiProductoid;
+    private $trnDetalleid;
 
 
     /**
@@ -143,25 +143,25 @@ class TrnEntregas
     }
 
     /**
-     * Set trnProductosdistribucionapiProductoid
+     * Set trnDetalleid
      *
-     * @param \Minsal\CoreBundle\Entity\TrnProductos $trnProductosdistribucionapiProductoid
+     * @param \Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid
      * @return TrnEntregas
      */
-    public function setTrnProductosdistribucionapiProductoid(\Minsal\CoreBundle\Entity\TrnProductos $trnProductosdistribucionapiProductoid = null)
+    public function setTrnDetalleid(\Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid = null)
     {
-        $this->trnProductosdistribucionapiProductoid = $trnProductosdistribucionapiProductoid;
+        $this->trnDetalleid = $trnDetalleid;
 
         return $this;
     }
 
     /**
-     * Get trnProductosdistribucionapiProductoid
+     * Get trnDetalleid
      *
-     * @return \Minsal\CoreBundle\Entity\TrnProductos 
+     * @return \Minsal\CoreBundle\Entity\TrnDetalle 
      */
-    public function getTrnProductosdistribucionapiProductoid()
+    public function getTrnDetalleid()
     {
-        return $this->trnProductosdistribucionapiProductoid;
+        return $this->trnDetalleid;
     }
 }

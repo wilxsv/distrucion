@@ -51,7 +51,7 @@ Minsal\CoreBundle\Entity\CtlGrupo:
                     referencedColumnName: id
             orphanRemoval: false
         suministro:
-            targetEntity: CtlSuministro
+            targetEntity: CatSuministro
             cascade: {  }
             mappedBy: null
             inversedBy: null
