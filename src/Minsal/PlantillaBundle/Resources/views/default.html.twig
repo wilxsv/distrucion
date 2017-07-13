@@ -11,19 +11,20 @@
         <link href="{{ asset('assets/') }}distro/css/animate.css" rel="stylesheet">        <!-- Menu CSS -->
         <link href="{{ asset('assets/') }}distro/css/sidebar-nav.css" rel="stylesheet">
         <!-- animation CSS -->
-        <link href="{{ asset('assets/') }}distro/css/animate.css" rel="stylesheet">               
-        <link href="{{ asset('assets/') }}distro/css/simple-line-icons.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/') }}distro/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/') }}distro/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/') }}distro/themify-icons.css" rel="stylesheet" >
-        
+        <link href="{{ asset('assets/') }}distro/css/animate.css" rel="stylesheet">
+
+
         <!-- carga dinámica de CSS -->
         {% block header_css %}{% endblock %}
         <!-- Custom CSS -->
         <link href="{{ asset('assets/') }}distro/css/style.css" rel="stylesheet">
         <!-- color CSS -->
         <link href="{{ asset('assets/') }}distro/css/megna-dark.css" id="theme" rel="stylesheet">
-       
+        <link href="{{ asset('assets/') }}distro/css/simple-line-icons.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/') }}distro/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/') }}distro/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/') }}distro/themify-icons.css" rel="stylesheet" >
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -52,11 +53,11 @@
             <!-- Left Sidebar - style you can find in sidebar.scss  -->
             <!-- ============================================================== -->
             <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav">  
+                <div class="sidebar-nav">
                     <div class="sidebar-head">
                         <h3><span class="fa-fw open-close"><i class="ti-menu hidden-xs"></i><i class="ti-close visible-xs"></i></span> <span class="hide-menu">Navegaci&oacute;n</span></h3>
                     </div>
-                    <ul class="nav" id="side-menu"> 
+                    <ul class="nav" id="side-menu">
                         {% include 'MinsalPlantillaBundle::Default/menu.html.twig' %}
                     </ul>
                 </div>
@@ -74,7 +75,7 @@
                             <h4 class="page-title">
                             {% block viewtitle %}{% endblock %}
                         </h4> </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">                         
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     {% block navigationlink %}{% endblock %}
                     {% include 'MinsalPlantillaBundle::Default/breadcrumb.html.twig' %}
                 </div>
@@ -102,26 +103,18 @@
 <!-- jQuery -->
 <script src="{{ asset('assets/') }}distro/js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('assets/') }}distro/js/bootstrap_002.js"></script>    
+<script src="{{ asset('assets/') }}distro/js/bootstrap.js"></script>
 <!-- Menu Plugin JavaScript -->
 <script src="{{ asset('assets/') }}distro/js/sidebar-nav.js"></script>
 <!--slimscroll JavaScript -->
 <script src="{{ asset('assets/') }}distro/js/jquery_002.js"></script>
 <!--Wave Effects -->
 <script src="{{ asset('assets/') }}distro/js/waves.js"></script>
-<!-- Form Wizard JavaScript -->
-<script src="{{ asset('assets/') }}distro/js/jquery-wizard.js"></script>
-<!-- FormValidation plugin and the class supports validating Bootstrap form -->
-<script src="{{ asset('assets/') }}distro/js/formValidation.js"></script>
-<script src="{{ asset('assets/') }}distro/js/bootstrap.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('assets/') }}distro/js/custom.js"></script>
 <script src="{{ asset('assets/') }}distro/js/jasny-bootstrap.js"></script>
 <!--Style Switcher -->
 <script src="{{ asset('assets/') }}distro/js/jkuery.js"></script>
-<!-- Sweet-Alert  -->
-<script src="{{ asset('assets/') }}distro/js/sweetalert.js"></script>
-
 {% block footer_js %}{% endblock %}
 
 </body></html>
