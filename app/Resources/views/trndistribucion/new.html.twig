@@ -22,7 +22,7 @@
           <li role="tab" class="disabled" aria-expanded="false">
             <h4><span>4</span>Establecimientos</h4> </li>
           </ul>
-          {{ form_start(form, {'attr' : { 'class': 'form-horizontal'}}) }}
+          {{ form_start(form, {'attr' : { 'class': 'form-horizontal', 'id':'frmcrea'}}) }}
           <div class="wizard-content">
             <div class="wizard-pane active" role="tabpanel" aria-expanded="true">
               <h5 class="box-title">Seleccione tipo de asignación</h5>
@@ -185,8 +185,8 @@
               </div>
             </div>
           </div>
-          <input type="submit" value="Create" />
-{{ form_widget(form) }}
+          <input type="submit" value="Create" id="btnSubmit"/>
+          {{ form_widget(form) }}
           <!-- <input type="submit" value="Create" />-->
           {{ form_end(form) }}
         </div>
@@ -211,11 +211,28 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript">
+        function cargarGrupo(valor) {
+           $.ajax({
+        	type: "POST",
+        	url: "{{ url('configuracion_establecimientos_ajax') }}?suministro=" + valor,
+        	success: function(data) {
+        		$('#grupo').html(data);
+            }
+           });
+           return false;
+         };
+
+
         (function () {
 
+
+          $("btnSubmit").hide();
           $('#asignacionWizard').wizard({
             onFinish: function () {
-              swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+              $('frmcrea').submit(function(){
+                alert("Submitted");
+              });
+
             }, buttonLabels: {
               next: 'Siguiente',
               back: 'Atras',

@@ -33,6 +33,13 @@ class TrnDistribucionType extends AbstractType
       },
       'multiple' => true,  'attr' => array('class'=>'selector_multiple', 'style' => 'width: 100%')
       ))
+      ->add('apiGruposuministroid')
+      ->add('catSuministroid','entity',array(
+        'class'=> 'MinsalCoreBundle:CatSuministro',
+        array('class'=>'form-control','style' => 'width: 100%', 'onchange' => 'cargarGrupo(this.value);'))        
+      ))
+
+      /*
       ->add('apiGruposuministroid', 'entity', array(
         'class' => 'MinsalCoreBundle:CtlGrupo',
         'query_builder' => function(\Doctrine\ORM\EntityRepository $grep){
@@ -46,7 +53,7 @@ class TrnDistribucionType extends AbstractType
             return $srep->createQueryBuilder('s')->orderBy('s.nombreSuministro', 'ASC');
           },
           'label'=>'Tipo de Suministro', 'placeholder' => 'Eliga un tipo de suministro', 'attr' => array('class'=>'form-control','style' => 'width: 100%')
-          ))
+          ))*/
           ->add('catProgramaid','entity',array(
             'class'=> 'MinsalCoreBundle:CatProgramas',
             'query_builder' => function(\Doctrine\ORM\EntityRepository $prep) {

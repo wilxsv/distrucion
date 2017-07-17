@@ -7,118 +7,148 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Trndistribucion controller.
- *
- */
+* Trndistribucion controller.
+*
+*/
 class TrnDistribucionController extends Controller
 {
-    /**
-     * Lists all trnDistribucion entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+  /**
+  * Lists all trnDistribucion entities.
+  *
+  */
+  public function indexAction()
+  {
+    $em = $this->getDoctrine()->getManager();
 
-        $trnDistribucions = $em->getRepository('MinsalCoreBundle:TrnDistribucion')->findAll();
+    $trnDistribucions = $em->getRepository('MinsalCoreBundle:TrnDistribucion')->findAll();
 
-        return $this->render('trndistribucion/index.html.twig', array(
-            'trnDistribucions' => $trnDistribucions,
-        ));
+    return $this->render('trndistribucion/index.html.twig', array(
+      'trnDistribucions' => $trnDistribucions,
+    ));
+  }
+
+  /**
+  * Creates a new trnDistribucion entity.
+  *
+  */
+  public function newAction(Request $request)
+  {
+    $trnDistribucion = new Trndistribucion();
+    $form = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($trnDistribucion);
+      $em->flush();
+
+      return $this->redirectToRoute('trndistribucion_show', array('id' => $trnDistribucion->getId()));
     }
 
-    /**
-     * Creates a new trnDistribucion entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $trnDistribucion = new Trndistribucion();
-        $form = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
-        $form->handleRequest($request);
+    return $this->render('trndistribucion/new.html.twig', array(
+      'trnDistribucion' => $trnDistribucion,
+      'form' => $form->createView(),
+    ));
+  }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($trnDistribucion);
-            $em->flush();
+  /**
+  * Finds and displays a trnDistribucion entity.
+  *
+  */
+  public function showAction(TrnDistribucion $trnDistribucion)
+  {
+    $deleteForm = $this->createDeleteForm($trnDistribucion);
 
-            return $this->redirectToRoute('trndistribucion_show', array('id' => $trnDistribucion->getId()));
-        }
+    return $this->render('trndistribucion/show.html.twig', array(
+      'trnDistribucion' => $trnDistribucion,
+      'delete_form' => $deleteForm->createView(),
+    ));
+  }
 
-        return $this->render('trndistribucion/new.html.twig', array(
-            'trnDistribucion' => $trnDistribucion,
-            'form' => $form->createView(),
-        ));
+  /**
+  * Displays a form to edit an existing trnDistribucion entity.
+  *
+  */
+  public function editAction(Request $request, TrnDistribucion $trnDistribucion)
+  {
+    $deleteForm = $this->createDeleteForm($trnDistribucion);
+    $editForm = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
+    $editForm->handleRequest($request);
+
+    if ($editForm->isSubmitted() && $editForm->isValid()) {
+      $this->getDoctrine()->getManager()->flush();
+
+      return $this->redirectToRoute('trndistribucion_edit', array('id' => $trnDistribucion->getId()));
     }
 
-    /**
-     * Finds and displays a trnDistribucion entity.
-     *
-     */
-    public function showAction(TrnDistribucion $trnDistribucion)
-    {
-        $deleteForm = $this->createDeleteForm($trnDistribucion);
+    return $this->render('trndistribucion/edit.html.twig', array(
+      'trnDistribucion' => $trnDistribucion,
+      'edit_form' => $editForm->createView(),
+      'delete_form' => $deleteForm->createView(),
+    ));
+  }
 
-        return $this->render('trndistribucion/show.html.twig', array(
-            'trnDistribucion' => $trnDistribucion,
-            'delete_form' => $deleteForm->createView(),
-        ));
+  /**
+  * Deletes a trnDistribucion entity.
+  *
+  */
+  public function deleteAction(Request $request, TrnDistribucion $trnDistribucion)
+  {
+    $form = $this->createDeleteForm($trnDistribucion);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      $em->remove($trnDistribucion);
+      $em->flush();
     }
 
-    /**
-     * Displays a form to edit an existing trnDistribucion entity.
-     *
-     */
-    public function editAction(Request $request, TrnDistribucion $trnDistribucion)
-    {
-        $deleteForm = $this->createDeleteForm($trnDistribucion);
-        $editForm = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
-        $editForm->handleRequest($request);
+    return $this->redirectToRoute('trndistribucion_index');
+  }
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+  /**
+  * Creates a form to delete a trnDistribucion entity.
+  *
+  * @param TrnDistribucion $trnDistribucion The trnDistribucion entity
+  *
+  * @return \Symfony\Component\Form\Form The form
+  */
+  private function createDeleteForm(TrnDistribucion $trnDistribucion)
+  {
+    return $this->createFormBuilder()
+    ->setAction($this->generateUrl('trndistribucion_delete', array('id' => $trnDistribucion->getId())))
+    ->setMethod('DELETE')
+    ->getForm()
+    ;
+  }
 
-            return $this->redirectToRoute('trndistribucion_edit', array('id' => $trnDistribucion->getId()));
-        }
-
-        return $this->render('trndistribucion/edit.html.twig', array(
-            'trnDistribucion' => $trnDistribucion,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+  public function ajaxAction(Request $request)
+  {
+    if (! $request->isXmlHttpRequest()) {
+      
+      throw new NotFoundHttpException();
     }
+    $em = $this->getDoctrine()->getEntityManager();
 
-    /**
-     * Deletes a trnDistribucion entity.
-     *
-     */
-    public function deleteAction(Request $request, TrnDistribucion $trnDistribucion)
-    {
-        $form = $this->createDeleteForm($trnDistribucion);
-        $form->handleRequest($request);
+    if ($request->query->get('suministro') != NULL && is_numeric($request->query->get('suministro')) ){
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($trnDistribucion);
-            $em->flush();
-        }
+      $result = $em->createQuery("SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.suministro = ".$request->query->get('suministro')." ORDER BY g.nombreGrupo" )->getResult();
+      return $this->render('trndistribucion/new.twig', array( 'rest'=> TRUE, 'suministro'=> $result));
 
-        return $this->redirectToRoute('trndistribucion_index');
+    } elseif ($request->query->get('grupo') != NULL && is_numeric($request->query->get('grupo')) ){
+
+      $result = $em->createQuery( "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupo = ".$request->query->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
+      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
+
+    }  elseif ($request->query->get('subgrupo') != NULL && is_numeric($request->query->get('subgrupo')) ){
+
+      $result = $em->createQuery( "SELECT g.id, g.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo g WHERE g.grupoid = ".$request->query->get('subgrupo')." ORDER BY g.nombreLargoInsumo" )->getResult();
+      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));
+
+    } else {
+
+      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> FALSE ));
+
     }
-
-    /**
-     * Creates a form to delete a trnDistribucion entity.
-     *
-     * @param TrnDistribucion $trnDistribucion The trnDistribucion entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(TrnDistribucion $trnDistribucion)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('trndistribucion_delete', array('id' => $trnDistribucion->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
+  }
 }
