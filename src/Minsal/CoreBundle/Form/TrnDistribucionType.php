@@ -5,6 +5,8 @@ namespace Minsal\CoreBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Minsal\CoreBundle\Form\EventListener\AddGrupoFieldSubscriber;
+use Minsal\CoreBundle\Form\EventListener\AddSuministroFieldSubscriber;
 
 class TrnDistribucionType extends AbstractType
 {
@@ -33,12 +35,9 @@ class TrnDistribucionType extends AbstractType
       },
       'multiple' => true,  'attr' => array('class'=>'selector_multiple', 'style' => 'width: 100%')
       ))
-      ->add('apiGruposuministroid')
-      ->add('catSuministroid','entity',array(
-        'class'=> 'MinsalCoreBundle:CatSuministro',
-        array('class'=>'form-control','style' => 'width: 100%', 'onchange' => 'cargarGrupo(this.value);'))        
-      ))
-
+      ->addEventSubscriber(new AddSuministroFieldSubscriber())
+      ->addEventSubscriber(new AddGrupoFieldSubscriber());
+      
       /*
       ->add('apiGruposuministroid', 'entity', array(
         'class' => 'MinsalCoreBundle:CtlGrupo',

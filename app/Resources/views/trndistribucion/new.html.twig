@@ -97,203 +97,215 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
-                      {{form_label(form.apiGruposuministroid)}}
-                      <span class="span12 input-icon input-icon-right">
-                        {{ form_widget(form.apiGruposuministroid) }}
-                      </span>
-                      {{ form_errors(form.apiGruposuministroid) }}
-                    </div>
-                  </div>
-                  <div class="col-md-6 opcional">
-                    <div class="form-group">
-
-                      {{form_label(form.mesesDistribucion)}}
-                      <span class="span12 input-icon input-icon-right">
-                        {{ form_widget(form.mesesDistribucion) }}
-                      </span>
-                      {{ form_errors(form.mesesDistribucion) }}
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-
-                  </div>
-                  <div class="col-md-6 opcional">
-                    <div class="form-group">
-                      {{form_label(form.mesesAdministracion)}}
-                      <span class="span12 input-icon input-icon-right">
-                        {{ form_widget(form.mesesAdministracion) }}
-                      </span>
-                      {{ form_errors(form.mesesAdministracion) }}
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      {{form_label(form.catProgramaid)}}
-                      <span class="span12 input-icon input-icon-right">
-                        {{ form_widget(form.catProgramaid) }}
-                      </span>
-                      {{ form_errors(form.catProgramaid) }}
-                    </div>
-                  </div>
-                  <div class="col-md-6 opcional">
-                    <div class="form-group">
-                      {{form_label(form.mesesSeguridad)}}
-                      <span class="span12 input-icon input-icon-right">
-                        {{ form_widget(form.mesesSeguridad) }}
-                      </span>
-                      {{ form_errors(form.mesesSeguridad) }}
-                    </div>
-                  </div>
-                </div>
-
+                    <!-- <div class="form-group">
+                    {{form_label(form.apiGruposuministroid)}}
+                    <span class="span12 input-icon input-icon-right">
+                    {{ form_widget(form.apiGruposuministroid) }}
+                  </span>
+                  {{ form_errors(form.apiGruposuministroid) }}
+                </div> -->
               </div>
+              <div class="col-md-6 opcional">
+                <div class="form-group">
 
-
-              <div class="wizard-pane" role="tabpanel" aria-expanded="false">
-
-
-                <h5 class="box-title">Productos en asignación</h5>
-
-                <div class="button-box m-t-20">
-                  <a id="select-all" class="btn btn-success btn-outline" href="javascript:void(0)">Agregar todo</a>
-                  <a id="deselect-all" class="btn btn-danger btn-outline" href="javascript:void(0)">Quitar todo</a>
+                  {{form_label(form.mesesDistribucion)}}
+                  <span class="span12 input-icon input-icon-right">
+                    {{ form_widget(form.mesesDistribucion) }}
+                  </span>
+                  {{ form_errors(form.mesesDistribucion) }}
                 </div>
-                <div id="multiselector">
-                  {{ form_widget(form.ctlInsumo) }}
-                </div>
-                {{ form_errors(form.ctlInsumo) }}
-
-
-              </div>
-
-              <div class="wizard-pane" role="tabpanel" aria-expanded="false">
-                <h5 class="box-title">Establecimientos a distribuir</h5>
-
-                <div class="button-box m-t-20">
-                  <a id="select-all2" class="btn btn-success btn-outline" href="javascript:void(0)">Agregar todo</a>
-                  <a id="deselect-all2" class="btn btn-danger btn-outline" href="javascript:void(0)">Quitar todo</a>
-                </div>
-                <div id="multiselector">
-                  {{ form_widget(form.apiEstablecimientoid) }}
-                </div>
-                {{ form_errors(form.apiEstablecimientoid) }}
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-6">
+
+              </div>
+              <div class="col-md-6 opcional">
+                <div class="form-group">
+                  {{form_label(form.mesesAdministracion)}}
+                  <span class="span12 input-icon input-icon-right">
+                    {{ form_widget(form.mesesAdministracion) }}
+                  </span>
+                  {{ form_errors(form.mesesAdministracion) }}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  {{form_label(form.catProgramaid)}}
+                  <span class="span12 input-icon input-icon-right">
+                    {{ form_widget(form.catProgramaid) }}
+                  </span>
+                  {{ form_errors(form.catProgramaid) }}
+                </div>
+              </div>
+              <div class="col-md-6 opcional">
+                <div class="form-group">
+                  {{form_label(form.mesesSeguridad)}}
+                  <span class="span12 input-icon input-icon-right">
+                    {{ form_widget(form.mesesSeguridad) }}
+                  </span>
+                  {{ form_errors(form.mesesSeguridad) }}
+                </div>
+              </div>
+            </div>
+
           </div>
-          <input type="submit" value="Create" id="btnSubmit"/>
-          {{ form_widget(form) }}
-          <!-- <input type="submit" value="Create" />-->
-          {{ form_end(form) }}
+
+
+          <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+
+
+            <h5 class="box-title">Productos en asignación</h5>
+
+            <div class="button-box m-t-20">
+              <a id="select-all" class="btn btn-success btn-outline" href="javascript:void(0)">Agregar todo</a>
+              <a id="deselect-all" class="btn btn-danger btn-outline" href="javascript:void(0)">Quitar todo</a>
+            </div>
+            <div id="multiselector">
+              {{ form_widget(form.ctlInsumo) }}
+            </div>
+            {{ form_errors(form.ctlInsumo) }}
+
+
+          </div>
+
+          <div class="wizard-pane" role="tabpanel" aria-expanded="false">
+            <h5 class="box-title">Establecimientos a distribuir</h5>
+
+            <div class="button-box m-t-20">
+              <a id="select-all2" class="btn btn-success btn-outline" href="javascript:void(0)">Agregar todo</a>
+              <a id="deselect-all2" class="btn btn-danger btn-outline" href="javascript:void(0)">Quitar todo</a>
+            </div>
+            <div id="multiselector">
+              {{ form_widget(form.apiEstablecimientoid) }}
+            </div>
+            {{ form_errors(form.apiEstablecimientoid) }}
+          </div>
         </div>
-        {% endblock %}
+      </div>
+      <input type="submit" value="Create" id="btnSubmit"/>
+      {{ form_widget(form) }}
+      <!-- <input type="submit" value="Create" />-->
+      {{ form_end(form) }}
+    </div>
+    {% endblock %}
 
 
 
-        {% block footer_js %}
-        <script src="{{ asset('assets/') }}distro/js/bootstrap_002.js"></script>
-        <!-- Form Wizard JavaScript -->
-        <script src="{{ asset('assets/') }}distro/js/jquery-wizard.js"></script>
-        <!-- FormValidation plugin and the class supports validating Bootstrap form -->
-        <script src="{{ asset('assets/') }}distro/js/formValidation.js"></script>
-        <script src="{{ asset('assets/') }}distro/js/bootstrap.js"></script>
-        <!-- Sweet-Alert  -->
-        <script src="{{ asset('assets/') }}distro/js/sweetalert.js"></script>
+    {% block footer_js %}
+    <script src="{{ asset('assets/') }}distro/js/bootstrap_002.js"></script>
+    <!-- Form Wizard JavaScript -->
+    <script src="{{ asset('assets/') }}distro/js/jquery-wizard.js"></script>
+    <!-- FormValidation plugin and the class supports validating Bootstrap form -->
+    <script src="{{ asset('assets/') }}distro/js/formValidation.js"></script>
+    <script src="{{ asset('assets/') }}distro/js/bootstrap.js"></script>
+    <!-- Sweet-Alert  -->
+    <script src="{{ asset('assets/') }}distro/js/sweetalert.js"></script>
 
-        <script src="{{ asset('assets/') }}distro/js/custom-select.js" type="text/javascript"></script>
-        <script src="{{ asset('assets/') }}distro/js/bootstrap-select.js" type="text/javascript"></script>
-        <script src="{{ asset('assets/') }}distro/js/jquery_003.js" type="text/javascript"></script>
-        <script type="text/javascript" src="{{ asset('assets/') }}distro/js/jquery_004.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-        <script type="text/javascript">
-        function cargarGrupo(valor) {
-           $.ajax({
-        	type: "POST",
-        	url: "{{ url('configuracion_establecimientos_ajax') }}?suministro=" + valor,
-        	success: function(data) {
-        		$('#grupo').html(data);
-            }
-           });
-           return false;
-         };
+    <script src="{{ asset('assets/') }}distro/js/custom-select.js" type="text/javascript"></script>
+    <script src="{{ asset('assets/') }}distro/js/bootstrap-select.js" type="text/javascript"></script>
+    <script src="{{ asset('assets/') }}distro/js/jquery_003.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('assets/') }}distro/js/jquery_004.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-
-        (function () {
-
-
-          $("btnSubmit").hide();
-          $('#asignacionWizard').wizard({
-            onFinish: function () {
-              $('frmcrea').submit(function(){
-                alert("Submitted");
-              });
-
-            }, buttonLabels: {
-              next: 'Siguiente',
-              back: 'Atras',
-              finish: 'Finalizar'
-            }
-          });
-
-          $('#dpcorte').datetimepicker({
-            viewMode: 'years',
-            format: 'MM/YYYY',
-            showTodayButton: true
-          });
-
-          $('.selectpicker').selectpicker();
-
-          /* selector multiple */
-          $('.selector_multiple').multiSelect();
-          /*metodos del selector multiple*/
-          //select
-          $('#select-all').click(function () {
-            $('.selector_multiple').multiSelect('select_all');
-            return false;
-          });
-          //deselect
-          $('#deselect-all').click(function () {
-            $('.selector_multiple').multiSelect('deselect_all');
-            return false;
-          });
-          /*fin de selector multiple */
-
-          /* selector multiple2 */
-          $('.selector_multiple2').multiSelect();
-          /*metodos del selector multiple*/
-          //select
-          $('#select-all2').click(function () {
-            $('.selector_multiple2').multiSelect('select_all');
-            return false;
-          });
-          //deselect
-          $('#deselect-all2').click(function () {
-            $('.selector_multiple2').multiSelect('deselect_all');
-            return false;
-          });
-          /*fin de selector multiple2 */
-
-          $('input[name=tipos]').click(function() {
-            //0 con analisis
-            //1 por producto
-            if ($('input[name=tipos]:checked').val() > 0){
-              $('div.opcional').addClass('oculto');
-            }else{
-              $('div.opcional').removeClass('oculto');
+    <script>
+        $("#cita_cliente").change(function() {
+            var data = {
+                cliente_id: $(this).val()
             };
+
+            $.ajax({
+                type: 'post',
+                url: '{{ path("select_grupos") }}',
+                data: data,
+                success: function(data) {
+                    var $mascota_selector = $('#cita_mascota');
+
+                    $mascota_selector.html('<option>Selecciona...</option>');
+
+                    for (var i = 0, total = data.length; i < total; i++) {
+                        $mascota_selector.append('<option value="' + data[i].id + '">' + data[i].nombre + '</option>');
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+    (function () {
+
+
+      $("btnSubmit").hide();
+      $('#asignacionWizard').wizard({
+        onFinish: function () {
+          $('frmcrea').submit(function(){
+            alert("Submitted");
           });
-        })();
-        </script>
-        {% endblock %}
 
-        {% block viewtitle %} Agregar Asignación {% endblock %}
+        }, buttonLabels: {
+          next: 'Siguiente',
+          back: 'Atras',
+          finish: 'Finalizar'
+        }
+      });
 
-        {% block navigationlink %}
-        <a class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light"
-        href="{{ path('trndistribucion_index') }}">Volver a listado</a>
-        {% endblock %}
+      $('#dpcorte').datetimepicker({
+        viewMode: 'years',
+        format: 'MM/YYYY',
+        showTodayButton: true
+      });
+
+      $('.selectpicker').selectpicker();
+
+      /* selector multiple */
+      $('.selector_multiple').multiSelect();
+      /*metodos del selector multiple*/
+      //select
+      $('#select-all').click(function () {
+        $('.selector_multiple').multiSelect('select_all');
+        return false;
+      });
+      //deselect
+      $('#deselect-all').click(function () {
+        $('.selector_multiple').multiSelect('deselect_all');
+        return false;
+      });
+      /*fin de selector multiple */
+
+      /* selector multiple2 */
+      $('.selector_multiple2').multiSelect();
+      /*metodos del selector multiple*/
+      //select
+      $('#select-all2').click(function () {
+        $('.selector_multiple2').multiSelect('select_all');
+        return false;
+      });
+      //deselect
+      $('#deselect-all2').click(function () {
+        $('.selector_multiple2').multiSelect('deselect_all');
+        return false;
+      });
+      /*fin de selector multiple2 */
+
+      $('input[name=tipos]').click(function() {
+        //0 con analisis
+        //1 por producto
+        if ($('input[name=tipos]:checked').val() > 0){
+          $('div.opcional').addClass('oculto');
+        }else{
+          $('div.opcional').removeClass('oculto');
+        };
+      });
+    })();
+    </script>
+    {% endblock %}
+
+    {% block viewtitle %} Agregar Asignación {% endblock %}
+
+    {% block navigationlink %}
+    <a class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light"
+    href="{{ path('trndistribucion_index') }}">Volver a listado</a>
+    {% endblock %}

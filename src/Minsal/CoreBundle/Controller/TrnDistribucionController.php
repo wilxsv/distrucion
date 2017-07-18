@@ -5,7 +5,7 @@ namespace Minsal\CoreBundle\Controller;
 use Minsal\CoreBundle\Entity\TrnDistribucion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 /**
 * Trndistribucion controller.
 *
@@ -122,33 +122,48 @@ class TrnDistribucionController extends Controller
     ;
   }
 
+  /**
+  * @Route("/new", name="select_grupos", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+  */
   public function ajaxAction(Request $request)
   {
-    if (! $request->isXmlHttpRequest()) {
-      
-      throw new NotFoundHttpException();
-    }
-    $em = $this->getDoctrine()->getEntityManager();
+    $em = $this->getDoctrine()->getManager();
 
-    if ($request->query->get('suministro') != NULL && is_numeric($request->query->get('suministro')) ){
+    $suministro_id = $request->request->get('suministro_id');
 
-      $result = $em->createQuery("SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.suministro = ".$request->query->get('suministro')." ORDER BY g.nombreGrupo" )->getResult();
-      return $this->render('trndistribucion/new.twig', array( 'rest'=> TRUE, 'suministro'=> $result));
+    $grupo = $em->getRepository('MinsalCoreBundle:CtlGrupo')->findBySuministroId($suministro_id);
 
-    } elseif ($request->query->get('grupo') != NULL && is_numeric($request->query->get('grupo')) ){
-
-      $result = $em->createQuery( "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupo = ".$request->query->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
-      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
-
-    }  elseif ($request->query->get('subgrupo') != NULL && is_numeric($request->query->get('subgrupo')) ){
-
-      $result = $em->createQuery( "SELECT g.id, g.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo g WHERE g.grupoid = ".$request->query->get('subgrupo')." ORDER BY g.nombreLargoInsumo" )->getResult();
-      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));
-
-    } else {
-
-      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> FALSE ));
-
-    }
+    return new JsonResponse($grupo);
   }
+  /*
+  public function ajaxAction(Request $request)
+  {
+  echo('<div class="maje!">'.$request->query->get('suministro').'</div>');
+  if (! $request->isXmlHttpRequest()) {
+
+  throw new NotFoundHttpException();
+}
+$em = $this->getDoctrine()->getEntityManager();
+
+if ($request->query->get('suministro') != NULL && is_numeric($request->query->get('suministro')) ){
+
+$result = $em->createQuery("SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.suministro = ".$request->query->get('suministro')." ORDER BY g.nombreGrupo" )->getResult();
+return $this->render('trndistribucion/new.twig', array( 'rest'=> TRUE, 'suministro'=> $result));
+
+} elseif ($request->query->get('grupo') != NULL && is_numeric($request->query->get('grupo')) ){
+
+$result = $em->createQuery( "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupo = ".$request->query->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
+return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
+
+}  elseif ($request->query->get('subgrupo') != NULL && is_numeric($request->query->get('subgrupo')) ){
+
+$result = $em->createQuery( "SELECT g.id, g.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo g WHERE g.grupoid = ".$request->query->get('subgrupo')." ORDER BY g.nombreLargoInsumo" )->getResult();
+return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));
+
+} else {
+
+return $this->render('trndistribucion/new.html.twig', array( 'rest'=> FALSE ));
+
+}
+}*/
 }
