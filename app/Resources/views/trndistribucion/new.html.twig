@@ -211,28 +211,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-    <script>
-        $("#cita_cliente").change(function() {
-            var data = {
-                cliente_id: $(this).val()
-            };
 
-            $.ajax({
-                type: 'post',
-                url: '{{ path("select_grupos") }}',
-                data: data,
-                success: function(data) {
-                    var $mascota_selector = $('#cita_mascota');
-
-                    $mascota_selector.html('<option>Selecciona...</option>');
-
-                    for (var i = 0, total = data.length; i < total; i++) {
-                        $mascota_selector.append('<option value="' + data[i].id + '">' + data[i].nombre + '</option>');
-                    }
-                }
-            });
-        });
-    </script>
 
     <script type="text/javascript">
     (function () {
@@ -254,7 +233,7 @@
 
       $('#dpcorte').datetimepicker({
         viewMode: 'years',
-        format: 'MM/YYYY',
+        format: 'DD/MM/YYYY',
         showTodayButton: true
       });
 
