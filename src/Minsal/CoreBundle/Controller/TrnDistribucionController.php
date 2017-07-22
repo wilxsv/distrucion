@@ -38,6 +38,12 @@ class TrnDistribucionController extends Controller
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+      $trndistribucion->setFechaCreacion(new \DateTime('now'));
+      $trndistribucion->setFechaModificacion(new \DateTime('now'));
+      $trndistribucion->setFechadistribucion(new \DateTime('now'));
+      $TrnDistribucion->setCatEstadoid(1);//iniciada (debe llamarse como corresponde)
+      $trndistribucion->setSegUsuarioid($this->getUser()->getId());
+      $TrnDistribucion->setApiAlmacenid(42);//debe venir de la api, la informacion de usuarios
       $em = $this->getDoctrine()->getManager();
       $em->persist($trnDistribucion);
       $em->flush();

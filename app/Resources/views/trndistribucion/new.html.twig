@@ -64,7 +64,6 @@
                       <span class="span12 input-icon input-icon-right">
                         {{ form_widget(form.fechacorte) }}
                       </span>
-                      {{ form_errors(form.fechacorte) }}
                       <span class="input-group-addon">
                         <i class="icon-calender"></i>
                       </span>
@@ -185,9 +184,8 @@
           </div>
         </div>
       </div>
-      <input type="submit" value="Create" id="btnSubmit"/>
-      {{ form_widget(form) }}
-      <!-- <input type="submit" value="Create" />-->
+      <!--<input type="submit" value="Create" id="btnSubmit"/>-->
+
       {{ form_end(form) }}
     </div>
     {% endblock %}
@@ -221,7 +219,7 @@
       $('#asignacionWizard').wizard({
         onFinish: function () {
           $('frmcrea').submit(function(){
-            alert("Submitted");
+            alert("Asignación guardada");
           });
 
         }, buttonLabels: {
@@ -233,7 +231,7 @@
 
       $('#dpcorte').datetimepicker({
         viewMode: 'years',
-        format: 'DD/MM/YYYY',
+        format: 'MM/YYYY',
         showTodayButton: true
       });
 

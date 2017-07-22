@@ -13,19 +13,14 @@ class TrnDistribucionType extends AbstractType
   */
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
-    $builder->add('apiAlmacenid')
+    $builder
     ->add('descripcion', 'text',array('attr' => array('class'=>'form-control','style' => 'width: 100%')))
-    ->add('fechadistribucion')
     ->add('fechacorte', 'date', array('label'=>'Fecha de corte','format' => 'dd/MM/yyyy','input' => 'datetime','widget' => 'single_text',
     'attr' => array('class'=>'form-control', 'style' => 'width: 100%', 'placeholder'=>'Mes/Año')))
     ->add('mesesCpm', 'integer', array('label'=>'Meses para calcular CPM', 'attr' => array('class'=>'form-control','style' => 'width: 100%')))
     ->add('mesesDistribucion','integer', array('label'=>'Meses a asignar','attr' => array('class'=>'form-control','style' => 'width: 100%')))
     ->add('mesesAdministracion','integer', array('label'=>'Meses a administrar','attr' => array('class'=>'form-control','style' => 'width: 100%')))
     ->add('mesesSeguridad','integer', array('label'=>'Meses de seguridad','attr' => array('class'=>'form-control','style' => 'width: 100%')))
-    ->add('fechaCreacion')
-    ->add('fechaModificacion')
-    ->add('catEstadoid')
-    ->add('segUsuarioid')
     ->add('ctlInsumo','entity',array(
       'class' => 'MinsalCoreBundle:CatInsumo',
       'query_builder' => function(\Doctrine\ORM\EntityRepository $irep){
