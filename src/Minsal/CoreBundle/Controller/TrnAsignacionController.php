@@ -129,14 +129,23 @@ class TrnAsignacionController extends Controller
        * casting agregandole el parametro: TrnAsignacion $trnAsignacion
        */
       $descripcion = $trnAsignacion->getDescripcion();
-
-      /*
-       * Aqui se encuentra los productos por medio de DOCTRINE
-       * $productos = $trnAsignacion.cualquierMetodo();
-       * Y se mandan como parametros a la vista.
-       */
+      //Obteniendo el entity manager
+      $em = $this->getDoctrine()->getManager();
+      //Sentencia pura SQL
+      $sql = "select p.id, p.nombre_largo_insumo, t.verificar, t.cantidad_sugerida from cat_producto as p
+              inner join distribucion_producto as d on p.id = d.cat_productoid
+              inner join trn_asignacion as a on d.trn_asignacionid = a.id
+              inner join trn_detalle as t on d.trn_detalleid = t.id
+              where a.id = ".$trnAsignacion->getId()."
+            ";
+      $em = $this->getDoctrine()->getManager();
+      $stmt = $em->getConnection()->prepare($sql);
+      $stmt->execute();
+      $productos = $stmt->fetchAll();
+      //return $stmt->fetchAll();
       return $this->render('trnasignacion/productos.html.twig',array(
-        'descripcion' => $descripcion
+        'descripcion' => $descripcion,
+        'productos' => $productos
       ));
     }
 }

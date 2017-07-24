@@ -15,15 +15,19 @@
           </tr>
       </thead>
       <tbody>
+      {% for producto in productos%}
           <tr>
-              <td>SIMON</td>
-              <td>01012125</td>
-              <td>Mebendazol 200 ml Tableta Oral Empaque primario individual</td>
-              <td>6000</td>
+              <td>{{producto.verificar}}</td>
+              <td>{{producto.id}}</td>
+              <td>{{producto.nombre_largo_insumo}}</td>
+              <td>{{producto.cantidad_sugerida}}</td>
               <td>
-                Globito
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-comment"></span>
+                </button>
               </td>
           </tr>
+      {% endfor%}
       </tbody>
   </table>
 {% endblock %}
