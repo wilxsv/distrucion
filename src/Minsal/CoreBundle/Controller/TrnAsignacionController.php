@@ -121,4 +121,8 @@ class TrnAsignacionController extends Controller
             ->getForm()
         ;
     }
+
+    public function mostrarProductosAction(){
+      return $this->render('trnasignacion/productos.html.twig');
+    }
 }

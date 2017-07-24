@@ -22,3 +22,8 @@ asingaciones_delete:
     path:     /{id}/delete
     defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:delete" }
     methods:  DELETE
+
+asignaciones_productos:
+    path: /{id}/productos
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:mostrarProductos" }
+    methods: GET
