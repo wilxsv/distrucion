@@ -122,7 +122,21 @@ class TrnAsignacionController extends Controller
         ;
     }
 
-    public function mostrarProductosAction(){
-      return $this->render('trnasignacion/productos.html.twig');
+    public function mostrarProductosAction(TrnAsignacion $trnAsignacion){
+
+      /*
+       * Aqui recibimos el id de la asignacion, mejor aun: Symfony hace el
+       * casting agregandole el parametro: TrnAsignacion $trnAsignacion
+       */
+      $descripcion = $trnAsignacion->getDescripcion();
+
+      /*
+       * Aqui se encuentra los productos por medio de DOCTRINE
+       * $productos = $trnAsignacion.cualquierMetodo();
+       * Y se mandan como parametros a la vista.
+       */
+      return $this->render('trnasignacion/productos.html.twig',array(
+        'descripcion' => $descripcion
+      ));
     }
 }
