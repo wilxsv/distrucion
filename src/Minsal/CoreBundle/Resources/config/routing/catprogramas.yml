@@ -8,5 +8,17 @@ programas_show:
     defaults: { _controller: "MinsalCoreBundle:CatProgramas:show" }
     methods:  GET
 
+programas_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:CatProgramas:new" }
+    methods:  [GET, POST]
 
+programas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:CatProgramas:edit" }
+    methods:  [GET, POST]
 
+programas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:CatProgramas:delete" }
+    methods:  DELETE

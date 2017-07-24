@@ -8,5 +8,17 @@ establecimientos_show:
     defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:show" }
     methods:  GET
 
+establecimientos_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:new" }
+    methods:  [GET, POST]
 
+establecimientos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:edit" }
+    methods:  [GET, POST]
 
+establecimientos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:delete" }
+    methods:  DELETE

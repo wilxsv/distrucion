@@ -70,7 +70,7 @@ class CatProducto
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -93,7 +93,7 @@ class CatProducto
     /**
      * Get codigoNu
      *
-     * @return string 
+     * @return string
      */
     public function getCodigoNu()
     {
@@ -116,7 +116,7 @@ class CatProducto
     /**
      * Get grupoid
      *
-     * @return integer 
+     * @return integer
      */
     public function getGrupoid()
     {
@@ -139,7 +139,7 @@ class CatProducto
     /**
      * Get codigoSinab
      *
-     * @return string 
+     * @return string
      */
     public function getCodigoSinab()
     {
@@ -162,7 +162,7 @@ class CatProducto
     /**
      * Get listadoOficial
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getListadoOficial()
     {
@@ -185,7 +185,7 @@ class CatProducto
     /**
      * Get nombreLargoInsumo
      *
-     * @return string 
+     * @return string
      */
     public function getNombreLargoInsumo()
     {
@@ -208,7 +208,7 @@ class CatProducto
     /**
      * Get registroSchema
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRegistroSchema()
     {
@@ -231,7 +231,7 @@ class CatProducto
     /**
      * Get enableSchema
      *
-     * @return integer 
+     * @return integer
      */
     public function getEnableSchema()
     {
@@ -254,7 +254,7 @@ class CatProducto
     /**
      * Get unidadMedida
      *
-     * @return string 
+     * @return string
      */
     public function getUnidadMedida()
     {
@@ -287,10 +287,14 @@ class CatProducto
     /**
      * Get idValeProvisional
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIdValeProvisional()
     {
         return $this->idValeProvisional;
+    }
+
+    public function __toString(){
+      return $this->nombreLargoInsumo;
     }
 }

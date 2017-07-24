@@ -8,5 +8,17 @@ grupos_show:
     defaults: { _controller: "MinsalCoreBundle:CtlGrupo:show" }
     methods:  GET
 
+grupos_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:CtlGrupo:new" }
+    methods:  [GET, POST]
 
+grupos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:CtlGrupo:edit" }
+    methods:  [GET, POST]
 
+grupos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:CtlGrupo:delete" }
+    methods:  DELETE

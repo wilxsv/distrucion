@@ -8,5 +8,17 @@ suministros_show:
     defaults: { _controller: "MinsalCoreBundle:CatSuministro:show" }
     methods:  GET
 
+suministros_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:CatSuministro:new" }
+    methods:  [GET, POST]
 
+suministros_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:CatSuministro:edit" }
+    methods:  [GET, POST]
 
+suministros_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:CatSuministro:delete" }
+    methods:  DELETE
