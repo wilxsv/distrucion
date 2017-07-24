@@ -22,3 +22,10 @@ trndistribucion_delete:
     path:     /{id}/delete
     defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:delete" }
     methods:  DELETE
+
+trndistribucion_ajax:
+    path:     /ajax
+    defaults: { _controller: "MinsalCoreBundle:TrnDistribucion:ajax" }
+    methods:  [GET|HEAD|POST]
+    requirements:
+        _method: POST|GET

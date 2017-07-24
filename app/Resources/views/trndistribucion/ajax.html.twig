@@ -1,0 +1,68 @@
+{% if rest %}
+ {% if suministro is defined %}
+  <select class="form-control select2" data-placeholder="Seleccione el grupo" style="width: 90%;" id="minsal_cuadro_basico_grupo" name="minsal_cuadro_basico[grupo]" onchange="cargarSubGrupo(this.value);">
+   <option value=""></option>
+   {% for s in suministro %}
+    <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
+   {% endfor %}
+  </select>
+  <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
+  <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_grupo").select2(); }); </script>
+ {% endif %}
+ {% if grupo is defined %}
+  <select class="form-control select2" data-placeholder="Seleccione el sub grupo" style="width: 90%;" id="minsal_cuadro_basico_subgrupo" name="minsal_cuadro_basico[subgrupo]" onchange="cargarInsumo(this.value);">
+   <option value=""></option>
+   {% for s in grupo %}
+    <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
+   {% endfor %}
+  </select>
+  <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
+  <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_subgrupo").select2(); }); </script>
+ {% endif %}
+ {% if insumo is defined %}
+  <select class="form-control select2" multiple="multiple"  data-placeholder="Seleccione el sub grupo" style="width: 90%;height: 50%;" id="minsal_cuadro_basico_insumo" name="minsal_cuadro_basico[insumo][]">
+   <option value=""></option>
+   {% for s in insumo %}
+    <option value="{{ s.id }}">{{ s.nombreLargoInsumo }}</option>
+   {% endfor %}
+  </select>  <br/>
+  <input type="submit" value="Guardar" class="btn btn-primary" />
+  <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
+  <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_insumo").select2(); }); </script>
+ {% endif %}
+{% else %}
+ {% if cuadro is defined %}
+  <section class="content">
+   <div class="row">
+    <div class="col-md-6">
+     <div class="box">
+      <div class="box-header"><h3 class="box-title">Cuadro basico</h3></div>
+       <div class="box-body no-padding">
+        <table class="table table-striped">
+        <tbody>
+         <tr><th >Producto</th></tr>
+         {% for e in cuadro %}
+          <tr><td>{{ e.nombreLargoInsumo }}</td></tr>
+         {% endfor %}
+        </tbody></table>
+       </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+     <div class="box">
+      <div class="box-header"><h3 class="box-title">Establecimientos</h3></div>
+       <div class="box-body no-padding">
+        <table class="table table-striped">
+        <tbody>
+         <tr><th >Municipio</th><th >Establecimientos</th></tr>
+         {% for e in establecimiento %}
+          <tr><td>{{ e.idMunicipio }}</td><td>{{ e.nombre }}</td></tr>
+         {% endfor %}
+        </tbody></table>
+       </div>
+      </div>
+    </div>
+   </div>
+  </section>
+ {% endif %}
+{% endif %}

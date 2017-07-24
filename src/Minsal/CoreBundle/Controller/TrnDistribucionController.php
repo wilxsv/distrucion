@@ -5,7 +5,9 @@ namespace Minsal\CoreBundle\Controller;
 use Minsal\CoreBundle\Entity\TrnDistribucion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Minsal\CoreBundle\Entity\CatEstados;
 /**
 * Trndistribucion controller.
 *
@@ -33,17 +35,20 @@ class TrnDistribucionController extends Controller
   */
   public function newAction(Request $request)
   {
+    $estado = $this->getDoctrine()->getRepository(CatEstados::class)->find(1);
+
+
     $trnDistribucion = new Trndistribucion();
     $form = $this->createForm('Minsal\CoreBundle\Form\TrnDistribucionType', $trnDistribucion);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      $trndistribucion->setFechaCreacion(new \DateTime('now'));
-      $trndistribucion->setFechaModificacion(new \DateTime('now'));
-      $trndistribucion->setFechadistribucion(new \DateTime('now'));
-      $TrnDistribucion->setCatEstadoid(1);//iniciada (debe llamarse como corresponde)
-      $trndistribucion->setSegUsuarioid($this->getUser()->getId());
-      $TrnDistribucion->setApiAlmacenid(42);//debe venir de la api, la informacion de usuarios
+      $trnDistribucion->setFechaCreacion(new \DateTime('now'));
+      $trnDistribucion->setFechaModificacion(new \DateTime('now'));
+      $trnDistribucion->setFechadistribucion(new \DateTime('now'));
+      $trnDistribucion->setCatEstadoid($estado);//iniciada (debe llamarse como corresponde)
+      //$trnDistribucion->setSegUsuarioid($this->getUser()->getId());
+      $trnDistribucion->setApiAlmacenid(42);//debe venir de la api, la informacion de usuarios
       $em = $this->getDoctrine()->getManager();
       $em->persist($trnDistribucion);
       $em->flush();
@@ -128,35 +133,33 @@ class TrnDistribucionController extends Controller
     ;
   }
 
-
   public function ajaxAction(Request $request)
   {
-    echo('<div class="maje!">'.$request->query->get('suministro').'</div>');
     if (! $request->isXmlHttpRequest()) {
-
       throw new NotFoundHttpException();
     }
+
     $em = $this->getDoctrine()->getEntityManager();
+    if ($request->get('suministro') != NULL && is_numeric($request->get('suministro')) ){
+      $result = $em->createQuery( "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.suministro = ".$request->get('suministro')." ORDER BY g.nombreGrupo" )->getResult();
+      return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> TRUE, 'suministro'=> $result));
 
-    if ($request->query->get('suministro') != NULL && is_numeric($request->query->get('suministro')) ){
+    } elseif ($request->get('grupo') != NULL && is_numeric($request->get('grupo')) ){
+      $result = $em->createQuery( "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupo = ".$request->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
+      return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
 
-      $result = $em->createQuery("SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.suministro = ".$request->query->get('suministro')." ORDER BY g.nombreGrupo" )->getResult();
-      return $this->render('trndistribucion/new.twig', array( 'rest'=> TRUE, 'suministro'=> $result));
-
-    } elseif ($request->query->get('grupo') != NULL && is_numeric($request->query->get('grupo')) ){
-
-      $result = $em->createQuery( "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupo = ".$request->query->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
-      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
-
-    }  elseif ($request->query->get('subgrupo') != NULL && is_numeric($request->query->get('subgrupo')) ){
-
+    }  elseif ($request->get('subgrupo') != NULL && is_numeric($request->get('subgrupo')) ){
       $result = $em->createQuery( "SELECT g.id, g.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo g WHERE g.grupoid = ".$request->query->get('subgrupo')." ORDER BY g.nombreLargoInsumo" )->getResult();
-      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));
+      return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));
+
+    }  elseif ($request->get('cuadro') != NULL && is_numeric($request->get('cuadro')) ){
+      $result = $em->createQuery( "SELECT i.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo i JOIN i.ctlEstablecimientoid e JOIN e.idTipoEstablecimiento t WHERE t.id = ".$request->get('cuadro')." GROUP BY i.nombreLargoInsumo ORDER BY i.nombreLargoInsumo " )->getResult();
+      $result2 = $em->createQuery( "SELECT e FROM MinsalCoreBundle:CtlEstablecimiento e WHERE e.idTipoEstablecimiento = ".$request->get('cuadro')." ORDER BY e.idMunicipio, e.nombre " )->getResult();
+      return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> FALSE, 'cuadro'=> $result, 'establecimiento'=> $result2));
 
     } else {
-
-      return $this->render('trndistribucion/new.html.twig', array( 'rest'=> FALSE ));
-
+      return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> FALSE ));
     }
+    //return new Response($request->get('suministro'));
   }
 }
