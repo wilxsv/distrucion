@@ -1,3 +1,8 @@
+minsal_core_asingaciones:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnasignacion.yml"
+        prefix:   /asignaciones
+
+
 minsal_core_trn_productos:
     resource: "@MinsalCoreBundle/Controller/TrnProductosController.php"
     type:     annotation
