@@ -1,0 +1,45 @@
+Minsal\CoreBundle\Entity\DistribucionProducto:
+    type: entity
+    table: distribucion_producto
+    indexes:
+        IDX_4B40C579CC43D999:
+            columns:
+                - trn_asignacionid
+        IDX_4B40C579BC0DA83B:
+            columns:
+                - cat_productoid
+    uniqueConstraints:
+        distribucion_producto_trn_detalleid_key:
+            columns:
+                - trn_detalleid
+    id: {  }
+    oneToOne:
+        trnAsignacionid:
+            targetEntity: TrnAsignacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trn_asignacionid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        catProductoid:
+            targetEntity: CatProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_productoid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToOne:
+        trnDetalleid:
+            targetEntity: TrnDetalle
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trn_detalleid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

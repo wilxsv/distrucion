@@ -6,51 +6,26 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ValeProvisional
- *
- * @ORM\Table(name="vale_provisional", indexes={@ORM\Index(name="IDX_9BBD792C140FD2A0", columns={"seg_usuarioid"})})
- * @ORM\Entity
  */
 class ValeProvisional
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="vale_provisional_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="fecha_creacion", type="date", nullable=false)
      */
     private $fechaCreacion;
 
     /**
      * @var \Minsal\CoreBundle\Entity\SegUsuario
-     *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\SegUsuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="seg_usuarioid", referencedColumnName="id")
-     * })
      */
     private $segUsuarioid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\CatProducto", inversedBy="idValeProvisional")
-     * @ORM\JoinTable(name="vale_productos",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_vale_provisional", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="cat_productoid", referencedColumnName="id")
-     *   }
-     * )
      */
     private $catProductoid;
 
@@ -62,4 +37,92 @@ class ValeProvisional
         $this->catProductoid = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return ValeProvisional
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set segUsuarioid
+     *
+     * @param \Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid
+     * @return ValeProvisional
+     */
+    public function setSegUsuarioid(\Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid = null)
+    {
+        $this->segUsuarioid = $segUsuarioid;
+
+        return $this;
+    }
+
+    /**
+     * Get segUsuarioid
+     *
+     * @return \Minsal\CoreBundle\Entity\SegUsuario 
+     */
+    public function getSegUsuarioid()
+    {
+        return $this->segUsuarioid;
+    }
+
+    /**
+     * Add catProductoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProducto $catProductoid
+     * @return ValeProvisional
+     */
+    public function addCatProductoid(\Minsal\CoreBundle\Entity\CatProducto $catProductoid)
+    {
+        $this->catProductoid[] = $catProductoid;
+
+        return $this;
+    }
+
+    /**
+     * Remove catProductoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProducto $catProductoid
+     */
+    public function removeCatProductoid(\Minsal\CoreBundle\Entity\CatProducto $catProductoid)
+    {
+        $this->catProductoid->removeElement($catProductoid);
+    }
+
+    /**
+     * Get catProductoid
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCatProductoid()
+    {
+        return $this->catProductoid;
+    }
 }

@@ -6,42 +6,106 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CatProgramas
- *
- * @ORM\Table(name="cat_programas")
- * @ORM\Entity
  */
 class CatProgramas
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="cat_programas_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="nombre", type="text", nullable=false)
      */
     private $nombre;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="registro_schema", type="datetime", nullable=true)
      */
     private $registroSchema;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="enable_schema", type="integer", nullable=true)
      */
     private $enableSchema;
 
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return CatProgramas
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set registroSchema
+     *
+     * @param \DateTime $registroSchema
+     * @return CatProgramas
+     */
+    public function setRegistroSchema($registroSchema)
+    {
+        $this->registroSchema = $registroSchema;
+
+        return $this;
+    }
+
+    /**
+     * Get registroSchema
+     *
+     * @return \DateTime 
+     */
+    public function getRegistroSchema()
+    {
+        return $this->registroSchema;
+    }
+
+    /**
+     * Set enableSchema
+     *
+     * @param integer $enableSchema
+     * @return CatProgramas
+     */
+    public function setEnableSchema($enableSchema)
+    {
+        $this->enableSchema = $enableSchema;
+
+        return $this;
+    }
+
+    /**
+     * Get enableSchema
+     *
+     * @return integer 
+     */
+    public function getEnableSchema()
+    {
+        return $this->enableSchema;
+    }
 }

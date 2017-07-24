@@ -6,69 +6,190 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CtlGrupo
- *
- * @ORM\Table(name="ctl_grupo", indexes={@ORM\Index(name="IDX_501FC6D876A39933", columns={"api_gruposuministroid"}), @ORM\Index(name="IDX_501FC6D8F44034C1", columns={"cat_suministroid"})})
- * @ORM\Entity
  */
 class CtlGrupo
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="ctl_grupo_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="nombre_grupo", type="string", length=255, nullable=false)
      */
     private $nombreGrupo;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="registro_schema", type="datetime", nullable=true)
      */
     private $registroSchema;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="enable_schema", type="integer", nullable=true)
      */
     private $enableSchema;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="codigo_grupo", type="bigint", nullable=true)
      */
     private $codigoGrupo;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CtlGrupo
-     *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CtlGrupo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="api_gruposuministroid", referencedColumnName="id")
-     * })
      */
     private $apiGruposuministroid;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CatSuministro
-     *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatSuministro")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cat_suministroid", referencedColumnName="id")
-     * })
      */
     private $catSuministroid;
 
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombreGrupo
+     *
+     * @param string $nombreGrupo
+     * @return CtlGrupo
+     */
+    public function setNombreGrupo($nombreGrupo)
+    {
+        $this->nombreGrupo = $nombreGrupo;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreGrupo
+     *
+     * @return string 
+     */
+    public function getNombreGrupo()
+    {
+        return $this->nombreGrupo;
+    }
+
+    /**
+     * Set registroSchema
+     *
+     * @param \DateTime $registroSchema
+     * @return CtlGrupo
+     */
+    public function setRegistroSchema($registroSchema)
+    {
+        $this->registroSchema = $registroSchema;
+
+        return $this;
+    }
+
+    /**
+     * Get registroSchema
+     *
+     * @return \DateTime 
+     */
+    public function getRegistroSchema()
+    {
+        return $this->registroSchema;
+    }
+
+    /**
+     * Set enableSchema
+     *
+     * @param integer $enableSchema
+     * @return CtlGrupo
+     */
+    public function setEnableSchema($enableSchema)
+    {
+        $this->enableSchema = $enableSchema;
+
+        return $this;
+    }
+
+    /**
+     * Get enableSchema
+     *
+     * @return integer 
+     */
+    public function getEnableSchema()
+    {
+        return $this->enableSchema;
+    }
+
+    /**
+     * Set codigoGrupo
+     *
+     * @param integer $codigoGrupo
+     * @return CtlGrupo
+     */
+    public function setCodigoGrupo($codigoGrupo)
+    {
+        $this->codigoGrupo = $codigoGrupo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoGrupo
+     *
+     * @return integer 
+     */
+    public function getCodigoGrupo()
+    {
+        return $this->codigoGrupo;
+    }
+
+    /**
+     * Set apiGruposuministroid
+     *
+     * @param \Minsal\CoreBundle\Entity\CtlGrupo $apiGruposuministroid
+     * @return CtlGrupo
+     */
+    public function setApiGruposuministroid(\Minsal\CoreBundle\Entity\CtlGrupo $apiGruposuministroid = null)
+    {
+        $this->apiGruposuministroid = $apiGruposuministroid;
+
+        return $this;
+    }
+
+    /**
+     * Get apiGruposuministroid
+     *
+     * @return \Minsal\CoreBundle\Entity\CtlGrupo 
+     */
+    public function getApiGruposuministroid()
+    {
+        return $this->apiGruposuministroid;
+    }
+
+    /**
+     * Set catSuministroid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatSuministro $catSuministroid
+     * @return CtlGrupo
+     */
+    public function setCatSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $catSuministroid = null)
+    {
+        $this->catSuministroid = $catSuministroid;
+
+        return $this;
+    }
+
+    /**
+     * Get catSuministroid
+     *
+     * @return \Minsal\CoreBundle\Entity\CatSuministro 
+     */
+    public function getCatSuministroid()
+    {
+        return $this->catSuministroid;
+    }
 }

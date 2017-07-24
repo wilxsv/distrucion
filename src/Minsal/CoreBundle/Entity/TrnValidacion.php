@@ -6,52 +6,162 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TrnValidacion
- *
- * @ORM\Table(name="trn_validacion", indexes={@ORM\Index(name="IDX_EA1D469C140FD2A0", columns={"seg_usuarioid"})})
- * @ORM\Entity
  */
 class TrnValidacion
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="trn_validacion_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="estado_verificado", type="boolean", nullable=true)
      */
     private $estadoVerificado;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="fecha_modificacion", type="date", nullable=true)
      */
     private $fechaModificacion;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="cantidad_prelimimar", type="integer", nullable=true)
      */
     private $cantidadPrelimimar;
 
     /**
+     * @var string
+     */
+    private $observacion;
+
+    /**
      * @var \Minsal\CoreBundle\Entity\SegUsuario
-     *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\SegUsuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="seg_usuarioid", referencedColumnName="id")
-     * })
      */
     private $segUsuarioid;
 
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set estadoVerificado
+     *
+     * @param boolean $estadoVerificado
+     * @return TrnValidacion
+     */
+    public function setEstadoVerificado($estadoVerificado)
+    {
+        $this->estadoVerificado = $estadoVerificado;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoVerificado
+     *
+     * @return boolean 
+     */
+    public function getEstadoVerificado()
+    {
+        return $this->estadoVerificado;
+    }
+
+    /**
+     * Set fechaModificacion
+     *
+     * @param \DateTime $fechaModificacion
+     * @return TrnValidacion
+     */
+    public function setFechaModificacion($fechaModificacion)
+    {
+        $this->fechaModificacion = $fechaModificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaModificacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaModificacion()
+    {
+        return $this->fechaModificacion;
+    }
+
+    /**
+     * Set cantidadPrelimimar
+     *
+     * @param integer $cantidadPrelimimar
+     * @return TrnValidacion
+     */
+    public function setCantidadPrelimimar($cantidadPrelimimar)
+    {
+        $this->cantidadPrelimimar = $cantidadPrelimimar;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadPrelimimar
+     *
+     * @return integer 
+     */
+    public function getCantidadPrelimimar()
+    {
+        return $this->cantidadPrelimimar;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     * @return TrnValidacion
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string 
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
+    }
+
+    /**
+     * Set segUsuarioid
+     *
+     * @param \Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid
+     * @return TrnValidacion
+     */
+    public function setSegUsuarioid(\Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid = null)
+    {
+        $this->segUsuarioid = $segUsuarioid;
+
+        return $this;
+    }
+
+    /**
+     * Get segUsuarioid
+     *
+     * @return \Minsal\CoreBundle\Entity\SegUsuario 
+     */
+    public function getSegUsuarioid()
+    {
+        return $this->segUsuarioid;
+    }
 }

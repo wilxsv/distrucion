@@ -6,38 +6,78 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TrnProductoslote
- *
- * @ORM\Table(name="trn_productoslote", indexes={@ORM\Index(name="IDX_CEB51674BC0DA83B", columns={"cat_productoid"})})
- * @ORM\Entity
  */
 class TrnProductoslote
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="api_loteid", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="trn_productoslote_api_loteid_seq", allocationSize=1, initialValue=1)
      */
     private $apiLoteid;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="existencia", type="integer", nullable=true)
      */
     private $existencia;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CatProducto
-     *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatProducto")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cat_productoid", referencedColumnName="id")
-     * })
      */
     private $catProductoid;
 
 
+    /**
+     * Get apiLoteid
+     *
+     * @return integer 
+     */
+    public function getApiLoteid()
+    {
+        return $this->apiLoteid;
+    }
+
+    /**
+     * Set existencia
+     *
+     * @param integer $existencia
+     * @return TrnProductoslote
+     */
+    public function setExistencia($existencia)
+    {
+        $this->existencia = $existencia;
+
+        return $this;
+    }
+
+    /**
+     * Get existencia
+     *
+     * @return integer 
+     */
+    public function getExistencia()
+    {
+        return $this->existencia;
+    }
+
+    /**
+     * Set catProductoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProducto $catProductoid
+     * @return TrnProductoslote
+     */
+    public function setCatProductoid(\Minsal\CoreBundle\Entity\CatProducto $catProductoid = null)
+    {
+        $this->catProductoid = $catProductoid;
+
+        return $this;
+    }
+
+    /**
+     * Get catProductoid
+     *
+     * @return \Minsal\CoreBundle\Entity\CatProducto 
+     */
+    public function getCatProductoid()
+    {
+        return $this->catProductoid;
+    }
 }

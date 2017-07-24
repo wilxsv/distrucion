@@ -27,6 +27,11 @@ Minsal\CoreBundle\Entity\TrnValidacion:
             nullable: true
             unsigned: false
             column: cantidad_prelimimar
+        observacion:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
     manyToOne:
         segUsuarioid:
             targetEntity: SegUsuario

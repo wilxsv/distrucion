@@ -52,11 +52,11 @@ Minsal\CoreBundle\Entity\CatSuministro:
             nullable: true
             unsigned: false
             column: estado_schema
-        enableSchame:
+        enableSchema:
             type: integer
             nullable: true
             unsigned: false
-            column: enable_schame
+            column: enable_schema
         codificacionSuministro:
             type: bigint
             nullable: false

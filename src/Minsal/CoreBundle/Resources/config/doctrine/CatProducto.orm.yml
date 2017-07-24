@@ -45,14 +45,13 @@ Minsal\CoreBundle\Entity\CatProducto:
             nullable: true
             unsigned: false
             column: enable_schema
+        unidadMedida:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            column: unidad_medida
     manyToMany:
-        trnAsignacionid:
-            targetEntity: TrnAsignacion
-            cascade: {  }
-            mappedBy: catProductoid
-            inversedBy: null
-            joinTable: null
-            orderBy: null
         idValeProvisional:
             targetEntity: ValeProvisional
             cascade: {  }

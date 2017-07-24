@@ -5,10 +5,6 @@ Minsal\CoreBundle\Entity\TrnDetalle:
         IDX_D232DD2AD77BFB9A:
             columns:
                 - id_trn_validacion
-    uniqueConstraints:
-        trn_detalle_trn_asignacionid_key:
-            columns:
-                - trn_asignacionid
     id:
         id:
             type: integer
@@ -60,11 +56,6 @@ Minsal\CoreBundle\Entity\TrnDetalle:
         verificar:
             type: boolean
             nullable: true
-        observacion:
-            type: text
-            nullable: true
-            length: null
-            fixed: false
         fechaCreacion:
             type: date
             nullable: false
@@ -81,15 +72,6 @@ Minsal\CoreBundle\Entity\TrnDetalle:
             inversedBy: null
             joinColumns:
                 id_trn_validacion:
-                    referencedColumnName: id
-            orphanRemoval: false
-        trnAsignacionid:
-            targetEntity: TrnAsignacion
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                trn_asignacionid:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:
