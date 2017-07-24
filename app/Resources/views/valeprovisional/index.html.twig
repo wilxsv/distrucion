@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Valeprovisionals list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechacreacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for valeProvisional in valeProvisionals %}
+            <tr>
+                <td><a href="{{ path('vales_show', { 'id': valeProvisional.id }) }}">{{ valeProvisional.id }}</a></td>
+                <td>{% if valeProvisional.fechaCreacion %}{{ valeProvisional.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vales_show', { 'id': valeProvisional.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catprogramas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Registroschema</th>
+                <th>Enableschema</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catPrograma in catProgramas %}
+            <tr>
+                <td><a href="{{ path('programas_show', { 'id': catPrograma.id }) }}">{{ catPrograma.id }}</a></td>
+                <td>{{ catPrograma.nombre }}</td>
+                <td>{% if catPrograma.registroSchema %}{{ catPrograma.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ catPrograma.enableSchema }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('programas_show', { 'id': catPrograma.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

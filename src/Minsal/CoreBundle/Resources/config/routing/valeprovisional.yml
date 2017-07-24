@@ -1,0 +1,12 @@
+vales_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:index" }
+    methods:  GET
+
+vales_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:show" }
+    methods:  GET
+
+
+

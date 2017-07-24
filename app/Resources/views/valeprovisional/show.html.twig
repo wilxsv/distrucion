@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Valeprovisional</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ valeProvisional.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if valeProvisional.fechaCreacion %}{{ valeProvisional.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vales_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

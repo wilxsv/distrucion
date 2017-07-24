@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ctlgrupo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ctlGrupo.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombregrupo</th>
+                <td>{{ ctlGrupo.nombreGrupo }}</td>
+            </tr>
+            <tr>
+                <th>Registroschema</th>
+                <td>{% if ctlGrupo.registroSchema %}{{ ctlGrupo.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enableschema</th>
+                <td>{{ ctlGrupo.enableSchema }}</td>
+            </tr>
+            <tr>
+                <th>Codigogrupo</th>
+                <td>{{ ctlGrupo.codigoGrupo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('grupos_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+programas_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CatProgramas:index" }
+    methods:  GET
+
+programas_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CatProgramas:show" }
+    methods:  GET
+
+
+

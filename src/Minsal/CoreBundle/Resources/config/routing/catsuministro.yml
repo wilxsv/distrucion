@@ -1,0 +1,12 @@
+suministros_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CatSuministro:index" }
+    methods:  GET
+
+suministros_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CatSuministro:show" }
+    methods:  GET
+
+
+

@@ -1,0 +1,12 @@
+productos_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CatProducto:index" }
+    methods:  GET
+
+productos_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CatProducto:show" }
+    methods:  GET
+
+
+
