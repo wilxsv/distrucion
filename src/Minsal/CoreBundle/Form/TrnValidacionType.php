@@ -15,7 +15,7 @@ class TrnValidacionType extends AbstractType
     {
         $builder->add('estadoVerificado')->add('fechaModificacion')->add('cantidadPrelimimar')->add('observacion')->add('segUsuarioid');
     }
-    
+
     /**
      * {@inheritdoc}
      */
