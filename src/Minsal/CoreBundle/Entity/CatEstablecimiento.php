@@ -100,7 +100,7 @@ class CatEstablecimiento
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -123,7 +123,7 @@ class CatEstablecimiento
     /**
      * Get idTipoEstablecimiento
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdTipoEstablecimiento()
     {
@@ -146,7 +146,7 @@ class CatEstablecimiento
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -169,7 +169,7 @@ class CatEstablecimiento
     /**
      * Get direccion
      *
-     * @return string 
+     * @return string
      */
     public function getDireccion()
     {
@@ -192,7 +192,7 @@ class CatEstablecimiento
     /**
      * Get telefono
      *
-     * @return string 
+     * @return string
      */
     public function getTelefono()
     {
@@ -215,7 +215,7 @@ class CatEstablecimiento
     /**
      * Get fax
      *
-     * @return string 
+     * @return string
      */
     public function getFax()
     {
@@ -238,7 +238,7 @@ class CatEstablecimiento
     /**
      * Get latitud
      *
-     * @return string 
+     * @return string
      */
     public function getLatitud()
     {
@@ -261,7 +261,7 @@ class CatEstablecimiento
     /**
      * Get longitud
      *
-     * @return string 
+     * @return string
      */
     public function getLongitud()
     {
@@ -284,7 +284,7 @@ class CatEstablecimiento
     /**
      * Get idInstitucion
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdInstitucion()
     {
@@ -307,7 +307,7 @@ class CatEstablecimiento
     /**
      * Get idMunicipio
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdMunicipio()
     {
@@ -330,7 +330,7 @@ class CatEstablecimiento
     /**
      * Get anioApertura
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnioApertura()
     {
@@ -353,7 +353,7 @@ class CatEstablecimiento
     /**
      * Get idCatNivelMinsal
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdCatNivelMinsal()
     {
@@ -376,7 +376,7 @@ class CatEstablecimiento
     /**
      * Get idEstablecimientoPadre
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdEstablecimientoPadre()
     {
@@ -399,7 +399,7 @@ class CatEstablecimiento
     /**
      * Get registroSchema
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRegistroSchema()
     {
@@ -422,7 +422,7 @@ class CatEstablecimiento
     /**
      * Get enableSchema
      *
-     * @return integer 
+     * @return integer
      */
     public function getEnableSchema()
     {
@@ -455,10 +455,14 @@ class CatEstablecimiento
     /**
      * Get trnAsignacionid
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTrnAsignacionid()
     {
         return $this->trnAsignacionid;
+    }
+
+    public function __toString(){
+      return $this->nombre;
     }
 }

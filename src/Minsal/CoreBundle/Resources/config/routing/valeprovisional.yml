@@ -8,5 +8,17 @@ vales_show:
     defaults: { _controller: "MinsalCoreBundle:ValeProvisional:show" }
     methods:  GET
 
+vales_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:new" }
+    methods:  [GET, POST]
 
+vales_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:edit" }
+    methods:  [GET, POST]
 
+vales_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:delete" }
+    methods:  DELETE

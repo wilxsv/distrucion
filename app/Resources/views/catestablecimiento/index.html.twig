@@ -47,6 +47,9 @@
                         <li>
                             <a href="{{ path('establecimientos_show', { 'id': catEstablecimiento.id }) }}">show</a>
                         </li>
+                        <li>
+                            <a href="{{ path('establecimientos_edit', { 'id': catEstablecimiento.id }) }}">edit</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -54,5 +57,9 @@
         </tbody>
     </table>
 
-    
+    <ul>
+        <li>
+            <a href="{{ path('establecimientos_new') }}">Create a new catEstablecimiento</a>
+        </li>
+    </ul>
 {% endblock %}

@@ -41,6 +41,9 @@
                         <li>
                             <a href="{{ path('suministros_show', { 'id': catSuministro.id }) }}">show</a>
                         </li>
+                        <li>
+                            <a href="{{ path('suministros_edit', { 'id': catSuministro.id }) }}">edit</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -48,5 +51,9 @@
         </tbody>
     </table>
 
-    
+    <ul>
+        <li>
+            <a href="{{ path('suministros_new') }}">Create a new catSuministro</a>
+        </li>
+    </ul>
 {% endblock %}

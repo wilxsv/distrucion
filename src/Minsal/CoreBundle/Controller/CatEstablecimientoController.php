@@ -4,7 +4,7 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\CatEstablecimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Catestablecimiento controller.
@@ -28,14 +28,97 @@ class CatEstablecimientoController extends Controller
     }
 
     /**
+     * Creates a new catEstablecimiento entity.
+     *
+     */
+    public function newAction(Request $request)
+    {
+        $catEstablecimiento = new Catestablecimiento();
+        $form = $this->createForm('Minsal\CoreBundle\Form\CatEstablecimientoType', $catEstablecimiento);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($catEstablecimiento);
+            $em->flush();
+
+            return $this->redirectToRoute('establecimientos_show', array('id' => $catEstablecimiento->getId()));
+        }
+
+        return $this->render('catestablecimiento/new.html.twig', array(
+            'catEstablecimiento' => $catEstablecimiento,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * Finds and displays a catEstablecimiento entity.
      *
      */
     public function showAction(CatEstablecimiento $catEstablecimiento)
     {
+        $deleteForm = $this->createDeleteForm($catEstablecimiento);
 
         return $this->render('catestablecimiento/show.html.twig', array(
             'catEstablecimiento' => $catEstablecimiento,
+            'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Displays a form to edit an existing catEstablecimiento entity.
+     *
+     */
+    public function editAction(Request $request, CatEstablecimiento $catEstablecimiento)
+    {
+        $deleteForm = $this->createDeleteForm($catEstablecimiento);
+        $editForm = $this->createForm('Minsal\CoreBundle\Form\CatEstablecimientoType', $catEstablecimiento);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('establecimientos_edit', array('id' => $catEstablecimiento->getId()));
+        }
+
+        return $this->render('catestablecimiento/edit.html.twig', array(
+            'catEstablecimiento' => $catEstablecimiento,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a catEstablecimiento entity.
+     *
+     */
+    public function deleteAction(Request $request, CatEstablecimiento $catEstablecimiento)
+    {
+        $form = $this->createDeleteForm($catEstablecimiento);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($catEstablecimiento);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('establecimientos_index');
+    }
+
+    /**
+     * Creates a form to delete a catEstablecimiento entity.
+     *
+     * @param CatEstablecimiento $catEstablecimiento The catEstablecimiento entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(CatEstablecimiento $catEstablecimiento)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('establecimientos_delete', array('id' => $catEstablecimiento->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
     }
 }

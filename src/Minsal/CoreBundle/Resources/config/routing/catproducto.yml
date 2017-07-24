@@ -8,5 +8,17 @@ productos_show:
     defaults: { _controller: "MinsalCoreBundle:CatProducto:show" }
     methods:  GET
 
+productos_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:CatProducto:new" }
+    methods:  [GET, POST]
 
+productos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:CatProducto:edit" }
+    methods:  [GET, POST]
 
+productos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:CatProducto:delete" }
+    methods:  DELETE
