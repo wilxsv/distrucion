@@ -2,14 +2,13 @@ Minsal\CoreBundle\Entity\TrnDetalle:
     type: entity
     table: trn_detalle
     indexes:
-        IDX_D232DD2ABC0DA83B3CF50ACD:
+        IDX_D232DD2AD77BFB9A:
             columns:
-                - cat_productoid
-                - trn_distribucionid
+                - id_trn_validacion
     uniqueConstraints:
-        trn_detalle_id:
+        trn_detalle_trn_asignacionid_key:
             columns:
-                - id
+                - trn_asignacionid
     id:
         id:
             type: integer
@@ -22,37 +21,42 @@ Minsal\CoreBundle\Entity\TrnDetalle:
         cpm:
             type: decimal
             nullable: false
-            precision: 15
-            scale: 2
+            precision: 10
+            scale: 0
         cantidadDistribuir:
             type: decimal
             nullable: false
-            precision: 15
-            scale: 2
+            precision: 10
+            scale: 0
             column: cantidad_distribuir
         cantidadSugerida:
             type: decimal
             nullable: false
-            precision: 15
-            scale: 2
+            precision: 10
+            scale: 0
             column: cantidad_sugerida
         existenciaAlmacenes:
             type: decimal
             nullable: false
-            precision: 15
-            scale: 2
+            precision: 10
+            scale: 0
             column: existencia_almacenes
         existenciaFarmacia:
             type: decimal
             nullable: false
-            precision: 15
-            scale: 2
+            precision: 10
+            scale: 0
             column: existencia_farmacia
         apiEstablecimientoid:
             type: integer
             nullable: false
             unsigned: false
             column: api_establecimientoid
+        catProductoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cat_productoid
         verificar:
             type: boolean
             nullable: true
@@ -70,15 +74,39 @@ Minsal\CoreBundle\Entity\TrnDetalle:
             nullable: true
             column: fecha_modificacion
     manyToOne:
-        catProductoid:
-            targetEntity: DistribucionProducto
+        idTrnValidacion:
+            targetEntity: TrnValidacion
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                cat_productoid:
-                    referencedColumnName: ctl_insumo_id
-                trn_distribucionid:
-                    referencedColumnName: trn_distribucion_id
+                id_trn_validacion:
+                    referencedColumnName: id
             orphanRemoval: false
+        trnAsignacionid:
+            targetEntity: TrnAsignacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                trn_asignacionid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        idTrnEntregas:
+            targetEntity: TrnEntregas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idTrnDetalle
+            joinTable:
+                name: trn_detalles_entregas
+                joinColumns:
+                    -
+                        name: id_trn_detalle
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: id_trn_entregas
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }

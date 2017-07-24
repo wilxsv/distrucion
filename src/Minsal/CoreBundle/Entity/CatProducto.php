@@ -5,20 +5,20 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CatInsumo
+ * CatProducto
  *
- * @ORM\Table(name="cat_insumo", indexes={@ORM\Index(name="ctl_insumo_nombre_largo_key", columns={"nombre_largo_insumo"})})
+ * @ORM\Table(name="cat_producto")
  * @ORM\Entity
  */
-class CatInsumo
+class CatProducto
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="cat_insumo_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="cat_producto_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
@@ -74,16 +74,24 @@ class CatInsumo
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\TrnDistribucion", mappedBy="ctlInsumo")
+     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\TrnAsignacion", mappedBy="catProductoid")
      */
-    private $trnDistribucion;
+    private $trnAsignacionid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\ValeProvisional", mappedBy="catProductoid")
+     */
+    private $idValeProvisional;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->trnDistribucion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->trnAsignacionid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idValeProvisional = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

@@ -5,12 +5,12 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TrnDistribucion
+ * TrnAsignacion
  *
- * @ORM\Table(name="trn_distribucion", uniqueConstraints={@ORM\UniqueConstraint(name="trn_distribucion_id", columns={"id"})}, indexes={@ORM\Index(name="IDX_32D979D39F4F768F", columns={"cat_estadoid"}), @ORM\Index(name="IDX_32D979D3140FD2A0", columns={"seg_usuarioid"}), @ORM\Index(name="IDX_32D979D376A39933", columns={"api_gruposuministroid"}), @ORM\Index(name="IDX_32D979D3F44034C1", columns={"cat_suministroid"}), @ORM\Index(name="IDX_32D979D3CDAFE461", columns={"cat_programaid"})})
+ * @ORM\Table(name="trn_asignacion", indexes={@ORM\Index(name="IDX_141DE0A5140FD2A0", columns={"seg_usuarioid"}), @ORM\Index(name="IDX_141DE0A5415AC3E0", columns={"cat_estadosid"}), @ORM\Index(name="IDX_141DE0A5CDAFE461", columns={"cat_programaid"}), @ORM\Index(name="IDX_141DE0A5F44034C1", columns={"cat_suministroid"}), @ORM\Index(name="IDX_141DE0A576A39933", columns={"api_gruposuministroid"})})
  * @ORM\Entity
  */
-class TrnDistribucion
+class TrnAsignacion
 {
     /**
      * @var integer
@@ -18,7 +18,7 @@ class TrnDistribucion
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="trn_distribucion_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="trn_asignacion_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
@@ -88,19 +88,16 @@ class TrnDistribucion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_modificacion", type="date", nullable=true)
+     * @ORM\Column(name="fecha_modificaion", type="date", nullable=true)
      */
-    private $fechaModificacion;
+    private $fechaModificaion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\CatEstados
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatEstados")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cat_estadoid", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="prioridad", type="text", nullable=true)
      */
-    private $catEstadoid;
+    private $prioridad;
 
     /**
      * @var \Minsal\CoreBundle\Entity\SegUsuario
@@ -113,24 +110,14 @@ class TrnDistribucion
     private $segUsuarioid;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\CtlGrupo
+     * @var \Minsal\CoreBundle\Entity\CatEstados
      *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CtlGrupo")
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatEstados")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="api_gruposuministroid", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="cat_estadosid", referencedColumnName="id")
      * })
      */
-    private $apiGruposuministroid;
-
-    /**
-     * @var \Minsal\CoreBundle\Entity\CatSuministro
-     *
-     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatSuministro")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cat_suministroid", referencedColumnName="id")
-     * })
-     */
-    private $catSuministroid;
+    private $catEstadosid;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CatProgramas
@@ -143,34 +130,62 @@ class TrnDistribucion
     private $catProgramaid;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Minsal\CoreBundle\Entity\CatSuministro
      *
-     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\CatInsumo", inversedBy="trnDistribucion")
-     * @ORM\JoinTable(name="distribucion_producto",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="trn_distribucion_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="ctl_insumo_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatSuministro")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cat_suministroid", referencedColumnName="id")
+     * })
      */
-    private $ctlInsumo;
+    private $catSuministroid;
+
+    /**
+     * @var \Minsal\CoreBundle\Entity\CtlGrupo
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CtlGrupo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="api_gruposuministroid", referencedColumnName="id")
+     * })
+     */
+    private $apiGruposuministroid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\CatEstablecimiento", mappedBy="trnDistribucionid")
+     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\CatProducto", inversedBy="trnAsignacionid")
+     * @ORM\JoinTable(name="distribucion_producto",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="trn_asignacionid", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="cat_productoid", referencedColumnName="id")
+     *   }
+     * )
      */
-    private $apiEstablecimientoid;
+    private $catProductoid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\CatEstablecimiento", inversedBy="trnAsignacionid")
+     * @ORM\JoinTable(name="trn_establecimientosdistribucion",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="trn_asignacionid", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_cat_establecimiento", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $idCatEstablecimiento;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->ctlInsumo = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->apiEstablecimientoid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->catProductoid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idCatEstablecimiento = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

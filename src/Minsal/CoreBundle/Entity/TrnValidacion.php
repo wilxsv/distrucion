@@ -6,134 +6,52 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TrnValidacion
+ *
+ * @ORM\Table(name="trn_validacion", indexes={@ORM\Index(name="IDX_EA1D469C140FD2A0", columns={"seg_usuarioid"})})
+ * @ORM\Entity
  */
 class TrnValidacion
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="trn_validacion_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="estado_verificado", type="boolean", nullable=true)
      */
     private $estadoVerificado;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_modificacion", type="date", nullable=true)
      */
-    private $fechaModificación;
+    private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\TrnDetalle
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_prelimimar", type="integer", nullable=true)
      */
-    private $trnDetalleid;
+    private $cantidadPrelimimar;
 
     /**
      * @var \Minsal\CoreBundle\Entity\SegUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\SegUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="seg_usuarioid", referencedColumnName="id")
+     * })
      */
     private $segUsuarioid;
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set estadoVerificado
-     *
-     * @param boolean $estadoVerificado
-     * @return TrnValidacion
-     */
-    public function setEstadoVerificado($estadoVerificado)
-    {
-        $this->estadoVerificado = $estadoVerificado;
-
-        return $this;
-    }
-
-    /**
-     * Get estadoVerificado
-     *
-     * @return boolean 
-     */
-    public function getEstadoVerificado()
-    {
-        return $this->estadoVerificado;
-    }
-
-    /**
-     * Set fechaModificación
-     *
-     * @param integer $fechaModificación
-     * @return TrnValidacion
-     */
-    public function setFechaModificación($fechaModificación)
-    {
-        $this->fechaModificación = $fechaModificación;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaModificación
-     *
-     * @return integer 
-     */
-    public function getFechaModificación()
-    {
-        return $this->fechaModificación;
-    }
-
-    /**
-     * Set trnDetalleid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid
-     * @return TrnValidacion
-     */
-    public function setTrnDetalleid(\Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid = null)
-    {
-        $this->trnDetalleid = $trnDetalleid;
-
-        return $this;
-    }
-
-    /**
-     * Get trnDetalleid
-     *
-     * @return \Minsal\CoreBundle\Entity\TrnDetalle 
-     */
-    public function getTrnDetalleid()
-    {
-        return $this->trnDetalleid;
-    }
-
-    /**
-     * Set segUsuarioid
-     *
-     * @param \Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid
-     * @return TrnValidacion
-     */
-    public function setSegUsuarioid(\Minsal\CoreBundle\Entity\SegUsuario $segUsuarioid = null)
-    {
-        $this->segUsuarioid = $segUsuarioid;
-
-        return $this;
-    }
-
-    /**
-     * Get segUsuarioid
-     *
-     * @return \Minsal\CoreBundle\Entity\SegUsuario 
-     */
-    public function getSegUsuarioid()
-    {
-        return $this->segUsuarioid;
-    }
 }

@@ -6,194 +6,69 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CtlGrupo
+ *
+ * @ORM\Table(name="ctl_grupo", indexes={@ORM\Index(name="IDX_501FC6D876A39933", columns={"api_gruposuministroid"}), @ORM\Index(name="IDX_501FC6D8F44034C1", columns={"cat_suministroid"})})
+ * @ORM\Entity
  */
 class CtlGrupo
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="ctl_grupo_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre_grupo", type="string", length=255, nullable=false)
      */
     private $nombreGrupo;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="registro_schema", type="datetime", nullable=true)
      */
     private $registroSchema;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="enable_schema", type="integer", nullable=true)
      */
     private $enableSchema;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codigo_grupo", type="bigint", nullable=true)
      */
     private $codigoGrupo;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CtlGrupo
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CtlGrupo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="api_gruposuministroid", referencedColumnName="id")
+     * })
      */
-    private $grupo;
+    private $apiGruposuministroid;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CatSuministro
-     */
-    private $suministro;
-
-
-    /**
-     * Get id
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatSuministro")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cat_suministroid", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $catSuministroid;
 
-    /**
-     * Set nombreGrupo
-     *
-     * @param string $nombreGrupo
-     * @return CtlGrupo
-     */
-    public function setNombreGrupo($nombreGrupo)
-    {
-        $this->nombreGrupo = $nombreGrupo;
 
-        return $this;
-    }
-
-    /**
-     * Get nombreGrupo
-     *
-     * @return string 
-     */
-    public function getNombreGrupo()
-    {
-        return $this->nombreGrupo;
-    }
-
-    /**
-     * Set registroSchema
-     *
-     * @param \DateTime $registroSchema
-     * @return CtlGrupo
-     */
-    public function setRegistroSchema($registroSchema)
-    {
-        $this->registroSchema = $registroSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get registroSchema
-     *
-     * @return \DateTime 
-     */
-    public function getRegistroSchema()
-    {
-        return $this->registroSchema;
-    }
-
-    /**
-     * Set enableSchema
-     *
-     * @param integer $enableSchema
-     * @return CtlGrupo
-     */
-    public function setEnableSchema($enableSchema)
-    {
-        $this->enableSchema = $enableSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get enableSchema
-     *
-     * @return integer 
-     */
-    public function getEnableSchema()
-    {
-        return $this->enableSchema;
-    }
-
-    /**
-     * Set codigoGrupo
-     *
-     * @param integer $codigoGrupo
-     * @return CtlGrupo
-     */
-    public function setCodigoGrupo($codigoGrupo)
-    {
-        $this->codigoGrupo = $codigoGrupo;
-
-        return $this;
-    }
-
-    /**
-     * Get codigoGrupo
-     *
-     * @return integer 
-     */
-    public function getCodigoGrupo()
-    {
-        return $this->codigoGrupo;
-    }
-
-    /**
-     * Set grupo
-     *
-     * @param \Minsal\CoreBundle\Entity\CtlGrupo $grupo
-     * @return CtlGrupo
-     */
-    public function setGrupo(\Minsal\CoreBundle\Entity\CtlGrupo $grupo = null)
-    {
-        $this->grupo = $grupo;
-
-        return $this;
-    }
-
-    /**
-     * Get grupo
-     *
-     * @return \Minsal\CoreBundle\Entity\CtlGrupo 
-     */
-    public function getGrupo()
-    {
-        return $this->grupo;
-    }
-
-    /**
-     * Set suministro
-     *
-     * @param \Minsal\CoreBundle\Entity\CatSuministro $suministro
-     * @return CtlGrupo
-     */
-    public function setSuministro(\Minsal\CoreBundle\Entity\CatSuministro $suministro = null)
-    {
-        $this->suministro = $suministro;
-
-        return $this;
-    }
-
-    /**
-     * Get suministro
-     *
-     * @return \Minsal\CoreBundle\Entity\CatSuministro 
-     */
-    public function getSuministro()
-    {
-        return $this->suministro;
-    }
-    
-    public function __toString() {
-        return $this->getNombreGrupo();
-    }
 }

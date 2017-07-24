@@ -6,330 +6,140 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TrnDetalle
+ *
+ * @ORM\Table(name="trn_detalle", uniqueConstraints={@ORM\UniqueConstraint(name="trn_detalle_trn_asignacionid_key", columns={"trn_asignacionid"})}, indexes={@ORM\Index(name="IDX_D232DD2AD77BFB9A", columns={"id_trn_validacion"})})
+ * @ORM\Entity
  */
 class TrnDetalle
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="trn_detalle_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cpm", type="decimal", precision=10, scale=0, nullable=false)
      */
     private $cpm;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cantidad_distribuir", type="decimal", precision=10, scale=0, nullable=false)
      */
     private $cantidadDistribuir;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cantidad_sugerida", type="decimal", precision=10, scale=0, nullable=false)
      */
     private $cantidadSugerida;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="existencia_almacenes", type="decimal", precision=10, scale=0, nullable=false)
      */
     private $existenciaAlmacenes;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="existencia_farmacia", type="decimal", precision=10, scale=0, nullable=false)
      */
     private $existenciaFarmacia;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="api_establecimientoid", type="integer", nullable=false)
      */
     private $apiEstablecimientoid;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cat_productoid", type="integer", nullable=false)
+     */
+    private $catProductoid;
+
+    /**
      * @var boolean
+     *
+     * @ORM\Column(name="verificar", type="boolean", nullable=true)
      */
     private $verificar;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="observacion", type="text", nullable=true)
      */
     private $observacion;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_creacion", type="date", nullable=false)
      */
     private $fechaCreacion;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_modificacion", type="date", nullable=true)
      */
     private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\DistribucionProducto
+     * @var \Minsal\CoreBundle\Entity\TrnValidacion
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\TrnValidacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_trn_validacion", referencedColumnName="id")
+     * })
      */
-    private $catProductoid;
-
+    private $idTrnValidacion;
 
     /**
-     * Get id
+     * @var \Minsal\CoreBundle\Entity\TrnAsignacion
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\TrnAsignacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="trn_asignacionid", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $trnAsignacionid;
 
     /**
-     * Set cpm
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @param string $cpm
-     * @return TrnDetalle
+     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\TrnEntregas", inversedBy="idTrnDetalle")
+     * @ORM\JoinTable(name="trn_detalles_entregas",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_trn_detalle", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_trn_entregas", referencedColumnName="id")
+     *   }
+     * )
      */
-    public function setCpm($cpm)
-    {
-        $this->cpm = $cpm;
-
-        return $this;
-    }
+    private $idTrnEntregas;
 
     /**
-     * Get cpm
-     *
-     * @return string 
+     * Constructor
      */
-    public function getCpm()
+    public function __construct()
     {
-        return $this->cpm;
+        $this->idTrnEntregas = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Set cantidadDistribuir
-     *
-     * @param string $cantidadDistribuir
-     * @return TrnDetalle
-     */
-    public function setCantidadDistribuir($cantidadDistribuir)
-    {
-        $this->cantidadDistribuir = $cantidadDistribuir;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidadDistribuir
-     *
-     * @return string 
-     */
-    public function getCantidadDistribuir()
-    {
-        return $this->cantidadDistribuir;
-    }
-
-    /**
-     * Set cantidadSugerida
-     *
-     * @param string $cantidadSugerida
-     * @return TrnDetalle
-     */
-    public function setCantidadSugerida($cantidadSugerida)
-    {
-        $this->cantidadSugerida = $cantidadSugerida;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidadSugerida
-     *
-     * @return string 
-     */
-    public function getCantidadSugerida()
-    {
-        return $this->cantidadSugerida;
-    }
-
-    /**
-     * Set existenciaAlmacenes
-     *
-     * @param string $existenciaAlmacenes
-     * @return TrnDetalle
-     */
-    public function setExistenciaAlmacenes($existenciaAlmacenes)
-    {
-        $this->existenciaAlmacenes = $existenciaAlmacenes;
-
-        return $this;
-    }
-
-    /**
-     * Get existenciaAlmacenes
-     *
-     * @return string 
-     */
-    public function getExistenciaAlmacenes()
-    {
-        return $this->existenciaAlmacenes;
-    }
-
-    /**
-     * Set existenciaFarmacia
-     *
-     * @param string $existenciaFarmacia
-     * @return TrnDetalle
-     */
-    public function setExistenciaFarmacia($existenciaFarmacia)
-    {
-        $this->existenciaFarmacia = $existenciaFarmacia;
-
-        return $this;
-    }
-
-    /**
-     * Get existenciaFarmacia
-     *
-     * @return string 
-     */
-    public function getExistenciaFarmacia()
-    {
-        return $this->existenciaFarmacia;
-    }
-
-    /**
-     * Set apiEstablecimientoid
-     *
-     * @param integer $apiEstablecimientoid
-     * @return TrnDetalle
-     */
-    public function setApiEstablecimientoid($apiEstablecimientoid)
-    {
-        $this->apiEstablecimientoid = $apiEstablecimientoid;
-
-        return $this;
-    }
-
-    /**
-     * Get apiEstablecimientoid
-     *
-     * @return integer 
-     */
-    public function getApiEstablecimientoid()
-    {
-        return $this->apiEstablecimientoid;
-    }
-
-    /**
-     * Set verificar
-     *
-     * @param boolean $verificar
-     * @return TrnDetalle
-     */
-    public function setVerificar($verificar)
-    {
-        $this->verificar = $verificar;
-
-        return $this;
-    }
-
-    /**
-     * Get verificar
-     *
-     * @return boolean 
-     */
-    public function getVerificar()
-    {
-        return $this->verificar;
-    }
-
-    /**
-     * Set observacion
-     *
-     * @param string $observacion
-     * @return TrnDetalle
-     */
-    public function setObservacion($observacion)
-    {
-        $this->observacion = $observacion;
-
-        return $this;
-    }
-
-    /**
-     * Get observacion
-     *
-     * @return string 
-     */
-    public function getObservacion()
-    {
-        return $this->observacion;
-    }
-
-    /**
-     * Set fechaCreacion
-     *
-     * @param \DateTime $fechaCreacion
-     * @return TrnDetalle
-     */
-    public function setFechaCreacion($fechaCreacion)
-    {
-        $this->fechaCreacion = $fechaCreacion;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaCreacion
-     *
-     * @return \DateTime 
-     */
-    public function getFechaCreacion()
-    {
-        return $this->fechaCreacion;
-    }
-
-    /**
-     * Set fechaModificacion
-     *
-     * @param \DateTime $fechaModificacion
-     * @return TrnDetalle
-     */
-    public function setFechaModificacion($fechaModificacion)
-    {
-        $this->fechaModificacion = $fechaModificacion;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaModificacion
-     *
-     * @return \DateTime 
-     */
-    public function getFechaModificacion()
-    {
-        return $this->fechaModificacion;
-    }
-
-    /**
-     * Set catProductoid
-     *
-     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $catProductoid
-     * @return TrnDetalle
-     */
-    public function setCatProductoid(\Minsal\CoreBundle\Entity\DistribucionProducto $catProductoid = null)
-    {
-        $this->catProductoid = $catProductoid;
-
-        return $this;
-    }
-
-    /**
-     * Get catProductoid
-     *
-     * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
-     */
-    public function getCatProductoid()
-    {
-        return $this->catProductoid;
-    }
 }

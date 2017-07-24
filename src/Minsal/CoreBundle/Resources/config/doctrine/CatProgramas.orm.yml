@@ -23,6 +23,5 @@ Minsal\CoreBundle\Entity\CatProgramas:
             type: integer
             nullable: true
             unsigned: false
-            default: '0'
             column: enable_schema
     lifecycleCallbacks: {  }

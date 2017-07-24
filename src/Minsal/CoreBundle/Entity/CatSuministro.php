@@ -6,362 +6,108 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CatSuministro
+ *
+ * @ORM\Table(name="cat_suministro", indexes={@ORM\Index(name="IDX_8048948FF44034C1", columns={"cat_suministroid"})})
+ * @ORM\Entity
  */
 class CatSuministro
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="cat_suministro_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nombre_suministro", type="string", length=255, nullable=false)
      */
     private $nombreSuministro;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="detalle_suministro", type="string", length=255, nullable=true)
      */
     private $detalleSuministro;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="registro_schema", type="datetime", nullable=true)
      */
     private $registroSchema;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="detalle_schema", type="text", nullable=true)
      */
     private $detalleSchema;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="user_id_schema", type="bigint", nullable=true)
      */
     private $userIdSchema;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ip_user_schema", type="string", nullable=true)
      */
     private $ipUserSchema;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="estado_schema", type="integer", nullable=true)
      */
     private $estadoSchema;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="enable_schame", type="integer", nullable=true)
      */
-    private $enableSchema;
+    private $enableSchame;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="codificacion_suministro", type="bigint", nullable=false)
      */
     private $codificacionSuministro;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="rol_solicita_suministro", type="bigint", nullable=false)
      */
     private $rolSolicitaSuministro;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="rol_valida_suministro", type="bigint", nullable=false)
      */
     private $rolValidaSuministro;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CatSuministro
-     */
-    private $ctlSuministroid;
-
-
-    /**
-     * Get id
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatSuministro")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cat_suministroid", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $catSuministroid;
 
-    /**
-     * Set nombreSuministro
-     *
-     * @param string $nombreSuministro
-     * @return CatSuministro
-     */
-    public function setNombreSuministro($nombreSuministro)
-    {
-        $this->nombreSuministro = $nombreSuministro;
 
-        return $this;
-    }
-
-    /**
-     * Get nombreSuministro
-     *
-     * @return string 
-     */
-    public function getNombreSuministro()
-    {
-        return $this->nombreSuministro;
-    }
-
-    /**
-     * Set detalleSuministro
-     *
-     * @param string $detalleSuministro
-     * @return CatSuministro
-     */
-    public function setDetalleSuministro($detalleSuministro)
-    {
-        $this->detalleSuministro = $detalleSuministro;
-
-        return $this;
-    }
-
-    /**
-     * Get detalleSuministro
-     *
-     * @return string 
-     */
-    public function getDetalleSuministro()
-    {
-        return $this->detalleSuministro;
-    }
-
-    /**
-     * Set registroSchema
-     *
-     * @param \DateTime $registroSchema
-     * @return CatSuministro
-     */
-    public function setRegistroSchema($registroSchema)
-    {
-        $this->registroSchema = $registroSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get registroSchema
-     *
-     * @return \DateTime 
-     */
-    public function getRegistroSchema()
-    {
-        return $this->registroSchema;
-    }
-
-    /**
-     * Set detalleSchema
-     *
-     * @param string $detalleSchema
-     * @return CatSuministro
-     */
-    public function setDetalleSchema($detalleSchema)
-    {
-        $this->detalleSchema = $detalleSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get detalleSchema
-     *
-     * @return string 
-     */
-    public function getDetalleSchema()
-    {
-        return $this->detalleSchema;
-    }
-
-    /**
-     * Set userIdSchema
-     *
-     * @param integer $userIdSchema
-     * @return CatSuministro
-     */
-    public function setUserIdSchema($userIdSchema)
-    {
-        $this->userIdSchema = $userIdSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get userIdSchema
-     *
-     * @return integer 
-     */
-    public function getUserIdSchema()
-    {
-        return $this->userIdSchema;
-    }
-
-    /**
-     * Set ipUserSchema
-     *
-     * @param string $ipUserSchema
-     * @return CatSuministro
-     */
-    public function setIpUserSchema($ipUserSchema)
-    {
-        $this->ipUserSchema = $ipUserSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get ipUserSchema
-     *
-     * @return string 
-     */
-    public function getIpUserSchema()
-    {
-        return $this->ipUserSchema;
-    }
-
-    /**
-     * Set estadoSchema
-     *
-     * @param integer $estadoSchema
-     * @return CatSuministro
-     */
-    public function setEstadoSchema($estadoSchema)
-    {
-        $this->estadoSchema = $estadoSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get estadoSchema
-     *
-     * @return integer 
-     */
-    public function getEstadoSchema()
-    {
-        return $this->estadoSchema;
-    }
-
-    /**
-     * Set enableSchema
-     *
-     * @param integer $enableSchema
-     * @return CatSuministro
-     */
-    public function setEnableSchema($enableSchema)
-    {
-        $this->enableSchema = $enableSchema;
-
-        return $this;
-    }
-
-    /**
-     * Get enableSchema
-     *
-     * @return integer 
-     */
-    public function getEnableSchema()
-    {
-        return $this->enableSchema;
-    }
-
-    /**
-     * Set codificacionSuministro
-     *
-     * @param integer $codificacionSuministro
-     * @return CatSuministro
-     */
-    public function setCodificacionSuministro($codificacionSuministro)
-    {
-        $this->codificacionSuministro = $codificacionSuministro;
-
-        return $this;
-    }
-
-    /**
-     * Get codificacionSuministro
-     *
-     * @return integer 
-     */
-    public function getCodificacionSuministro()
-    {
-        return $this->codificacionSuministro;
-    }
-
-    /**
-     * Set rolSolicitaSuministro
-     *
-     * @param integer $rolSolicitaSuministro
-     * @return CatSuministro
-     */
-    public function setRolSolicitaSuministro($rolSolicitaSuministro)
-    {
-        $this->rolSolicitaSuministro = $rolSolicitaSuministro;
-
-        return $this;
-    }
-
-    /**
-     * Get rolSolicitaSuministro
-     *
-     * @return integer 
-     */
-    public function getRolSolicitaSuministro()
-    {
-        return $this->rolSolicitaSuministro;
-    }
-
-    /**
-     * Set rolValidaSuministro
-     *
-     * @param integer $rolValidaSuministro
-     * @return CatSuministro
-     */
-    public function setRolValidaSuministro($rolValidaSuministro)
-    {
-        $this->rolValidaSuministro = $rolValidaSuministro;
-
-        return $this;
-    }
-
-    /**
-     * Get rolValidaSuministro
-     *
-     * @return integer 
-     */
-    public function getRolValidaSuministro()
-    {
-        return $this->rolValidaSuministro;
-    }
-
-    /**
-     * Set ctlSuministroid
-     *
-     * @param \Minsal\CoreBundle\Entity\CatSuministro $ctlSuministroid
-     * @return CatSuministro
-     */
-    public function setCtlSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $ctlSuministroid = null)
-    {
-        $this->ctlSuministroid = $ctlSuministroid;
-
-        return $this;
-    }
-
-    /**
-     * Get ctlSuministroid
-     *
-     * @return \Minsal\CoreBundle\Entity\CatSuministro 
-     */
-    public function getCtlSuministroid()
-    {
-        return $this->ctlSuministroid;
-    }
-    
-    public function __toString() {
-        return $this->getNombreSuministro();
-    }
 }

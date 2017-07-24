@@ -6,50 +6,38 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TrnProductoslote
+ *
+ * @ORM\Table(name="trn_productoslote", indexes={@ORM\Index(name="IDX_CEB51674BC0DA83B", columns={"cat_productoid"})})
+ * @ORM\Entity
  */
 class TrnProductoslote
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="api_loteid", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="trn_productoslote_api_loteid_seq", allocationSize=1, initialValue=1)
      */
     private $apiLoteid;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\DistribucionProducto
+     * @var integer
+     *
+     * @ORM\Column(name="existencia", type="integer", nullable=true)
      */
-    private $catIsnumoid;
-
+    private $existencia;
 
     /**
-     * Get apiLoteid
+     * @var \Minsal\CoreBundle\Entity\CatProducto
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\CatProducto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cat_productoid", referencedColumnName="id")
+     * })
      */
-    public function getApiLoteid()
-    {
-        return $this->apiLoteid;
-    }
+    private $catProductoid;
 
-    /**
-     * Set catIsnumoid
-     *
-     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $catIsnumoid
-     * @return TrnProductoslote
-     */
-    public function setCatIsnumoid(\Minsal\CoreBundle\Entity\DistribucionProducto $catIsnumoid = null)
-    {
-        $this->catIsnumoid = $catIsnumoid;
 
-        return $this;
-    }
-
-    /**
-     * Get catIsnumoid
-     *
-     * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
-     */
-    public function getCatIsnumoid()
-    {
-        return $this->catIsnumoid;
-    }
 }

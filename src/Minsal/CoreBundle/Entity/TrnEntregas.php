@@ -6,162 +6,80 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TrnEntregas
+ *
+ * @ORM\Table(name="trn_entregas", indexes={@ORM\Index(name="IDX_3CBBE85978372CFD", columns={"id_vale_provisional"})})
+ * @ORM\Entity
  */
 class TrnEntregas
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="trn_entregas_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="cantidad_distribuida", type="decimal", precision=10, scale=0, nullable=true)
      */
     private $cantidadDistribuida;
 
     /**
-     * @var \DateTime
+     * @var integer
+     *
+     * @ORM\Column(name="trn_detalleid", type="integer", nullable=false)
      */
-    private $fechaDocumento;
+    private $trnDetalleid;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_documeento", type="date", nullable=true)
+     */
+    private $fechaDocumeento;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_creacion", type="date", nullable=false)
      */
     private $fechaCreacion;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_modificacion", type="date", nullable=true)
      */
     private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\TrnDetalle
+     * @var \Minsal\CoreBundle\Entity\ValeProvisional
+     *
+     * @ORM\ManyToOne(targetEntity="Minsal\CoreBundle\Entity\ValeProvisional")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_vale_provisional", referencedColumnName="id")
+     * })
      */
-    private $trnDetalleid;
-
+    private $idValeProvisional;
 
     /**
-     * Get id
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @return integer 
+     * @ORM\ManyToMany(targetEntity="Minsal\CoreBundle\Entity\TrnDetalle", mappedBy="idTrnEntregas")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $idTrnDetalle;
 
     /**
-     * Set cantidadDistribuida
-     *
-     * @param string $cantidadDistribuida
-     * @return TrnEntregas
+     * Constructor
      */
-    public function setCantidadDistribuida($cantidadDistribuida)
+    public function __construct()
     {
-        $this->cantidadDistribuida = $cantidadDistribuida;
-
-        return $this;
+        $this->idTrnDetalle = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Get cantidadDistribuida
-     *
-     * @return string 
-     */
-    public function getCantidadDistribuida()
-    {
-        return $this->cantidadDistribuida;
-    }
-
-    /**
-     * Set fechaDocumento
-     *
-     * @param \DateTime $fechaDocumento
-     * @return TrnEntregas
-     */
-    public function setFechaDocumento($fechaDocumento)
-    {
-        $this->fechaDocumento = $fechaDocumento;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaDocumento
-     *
-     * @return \DateTime 
-     */
-    public function getFechaDocumento()
-    {
-        return $this->fechaDocumento;
-    }
-
-    /**
-     * Set fechaCreacion
-     *
-     * @param \DateTime $fechaCreacion
-     * @return TrnEntregas
-     */
-    public function setFechaCreacion($fechaCreacion)
-    {
-        $this->fechaCreacion = $fechaCreacion;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaCreacion
-     *
-     * @return \DateTime 
-     */
-    public function getFechaCreacion()
-    {
-        return $this->fechaCreacion;
-    }
-
-    /**
-     * Set fechaModificacion
-     *
-     * @param \DateTime $fechaModificacion
-     * @return TrnEntregas
-     */
-    public function setFechaModificacion($fechaModificacion)
-    {
-        $this->fechaModificacion = $fechaModificacion;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaModificacion
-     *
-     * @return \DateTime 
-     */
-    public function getFechaModificacion()
-    {
-        return $this->fechaModificacion;
-    }
-
-    /**
-     * Set trnDetalleid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid
-     * @return TrnEntregas
-     */
-    public function setTrnDetalleid(\Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid = null)
-    {
-        $this->trnDetalleid = $trnDetalleid;
-
-        return $this;
-    }
-
-    /**
-     * Get trnDetalleid
-     *
-     * @return \Minsal\CoreBundle\Entity\TrnDetalle 
-     */
-    public function getTrnDetalleid()
-    {
-        return $this->trnDetalleid;
-    }
 }

@@ -1,10 +1,6 @@
 Minsal\CoreBundle\Entity\SegRol:
     type: entity
     table: seg_rol
-    uniqueConstraints:
-        seg_rol_id:
-            columns:
-                - id
     id:
         id:
             type: integer
@@ -31,7 +27,7 @@ Minsal\CoreBundle\Entity\SegRol:
         segUsuarioid:
             targetEntity: SegUsuario
             cascade: {  }
-            mappedBy: segRolid
+            mappedBy: idSegRol
             inversedBy: null
             joinTable: null
             orderBy: null

@@ -6,54 +6,28 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CatEstados
+ *
+ * @ORM\Table(name="cat_estados")
+ * @ORM\Entity
  */
 class CatEstados
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="cat_estados_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="estado", type="text", nullable=false)
      */
     private $estado;
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set estado
-     *
-     * @param string $estado
-     * @return CatEstados
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return string 
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-    
-    public function __toString() {
-        return $this->estado;
-    }
 }

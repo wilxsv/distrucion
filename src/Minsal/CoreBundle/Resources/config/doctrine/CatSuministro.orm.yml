@@ -2,13 +2,9 @@ Minsal\CoreBundle\Entity\CatSuministro:
     type: entity
     table: cat_suministro
     indexes:
-        IDX_8048948FD64E375F:
+        IDX_8048948FF44034C1:
             columns:
-                - ctl_suministroid
-    uniqueConstraints:
-        ctl_suministro_nombre_suministro_key:
-            columns:
-                - nombre_suministro
+                - cat_suministroid
     id:
         id:
             type: integer
@@ -33,66 +29,57 @@ Minsal\CoreBundle\Entity\CatSuministro:
         registroSchema:
             type: datetime
             nullable: true
-            default: '2017-02-26 21:29:15.600166'
             column: registro_schema
         detalleSchema:
             type: text
             nullable: true
             length: null
             fixed: false
-            default: 'Agregado antes de gestor de maestros'
             column: detalle_schema
         userIdSchema:
             type: bigint
             nullable: true
             unsigned: false
-            default: '(1)::bigint'
             column: user_id_schema
         ipUserSchema:
             type: string
             nullable: true
             length: null
             fixed: false
-            default: 0.0.0.0
             column: ip_user_schema
         estadoSchema:
             type: integer
             nullable: true
             unsigned: false
-            default: '0'
             column: estado_schema
-        enableSchema:
+        enableSchame:
             type: integer
             nullable: true
             unsigned: false
-            default: '0'
-            column: enable_schema
+            column: enable_schame
         codificacionSuministro:
             type: bigint
             nullable: false
             unsigned: false
-            default: '1'
             column: codificacion_suministro
         rolSolicitaSuministro:
             type: bigint
             nullable: false
             unsigned: false
-            default: '1'
             column: rol_solicita_suministro
         rolValidaSuministro:
             type: bigint
             nullable: false
             unsigned: false
-            default: '1'
             column: rol_valida_suministro
     manyToOne:
-        ctlSuministroid:
+        catSuministroid:
             targetEntity: CatSuministro
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                ctl_suministroid:
+                cat_suministroid:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
