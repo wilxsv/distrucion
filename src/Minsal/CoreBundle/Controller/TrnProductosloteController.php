@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnProductoslote;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trnproductoslote controller.
  *
- * @Route("trnproductoslote")
  */
 class TrnProductosloteController extends Controller
 {
     /**
      * Lists all trnProductoslote entities.
      *
-     * @Route("/", name="trnproductoslote_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class TrnProductosloteController extends Controller
     /**
      * Creates a new trnProductoslote entity.
      *
-     * @Route("/new", name="trnproductoslote_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class TrnProductosloteController extends Controller
     /**
      * Finds and displays a trnProductoslote entity.
      *
-     * @Route("/{apiLoteid}", name="trnproductoslote_show")
-     * @Method("GET")
      */
     public function showAction(TrnProductoslote $trnProductoslote)
     {
@@ -76,8 +68,6 @@ class TrnProductosloteController extends Controller
     /**
      * Displays a form to edit an existing trnProductoslote entity.
      *
-     * @Route("/{apiLoteid}/edit", name="trnproductoslote_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnProductoslote $trnProductoslote)
     {
@@ -101,8 +91,6 @@ class TrnProductosloteController extends Controller
     /**
      * Deletes a trnProductoslote entity.
      *
-     * @Route("/{apiLoteid}", name="trnproductoslote_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnProductoslote $trnProductoslote)
     {

@@ -108,8 +108,4 @@ class CatProgramas
     {
         return $this->enableSchema;
     }
-    
-    public function __toString() {
-        return $this->getNombre();
-    }
 }

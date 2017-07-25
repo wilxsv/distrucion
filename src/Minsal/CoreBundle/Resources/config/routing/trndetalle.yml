@@ -1,0 +1,24 @@
+trndetalle_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:TrnDetalle:index" }
+    methods:  GET
+
+trndetalle_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:TrnDetalle:show" }
+    methods:  GET
+
+trndetalle_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:TrnDetalle:new" }
+    methods:  [GET, POST]
+
+trndetalle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:TrnDetalle:edit" }
+    methods:  [GET, POST]
+
+trndetalle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:TrnDetalle:delete" }
+    methods:  DELETE

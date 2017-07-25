@@ -20,14 +20,19 @@ class TrnValidacion
     private $estadoVerificado;
 
     /**
-     * @var integer
+     * @var \DateTime
      */
-    private $fechaModificación;
+    private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\TrnDetalle
+     * @var integer
      */
-    private $trnDetalleid;
+    private $cantidadPrelimimar;
+
+    /**
+     * @var string
+     */
+    private $observacion;
 
     /**
      * @var \Minsal\CoreBundle\Entity\SegUsuario
@@ -69,49 +74,72 @@ class TrnValidacion
     }
 
     /**
-     * Set fechaModificación
+     * Set fechaModificacion
      *
-     * @param integer $fechaModificación
+     * @param \DateTime $fechaModificacion
      * @return TrnValidacion
      */
-    public function setFechaModificación($fechaModificación)
+    public function setFechaModificacion($fechaModificacion)
     {
-        $this->fechaModificación = $fechaModificación;
+        $this->fechaModificacion = $fechaModificacion;
 
         return $this;
     }
 
     /**
-     * Get fechaModificación
+     * Get fechaModificacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaModificacion()
+    {
+        return $this->fechaModificacion;
+    }
+
+    /**
+     * Set cantidadPrelimimar
+     *
+     * @param integer $cantidadPrelimimar
+     * @return TrnValidacion
+     */
+    public function setCantidadPrelimimar($cantidadPrelimimar)
+    {
+        $this->cantidadPrelimimar = $cantidadPrelimimar;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadPrelimimar
      *
      * @return integer 
      */
-    public function getFechaModificación()
+    public function getCantidadPrelimimar()
     {
-        return $this->fechaModificación;
+        return $this->cantidadPrelimimar;
     }
 
     /**
-     * Set trnDetalleid
+     * Set observacion
      *
-     * @param \Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid
+     * @param string $observacion
      * @return TrnValidacion
      */
-    public function setTrnDetalleid(\Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid = null)
+    public function setObservacion($observacion)
     {
-        $this->trnDetalleid = $trnDetalleid;
+        $this->observacion = $observacion;
 
         return $this;
     }
 
     /**
-     * Get trnDetalleid
+     * Get observacion
      *
-     * @return \Minsal\CoreBundle\Entity\TrnDetalle 
+     * @return string 
      */
-    public function getTrnDetalleid()
+    public function getObservacion()
     {
-        return $this->trnDetalleid;
+        return $this->observacion;
     }
 
     /**

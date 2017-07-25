@@ -13,7 +13,7 @@ class SegUsuarioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('password')->add('tokenSinab')->add('establecimientoid')->add('fechaCreacion')->add('fechaModificacion')->add('salt')->add('segRolid');
+        $builder->add('nombre')->add('password')->add('tokenSinab')->add('establecimientoid')->add('fechaCreacion')->add('fechaModificacion')->add('salt')->add('idSegRol');
     }
     
     /**

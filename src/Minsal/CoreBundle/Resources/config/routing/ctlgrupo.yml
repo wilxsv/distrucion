@@ -1,0 +1,12 @@
+ctlgrupo_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CtlGrupo:index" }
+    methods:  GET
+
+ctlgrupo_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CtlGrupo:show" }
+    methods:  GET
+
+
+

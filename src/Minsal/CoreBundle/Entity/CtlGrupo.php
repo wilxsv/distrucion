@@ -37,12 +37,12 @@ class CtlGrupo
     /**
      * @var \Minsal\CoreBundle\Entity\CtlGrupo
      */
-    private $grupo;
+    private $apiGruposuministroid;
 
     /**
      * @var \Minsal\CoreBundle\Entity\CatSuministro
      */
-    private $suministro;
+    private $catSuministroid;
 
 
     /**
@@ -148,52 +148,48 @@ class CtlGrupo
     }
 
     /**
-     * Set grupo
+     * Set apiGruposuministroid
      *
-     * @param \Minsal\CoreBundle\Entity\CtlGrupo $grupo
+     * @param \Minsal\CoreBundle\Entity\CtlGrupo $apiGruposuministroid
      * @return CtlGrupo
      */
-    public function setGrupo(\Minsal\CoreBundle\Entity\CtlGrupo $grupo = null)
+    public function setApiGruposuministroid(\Minsal\CoreBundle\Entity\CtlGrupo $apiGruposuministroid = null)
     {
-        $this->grupo = $grupo;
+        $this->apiGruposuministroid = $apiGruposuministroid;
 
         return $this;
     }
 
     /**
-     * Get grupo
+     * Get apiGruposuministroid
      *
      * @return \Minsal\CoreBundle\Entity\CtlGrupo 
      */
-    public function getGrupo()
+    public function getApiGruposuministroid()
     {
-        return $this->grupo;
+        return $this->apiGruposuministroid;
     }
 
     /**
-     * Set suministro
+     * Set catSuministroid
      *
-     * @param \Minsal\CoreBundle\Entity\CatSuministro $suministro
+     * @param \Minsal\CoreBundle\Entity\CatSuministro $catSuministroid
      * @return CtlGrupo
      */
-    public function setSuministro(\Minsal\CoreBundle\Entity\CatSuministro $suministro = null)
+    public function setCatSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $catSuministroid = null)
     {
-        $this->suministro = $suministro;
+        $this->catSuministroid = $catSuministroid;
 
         return $this;
     }
 
     /**
-     * Get suministro
+     * Get catSuministroid
      *
      * @return \Minsal\CoreBundle\Entity\CatSuministro 
      */
-    public function getSuministro()
+    public function getCatSuministroid()
     {
-        return $this->suministro;
-    }
-    
-    public function __toString() {
-        return $this->getNombreGrupo();
+        return $this->catSuministroid;
     }
 }

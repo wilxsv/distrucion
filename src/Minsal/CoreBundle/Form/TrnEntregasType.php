@@ -13,7 +13,7 @@ class TrnEntregasType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('cantidadDistribuida')->add('fechaDocumento')->add('fechaCreacion')->add('fechaModificacion')->add('trnProductosdistribucionapiProductoid');
+        $builder->add('cantidadDistribuida')->add('trnDetalleid')->add('fechaDocumeento')->add('fechaCreacion')->add('fechaModificacion')->add('idValeProvisional')->add('idTrnDetalle');
     }
     
     /**

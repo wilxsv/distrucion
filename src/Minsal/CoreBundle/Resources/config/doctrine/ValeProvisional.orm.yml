@@ -1,0 +1,48 @@
+Minsal\CoreBundle\Entity\ValeProvisional:
+    type: entity
+    table: vale_provisional
+    indexes:
+        IDX_9BBD792C140FD2A0:
+            columns:
+                - seg_usuarioid
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaCreacion:
+            type: date
+            nullable: false
+            column: fecha_creacion
+    manyToOne:
+        segUsuarioid:
+            targetEntity: SegUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                seg_usuarioid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        catProductoid:
+            targetEntity: CatProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idValeProvisional
+            joinTable:
+                name: vale_productos
+                joinColumns:
+                    -
+                        name: id_vale_provisional
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: cat_productoid
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

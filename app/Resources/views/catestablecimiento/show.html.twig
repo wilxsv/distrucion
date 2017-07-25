@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catestablecimiento</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ catEstablecimiento.id }}</td>
+            </tr>
+            <tr>
+                <th>Idtipoestablecimiento</th>
+                <td>{{ catEstablecimiento.idTipoEstablecimiento }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ catEstablecimiento.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ catEstablecimiento.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ catEstablecimiento.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ catEstablecimiento.fax }}</td>
+            </tr>
+            <tr>
+                <th>Latitud</th>
+                <td>{{ catEstablecimiento.latitud }}</td>
+            </tr>
+            <tr>
+                <th>Longitud</th>
+                <td>{{ catEstablecimiento.longitud }}</td>
+            </tr>
+            <tr>
+                <th>Idinstitucion</th>
+                <td>{{ catEstablecimiento.idInstitucion }}</td>
+            </tr>
+            <tr>
+                <th>Idmunicipio</th>
+                <td>{{ catEstablecimiento.idMunicipio }}</td>
+            </tr>
+            <tr>
+                <th>Anioapertura</th>
+                <td>{{ catEstablecimiento.anioApertura }}</td>
+            </tr>
+            <tr>
+                <th>Idcatnivelminsal</th>
+                <td>{{ catEstablecimiento.idCatNivelMinsal }}</td>
+            </tr>
+            <tr>
+                <th>Idestablecimientopadre</th>
+                <td>{{ catEstablecimiento.idEstablecimientoPadre }}</td>
+            </tr>
+            <tr>
+                <th>Registroschema</th>
+                <td>{% if catEstablecimiento.registroSchema %}{{ catEstablecimiento.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enableschema</th>
+                <td>{{ catEstablecimiento.enableSchema }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catestablecimiento_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trnasignacion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trnAsignacion.id }}</td>
+            </tr>
+            <tr>
+                <th>Apialmacenid</th>
+                <td>{{ trnAsignacion.apiAlmacenid }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ trnAsignacion.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Fechadistribucion</th>
+                <td>{% if trnAsignacion.fechadistribucion %}{{ trnAsignacion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechacorte</th>
+                <td>{% if trnAsignacion.fechacorte %}{{ trnAsignacion.fechacorte|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mesescpm</th>
+                <td>{{ trnAsignacion.mesesCpm }}</td>
+            </tr>
+            <tr>
+                <th>Mesesdistribucion</th>
+                <td>{{ trnAsignacion.mesesDistribucion }}</td>
+            </tr>
+            <tr>
+                <th>Mesesadministracion</th>
+                <td>{{ trnAsignacion.mesesAdministracion }}</td>
+            </tr>
+            <tr>
+                <th>Mesesseguridad</th>
+                <td>{{ trnAsignacion.mesesSeguridad }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{% if trnAsignacion.fechaCreacion %}{{ trnAsignacion.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechamodificaion</th>
+                <td>{% if trnAsignacion.fechaModificaion %}{{ trnAsignacion.fechaModificaion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prioridad</th>
+                <td>{{ trnAsignacion.prioridad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trnasignacion_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('trnasignacion_edit', { 'id': trnAsignacion.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

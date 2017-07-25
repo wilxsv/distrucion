@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\SegUsuario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Segusuario controller.
  *
- * @Route("segusuario")
  */
 class SegUsuarioController extends Controller
 {
     /**
      * Lists all segUsuario entities.
      *
-     * @Route("/", name="segusuario_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class SegUsuarioController extends Controller
     /**
      * Creates a new segUsuario entity.
      *
-     * @Route("/new", name="segusuario_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class SegUsuarioController extends Controller
     /**
      * Finds and displays a segUsuario entity.
      *
-     * @Route("/{id}", name="segusuario_show")
-     * @Method("GET")
      */
     public function showAction(SegUsuario $segUsuario)
     {
@@ -76,8 +68,6 @@ class SegUsuarioController extends Controller
     /**
      * Displays a form to edit an existing segUsuario entity.
      *
-     * @Route("/{id}/edit", name="segusuario_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, SegUsuario $segUsuario)
     {
@@ -101,8 +91,6 @@ class SegUsuarioController extends Controller
     /**
      * Deletes a segUsuario entity.
      *
-     * @Route("/{id}", name="segusuario_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, SegUsuario $segUsuario)
     {

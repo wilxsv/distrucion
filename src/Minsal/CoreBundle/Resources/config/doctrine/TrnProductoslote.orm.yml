@@ -2,10 +2,9 @@ Minsal\CoreBundle\Entity\TrnProductoslote:
     type: entity
     table: trn_productoslote
     indexes:
-        IDX_CEB5167482C53CF53CF50ACD:
+        IDX_CEB51674BC0DA83B:
             columns:
-                - cat_isnumoid
-                - trn_distribucionid
+                - cat_productoid
     id:
         apiLoteid:
             type: integer
@@ -15,16 +14,19 @@ Minsal\CoreBundle\Entity\TrnProductoslote:
             column: api_loteid
             generator:
                 strategy: SEQUENCE
+    fields:
+        existencia:
+            type: integer
+            nullable: true
+            unsigned: false
     manyToOne:
-        catIsnumoid:
-            targetEntity: DistribucionProducto
+        catProductoid:
+            targetEntity: CatProducto
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                cat_isnumoid:
-                    referencedColumnName: ctl_insumo_id
-                trn_distribucionid:
-                    referencedColumnName: trn_distribucion_id
+                cat_productoid:
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

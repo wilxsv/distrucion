@@ -1,0 +1,24 @@
+trnasignacion_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:index" }
+    methods:  GET
+
+trnasignacion_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:show" }
+    methods:  GET
+
+trnasignacion_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:new" }
+    methods:  [GET, POST]
+
+trnasignacion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:edit" }
+    methods:  [GET, POST]
+
+trnasignacion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:delete" }
+    methods:  DELETE

@@ -1,0 +1,24 @@
+valeprovisional_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:index" }
+    methods:  GET
+
+valeprovisional_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:show" }
+    methods:  GET
+
+valeprovisional_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:new" }
+    methods:  [GET, POST]
+
+valeprovisional_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:edit" }
+    methods:  [GET, POST]
+
+valeprovisional_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:ValeProvisional:delete" }
+    methods:  DELETE

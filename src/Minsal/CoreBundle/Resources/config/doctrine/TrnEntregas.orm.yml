@@ -2,9 +2,9 @@ Minsal\CoreBundle\Entity\TrnEntregas:
     type: entity
     table: trn_entregas
     indexes:
-        IDX_3CBBE8592830D723:
+        IDX_3CBBE85978372CFD:
             columns:
-                - trn_detalleid
+                - id_vale_provisional
     id:
         id:
             type: integer
@@ -17,13 +17,18 @@ Minsal\CoreBundle\Entity\TrnEntregas:
         cantidadDistribuida:
             type: decimal
             nullable: true
-            precision: 15
-            scale: 2
+            precision: 10
+            scale: 0
             column: cantidad_distribuida
-        fechaDocumento:
+        trnDetalleid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: trn_detalleid
+        fechaDocumeento:
             type: date
             nullable: true
-            column: fecha_documento
+            column: fecha_documeento
         fechaCreacion:
             type: date
             nullable: false
@@ -33,13 +38,21 @@ Minsal\CoreBundle\Entity\TrnEntregas:
             nullable: true
             column: fecha_modificacion
     manyToOne:
-        trnDetalleid:
-            targetEntity: TrnDetalle
+        idValeProvisional:
+            targetEntity: ValeProvisional
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                trn_detalleid:
+                id_vale_provisional:
                     referencedColumnName: id
             orphanRemoval: false
+    manyToMany:
+        idTrnDetalle:
+            targetEntity: TrnDetalle
+            cascade: {  }
+            mappedBy: idTrnEntregas
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }

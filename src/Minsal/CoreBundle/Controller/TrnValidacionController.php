@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnValidacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trnvalidacion controller.
  *
- * @Route("trnvalidacion")
  */
 class TrnValidacionController extends Controller
 {
     /**
      * Lists all trnValidacion entities.
      *
-     * @Route("/", name="trnvalidacion_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class TrnValidacionController extends Controller
     /**
      * Creates a new trnValidacion entity.
      *
-     * @Route("/new", name="trnvalidacion_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class TrnValidacionController extends Controller
     /**
      * Finds and displays a trnValidacion entity.
      *
-     * @Route("/{id}", name="trnvalidacion_show")
-     * @Method("GET")
      */
     public function showAction(TrnValidacion $trnValidacion)
     {
@@ -76,8 +68,6 @@ class TrnValidacionController extends Controller
     /**
      * Displays a form to edit an existing trnValidacion entity.
      *
-     * @Route("/{id}/edit", name="trnvalidacion_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnValidacion $trnValidacion)
     {
@@ -101,8 +91,6 @@ class TrnValidacionController extends Controller
     /**
      * Deletes a trnValidacion entity.
      *
-     * @Route("/{id}", name="trnvalidacion_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnValidacion $trnValidacion)
     {

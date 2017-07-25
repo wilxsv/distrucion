@@ -153,8 +153,4 @@ class SegRol
     {
         return $this->segUsuarioid;
     }
-    
-    public function __toString() {
-        return $this->getNombre();
-    }
 }

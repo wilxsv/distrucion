@@ -1,0 +1,24 @@
+trnentregas_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:TrnEntregas:index" }
+    methods:  GET
+
+trnentregas_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:TrnEntregas:show" }
+    methods:  GET
+
+trnentregas_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:TrnEntregas:new" }
+    methods:  [GET, POST]
+
+trnentregas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:TrnEntregas:edit" }
+    methods:  [GET, POST]
+
+trnentregas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:TrnEntregas:delete" }
+    methods:  DELETE

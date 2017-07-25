@@ -13,7 +13,7 @@ class TrnValidacionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('estadoVerificado')->add('fechaModificación')->add('trnDetalleid')->add('segUsuarioid');
+        $builder->add('estadoVerificado')->add('fechaModificacion')->add('cantidadPrelimimar')->add('observacion')->add('segUsuarioid');
     }
     
     /**

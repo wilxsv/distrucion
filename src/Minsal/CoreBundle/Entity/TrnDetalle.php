@@ -50,11 +50,6 @@ class TrnDetalle
     private $verificar;
 
     /**
-     * @var string
-     */
-    private $observacion;
-
-    /**
      * @var \DateTime
      */
     private $fechaCreacion;
@@ -65,10 +60,27 @@ class TrnDetalle
     private $fechaModificacion;
 
     /**
+     * @var \Minsal\CoreBundle\Entity\TrnValidacion
+     */
+    private $idTrnValidacion;
+
+    /**
      * @var \Minsal\CoreBundle\Entity\DistribucionProducto
      */
-    private $catProductoid;
+    private $idTrnAsignacion;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $idTrnEntregas;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idTrnEntregas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -242,29 +254,6 @@ class TrnDetalle
     }
 
     /**
-     * Set observacion
-     *
-     * @param string $observacion
-     * @return TrnDetalle
-     */
-    public function setObservacion($observacion)
-    {
-        $this->observacion = $observacion;
-
-        return $this;
-    }
-
-    /**
-     * Get observacion
-     *
-     * @return string 
-     */
-    public function getObservacion()
-    {
-        return $this->observacion;
-    }
-
-    /**
      * Set fechaCreacion
      *
      * @param \DateTime $fechaCreacion
@@ -311,25 +300,81 @@ class TrnDetalle
     }
 
     /**
-     * Set catProductoid
+     * Set idTrnValidacion
      *
-     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $catProductoid
+     * @param \Minsal\CoreBundle\Entity\TrnValidacion $idTrnValidacion
      * @return TrnDetalle
      */
-    public function setCatProductoid(\Minsal\CoreBundle\Entity\DistribucionProducto $catProductoid = null)
+    public function setIdTrnValidacion(\Minsal\CoreBundle\Entity\TrnValidacion $idTrnValidacion = null)
     {
-        $this->catProductoid = $catProductoid;
+        $this->idTrnValidacion = $idTrnValidacion;
 
         return $this;
     }
 
     /**
-     * Get catProductoid
+     * Get idTrnValidacion
+     *
+     * @return \Minsal\CoreBundle\Entity\TrnValidacion 
+     */
+    public function getIdTrnValidacion()
+    {
+        return $this->idTrnValidacion;
+    }
+
+    /**
+     * Set idTrnAsignacion
+     *
+     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $idTrnAsignacion
+     * @return TrnDetalle
+     */
+    public function setIdTrnAsignacion(\Minsal\CoreBundle\Entity\DistribucionProducto $idTrnAsignacion = null)
+    {
+        $this->idTrnAsignacion = $idTrnAsignacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idTrnAsignacion
      *
      * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
      */
-    public function getCatProductoid()
+    public function getIdTrnAsignacion()
     {
-        return $this->catProductoid;
+        return $this->idTrnAsignacion;
+    }
+
+    /**
+     * Add idTrnEntregas
+     *
+     * @param \Minsal\CoreBundle\Entity\TrnEntregas $idTrnEntregas
+     * @return TrnDetalle
+     */
+    public function addIdTrnEntrega(\Minsal\CoreBundle\Entity\TrnEntregas $idTrnEntregas)
+    {
+        $this->idTrnEntregas[] = $idTrnEntregas;
+
+        return $this;
+    }
+
+    /**
+     * Remove idTrnEntregas
+     *
+     * @param \Minsal\CoreBundle\Entity\TrnEntregas $idTrnEntregas
+     */
+    public function removeIdTrnEntrega(\Minsal\CoreBundle\Entity\TrnEntregas $idTrnEntregas)
+    {
+        $this->idTrnEntregas->removeElement($idTrnEntregas);
+    }
+
+    /**
+     * Get idTrnEntregas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdTrnEntregas()
+    {
+        return $this->idTrnEntregas;
     }
 }

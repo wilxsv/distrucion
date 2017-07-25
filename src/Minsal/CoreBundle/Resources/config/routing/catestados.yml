@@ -1,0 +1,24 @@
+catestados_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CatEstados:index" }
+    methods:  GET
+
+catestados_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CatEstados:show" }
+    methods:  GET
+
+catestados_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:CatEstados:new" }
+    methods:  [GET, POST]
+
+catestados_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:CatEstados:edit" }
+    methods:  [GET, POST]
+
+catestados_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:CatEstados:delete" }
+    methods:  DELETE

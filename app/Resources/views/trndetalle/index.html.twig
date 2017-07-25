@@ -12,8 +12,8 @@
                 <th>Cantidadsugerida</th>
                 <th>Existenciaalmacenes</th>
                 <th>Existenciafarmacia</th>
+                <th>Apiestablecimientoid</th>
                 <th>Verificar</th>
-                <th>Observacion</th>
                 <th>Fechacreacion</th>
                 <th>Fechamodificacion</th>
                 <th>Actions</th>
@@ -28,8 +28,8 @@
                 <td>{{ trnDetalle.cantidadSugerida }}</td>
                 <td>{{ trnDetalle.existenciaAlmacenes }}</td>
                 <td>{{ trnDetalle.existenciaFarmacia }}</td>
+                <td>{{ trnDetalle.apiEstablecimientoid }}</td>
                 <td>{% if trnDetalle.verificar %}Yes{% else %}No{% endif %}</td>
-                <td>{{ trnDetalle.observacion }}</td>
                 <td>{% if trnDetalle.fechaCreacion %}{{ trnDetalle.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if trnDetalle.fechaModificacion %}{{ trnDetalle.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
                 <td>

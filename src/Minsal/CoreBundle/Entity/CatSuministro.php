@@ -72,7 +72,7 @@ class CatSuministro
     /**
      * @var \Minsal\CoreBundle\Entity\CatSuministro
      */
-    private $ctlSuministroid;
+    private $catSuministroid;
 
 
     /**
@@ -339,29 +339,25 @@ class CatSuministro
     }
 
     /**
-     * Set ctlSuministroid
+     * Set catSuministroid
      *
-     * @param \Minsal\CoreBundle\Entity\CatSuministro $ctlSuministroid
+     * @param \Minsal\CoreBundle\Entity\CatSuministro $catSuministroid
      * @return CatSuministro
      */
-    public function setCtlSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $ctlSuministroid = null)
+    public function setCatSuministroid(\Minsal\CoreBundle\Entity\CatSuministro $catSuministroid = null)
     {
-        $this->ctlSuministroid = $ctlSuministroid;
+        $this->catSuministroid = $catSuministroid;
 
         return $this;
     }
 
     /**
-     * Get ctlSuministroid
+     * Get catSuministroid
      *
      * @return \Minsal\CoreBundle\Entity\CatSuministro 
      */
-    public function getCtlSuministroid()
+    public function getCatSuministroid()
     {
-        return $this->ctlSuministroid;
-    }
-    
-    public function __toString() {
-        return $this->getNombreSuministro();
+        return $this->catSuministroid;
     }
 }

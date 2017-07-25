@@ -33,7 +33,6 @@ class SegRolType extends AbstractType
     {
         return 'minsal_corebundle_segrol';
     }
-    
-   
+
 
 }

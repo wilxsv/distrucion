@@ -1,0 +1,24 @@
+segrol_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:SegRol:index" }
+    methods:  GET
+
+segrol_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:SegRol:show" }
+    methods:  GET
+
+segrol_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:SegRol:new" }
+    methods:  [GET, POST]
+
+segrol_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:SegRol:edit" }
+    methods:  [GET, POST]
+
+segrol_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:SegRol:delete" }
+    methods:  DELETE

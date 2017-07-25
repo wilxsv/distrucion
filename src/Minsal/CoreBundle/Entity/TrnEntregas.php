@@ -20,9 +20,14 @@ class TrnEntregas
     private $cantidadDistribuida;
 
     /**
+     * @var integer
+     */
+    private $trnDetalleid;
+
+    /**
      * @var \DateTime
      */
-    private $fechaDocumento;
+    private $fechaDocumeento;
 
     /**
      * @var \DateTime
@@ -35,10 +40,22 @@ class TrnEntregas
     private $fechaModificacion;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\TrnDetalle
+     * @var \Minsal\CoreBundle\Entity\ValeProvisional
      */
-    private $trnDetalleid;
+    private $idValeProvisional;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $idTrnDetalle;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idTrnDetalle = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -74,26 +91,49 @@ class TrnEntregas
     }
 
     /**
-     * Set fechaDocumento
+     * Set trnDetalleid
      *
-     * @param \DateTime $fechaDocumento
+     * @param integer $trnDetalleid
      * @return TrnEntregas
      */
-    public function setFechaDocumento($fechaDocumento)
+    public function setTrnDetalleid($trnDetalleid)
     {
-        $this->fechaDocumento = $fechaDocumento;
+        $this->trnDetalleid = $trnDetalleid;
 
         return $this;
     }
 
     /**
-     * Get fechaDocumento
+     * Get trnDetalleid
+     *
+     * @return integer 
+     */
+    public function getTrnDetalleid()
+    {
+        return $this->trnDetalleid;
+    }
+
+    /**
+     * Set fechaDocumeento
+     *
+     * @param \DateTime $fechaDocumeento
+     * @return TrnEntregas
+     */
+    public function setFechaDocumeento($fechaDocumeento)
+    {
+        $this->fechaDocumeento = $fechaDocumeento;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaDocumeento
      *
      * @return \DateTime 
      */
-    public function getFechaDocumento()
+    public function getFechaDocumeento()
     {
-        return $this->fechaDocumento;
+        return $this->fechaDocumeento;
     }
 
     /**
@@ -143,25 +183,58 @@ class TrnEntregas
     }
 
     /**
-     * Set trnDetalleid
+     * Set idValeProvisional
      *
-     * @param \Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid
+     * @param \Minsal\CoreBundle\Entity\ValeProvisional $idValeProvisional
      * @return TrnEntregas
      */
-    public function setTrnDetalleid(\Minsal\CoreBundle\Entity\TrnDetalle $trnDetalleid = null)
+    public function setIdValeProvisional(\Minsal\CoreBundle\Entity\ValeProvisional $idValeProvisional = null)
     {
-        $this->trnDetalleid = $trnDetalleid;
+        $this->idValeProvisional = $idValeProvisional;
 
         return $this;
     }
 
     /**
-     * Get trnDetalleid
+     * Get idValeProvisional
      *
-     * @return \Minsal\CoreBundle\Entity\TrnDetalle 
+     * @return \Minsal\CoreBundle\Entity\ValeProvisional 
      */
-    public function getTrnDetalleid()
+    public function getIdValeProvisional()
     {
-        return $this->trnDetalleid;
+        return $this->idValeProvisional;
+    }
+
+    /**
+     * Add idTrnDetalle
+     *
+     * @param \Minsal\CoreBundle\Entity\TrnDetalle $idTrnDetalle
+     * @return TrnEntregas
+     */
+    public function addIdTrnDetalle(\Minsal\CoreBundle\Entity\TrnDetalle $idTrnDetalle)
+    {
+        $this->idTrnDetalle[] = $idTrnDetalle;
+
+        return $this;
+    }
+
+    /**
+     * Remove idTrnDetalle
+     *
+     * @param \Minsal\CoreBundle\Entity\TrnDetalle $idTrnDetalle
+     */
+    public function removeIdTrnDetalle(\Minsal\CoreBundle\Entity\TrnDetalle $idTrnDetalle)
+    {
+        $this->idTrnDetalle->removeElement($idTrnDetalle);
+    }
+
+    /**
+     * Get idTrnDetalle
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdTrnDetalle()
+    {
+        return $this->idTrnDetalle;
     }
 }

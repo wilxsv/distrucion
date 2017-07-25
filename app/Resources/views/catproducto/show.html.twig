@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catproducto</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ catProducto.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigonu</th>
+                <td>{{ catProducto.codigoNu }}</td>
+            </tr>
+            <tr>
+                <th>Grupoid</th>
+                <td>{{ catProducto.grupoid }}</td>
+            </tr>
+            <tr>
+                <th>Codigosinab</th>
+                <td>{{ catProducto.codigoSinab }}</td>
+            </tr>
+            <tr>
+                <th>Listadooficial</th>
+                <td>{% if catProducto.listadoOficial %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nombrelargoinsumo</th>
+                <td>{{ catProducto.nombreLargoInsumo }}</td>
+            </tr>
+            <tr>
+                <th>Registroschema</th>
+                <td>{% if catProducto.registroSchema %}{{ catProducto.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enableschema</th>
+                <td>{{ catProducto.enableSchema }}</td>
+            </tr>
+            <tr>
+                <th>Unidadmedida</th>
+                <td>{{ catProducto.unidadMedida }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catproducto_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

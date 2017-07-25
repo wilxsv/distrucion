@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catsuministros list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombresuministro</th>
+                <th>Detallesuministro</th>
+                <th>Registroschema</th>
+                <th>Detalleschema</th>
+                <th>Useridschema</th>
+                <th>Ipuserschema</th>
+                <th>Estadoschema</th>
+                <th>Enableschema</th>
+                <th>Codificacionsuministro</th>
+                <th>Rolsolicitasuministro</th>
+                <th>Rolvalidasuministro</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catSuministro in catSuministros %}
+            <tr>
+                <td><a href="{{ path('catsuministro_show', { 'id': catSuministro.id }) }}">{{ catSuministro.id }}</a></td>
+                <td>{{ catSuministro.nombreSuministro }}</td>
+                <td>{{ catSuministro.detalleSuministro }}</td>
+                <td>{% if catSuministro.registroSchema %}{{ catSuministro.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ catSuministro.detalleSchema }}</td>
+                <td>{{ catSuministro.userIdSchema }}</td>
+                <td>{{ catSuministro.ipUserSchema }}</td>
+                <td>{{ catSuministro.estadoSchema }}</td>
+                <td>{{ catSuministro.enableSchema }}</td>
+                <td>{{ catSuministro.codificacionSuministro }}</td>
+                <td>{{ catSuministro.rolSolicitaSuministro }}</td>
+                <td>{{ catSuministro.rolValidaSuministro }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('catsuministro_show', { 'id': catSuministro.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

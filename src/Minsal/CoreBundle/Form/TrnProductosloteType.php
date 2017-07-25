@@ -13,7 +13,7 @@ class TrnProductosloteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('trnDistribucionid');
+        $builder->add('existencia')->add('catProductoid');
     }
     
     /**

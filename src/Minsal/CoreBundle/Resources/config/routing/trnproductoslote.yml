@@ -1,0 +1,24 @@
+trnproductoslote_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:TrnProductoslote:index" }
+    methods:  GET
+
+trnproductoslote_show:
+    path:     /{apiLoteid}/show
+    defaults: { _controller: "MinsalCoreBundle:TrnProductoslote:show" }
+    methods:  GET
+
+trnproductoslote_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:TrnProductoslote:new" }
+    methods:  [GET, POST]
+
+trnproductoslote_edit:
+    path:     /{apiLoteid}/edit
+    defaults: { _controller: "MinsalCoreBundle:TrnProductoslote:edit" }
+    methods:  [GET, POST]
+
+trnproductoslote_delete:
+    path:     /{apiLoteid}/delete
+    defaults: { _controller: "MinsalCoreBundle:TrnProductoslote:delete" }
+    methods:  DELETE

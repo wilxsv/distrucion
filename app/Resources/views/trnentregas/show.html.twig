@@ -14,8 +14,12 @@
                 <td>{{ trnEntrega.cantidadDistribuida }}</td>
             </tr>
             <tr>
-                <th>Fechadocumento</th>
-                <td>{% if trnEntrega.fechaDocumento %}{{ trnEntrega.fechaDocumento|date('Y-m-d') }}{% endif %}</td>
+                <th>Trndetalleid</th>
+                <td>{{ trnEntrega.trnDetalleid }}</td>
+            </tr>
+            <tr>
+                <th>Fechadocumeento</th>
+                <td>{% if trnEntrega.fechaDocumeento %}{{ trnEntrega.fechaDocumeento|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Fechacreacion</th>

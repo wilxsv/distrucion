@@ -8,7 +8,9 @@
             <tr>
                 <th>Id</th>
                 <th>Estadoverificado</th>
-                <th>Fechamodificación</th>
+                <th>Fechamodificacion</th>
+                <th>Cantidadprelimimar</th>
+                <th>Observacion</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +19,9 @@
             <tr>
                 <td><a href="{{ path('trnvalidacion_show', { 'id': trnValidacion.id }) }}">{{ trnValidacion.id }}</a></td>
                 <td>{% if trnValidacion.estadoVerificado %}Yes{% else %}No{% endif %}</td>
-                <td>{{ trnValidacion.fechaModificación }}</td>
+                <td>{% if trnValidacion.fechaModificacion %}{{ trnValidacion.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trnValidacion.cantidadPrelimimar }}</td>
+                <td>{{ trnValidacion.observacion }}</td>
                 <td>
                     <ul>
                         <li>

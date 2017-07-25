@@ -52,14 +52,14 @@ class SegUsuario
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $segRolid;
+    private $idSegRol;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->segRolid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idSegRol = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -234,39 +234,35 @@ class SegUsuario
     }
 
     /**
-     * Add segRolid
+     * Add idSegRol
      *
-     * @param \Minsal\CoreBundle\Entity\SegRol $segRolid
+     * @param \Minsal\CoreBundle\Entity\SegRol $idSegRol
      * @return SegUsuario
      */
-    public function addSegRolid(\Minsal\CoreBundle\Entity\SegRol $segRolid)
+    public function addIdSegRol(\Minsal\CoreBundle\Entity\SegRol $idSegRol)
     {
-        $this->segRolid[] = $segRolid;
+        $this->idSegRol[] = $idSegRol;
 
         return $this;
     }
 
     /**
-     * Remove segRolid
+     * Remove idSegRol
      *
-     * @param \Minsal\CoreBundle\Entity\SegRol $segRolid
+     * @param \Minsal\CoreBundle\Entity\SegRol $idSegRol
      */
-    public function removeSegRolid(\Minsal\CoreBundle\Entity\SegRol $segRolid)
+    public function removeIdSegRol(\Minsal\CoreBundle\Entity\SegRol $idSegRol)
     {
-        $this->segRolid->removeElement($segRolid);
+        $this->idSegRol->removeElement($idSegRol);
     }
 
     /**
-     * Get segRolid
+     * Get idSegRol
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSegRolid()
+    public function getIdSegRol()
     {
-        return $this->segRolid;
-    }
-    
-    public function __toString() {
-        return $this->getNombre();
+        return $this->idSegRol;
     }
 }

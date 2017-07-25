@@ -8,7 +8,8 @@
             <tr>
                 <th>Id</th>
                 <th>Cantidaddistribuida</th>
-                <th>Fechadocumento</th>
+                <th>Trndetalleid</th>
+                <th>Fechadocumeento</th>
                 <th>Fechacreacion</th>
                 <th>Fechamodificacion</th>
                 <th>Actions</th>
@@ -19,7 +20,8 @@
             <tr>
                 <td><a href="{{ path('trnentregas_show', { 'id': trnEntrega.id }) }}">{{ trnEntrega.id }}</a></td>
                 <td>{{ trnEntrega.cantidadDistribuida }}</td>
-                <td>{% if trnEntrega.fechaDocumento %}{{ trnEntrega.fechaDocumento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trnEntrega.trnDetalleid }}</td>
+                <td>{% if trnEntrega.fechaDocumeento %}{{ trnEntrega.fechaDocumeento|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if trnEntrega.fechaCreacion %}{{ trnEntrega.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if trnEntrega.fechaModificacion %}{{ trnEntrega.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
                 <td>

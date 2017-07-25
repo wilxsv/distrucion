@@ -87,14 +87,14 @@ class CatEstablecimiento
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $trnDistribucionid;
+    private $trnAsignacionid;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->trnDistribucionid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->trnAsignacionid = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -430,39 +430,35 @@ class CatEstablecimiento
     }
 
     /**
-     * Add trnDistribucionid
+     * Add trnAsignacionid
      *
-     * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid
+     * @param \Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid
      * @return CatEstablecimiento
      */
-    public function addTrnDistribucionid(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid)
+    public function addTrnAsignacionid(\Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid)
     {
-        $this->trnDistribucionid[] = $trnDistribucionid;
+        $this->trnAsignacionid[] = $trnAsignacionid;
 
         return $this;
     }
 
     /**
-     * Remove trnDistribucionid
+     * Remove trnAsignacionid
      *
-     * @param \Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid
+     * @param \Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid
      */
-    public function removeTrnDistribucionid(\Minsal\CoreBundle\Entity\TrnDistribucion $trnDistribucionid)
+    public function removeTrnAsignacionid(\Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid)
     {
-        $this->trnDistribucionid->removeElement($trnDistribucionid);
+        $this->trnAsignacionid->removeElement($trnAsignacionid);
     }
 
     /**
-     * Get trnDistribucionid
+     * Get trnAsignacionid
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTrnDistribucionid()
+    public function getTrnAsignacionid()
     {
-        return $this->trnDistribucionid;
-    }
-    
-    public function __toString() {
-        return $this->getNombre();
+        return $this->trnAsignacionid;
     }
 }

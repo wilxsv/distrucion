@@ -14,8 +14,16 @@
                 <td>{% if trnValidacion.estadoVerificado %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Fechamodificación</th>
-                <td>{{ trnValidacion.fechaModificación }}</td>
+                <th>Fechamodificacion</th>
+                <td>{% if trnValidacion.fechaModificacion %}{{ trnValidacion.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cantidadprelimimar</th>
+                <td>{{ trnValidacion.cantidadPrelimimar }}</td>
+            </tr>
+            <tr>
+                <th>Observacion</th>
+                <td>{{ trnValidacion.observacion }}</td>
             </tr>
         </tbody>
     </table>

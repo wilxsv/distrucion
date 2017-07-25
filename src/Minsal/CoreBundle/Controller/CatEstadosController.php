@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\CatEstados;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Catestado controller.
  *
- * @Route("catestados")
  */
 class CatEstadosController extends Controller
 {
     /**
      * Lists all catEstado entities.
      *
-     * @Route("/", name="catestados_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class CatEstadosController extends Controller
     /**
      * Creates a new catEstado entity.
      *
-     * @Route("/new", name="catestados_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class CatEstadosController extends Controller
     /**
      * Finds and displays a catEstado entity.
      *
-     * @Route("/{id}", name="catestados_show")
-     * @Method("GET")
      */
     public function showAction(CatEstados $catEstado)
     {
@@ -76,8 +68,6 @@ class CatEstadosController extends Controller
     /**
      * Displays a form to edit an existing catEstado entity.
      *
-     * @Route("/{id}/edit", name="catestados_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, CatEstados $catEstado)
     {
@@ -101,8 +91,6 @@ class CatEstadosController extends Controller
     /**
      * Deletes a catEstado entity.
      *
-     * @Route("/{id}", name="catestados_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, CatEstados $catEstado)
     {

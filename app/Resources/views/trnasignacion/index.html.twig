@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trnasignacions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Apialmacenid</th>
+                <th>Descripcion</th>
+                <th>Fechadistribucion</th>
+                <th>Fechacorte</th>
+                <th>Mesescpm</th>
+                <th>Mesesdistribucion</th>
+                <th>Mesesadministracion</th>
+                <th>Mesesseguridad</th>
+                <th>Fechacreacion</th>
+                <th>Fechamodificaion</th>
+                <th>Prioridad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trnAsignacion in trnAsignacions %}
+            <tr>
+                <td><a href="{{ path('trnasignacion_show', { 'id': trnAsignacion.id }) }}">{{ trnAsignacion.id }}</a></td>
+                <td>{{ trnAsignacion.apiAlmacenid }}</td>
+                <td>{{ trnAsignacion.descripcion }}</td>
+                <td>{% if trnAsignacion.fechadistribucion %}{{ trnAsignacion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnAsignacion.fechacorte %}{{ trnAsignacion.fechacorte|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trnAsignacion.mesesCpm }}</td>
+                <td>{{ trnAsignacion.mesesDistribucion }}</td>
+                <td>{{ trnAsignacion.mesesAdministracion }}</td>
+                <td>{{ trnAsignacion.mesesSeguridad }}</td>
+                <td>{% if trnAsignacion.fechaCreacion %}{{ trnAsignacion.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if trnAsignacion.fechaModificaion %}{{ trnAsignacion.fechaModificaion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ trnAsignacion.prioridad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trnasignacion_show', { 'id': trnAsignacion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trnasignacion_edit', { 'id': trnAsignacion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trnasignacion_new') }}">Create a new trnAsignacion</a>
+        </li>
+    </ul>
+{% endblock %}

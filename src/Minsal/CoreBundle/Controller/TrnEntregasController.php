@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnEntregas;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trnentrega controller.
  *
- * @Route("trnentregas")
  */
 class TrnEntregasController extends Controller
 {
     /**
      * Lists all trnEntrega entities.
      *
-     * @Route("/", name="trnentregas_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class TrnEntregasController extends Controller
     /**
      * Creates a new trnEntrega entity.
      *
-     * @Route("/new", name="trnentregas_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class TrnEntregasController extends Controller
     /**
      * Finds and displays a trnEntrega entity.
      *
-     * @Route("/{id}", name="trnentregas_show")
-     * @Method("GET")
      */
     public function showAction(TrnEntregas $trnEntrega)
     {
@@ -76,8 +68,6 @@ class TrnEntregasController extends Controller
     /**
      * Displays a form to edit an existing trnEntrega entity.
      *
-     * @Route("/{id}/edit", name="trnentregas_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnEntregas $trnEntrega)
     {
@@ -101,8 +91,6 @@ class TrnEntregasController extends Controller
     /**
      * Deletes a trnEntrega entity.
      *
-     * @Route("/{id}", name="trnentregas_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnEntregas $trnEntrega)
     {

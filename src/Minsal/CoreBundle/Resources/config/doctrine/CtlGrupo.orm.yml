@@ -2,12 +2,12 @@ Minsal\CoreBundle\Entity\CtlGrupo:
     type: entity
     table: ctl_grupo
     indexes:
-        IDX_501FC6D89C833003:
+        IDX_501FC6D876A39933:
             columns:
-                - grupo_id
-        IDX_501FC6D86D7078B6:
+                - api_gruposuministroid
+        IDX_501FC6D8F44034C1:
             columns:
-                - suministro_id
+                - cat_suministroid
     id:
         id:
             type: integer
@@ -26,37 +26,34 @@ Minsal\CoreBundle\Entity\CtlGrupo:
         registroSchema:
             type: datetime
             nullable: true
-            default: '(now())::timestamp(0) without time zone'
             column: registro_schema
         enableSchema:
             type: integer
             nullable: true
             unsigned: false
-            default: '0'
             column: enable_schema
         codigoGrupo:
             type: bigint
             nullable: true
             unsigned: false
-            default: '0'
             column: codigo_grupo
     manyToOne:
-        grupo:
+        apiGruposuministroid:
             targetEntity: CtlGrupo
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                grupo_id:
+                api_gruposuministroid:
                     referencedColumnName: id
             orphanRemoval: false
-        suministro:
+        catSuministroid:
             targetEntity: CatSuministro
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                suministro_id:
+                cat_suministroid:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

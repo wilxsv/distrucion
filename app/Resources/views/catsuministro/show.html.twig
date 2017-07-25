@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catsuministro</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ catSuministro.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombresuministro</th>
+                <td>{{ catSuministro.nombreSuministro }}</td>
+            </tr>
+            <tr>
+                <th>Detallesuministro</th>
+                <td>{{ catSuministro.detalleSuministro }}</td>
+            </tr>
+            <tr>
+                <th>Registroschema</th>
+                <td>{% if catSuministro.registroSchema %}{{ catSuministro.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Detalleschema</th>
+                <td>{{ catSuministro.detalleSchema }}</td>
+            </tr>
+            <tr>
+                <th>Useridschema</th>
+                <td>{{ catSuministro.userIdSchema }}</td>
+            </tr>
+            <tr>
+                <th>Ipuserschema</th>
+                <td>{{ catSuministro.ipUserSchema }}</td>
+            </tr>
+            <tr>
+                <th>Estadoschema</th>
+                <td>{{ catSuministro.estadoSchema }}</td>
+            </tr>
+            <tr>
+                <th>Enableschema</th>
+                <td>{{ catSuministro.enableSchema }}</td>
+            </tr>
+            <tr>
+                <th>Codificacionsuministro</th>
+                <td>{{ catSuministro.codificacionSuministro }}</td>
+            </tr>
+            <tr>
+                <th>Rolsolicitasuministro</th>
+                <td>{{ catSuministro.rolSolicitaSuministro }}</td>
+            </tr>
+            <tr>
+                <th>Rolvalidasuministro</th>
+                <td>{{ catSuministro.rolValidaSuministro }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catsuministro_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnDetalle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trndetalle controller.
  *
- * @Route("trndetalle")
  */
 class TrnDetalleController extends Controller
 {
     /**
      * Lists all trnDetalle entities.
      *
-     * @Route("/", name="trndetalle_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class TrnDetalleController extends Controller
     /**
      * Creates a new trnDetalle entity.
      *
-     * @Route("/new", name="trndetalle_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class TrnDetalleController extends Controller
     /**
      * Finds and displays a trnDetalle entity.
      *
-     * @Route("/{id}", name="trndetalle_show")
-     * @Method("GET")
      */
     public function showAction(TrnDetalle $trnDetalle)
     {
@@ -76,8 +68,6 @@ class TrnDetalleController extends Controller
     /**
      * Displays a form to edit an existing trnDetalle entity.
      *
-     * @Route("/{id}/edit", name="trndetalle_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnDetalle $trnDetalle)
     {
@@ -101,8 +91,6 @@ class TrnDetalleController extends Controller
     /**
      * Deletes a trnDetalle entity.
      *
-     * @Route("/{id}", name="trndetalle_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnDetalle $trnDetalle)
     {

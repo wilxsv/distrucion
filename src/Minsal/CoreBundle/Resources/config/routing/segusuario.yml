@@ -1,0 +1,24 @@
+segusuario_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:SegUsuario:index" }
+    methods:  GET
+
+segusuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:SegUsuario:show" }
+    methods:  GET
+
+segusuario_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:SegUsuario:new" }
+    methods:  [GET, POST]
+
+segusuario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:SegUsuario:edit" }
+    methods:  [GET, POST]
+
+segusuario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:SegUsuario:delete" }
+    methods:  DELETE

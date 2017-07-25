@@ -15,9 +15,14 @@ class TrnProductoslote
     private $apiLoteid;
 
     /**
-     * @var \Minsal\CoreBundle\Entity\DistribucionProducto
+     * @var integer
      */
-    private $catIsnumoid;
+    private $existencia;
+
+    /**
+     * @var \Minsal\CoreBundle\Entity\CatProducto
+     */
+    private $catProductoid;
 
 
     /**
@@ -31,25 +36,48 @@ class TrnProductoslote
     }
 
     /**
-     * Set catIsnumoid
+     * Set existencia
      *
-     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $catIsnumoid
+     * @param integer $existencia
      * @return TrnProductoslote
      */
-    public function setCatIsnumoid(\Minsal\CoreBundle\Entity\DistribucionProducto $catIsnumoid = null)
+    public function setExistencia($existencia)
     {
-        $this->catIsnumoid = $catIsnumoid;
+        $this->existencia = $existencia;
 
         return $this;
     }
 
     /**
-     * Get catIsnumoid
+     * Get existencia
      *
-     * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
+     * @return integer 
      */
-    public function getCatIsnumoid()
+    public function getExistencia()
     {
-        return $this->catIsnumoid;
+        return $this->existencia;
+    }
+
+    /**
+     * Set catProductoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProducto $catProductoid
+     * @return TrnProductoslote
+     */
+    public function setCatProductoid(\Minsal\CoreBundle\Entity\CatProducto $catProductoid = null)
+    {
+        $this->catProductoid = $catProductoid;
+
+        return $this;
+    }
+
+    /**
+     * Get catProductoid
+     *
+     * @return \Minsal\CoreBundle\Entity\CatProducto 
+     */
+    public function getCatProductoid()
+    {
+        return $this->catProductoid;
     }
 }

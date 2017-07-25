@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catproductos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigonu</th>
+                <th>Grupoid</th>
+                <th>Codigosinab</th>
+                <th>Listadooficial</th>
+                <th>Nombrelargoinsumo</th>
+                <th>Registroschema</th>
+                <th>Enableschema</th>
+                <th>Unidadmedida</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catProducto in catProductos %}
+            <tr>
+                <td><a href="{{ path('catproducto_show', { 'id': catProducto.id }) }}">{{ catProducto.id }}</a></td>
+                <td>{{ catProducto.codigoNu }}</td>
+                <td>{{ catProducto.grupoid }}</td>
+                <td>{{ catProducto.codigoSinab }}</td>
+                <td>{% if catProducto.listadoOficial %}Yes{% else %}No{% endif %}</td>
+                <td>{{ catProducto.nombreLargoInsumo }}</td>
+                <td>{% if catProducto.registroSchema %}{{ catProducto.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ catProducto.enableSchema }}</td>
+                <td>{{ catProducto.unidadMedida }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('catproducto_show', { 'id': catProducto.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

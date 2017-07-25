@@ -1,6 +1,59 @@
-minsal_core_trndistribucion:
-    resource: "@MinsalCoreBundle/Resources/config/routing/trndistribucion.yml"
-    prefix:   /trndistribucion
+minsal_core_segusuario:
+        resource: "@MinsalCoreBundle/Resources/config/routing/segusuario.yml"
+        prefix:   /segusuario
+
+minsal_core_segrol:
+        resource: "@MinsalCoreBundle/Resources/config/routing/segrol.yml"
+        prefix:   /segrol
+
+minsal_core_catproducto:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catproducto.yml"
+        prefix:   /catproducto
+
+minsal_core_catestablecimiento:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catestablecimiento.yml"
+        prefix:   /catestablecimiento
+
+minsal_core_catestados:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catestados.yml"
+        prefix:   /catestados
+
+minsal_core_catprogramas:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catprogramas.yml"
+        prefix:   /catprogramas
+        
+minsal_core_catsuministro:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catsuministro.yml"
+        prefix:   /catsuministro
+
+minsal_core_ctlgrupo:
+        resource: "@MinsalCoreBundle/Resources/config/routing/ctlgrupo.yml"
+        prefix:   /ctlgrupo
+
+minsal_core_trnasignacion:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnasignacion.yml"
+        prefix:   /trnasignacion
+
+minsal_core_trndetalle:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trndetalle.yml"
+        prefix:   /trndetalle
+
+minsal_core_trnentregas:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnentregas.yml"
+        prefix:   /trnentregas
+
+minsal_core_trnproductoslote:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnproductoslote.yml"
+        prefix:   /trnproductoslote
+
+minsal_core_trnvalidacion:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnvalidacion.yml"
+        prefix:   /trnvalidacion
+
+minsal_core_valeprovisional:
+        resource: "@MinsalCoreBundle/Resources/config/routing/valeprovisional.yml"
+        prefix:   /valeprovisional
+
 
 minsal_core_homepage:
     path:     /

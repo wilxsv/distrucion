@@ -2,16 +2,9 @@ Minsal\CoreBundle\Entity\TrnValidacion:
     type: entity
     table: trn_validacion
     indexes:
-        IDX_EA1D469C2830D723:
-            columns:
-                - trn_detalleid
         IDX_EA1D469C140FD2A0:
             columns:
                 - seg_usuarioid
-    uniqueConstraints:
-        trn_validacion_id:
-            columns:
-                - id
     id:
         id:
             type: integer
@@ -25,21 +18,21 @@ Minsal\CoreBundle\Entity\TrnValidacion:
             type: boolean
             nullable: true
             column: estado_verificado
-        fechaModificación:
+        fechaModificacion:
+            type: date
+            nullable: true
+            column: fecha_modificacion
+        cantidadPrelimimar:
             type: integer
             nullable: true
             unsigned: false
-            column: fecha_modificación
+            column: cantidad_prelimimar
+        observacion:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
     manyToOne:
-        trnDetalleid:
-            targetEntity: TrnDetalle
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                trn_detalleid:
-                    referencedColumnName: id
-            orphanRemoval: false
         segUsuarioid:
             targetEntity: SegUsuario
             cascade: {  }

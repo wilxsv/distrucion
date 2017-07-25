@@ -1,10 +1,6 @@
 Minsal\CoreBundle\Entity\SegUsuario:
     type: entity
     table: seg_usuario
-    uniqueConstraints:
-        seg_usuario_id:
-            columns:
-                - id
     id:
         id:
             type: integer
@@ -48,7 +44,7 @@ Minsal\CoreBundle\Entity\SegUsuario:
             length: null
             fixed: false
     manyToMany:
-        segRolid:
+        idSegRol:
             targetEntity: SegRol
             cascade: {  }
             mappedBy: null
@@ -61,7 +57,7 @@ Minsal\CoreBundle\Entity\SegUsuario:
                         referencedColumnName: id
                 inverseJoinColumns:
                     -
-                        name: seg_rolid
+                        name: id_seg_rol
                         referencedColumnName: id
             orderBy: null
     lifecycleCallbacks: {  }

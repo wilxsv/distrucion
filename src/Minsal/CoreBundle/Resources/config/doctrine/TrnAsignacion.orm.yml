@@ -1,0 +1,157 @@
+Minsal\CoreBundle\Entity\TrnAsignacion:
+    type: entity
+    table: trn_asignacion
+    indexes:
+        IDX_141DE0A5140FD2A0:
+            columns:
+                - seg_usuarioid
+        IDX_141DE0A5415AC3E0:
+            columns:
+                - cat_estadosid
+        IDX_141DE0A5CDAFE461:
+            columns:
+                - cat_programaid
+        IDX_141DE0A5F44034C1:
+            columns:
+                - cat_suministroid
+        IDX_141DE0A576A39933:
+            columns:
+                - api_gruposuministroid
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        apiAlmacenid:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: api_almacenid
+        descripcion:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        fechadistribucion:
+            type: date
+            nullable: false
+        fechacorte:
+            type: date
+            nullable: true
+        mesesCpm:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_cpm
+        mesesDistribucion:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_distribucion
+        mesesAdministracion:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_administracion
+        mesesSeguridad:
+            type: smallint
+            nullable: true
+            unsigned: false
+            column: meses_seguridad
+        fechaCreacion:
+            type: date
+            nullable: false
+            column: fecha_creacion
+        fechaModificaion:
+            type: date
+            nullable: true
+            column: fecha_modificaion
+        prioridad:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+    manyToOne:
+        segUsuarioid:
+            targetEntity: SegUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                seg_usuarioid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        catEstadosid:
+            targetEntity: CatEstados
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_estadosid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        catProgramaid:
+            targetEntity: CatProgramas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_programaid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        catSuministroid:
+            targetEntity: CatSuministro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cat_suministroid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        apiGruposuministroid:
+            targetEntity: CtlGrupo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                api_gruposuministroid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        catProductoid:
+            targetEntity: CatProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: trnAsignacionid
+            joinTable:
+                name: distribucion_producto
+                joinColumns:
+                    -
+                        name: trn_asignacionid
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: cat_productoid
+                        referencedColumnName: id
+            orderBy: null
+        idCatEstablecimiento:
+            targetEntity: CatEstablecimiento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: trnAsignacionid
+            joinTable:
+                name: trn_establecimientosdistribucion
+                joinColumns:
+                    -
+                        name: trn_asignacionid
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: id_cat_establecimiento
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

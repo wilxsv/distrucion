@@ -1,0 +1,12 @@
+catestablecimiento_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:index" }
+    methods:  GET
+
+catestablecimiento_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:show" }
+    methods:  GET
+
+
+

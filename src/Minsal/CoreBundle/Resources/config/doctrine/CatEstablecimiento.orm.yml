@@ -1,16 +1,11 @@
 Minsal\CoreBundle\Entity\CatEstablecimiento:
     type: entity
     table: cat_establecimiento
-    indexes:
-        idx_332bd42c7ead49c7:
-            columns:
-                - id_municipio
     id:
         id:
             type: integer
             nullable: false
             unsigned: false
-            comment: 'Identificar ID del establecimiento'
             id: true
             generator:
                 strategy: SEQUENCE
@@ -19,61 +14,51 @@ Minsal\CoreBundle\Entity\CatEstablecimiento:
             type: integer
             nullable: true
             unsigned: false
-            comment: 'Tipo de establecimiento según Institución'
             column: id_tipo_establecimiento
         nombre:
             type: string
             nullable: true
             length: 150
             fixed: false
-            comment: 'Descripción Nombre del establecimiento'
         direccion:
             type: string
             nullable: true
             length: 300
             fixed: false
-            comment: 'Dirección donde se encuentra ubicado el establecimiento'
         telefono:
             type: string
             nullable: true
             length: 15
             fixed: false
-            comment: 'Número de Teléfono del establecimiento'
         fax:
             type: string
             nullable: true
             length: 15
             fixed: false
-            comment: 'Número de Fax del establecimiento'
         latitud:
             type: decimal
             nullable: true
-            precision: 13
-            scale: 8
-            comment: 'Coordenadas geografica latitud (norte o sur) donde se encuentra ubicado el establecimiento'
+            precision: 10
+            scale: 0
         longitud:
             type: decimal
             nullable: true
-            precision: 13
-            scale: 8
-            comment: 'Coordenadas geográfica longitud (este u oeste) donde se encuentra ubicado el establecimiento'
+            precision: 10
+            scale: 0
         idInstitucion:
             type: integer
             nullable: true
             unsigned: false
-            comment: 'Identificador Institucion a la que pertenece el establecimiento'
             column: id_institucion
         idMunicipio:
             type: integer
             nullable: true
             unsigned: false
-            comment: 'Identificador Municipio al que pertenece el establecimiento'
             column: id_municipio
         anioApertura:
             type: integer
             nullable: true
             unsigned: false
-            comment: 'Año en el cual se apertura el establecimiento'
             column: anio_apertura
         idCatNivelMinsal:
             type: integer
@@ -84,7 +69,6 @@ Minsal\CoreBundle\Entity\CatEstablecimiento:
             type: integer
             nullable: true
             unsigned: false
-            comment: 'Llave foranea que identifica administrativamente al pertenece dicho municipio'
             column: id_establecimiento_padre
         registroSchema:
             type: datetime
@@ -94,23 +78,13 @@ Minsal\CoreBundle\Entity\CatEstablecimiento:
             type: integer
             nullable: true
             unsigned: false
-            default: '0'
             column: enable_schema
     manyToMany:
-        trnDistribucionid:
-            targetEntity: TrnDistribucion
+        trnAsignacionid:
+            targetEntity: TrnAsignacion
             cascade: {  }
-            mappedBy: null
-            inversedBy: apiEstablecimientoid
-            joinTable:
-                name: trn_establecimientosdistribucion
-                joinColumns:
-                    -
-                        name: api_establecimientoid
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: trn_distribucionid
-                        referencedColumnName: id
+            mappedBy: idCatEstablecimiento
+            inversedBy: null
+            joinTable: null
             orderBy: null
     lifecycleCallbacks: {  }

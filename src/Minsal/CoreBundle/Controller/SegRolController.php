@@ -4,21 +4,17 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\SegRol;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Segrol controller.
  *
- * @Route("segrol")
  */
 class SegRolController extends Controller
 {
     /**
      * Lists all segRol entities.
      *
-     * @Route("/", name="segrol_index")
-     * @Method("GET")
      */
     public function indexAction()
     {
@@ -34,8 +30,6 @@ class SegRolController extends Controller
     /**
      * Creates a new segRol entity.
      *
-     * @Route("/new", name="segrol_new")
-     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -60,8 +54,6 @@ class SegRolController extends Controller
     /**
      * Finds and displays a segRol entity.
      *
-     * @Route("/{id}", name="segrol_show")
-     * @Method("GET")
      */
     public function showAction(SegRol $segRol)
     {
@@ -76,8 +68,6 @@ class SegRolController extends Controller
     /**
      * Displays a form to edit an existing segRol entity.
      *
-     * @Route("/{id}/edit", name="segrol_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, SegRol $segRol)
     {
@@ -101,8 +91,6 @@ class SegRolController extends Controller
     /**
      * Deletes a segRol entity.
      *
-     * @Route("/{id}", name="segrol_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, SegRol $segRol)
     {
@@ -133,5 +121,4 @@ class SegRolController extends Controller
             ->getForm()
         ;
     }
-  
 }

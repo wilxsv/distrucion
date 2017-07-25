@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ctlgrupos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombregrupo</th>
+                <th>Registroschema</th>
+                <th>Enableschema</th>
+                <th>Codigogrupo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ctlGrupo in ctlGrupos %}
+            <tr>
+                <td><a href="{{ path('ctlgrupo_show', { 'id': ctlGrupo.id }) }}">{{ ctlGrupo.id }}</a></td>
+                <td>{{ ctlGrupo.nombreGrupo }}</td>
+                <td>{% if ctlGrupo.registroSchema %}{{ ctlGrupo.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ctlGrupo.enableSchema }}</td>
+                <td>{{ ctlGrupo.codigoGrupo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ctlgrupo_show', { 'id': ctlGrupo.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
