@@ -35,9 +35,11 @@ class TrnValidacionController extends Controller
      */
     public function newAction(TrnDetalle $detalle, Request $request)
     {
+        $session = $request->getSession();
         $trnValidacion = new Trnvalidacion();
         $form = $this->createForm('Minsal\CoreBundle\Form\TrnValidacionType', $trnValidacion);
         $form->handleRequest($request);
+        $idPasado = $session->get('idAsignacion');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $trnValidacion->setFechaModificacion(new \DateTime());
@@ -45,13 +47,15 @@ class TrnValidacionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($trnValidacion);
             $em->flush();
-            return $this->redirectToRoute('asignaciones_productos', array('id' => $session->get('idAsignacion'));
+            $idPasado = $session->get('idAsignacion');
+            return $this->redirectToRoute('asignaciones_productos', array('id' => $idPasado));
         }
 
         return $this->render('trnvalidacion/new.html.twig', array(
             'trnValidacion' => $trnValidacion,
             'trnDetalle' => $detalle,
             'form' => $form->createView(),
+            'idpasado' => $idPasado,
         ));
     }
 
