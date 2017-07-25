@@ -71,6 +71,7 @@ class TrnValidacionController extends Controller
             'form' => $form->createView(),
             'idpasado' => $idPasado,
         ));
+        //minsal_corebundle_trnvalidacion_cantidadPrelimimar
     }
 
     /**

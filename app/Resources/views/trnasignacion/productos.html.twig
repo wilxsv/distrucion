@@ -33,7 +33,7 @@
                 </button>
               {% else %}
 
-                <a href="{{ "/validaciones/#{producto.iddetalle}" }}">
+                <a id="habilitar" href="{{ "/validaciones/#{producto.iddetalle}" }}">
                    <button type="button" class="btn btn-default btn-sm">
                      <span class="glyphicon glyphicon-comment"></span>
                    </button>
@@ -58,14 +58,8 @@
   <script >
 
     function activar(event){
-      //event.preventDefault();
-      //console.log($('#ver').is(":checked"));
-      if( $('#ver').is(":checked") ){
-        console.log("Habilitar");
-        $('#referencia').prop('disabled',"false");
-      } else {
-        console.log("deshabilitar");
-        $('#referencia').prop('disabled',"true");
+      if( !$('#ver').is(":checked") ){
+        
       }
     }
     $(document).ready(function(){
