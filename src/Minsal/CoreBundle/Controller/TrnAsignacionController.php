@@ -151,4 +151,17 @@ class TrnAsignacionController extends Controller
         'productos' => $productos
       ));
     }
+
+    public function verificarAsignacionAction(TrnAsignacion $asignacion){
+      $estado = $this->getDoctrine()->getRepository('MinsalCoreBundle:CatEstados')
+                ->findOneBy(
+                  array('estado' => 'VERIFICADO')
+                );
+      $asignacion->setCatEstadosid($estado);
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($asignacion);
+      $em->flush();
+
+      return $this->redirect($this->generateUrl('asingaciones_index'));
+    }
 }

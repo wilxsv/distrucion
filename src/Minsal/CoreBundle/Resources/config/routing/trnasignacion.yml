@@ -27,3 +27,8 @@ asignaciones_productos:
     path: /{id}/productos
     defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:mostrarProductos" }
     methods: GET
+
+asignaciones_verificar:
+    path: /{id}/verificar
+    defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:verificarAsignacion" }
+    methods: GET

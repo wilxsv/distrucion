@@ -47,17 +47,22 @@ class TrnValidacionController extends Controller
             //$trnValidacion->setSegUsuarioid(); agregar cuando se tenga autenticacion
             $em = $this->getDoctrine()->getManager();
             $detalle->setIdTrnValidacion($trnValidacion);
-            $em->persist($trnValidacion);
-            $em->persist($detalle);
+
 
             $idPasado = $session->get('idAsignacion');
             // $asignacion = $this->getDoctrine()->getRepository('CoreBundle:TrnAsignacion')
-            //               ->find($idPasado);
+            //                ->find($idPasado);
+            //
+            // $verificado = $this->getDoctrine()->getRepository('CoreBundle:CatEstados')
+            //               ->findOneBy( array('estado'=>'VERFICADO') );
             // $asignacion->set
+
+            $em->persist($trnValidacion);
+            $em->persist($detalle);
             $em->flush();
             return $this->redirectToRoute('asignaciones_productos', array('id' => $idPasado));
         }
-
+        
         return $this->render('trnvalidacion/new.html.twig', array(
             'trnValidacion' => $trnValidacion,
             'trnDetalle' => $detalle,
