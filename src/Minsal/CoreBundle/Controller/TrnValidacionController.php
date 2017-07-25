@@ -44,13 +44,17 @@ class TrnValidacionController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $trnValidacion->setFechaModificacion(new \DateTime());
             $detalle->setFechaModificacion(new \DateTime());
-            //$trnValidacion->setSegUsuarioid();
+            //$trnValidacion->setSegUsuarioid(); agregar cuando se tenga autenticacion
             $em = $this->getDoctrine()->getManager();
             $detalle->setIdTrnValidacion($trnValidacion);
             $em->persist($trnValidacion);
             $em->persist($detalle);
-            $em->flush();
+
             $idPasado = $session->get('idAsignacion');
+            // $asignacion = $this->getDoctrine()->getRepository('CoreBundle:TrnAsignacion')
+            //               ->find($idPasado);
+            // $asignacion->set
+            $em->flush();
             return $this->redirectToRoute('asignaciones_productos', array('id' => $idPasado));
         }
 

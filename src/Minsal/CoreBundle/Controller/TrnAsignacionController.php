@@ -134,7 +134,7 @@ class TrnAsignacionController extends Controller
       //Obteniendo el entity manager
       $em = $this->getDoctrine()->getManager();
       //Sentencia pura SQL
-      $sql = "select p.id, p.nombre_largo_insumo, t.verificar, t.cantidad_sugerida, t.id as idDetalle, a.id as idAsignacion from cat_producto as p
+      $sql = "select p.id, p.nombre_largo_insumo, t.verificar, t.id_trn_validacion, t.cantidad_sugerida, t.id as idDetalle, a.id as idAsignacion from cat_producto as p
               inner join distribucion_producto as d on p.id = d.cat_productoid
               inner join trn_asignacion as a on d.trn_asignacionid = a.id
               inner join trn_detalle as t on d.trn_detalleid = t.id
@@ -145,7 +145,7 @@ class TrnAsignacionController extends Controller
       $stmt->execute();
       $productos = $stmt->fetchAll();
       $session->set('idAsignacion', $trnAsignacion->getId());
-      //return $stmt->fetchAll();
+      //return var_dump($stmt->fetchAll());
       return $this->render('trnasignacion/productos.html.twig',array(
         'descripcion' => $descripcion,
         'productos' => $productos
