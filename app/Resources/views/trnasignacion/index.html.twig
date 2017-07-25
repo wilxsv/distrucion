@@ -25,7 +25,12 @@
                   {{ trnAsignacion.getCatEstadosid().getEstado() }}
                 </td>
                 <td>
-                  <a href="{{"#{trnAsignacion.id}/productos"}}">Editar</a>
+                  {% if trnAsignacion.getCatEstadosid().getEstado() != "VERIFICADO" %}
+                      <a href="{{"#{trnAsignacion.id}/productos"}}">Editar</a>
+                  {% else %}
+
+                  {% endif %}
+
                 </td>
             </tr>
         {% endfor %}

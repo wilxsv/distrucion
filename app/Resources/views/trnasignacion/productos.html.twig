@@ -3,6 +3,7 @@
 {% block body %}
   <h1>Descripcion: {{ descripcion }}</h1>
   <h2>Nombre de técnico: "Kevin Rivera"</h2>
+  <a href="{{ "/asignaciones/#{app.session.get('idAsignacion')}/verificar" }}"><button class="btn-primary btn">Terminar edición</button></a>
   <table>
       <thead>
           <tr>
