@@ -144,7 +144,7 @@ class TrnAsignacionController extends Controller
       $stmt = $em->getConnection()->prepare($sql);
       $stmt->execute();
       $productos = $stmt->fetchAll();
-      $session->set('idASignacion', $trnAsignacion->getId());
+      $session->set('idAsignacion', $trnAsignacion->getId());
       //return $stmt->fetchAll();
       return $this->render('trnasignacion/productos.html.twig',array(
         'descripcion' => $descripcion,
