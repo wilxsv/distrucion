@@ -115,6 +115,21 @@
 <script src="{{ asset('assets/') }}distro/js/jasny-bootstrap.js"></script>
 <!--Style Switcher -->
 <script src="{{ asset('assets/') }}distro/js/jkuery.js"></script>
+<!--Additional-->
+<script type="text/javascript">
+function cambioEstado()
+{
+  document.getElementById("comment").disabled = false;
+}
+function checkStatus()
+{
+  document.getElementById("referencia").addEventListener("click", function(event){
+    if (document.getElementById("comment").disabled){
+      event.stopPropagation();
+    }
+  });
+}
+</script>
 {% block footer_js %}{% endblock %}
 
 </body></html>
