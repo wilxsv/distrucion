@@ -22,10 +22,10 @@
                 <td>{% if trnAsignacion.fechadistribucion %}{{ trnAsignacion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ trnAsignacion.prioridad }}</td>
                 <td>
-                  {{ trnAsignacion.getCatEstadosid().getEstado() }}
+                  {{ trnAsignacion.estado }}
                 </td>
                 <td>
-                  {% if trnAsignacion.getCatEstadosid().getEstado() != "VERIFICADO" %}
+                  {% if trnAsignacion.estado != "VERIFICADO" %}
                       <a href="{{"#{trnAsignacion.id}/productos"}}">Editar</a>
                   {% else %}
 

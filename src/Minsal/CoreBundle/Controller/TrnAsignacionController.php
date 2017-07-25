@@ -20,8 +20,17 @@ class TrnAsignacionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $trnAsignacions = $em->getRepository('MinsalCoreBundle:TrnAsignacion')->findAll();
-
+        //$trnAsignacions = $em->getRepository('MinsalCoreBundle:TrnAsignacion')->findAll();
+        //$
+        $sql = "select a.id, a.descripcion, a.fechadistribucion, a.prioridad, est.estado from trn_asignacion a
+        inner join trn_establecimientosdistribucion ed on ed.trn_asignacionid = a.id
+        inner join cat_establecimiento e on e.id = ed.id_cat_establecimiento
+        inner join cat_estados est on est.id = a.cat_estadosid where e.id = 1142";
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $trnAsignacions = $stmt->fetchAll();
+        //return $trnAsignacions;
         return $this->render('trnasignacion/index.html.twig', array(
             'trnAsignacions' => $trnAsignacions,
         ));

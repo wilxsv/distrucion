@@ -19,9 +19,9 @@
       {% for producto in productos%}
           <tr>
               {% if producto.verificar == false%}
-              <td><input type="checkbox" id="verificacion"></td>
+              <td><input type="checkbox" id="ver"></td>
               {% elseif producto.verificar == true%}
-              <td><input type="checkbox" id="verificacion"  checked></td>
+              <td><input type="checkbox" id="ver"  checked></td>
               {% endif%}
               <td>{{producto.id}}</td>
               <td>{{producto.nombre_largo_insumo}}</td>
@@ -32,17 +32,19 @@
                   <span class="glyphicon glyphicon-check"></span>
                 </button>
               {% else %}
-                <a href="{{ "/validaciones/#{producto.iddetalle}" }}"  id="referencia">
-                   <button type="button" class="btn btn-default btn-sm"
-                   @{% if producto.verificar != true  %}
-                    disabled="true"
-                   {% endif %}
-                    >
+
+                <a href="{{ "/validaciones/#{producto.iddetalle}" }}">
+                   <button type="button" class="btn btn-default btn-sm">
                      <span class="glyphicon glyphicon-comment"></span>
                    </button>
                  </a>
+
+
               {% endif %}
 
+              </td>
+              <td>
+                <input id="referencia" disabled="true" />
               </td>
           </tr>
       {% endfor%}
@@ -51,6 +53,25 @@
 
 {% endblock %}
 
-{% block scripts %}
+{% block footer_js %}
 
+  <script >
+
+    function activar(event){
+      //event.preventDefault();
+      //console.log($('#ver').is(":checked"));
+      if( $('#ver').is(":checked") ){
+        console.log("Habilitar");
+        $('#referencia').prop('disabled',"false");
+      } else {
+        console.log("deshabilitar");
+        $('#referencia').prop('disabled',"true");
+      }
+    }
+    $(document).ready(function(){
+      console.log(jQuery.fn.jquery);
+      activar();
+      $("#ver").click(activar);
+    });
+  </script>
 {% endblock %}
