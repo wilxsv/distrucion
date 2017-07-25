@@ -4,17 +4,22 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnDetalle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trndetalle controller.
  *
+ * @Route("trndetalle")
  */
 class TrnDetalleController extends Controller
 {
     /**
      * Lists all trnDetalle entities.
      *
+     * @Route("/", name="trndetalle_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -30,6 +35,8 @@ class TrnDetalleController extends Controller
     /**
      * Creates a new trnDetalle entity.
      *
+     * @Route("/new", name="trndetalle_new")
+     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -42,7 +49,7 @@ class TrnDetalleController extends Controller
             $em->persist($trnDetalle);
             $em->flush();
 
-            return $this->redirectToRoute('detalles_show', array('id' => $trnDetalle->getId()));
+            return $this->redirectToRoute('trndetalle_show', array('id' => $trnDetalle->getId()));
         }
 
         return $this->render('trndetalle/new.html.twig', array(
@@ -54,6 +61,8 @@ class TrnDetalleController extends Controller
     /**
      * Finds and displays a trnDetalle entity.
      *
+     * @Route("/{id}", name="trndetalle_show")
+     * @Method("GET")
      */
     public function showAction(TrnDetalle $trnDetalle)
     {
@@ -68,6 +77,8 @@ class TrnDetalleController extends Controller
     /**
      * Displays a form to edit an existing trnDetalle entity.
      *
+     * @Route("/{id}/edit", name="trndetalle_edit")
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnDetalle $trnDetalle)
     {
@@ -78,7 +89,7 @@ class TrnDetalleController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('detalles_edit', array('id' => $trnDetalle->getId()));
+            return $this->redirectToRoute('trndetalle_edit', array('id' => $trnDetalle->getId()));
         }
 
         return $this->render('trndetalle/edit.html.twig', array(
@@ -91,6 +102,8 @@ class TrnDetalleController extends Controller
     /**
      * Deletes a trnDetalle entity.
      *
+     * @Route("/{id}", name="trndetalle_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnDetalle $trnDetalle)
     {
@@ -103,7 +116,7 @@ class TrnDetalleController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('detalles_index');
+        return $this->redirectToRoute('trndetalle_index');
     }
 
     /**
@@ -116,7 +129,7 @@ class TrnDetalleController extends Controller
     private function createDeleteForm(TrnDetalle $trnDetalle)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('detalles_delete', array('id' => $trnDetalle->getId())))
+            ->setAction($this->generateUrl('trndetalle_delete', array('id' => $trnDetalle->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

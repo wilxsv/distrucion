@@ -22,9 +22,11 @@
               <td>{{producto.nombre_largo_insumo}}</td>
               <td>{{producto.cantidad_sugerida}}</td>
               <td>
+              <a href="{{ "/validaciones/#{producto.iddetalle}" }}">
                 <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-comment"></span>
                 </button>
+              </a>
               </td>
           </tr>
       {% endfor%}

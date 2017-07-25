@@ -14,18 +14,26 @@
                 <td>{% if trnValidacion.estadoVerificado %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Fechamodificación</th>
-                <td>{{ trnValidacion.fechaModificación }}</td>
+                <th>Fechamodificacion</th>
+                <td>{% if trnValidacion.fechaModificacion %}{{ trnValidacion.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cantidadprelimimar</th>
+                <td>{{ trnValidacion.cantidadPrelimimar }}</td>
+            </tr>
+            <tr>
+                <th>Observacion</th>
+                <td>{{ trnValidacion.observacion }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('trnvalidacion_index') }}">Back to the list</a>
+            <a href="{{ path('validaciones_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('trnvalidacion_edit', { 'id': trnValidacion.id }) }}">Edit</a>
+            <a href="{{ path('validaciones_edit', { 'id': trnValidacion.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

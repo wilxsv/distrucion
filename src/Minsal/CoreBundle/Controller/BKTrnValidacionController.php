@@ -4,12 +4,13 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnValidacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Minsal\CoreBundle\Entity\TrnDetalle;
-use Minsal\CoreBundle\Entity\TrnAsignacion;
 
 /**
  * Trnvalidacion controller.
+ *
  *
  */
 class TrnValidacionController extends Controller
@@ -17,6 +18,8 @@ class TrnValidacionController extends Controller
     /**
      * Lists all trnValidacion entities.
      *
+     * @Route("/validaciones", name="trnvalidacion_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -32,25 +35,25 @@ class TrnValidacionController extends Controller
     /**
      * Creates a new trnValidacion entity.
      *
+     * @Route("/detalles/{id}/validacion", name="trnvalidacion_new")
+     * @Method({"GET", "POST"})
      */
-    public function newAction(TrnDetalle $detalle, Request $request)
+    public function newAction(TrnDetalle $detalle,  Request $request)
     {
         $trnValidacion = new Trnvalidacion();
         $form = $this->createForm('Minsal\CoreBundle\Form\TrnValidacionType', $trnValidacion);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $trnValidacion->setFechaModificacion(new \DateTime());
-            $trnValidacion->setSegUsuarioid();
             $em = $this->getDoctrine()->getManager();
             $em->persist($trnValidacion);
             $em->flush();
-            return $this->redirectToRoute('asignaciones_productos', array('id' => $session->get('idAsignacion'));
+
+            return $this->redirectToRoute('trnvalidacion_show', array('id' => $trnValidacion->getId()));
         }
 
         return $this->render('trnvalidacion/new.html.twig', array(
             'trnValidacion' => $trnValidacion,
-            'trnDetalle' => $detalle,
             'form' => $form->createView(),
         ));
     }
@@ -58,6 +61,8 @@ class TrnValidacionController extends Controller
     /**
      * Finds and displays a trnValidacion entity.
      *
+     * @Route("/validaciones/{id}", name="trnvalidacion_show")
+     * @Method("GET")
      */
     public function showAction(TrnValidacion $trnValidacion)
     {
@@ -72,6 +77,8 @@ class TrnValidacionController extends Controller
     /**
      * Displays a form to edit an existing trnValidacion entity.
      *
+     * @Route("/validaciones/{id}/edit", name="trnvalidacion_edit")
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnValidacion $trnValidacion)
     {
@@ -82,7 +89,7 @@ class TrnValidacionController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('validaciones_edit', array('id' => $trnValidacion->getId()));
+            return $this->redirectToRoute('trnvalidacion_edit', array('id' => $trnValidacion->getId()));
         }
 
         return $this->render('trnvalidacion/edit.html.twig', array(
@@ -95,6 +102,8 @@ class TrnValidacionController extends Controller
     /**
      * Deletes a trnValidacion entity.
      *
+     * @Route("/validaciones/{id}", name="trnvalidacion_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnValidacion $trnValidacion)
     {
@@ -107,7 +116,7 @@ class TrnValidacionController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('validaciones_index');
+        return $this->redirectToRoute('trnvalidacion_index');
     }
 
     /**
@@ -120,7 +129,7 @@ class TrnValidacionController extends Controller
     private function createDeleteForm(TrnValidacion $trnValidacion)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('validaciones_delete', array('id' => $trnValidacion->getId())))
+            ->setAction($this->generateUrl('trnvalidacion_delete', array('id' => $trnValidacion->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -12,8 +12,9 @@
                 <th>Cantidadsugerida</th>
                 <th>Existenciaalmacenes</th>
                 <th>Existenciafarmacia</th>
+                <th>Apiestablecimientoid</th>
+                <th>Catproductoid</th>
                 <th>Verificar</th>
-                <th>Observacion</th>
                 <th>Fechacreacion</th>
                 <th>Fechamodificacion</th>
                 <th>Actions</th>
@@ -22,23 +23,24 @@
         <tbody>
         {% for trnDetalle in trnDetalles %}
             <tr>
-                <td><a href="{{ path('trndetalle_show', { 'id': trnDetalle.id }) }}">{{ trnDetalle.id }}</a></td>
+                <td><a href="{{ path('detalles_show', { 'id': trnDetalle.id }) }}">{{ trnDetalle.id }}</a></td>
                 <td>{{ trnDetalle.cpm }}</td>
                 <td>{{ trnDetalle.cantidadDistribuir }}</td>
                 <td>{{ trnDetalle.cantidadSugerida }}</td>
                 <td>{{ trnDetalle.existenciaAlmacenes }}</td>
                 <td>{{ trnDetalle.existenciaFarmacia }}</td>
+                <td>{{ trnDetalle.apiEstablecimientoid }}</td>
+                <td>{{ trnDetalle.catProductoid }}</td>
                 <td>{% if trnDetalle.verificar %}Yes{% else %}No{% endif %}</td>
-                <td>{{ trnDetalle.observacion }}</td>
                 <td>{% if trnDetalle.fechaCreacion %}{{ trnDetalle.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if trnDetalle.fechaModificacion %}{{ trnDetalle.fechaModificacion|date('Y-m-d') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('trndetalle_show', { 'id': trnDetalle.id }) }}">show</a>
+                            <a href="{{ path('detalles_show', { 'id': trnDetalle.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('trndetalle_edit', { 'id': trnDetalle.id }) }}">edit</a>
+                            <a href="{{ path('detalles_edit', { 'id': trnDetalle.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -49,7 +51,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('trndetalle_new') }}">Create a new trnDetalle</a>
+            <a href="{{ path('detalles_new') }}">Create a new trnDetalle</a>
         </li>
     </ul>
 {% endblock %}

@@ -6,23 +6,23 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TrnValidacionType extends AbstractType
+class TrnDetalleType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('cantidadPrelimimar')->add('observacion');
+        $builder->add('cpm')->add('cantidadDistribuir')->add('cantidadSugerida')->add('existenciaAlmacenes')->add('existenciaFarmacia')->add('apiEstablecimientoid')->add('catProductoid')->add('verificar')->add('fechaCreacion')->add('fechaModificacion')->add('idTrnValidacion')->add('idTrnEntregas');
     }
-
+    
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Minsal\CoreBundle\Entity\TrnValidacion'
+            'data_class' => 'Minsal\CoreBundle\Entity\TrnDetalle'
         ));
     }
 
@@ -31,7 +31,7 @@ class TrnValidacionType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'minsal_corebundle_trnvalidacion';
+        return 'minsal_corebundle_trndetalle';
     }
 
 

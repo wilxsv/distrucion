@@ -29,3 +29,11 @@ minsal_core_grupos:
 minsal_core_vales:
         resource: "@MinsalCoreBundle/Resources/config/routing/valeprovisional.yml"
         prefix:   /vales
+
+minsal_core_detalles:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trndetalle.yml"
+        prefix:   /detalles
+
+minsal_core_validaciones:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnvalidacion.yml"
+        prefix:   /validaciones
