@@ -19,9 +19,9 @@
       {% for producto in productos%}
           <tr>
               {% if producto.verificar == false%}
-              <td><input type="checkbox" id="verificacion" onclick="cambioEstado()"></td>
+              <td><input type="checkbox" id="verificacion"></td>
               {% elseif producto.verificar == true%}
-              <td><input type="checkbox" id="verificacion" checked></td>
+              <td><input type="checkbox" id="verificacion"  checked></td>
               {% endif%}
               <td>{{producto.id}}</td>
               <td>{{producto.nombre_largo_insumo}}</td>
@@ -32,11 +32,15 @@
                   <span class="glyphicon glyphicon-check"></span>
                 </button>
               {% else %}
-                <a href="{{ "/validaciones/#{producto.iddetalle}" }}" onclick="checkStatus()" id="referencia">
-                  <button type="button" class="btn btn-default btn-sm" id="comment" disabled="true">
-                    <span class="glyphicon glyphicon-comment"></span>
-                  </button>
-                </a>
+                <a href="{{ "/validaciones/#{producto.iddetalle}" }}"  id="referencia">
+                   <button type="button" class="btn btn-default btn-sm"
+                   @{% if producto.verificar != true  %}
+                    disabled="true"
+                   {% endif %}
+                    >
+                     <span class="glyphicon glyphicon-comment"></span>
+                   </button>
+                 </a>
               {% endif %}
 
               </td>

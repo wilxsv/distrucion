@@ -43,7 +43,9 @@ class TrnValidacionController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $trnValidacion->setFechaModificacion(new \DateTime());
+            $trnValidacion->setEstadoVerificado(true);
             $detalle->setFechaModificacion(new \DateTime());
+            $detalle->setVerificar(true);
             //$trnValidacion->setSegUsuarioid(); agregar cuando se tenga autenticacion
             $em = $this->getDoctrine()->getManager();
             $detalle->setIdTrnValidacion($trnValidacion);
@@ -62,7 +64,7 @@ class TrnValidacionController extends Controller
             $em->flush();
             return $this->redirectToRoute('asignaciones_productos', array('id' => $idPasado));
         }
-        
+
         return $this->render('trnvalidacion/new.html.twig', array(
             'trnValidacion' => $trnValidacion,
             'trnDetalle' => $detalle,
