@@ -1,0 +1,24 @@
+validaciones_index:
+    path:     /{id}
+    defaults: { _controller: "MinsalCoreBundle:TrnValidacion:new" }
+    methods:  [GET, POST]
+
+validaciones_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:TrnValidacion:show" }
+    methods:  GET
+
+validaciones_new:
+    path:     /new
+    defaults: { _controller: "MinsalCoreBundle:TrnValidacion:new" }
+    methods:  [GET, POST]
+
+validaciones_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MinsalCoreBundle:TrnValidacion:edit" }
+    methods:  [GET, POST]
+
+validaciones_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MinsalCoreBundle:TrnValidacion:delete" }
+    methods:  DELETE

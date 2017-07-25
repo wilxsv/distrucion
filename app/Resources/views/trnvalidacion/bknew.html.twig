@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Creando Validacion para Producto </h1>
+
+    <p>Cantidad Asignada: {{trnDetalle.getCantidadSugerida()}}</p>
+    <p>Existencia: {{trnDetalle.getExistenciaAlmacenes()}}</p>
+    <p>Consumo Promedio: {{trnDetalle.getCpm()}}</p>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Guardar Observacion" />
+    {{ form_end(form) }}
+
+    
+
+{% endblock %}

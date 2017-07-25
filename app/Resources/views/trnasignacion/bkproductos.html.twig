@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>Descripcion: {{ descripcion }}</h1>
+  <h2>Nombre de técnico: "Kevin Rivera"</h2>
+  <a href="{{ "/asignaciones/#{app.session.get('idAsignacion')}/verificar" }}"><button class="btn-primary btn">Terminar edición</button></a>
+  <table>
+      <thead>
+          <tr>
+              <th>Verificar</th>
+              <th>Codigo</th>
+              <th>Descripcion</th>
+              <th>Cantidad</th>
+              <th>Observacion</th>
+
+          </tr>
+      </thead>
+      <tbody>
+      {% for producto in productos%}
+          <tr>
+              {% if producto.verificar == false%}
+              <td><input type="checkbox" id="ver"></td>
+              {% elseif producto.verificar == true%}
+              <td><input type="checkbox" id="ver"  checked></td>
+              {% endif%}
+              <td>{{producto.id}}</td>
+              <td>{{producto.nombre_largo_insumo}}</td>
+              <td>{{producto.cantidad_sugerida}}</td>
+              <td>
+              {% if producto.id_trn_validacion %}
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-check"></span>
+                </button>
+              {% else %}
+
+                <a id="habilitar" href="{{ "/validaciones/#{producto.iddetalle}" }}">
+                   <button type="button" class="btn btn-default btn-sm">
+                     <span class="glyphicon glyphicon-comment"></span>
+                   </button>
+                 </a>
+
+
+              {% endif %}
+
+              </td>
+              <td>
+                <input id="referencia" disabled="true" />
+              </td>
+          </tr>
+      {% endfor%}
+      </tbody>
+  </table>
+
+{% endblock %}
+
+{% block footer_js %}
+
+  <script >
+
+    function activar(event){
+      if( !$('#ver').is(":checked") ){
+        
+      }
+    }
+    $(document).ready(function(){
+      console.log(jQuery.fn.jquery);
+      activar();
+      $("#ver").click(activar);
+    });
+  </script>
+{% endblock %}

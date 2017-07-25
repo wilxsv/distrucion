@@ -1,0 +1,39 @@
+minsal_core_trndistribucion:
+    resource: "@MinsalCoreBundle/Resources/config/routing/trndistribucion.yml"
+    prefix:   /trndistribucion
+
+minsal_core_homepage:
+    path:     /
+    defaults: { _controller: MinsalCoreBundle:Default:index }
+
+minsal_core_establecimientos:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catestablecimiento.yml"
+        prefix:   /establecimientos
+
+minsal_core_productos:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catproducto.yml"
+        prefix:   /productos
+
+minsal_core_programas:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catprogramas.yml"
+        prefix:   /programas
+
+minsal_core_suministros:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catsuministro.yml"
+        prefix:   /suministros
+
+minsal_core_grupos:
+        resource: "@MinsalCoreBundle/Resources/config/routing/ctlgrupo.yml"
+        prefix:   /grupos
+
+minsal_core_vales:
+        resource: "@MinsalCoreBundle/Resources/config/routing/valeprovisional.yml"
+        prefix:   /vales
+
+minsal_core_detalles:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trndetalle.yml"
+        prefix:   /detalles
+
+minsal_core_validaciones:
+        resource: "@MinsalCoreBundle/Resources/config/routing/trnvalidacion.yml"
+        prefix:   /validaciones
