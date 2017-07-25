@@ -131,8 +131,43 @@ class CatEstablecimientoController extends Controller
         ;
     }
 
+    /**
+    *Returns the list of Products asociated
+    *
+    *@param CatEstablecimiento $establecimiento The entity for the query
+    *
+    *@return the view for the user to see the prodcuts form a specific institution
+    */
     public function getProductosAction(CatEstablecimiento $establecimiento, Request $request)
     {
-        return 
+        $nombreEstablecimiento = $establecimiento->getNombre();
+        $em = $this->getDoctrine()->getManager();
+
+        // Query to get the products for a specific institution
+        $sql = "select foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada, sum(foo.existencia)
+                from (select distinct fo.api_loteid, fo.codigo_sinab, fo.nombre_largo_insumo, fo.unidad_medida, fo.existencia, fo.cantidadasignada
+                from (select pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida, pl.existencia, sum(d.cantidad_distribuir) as cantidadasignada
+                from cat_establecimiento as e inner join trn_establecimientosdistribucion as i
+                on i.id_cat_establecimiento =  e.id inner join trn_asignacion as a
+                on a.id = i.trn_asignacionid inner join distribucion_producto as dp
+                on dp.trn_asignacionid = a.id inner join cat_producto as p
+                on p.id = dp.cat_productoid inner join trn_detalle as d
+                on d.cat_productoid = dp.cat_productoid and d.trn_asignacionid = dp.trn_asignacionid inner join trn_productoslote as pl
+                on pl.cat_productoid = p.id
+                where e.id = 1140
+                group by (pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida)) as fo
+                order by fo.api_loteid) as foo
+                group by (foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada);
+                ";
+        $statement = $em->getConnection()->prepare($sql);
+        $statement->execute();
+        $productos = $statement->fetchAll();
+
+        return $this->render('catestablecimiento/productos.html.twig', array(
+          'productos' => $productos,
+          'establecimiento' => $nombreEstablecimiento
+        )
+
+      );
     }
 }
