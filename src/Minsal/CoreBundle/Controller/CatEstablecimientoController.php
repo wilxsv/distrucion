@@ -20,7 +20,16 @@ class CatEstablecimientoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $catEstablecimientos = $em->getRepository('MinsalCoreBundle:CatEstablecimiento')->findAll();
+        //$catEstablecimientos = $em->getRepository('MinsalCoreBundle:CatEstablecimiento')->findAll();
+
+        //Sentencia sql para traer los establecimientos que tienen establecimientos
+        $sql = "select e.id as Establecimiento, e.nombre from cat_establecimiento as e
+        inner join trn_establecimientosdistribucion as i on i.id_cat_establecimiento =  e.id
+        inner join trn_asignacion as a on a.id = i.trn_asignacionid;";
+
+        $statement = $em->getConnection()->prepare($sql);
+        $statement->execute();
+        $catEstablecimientos = $statement->fetchAll();
 
         return $this->render('catestablecimiento/index.html.twig', array(
             'catEstablecimientos' => $catEstablecimientos,
@@ -120,5 +129,10 @@ class CatEstablecimientoController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getProductosAction(CatEstablecimiento $establecimiento, Request $request)
+    {
+        return 
     }
 }
