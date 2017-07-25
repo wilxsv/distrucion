@@ -17,7 +17,11 @@
       <tbody>
       {% for producto in productos%}
           <tr>
-              <td>{{producto.verificar}}</td>
+              {% if producto.verificar == false%}
+              <td><input type="checkbox" id="verificacion"></td>
+              {% elseif producto.verificar == true%}
+              <td><input type="checkbox" id="verificacion" checked></td>
+              {% endif%}
               <td>{{producto.id}}</td>
               <td>{{producto.nombre_largo_insumo}}</td>
               <td>{{producto.cantidad_sugerida}}</td>
