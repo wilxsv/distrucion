@@ -10,7 +10,7 @@
   {% endfor %}
 
   <table>
-  <form action={{ path ('establecimientos_vale') }}>
+  <form action={{ path ('establecimientos_vale') }}
       <thead>
           <tr>
               <th>Codigo</th>
@@ -18,9 +18,9 @@
               <th>UM</th>
               <th>Existencias</th>
               <th>Cantidad Asignada</th>
-              <th>Detalles</th>
-              <th>Cantidad a Despachar</th>
               <th>Selecciona</>
+              <th>Cantidad a Despachar</th>
+              <th>Detalles</th>
           </tr>
       </thead>
       <tbody>
@@ -43,7 +43,8 @@
               <td></td>
               <td></td>
               <td></td>
-              <td><input type="submit" name="procesar" value="Finalizar Despacho"></td>
+              <td></td>
+              <td><input type="submit" value="Finalizar Despacho"></td>
       </tr>
       </tbody>
       </form>

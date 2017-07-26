@@ -26,7 +26,7 @@ class CatEstablecimientoController extends Controller
         //$catEstablecimientos = $em->getRepository('MinsalCoreBundle:CatEstablecimiento')->findAll();
 
         //Sentencia sql para traer los establecimientos que tienen establecimientos
-        $sql = "select distinct e.id as Establecimiento, e.nombre from cat_establecimiento as e
+        $sql = "select distinct e.id as Establecimiento, e.nombre, a.prioridad from cat_establecimiento as e
         inner join trn_establecimientosdistribucion as i on i.id_cat_establecimiento =  e.id
         inner join trn_asignacion as a on a.id = i.trn_asignacionid;";
 
@@ -145,7 +145,11 @@ class CatEstablecimientoController extends Controller
     {
         $nombreEstablecimiento = $establecimiento->getNombre();
         $em = $this->getDoctrine()->getManager();
-
+        $total = 0.00;
+        if (isset($_GET["total"]))
+        {
+          $total = $_GET["total"];
+        }
         // Query to get the products for a specific institution
         $sql = "select foo.id, foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada, sum(foo.existencia)
                 from (select distinct fo.id, fo.api_loteid, fo.codigo_sinab, fo.nombre_largo_insumo, fo.unidad_medida, fo.existencia, fo.cantidadasignada
@@ -164,12 +168,16 @@ class CatEstablecimientoController extends Controller
                 ";
         $statement = $em->getConnection()->prepare($sql);
         $statement->execute();
+
+        //Variables de sesion...
         $productos = $statement->fetchAll();
         $session = $request->getSession();
         $session->set('productosSesion', $productos );
+        $session->set('establecimientoSesion', $establecimiento);
         return $this->render('catestablecimiento/productos.html.twig', array(
           'productos' => $productos,
-          'establecimiento' => $nombreEstablecimiento
+          'establecimiento' => $nombreEstablecimiento,
+          'total' => $total
         )
 
       );
@@ -189,6 +197,7 @@ class CatEstablecimientoController extends Controller
         $Asignacions = $stmt->fetchAll();
         $session = $request->getSession();
         $productos = $session->get('productosSesion');
+        $establecimientoActual = $session->get('establecimientoSesion');
         foreach ($productos as $producto){
           if ($producto["id"] == $catProducto->getId())
           {
@@ -197,7 +206,8 @@ class CatEstablecimientoController extends Controller
         }
         return $this->render('catestablecimiento/asignacionesProducto.html.twig', array(
             'asignaciones' => $Asignacions,
-            'total' => $total
+            'total' => $total,
+            'establecimiento' => $establecimientoActual
         ));
     }
 
@@ -205,7 +215,7 @@ class CatEstablecimientoController extends Controller
       $productos = $request->get('products');
       if ($productos == null) {
         $this->addFlash('error', 'No seleciono ningun producto');
-        return $this->redirectToRoute('establecimientos_productos',$request->getSession()->get('establecimientoSession'));
+        return $this->redirectToRoute('establecimientos_productos', array('id' => $request->getSession()->get('establecimientoSesion')->getId()));
       } else {
         $em = $this->getDoctrine()->getManager();
         $vale = new ValeProvisional();
