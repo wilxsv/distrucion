@@ -2,14 +2,19 @@
 
 {% block body %}
   <h1>Detalle de Productos {{ establecimiento }}</h1>
+
   <table>
+  <form action={{ path ('establecimientos_index') }}
       <thead>
           <tr>
               <th>Codigo</th>
               <th>Descripcion</th>
               <th>UM</th>
-              <th>Existencias en Lotes</th>
+              <th>Existencias</th>
               <th>Cantidad Asignada</th>
+              <th>Detalles</th>
+              <th>Cantidad a Despachar</th>
+              <th>Selecciona</>
           </tr>
       </thead>
       <tbody>
@@ -20,9 +25,14 @@
               <td>{{ producto.unidad_medida }}</td>
               <td>{{ producto.sum }}</td>
               <td>{{ producto.cantidadasignada }}</td>
+              <td><a href={{ path ('establecimientos_asignaciones', { 'id': producto.id }) }}>Ver Detalles</a></td>
+              <td><input type="number" min="0" max={{ producto.cantidadasignada }}></td>
+              <td><input type="checkbox" value={{ producto.id }}></td>
               </tr>
       {% endfor%}
       </tbody>
+      <input type="submit" value="Finalizar Despacho">
+      </form>
   </table>
 
 {% endblock %}

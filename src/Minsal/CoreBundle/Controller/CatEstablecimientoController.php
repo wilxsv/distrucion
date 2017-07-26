@@ -145,9 +145,9 @@ class CatEstablecimientoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // Query to get the products for a specific institution
-        $sql = "select foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada, sum(foo.existencia)
-                from (select distinct fo.api_loteid, fo.codigo_sinab, fo.nombre_largo_insumo, fo.unidad_medida, fo.existencia, fo.cantidadasignada
-                from (select pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida, pl.existencia, sum(d.cantidad_distribuir) as cantidadasignada
+        $sql = "select foo.id, foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada, sum(foo.existencia)
+                from (select distinct fo.id, fo.api_loteid, fo.codigo_sinab, fo.nombre_largo_insumo, fo.unidad_medida, fo.existencia, fo.cantidadasignada
+                from (select p.id, pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida, pl.existencia, sum(d.cantidad_distribuir) as cantidadasignada
                 from cat_establecimiento as e inner join trn_establecimientosdistribucion as i
                 on i.id_cat_establecimiento =  e.id inner join trn_asignacion as a
                 on a.id = i.trn_asignacionid inner join distribucion_producto as dp
@@ -156,9 +156,9 @@ class CatEstablecimientoController extends Controller
                 on d.cat_productoid = dp.cat_productoid and d.trn_asignacionid = dp.trn_asignacionid inner join trn_productoslote as pl
                 on pl.cat_productoid = p.id
                 where e.id = ".$establecimiento->getId()."
-                group by (pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida)) as fo
+                group by (p.id, pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida)) as fo
                 order by fo.api_loteid) as foo
-                group by (foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada);
+                group by (foo.id, foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada);
                 ";
         $statement = $em->getConnection()->prepare($sql);
         $statement->execute();

@@ -31,4 +31,4 @@ establecimientos_productos:
 establecimientos_asignaciones:
     path:     /productos/{id}/asignaciones
     defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:productoAsignaciones" }
-    methods:  GET
+    methods:  [GET, POST]
