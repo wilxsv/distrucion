@@ -163,7 +163,8 @@ class CatEstablecimientoController extends Controller
         $statement = $em->getConnection()->prepare($sql);
         $statement->execute();
         $productos = $statement->fetchAll();
-
+        $session = $request->getSession();
+        $session->set('productosSesion', $productos );
         return $this->render('catestablecimiento/productos.html.twig', array(
           'productos' => $productos,
           'establecimiento' => $nombreEstablecimiento
@@ -172,7 +173,7 @@ class CatEstablecimientoController extends Controller
       );
     }
 
-    public function productoAsignacionesAction(CatProducto $catProducto)
+    public function productoAsignacionesAction(CatProducto $catProducto, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -184,9 +185,17 @@ class CatEstablecimientoController extends Controller
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
         $Asignacions = $stmt->fetchAll();
-
+        $session = $request->getSession();
+        $productos = $session->get('productosSesion');
+        for $producto in $productos{
+          if ($producto['id'] == $catProducto->getId())
+          {
+            $total = $producto['sum'];
+          }
+        }
         return $this->render('catestablecimiento/asignacionesProducto.html.twig', array(
             'asignaciones' => $Asignacions,
+            'total' => $total
         ));
     }
 }

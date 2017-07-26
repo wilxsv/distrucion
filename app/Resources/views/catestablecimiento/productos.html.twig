@@ -28,10 +28,18 @@
               <td><a href={{ path ('establecimientos_asignaciones', { 'id': producto.id }) }}>Ver Detalles</a></td>
               <td><input type="number" min="0" max={{ producto.cantidadasignada }}></td>
               <td><input type="checkbox" value={{ producto.id }}></td>
-              </tr>
+          </tr>
       {% endfor%}
+      <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><input type="submit" value="Finalizar Despacho"></td>
+      </tr>
       </tbody>
-      <input type="submit" value="Finalizar Despacho">
       </form>
   </table>
 
