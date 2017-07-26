@@ -198,4 +198,8 @@ class CatEstablecimientoController extends Controller
             'total' => $total
         ));
     }
+
+    public function valeAction(){
+      return $this->render("catestablecimiento/vale.html.twig");
+    }
 }

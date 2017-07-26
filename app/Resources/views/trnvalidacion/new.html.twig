@@ -3,8 +3,11 @@
 {% block body %}
     <h1>Creando Validacion para Producto </h1>
 
-    <p>Cantidad Asignada: {{ detalle.cantidad_sugerida }}</p>
     <p>Existencia: {{ detalle.existencia_almacenes }}</p>
+    <p >Cantidad Asignada:</p>
+    <input id="cantidad" type="numeric" disabled value="{{ detalle.cantidad_sugerida }}">
+
+
     <p>Consumo Promedio: {{ detalle.cpm }}</p>
 
     {{ form_start(form) }}
@@ -14,4 +17,35 @@
 
 
 
+{% endblock %}
+{% block footer_js %}
+
+  <script >
+  $(document).ready(function(){
+    // console.log($('#cantidad').val());
+    // console.log($('minsal_corebundle_trnvalidacion_cantidadPrelimimar').val());
+    $('#minsal_corebundle_trnvalidacion_observacion').prop("required",true);
+    $('#minsal_corebundle_trnvalidacion_cantidadPrelimimar').prop("required",true);
+
+
+    });
+
+  $("form").submit(function(e){
+    let cantidad = $('#cantidad').val();
+    let preliminar = $('#minsal_corebundle_trnvalidacion_cantidadPrelimimar').val();
+    cantidad = parseInt(cantidad);
+    preliminar = parseInt(preliminar);
+    console.log("Cantidad: " + cantidad);
+    console.log("Preliminar: " + preliminar);
+    if(preliminar>cantidad){
+      //console.log("NO ENVIAR");
+      alert( "La cantidad preliminar debe ser menor o igual a la cantidad asignada." );
+      e.preventDefault();
+    }
+  })
+
+
+
+
+  </script>
 {% endblock %}
