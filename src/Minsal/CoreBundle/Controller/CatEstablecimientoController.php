@@ -141,8 +141,10 @@ class CatEstablecimientoController extends Controller
     */
     public function getProductosAction(CatEstablecimiento $establecimiento, Request $request)
     {
+        $session = $request->getSession();
         $nombreEstablecimiento = $establecimiento->getNombre();
         $em = $this->getDoctrine()->getManager();
+        $productoActual = $session->get('productoActual');
         $total = 0.00;
         if (isset($_GET["total"]))
         {
@@ -169,12 +171,13 @@ class CatEstablecimientoController extends Controller
 
         //Variables de sesion...
         $productos = $statement->fetchAll();
-        $session = $request->getSession();
+
         $session->set('productosSesion', $productos );
         $session->set('establecimientoSesion', $establecimiento);
         return $this->render('catestablecimiento/productos.html.twig', array(
           'productos' => $productos,
           'establecimiento' => $nombreEstablecimiento,
+          'id' => $productoActual->getId(),
           'total' => $total
         )
 
@@ -188,13 +191,15 @@ class CatEstablecimientoController extends Controller
         $sql = "select a.fecha_creacion, a.id, a.descripcion, d.cantidad_distribuir from trn_detalle d inner join distribucion_producto dp
         on d.trn_asignacionid = dp.trn_asignacionid and d.cat_productoid = dp.cat_productoid
         inner join trn_asignacion a on dp.trn_asignacionid = a.id
-        inner join cat_producto p on dp.cat_productoid = p.id and d.cat_productoid = ".$catProducto->getId();
+        inner join cat_producto p on dp.cat_productoid = p.id and d.cat_productoid = ".$catProducto->getId()."
+        order by a.fecha_creacion ASC;";
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
         $Asignacions = $stmt->fetchAll();
         $session = $request->getSession();
         $productos = $session->get('productosSesion');
+        $session->set('productoActual', $catProducto);
         $establecimientoActual = $session->get('establecimientoSesion');
         foreach ($productos as $producto){
           if ($producto["id"] == $catProducto->getId())

@@ -17,24 +17,22 @@
       </tr>
     </thead>
     <tbody>
-      {% for asignacion in asignaciones%}
+      {% for asignacion in asignaciones %}
       <tr>
         <td>{{asignacion.fecha_creacion}}</td>
         <td>{{asignacion.id}}</td>
         <td>{{asignacion.descripcion}}</td>
         <td>{{asignacion.cantidad_distribuir}}</td>
         <td>estado</td>
-        <td><input type="number" name="cantidad" min=0 max={{ asignacion.cantidad_distribuir }}></td>
-      </tr>
+        </tr>
       {%endfor%}
       <tr>
         <td></td>
         <td></td>
         <td>Total Asignado</td>
         <td>{{ total }}</td>
-        <input type="hidden" name="total" value={{ total }}>
         <td>Total a Despachar</td>
-        <td></td>
+        <td><input type="number" name="total" min=0 max={{ total }}></td>
       </tr>
       <tr>
         <td></td>
