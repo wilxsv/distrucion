@@ -3,8 +3,14 @@
 {% block body %}
   <h1>Detalle de Productos {{ establecimiento }}</h1>
 
+  {% for flash_message in app.session.flashBag.get('error') %}
+    <div class="flash-notice">
+      {{ flash_message }}
+    </div>
+  {% endfor %}
+
   <table>
-  <form action={{ path ('establecimientos_index') }}
+  <form action={{ path ('establecimientos_vale') }}>
       <thead>
           <tr>
               <th>Codigo</th>
@@ -27,7 +33,7 @@
               <td>{{ producto.cantidadasignada }}</td>
               <td><a href={{ path ('establecimientos_asignaciones', { 'id': producto.id }) }}>Ver Detalles</a></td>
               <td><input type="number" min="0" max={{ producto.cantidadasignada }}></td>
-              <td><input type="checkbox" value={{ producto.id }}></td>
+              <td><input type="checkbox" name="products[]" value={{ producto.id }}></td>
           </tr>
       {% endfor%}
       <tr>
@@ -37,10 +43,9 @@
               <td></td>
               <td></td>
               <td></td>
-              <td><input type="submit" value="Finalizar Despacho"></td>
+              <td><input type="submit" name="procesar" value="Finalizar Despacho"></td>
       </tr>
       </tbody>
       </form>
   </table>
-
 {% endblock %}

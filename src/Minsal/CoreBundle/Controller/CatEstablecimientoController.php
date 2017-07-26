@@ -2,10 +2,12 @@
 
 namespace Minsal\CoreBundle\Controller;
 
+use Minsal\CoreBundle\Entity\ValeProvisional;
 use Minsal\CoreBundle\Entity\CatEstablecimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Minsal\CoreBundle\Entity\CatProducto;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Catestablecimiento controller.
@@ -199,7 +201,25 @@ class CatEstablecimientoController extends Controller
         ));
     }
 
-    public function valeAction(){
-      return $this->render("catestablecimiento/vale.html.twig");
+    public function valeAction(Request $request){
+      $productos = $request->get('products');
+      if ($productos == null) {
+        $this->addFlash('error', 'No seleciono ningun producto');
+        return $this->redirectToRoute('establecimientos_productos',$request->getSession()->get('establecimientoSession'));
+      } else {
+        $em = $this->getDoctrine()->getManager();
+        $vale = new ValeProvisional();
+        foreach ($productos as $p) {
+          //$productos1[] = $em->getRepository('MinsalCoreBundle:CatProducto')->find($p);
+          $vale->addCatProductoid($em->getRepository('MinsalCoreBundle:CatProducto')->find($p));
+        }
+        $vale->setSegUsuarioid($em->getRepository('MinsalCoreBundle:SegUsuario')->find(1));
+        $vale->setFechaCreacion(new \DateTime("now"));
+        $em->persist($vale);
+        $em->flush();
+        return $this->render("catestablecimiento/vale.html.twig",array(
+          'vale' => $vale
+        ));
+      }
     }
 }
