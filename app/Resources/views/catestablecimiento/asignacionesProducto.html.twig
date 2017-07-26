@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <h1>Listado de Asignaciones</hi>
+  <center></center>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Codigo</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for asignacion in asignaciones%}
+      <tr>
+        <td>{{asignacion.fecha_creacion}}</td>
+        <td>{{asignacion.id}}</td>
+        <td>{{asignacion.descripcion}}</td>
+        <td>{{asignacion.cantidad_distribuir}}</td>
+        <td>estado</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
+{% endblock%}

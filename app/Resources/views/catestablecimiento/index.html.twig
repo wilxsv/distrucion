@@ -1,65 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Catestablecimientos list</h1>
+    <h1>Establecimientos con Asignaciones</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Idtipoestablecimiento</th>
-                <th>Nombre</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
-                <th>Fax</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
-                <th>Idinstitucion</th>
-                <th>Idmunicipio</th>
-                <th>Anioapertura</th>
-                <th>Idcatnivelminsal</th>
-                <th>Idestablecimientopadre</th>
-                <th>Registroschema</th>
-                <th>Enableschema</th>
-                <th>Actions</th>
+                <th>Establecimiento</th>
+                <th>Nombre del Establecimiento</th>
+                <th>Productos</th>
             </tr>
         </thead>
         <tbody>
         {% for catEstablecimiento in catEstablecimientos %}
             <tr>
-                <td><a href="{{ path('establecimientos_show', { 'id': catEstablecimiento.id }) }}">{{ catEstablecimiento.id }}</a></td>
-                <td>{{ catEstablecimiento.idTipoEstablecimiento }}</td>
+                <td><a href="{{ path('establecimientos_show', { 'id': catEstablecimiento.establecimiento }) }}">{{ catEstablecimiento.establecimiento }}</a></td>
                 <td>{{ catEstablecimiento.nombre }}</td>
-                <td>{{ catEstablecimiento.direccion }}</td>
-                <td>{{ catEstablecimiento.telefono }}</td>
-                <td>{{ catEstablecimiento.fax }}</td>
-                <td>{{ catEstablecimiento.latitud }}</td>
-                <td>{{ catEstablecimiento.longitud }}</td>
-                <td>{{ catEstablecimiento.idInstitucion }}</td>
-                <td>{{ catEstablecimiento.idMunicipio }}</td>
-                <td>{{ catEstablecimiento.anioApertura }}</td>
-                <td>{{ catEstablecimiento.idCatNivelMinsal }}</td>
-                <td>{{ catEstablecimiento.idEstablecimientoPadre }}</td>
-                <td>{% if catEstablecimiento.registroSchema %}{{ catEstablecimiento.registroSchema|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ catEstablecimiento.enableSchema }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('establecimientos_show', { 'id': catEstablecimiento.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('establecimientos_edit', { 'id': catEstablecimiento.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><a href="{{ path('establecimientos_productos', { 'id' : catEstablecimiento.establecimiento }) }}">Ver Productos Asociados</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
+    <!--<ul>
         <li>
             <a href="{{ path('establecimientos_new') }}">Create a new catEstablecimiento</a>
         </li>
-    </ul>
+    </ul>-->
 {% endblock %}

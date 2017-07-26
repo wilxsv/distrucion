@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>Detalle de Productos {{ establecimiento }}</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>Codigo</th>
+              <th>Descripcion</th>
+              <th>UM</th>
+              <th>Existencias en Lotes</th>
+              <th>Cantidad Asignada</th>
+          </tr>
+      </thead>
+      <tbody>
+      {% for producto in productos %}
+          <tr>
+              <td>{{ producto.codigo_sinab }}</td>
+              <td>{{ producto.nombre_largo_insumo }}</td>
+              <td>{{ producto.unidad_medida }}</td>
+              <td>{{ producto.sum }}</td>
+              <td>{{ producto.cantidadasignada }}</td>
+              </tr>
+      {% endfor%}
+      </tbody>
+  </table>
+
+{% endblock %}
