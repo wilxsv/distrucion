@@ -27,7 +27,7 @@
               <td>{{producto.nombre_largo_insumo}}</td>
               <td>{{producto.cantidad_sugerida}}</td>
               <td>
-              {% if producto.id_trn_validacion %}
+                {% if producto.id_trn_validacion %}
                 <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-check"></span>
                 </button>
@@ -41,10 +41,6 @@
 
 
               {% endif %}
-
-              </td>
-              <td>
-                <input id="referencia" disabled="true" />
               </td>
           </tr>
       {% endfor%}
@@ -58,13 +54,15 @@
   <script >
 
     function activar(event){
-      if( !$('#ver').is(":checked") ){
-
+      if( $('#ver').is(":checked") ){
+        $('#habilitar').prop('disabled', true);
+      } else {
+        $('#habilitar').prop('disabled',false);
       }
     }
     $(document).ready(function(){
       console.log(jQuery.fn.jquery);
-      activar();
+      //activar();
       $("#ver").click(activar);
     });
   </script>
