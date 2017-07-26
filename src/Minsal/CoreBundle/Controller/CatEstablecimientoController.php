@@ -189,4 +189,8 @@ class CatEstablecimientoController extends Controller
             'asignaciones' => $Asignacions,
         ));
     }
+
+    public function valeAction(){
+      return $this->render("catestablecimiento/vale.html.twig");
+    }
 }
