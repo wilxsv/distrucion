@@ -57,20 +57,20 @@ class CatProducto
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $trnAsignacionid;
+    private $idValeProvisional;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $idValeProvisional;
+    private $trnAsignacionid;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->trnAsignacionid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idValeProvisional = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->trnAsignacionid = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -268,39 +268,6 @@ class CatProducto
     }
 
     /**
-     * Add trnAsignacionid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid
-     * @return CatProducto
-     */
-    public function addTrnAsignacionid(\Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid)
-    {
-        $this->trnAsignacionid[] = $trnAsignacionid;
-
-        return $this;
-    }
-
-    /**
-     * Remove trnAsignacionid
-     *
-     * @param \Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid
-     */
-    public function removeTrnAsignacionid(\Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid)
-    {
-        $this->trnAsignacionid->removeElement($trnAsignacionid);
-    }
-
-    /**
-     * Get trnAsignacionid
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTrnAsignacionid()
-    {
-        return $this->trnAsignacionid;
-    }
-
-    /**
      * Add idValeProvisional
      *
      * @param \Minsal\CoreBundle\Entity\ValeProvisional $idValeProvisional
@@ -331,5 +298,38 @@ class CatProducto
     public function getIdValeProvisional()
     {
         return $this->idValeProvisional;
+    }
+
+    /**
+     * Add trnAsignacionid
+     *
+     * @param \Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid
+     * @return CatProducto
+     */
+    public function addTrnAsignacionid(\Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid)
+    {
+        $this->trnAsignacionid[] = $trnAsignacionid;
+
+        return $this;
+    }
+
+    /**
+     * Remove trnAsignacionid
+     *
+     * @param \Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid
+     */
+    public function removeTrnAsignacionid(\Minsal\CoreBundle\Entity\TrnAsignacion $trnAsignacionid)
+    {
+        $this->trnAsignacionid->removeElement($trnAsignacionid);
+    }
+
+    /**
+     * Get trnAsignacionid
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTrnAsignacionid()
+    {
+        return $this->trnAsignacionid;
     }
 }

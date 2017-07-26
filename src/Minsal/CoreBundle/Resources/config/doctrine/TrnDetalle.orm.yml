@@ -5,9 +5,9 @@ Minsal\CoreBundle\Entity\TrnDetalle:
         IDX_D232DD2AD77BFB9A:
             columns:
                 - id_trn_validacion
-        IDX_D232DD2A297B5DA3BC0DA83B:
+        IDX_D232DD2ACC43D999BC0DA83B:
             columns:
-                - id_trn_asignacion
+                - trn_asignacionid
                 - cat_productoid
     id:
         id:
@@ -73,13 +73,13 @@ Minsal\CoreBundle\Entity\TrnDetalle:
                 id_trn_validacion:
                     referencedColumnName: id
             orphanRemoval: false
-        idTrnAsignacion:
+        trnAsignacionid:
             targetEntity: DistribucionProducto
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                id_trn_asignacion:
+                trn_asignacionid:
                     referencedColumnName: trn_asignacionid
                 cat_productoid:
                     referencedColumnName: cat_productoid

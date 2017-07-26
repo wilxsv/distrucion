@@ -52,15 +52,15 @@ Minsal\CoreBundle\Entity\CatProducto:
             fixed: false
             column: unidad_medida
     manyToMany:
-        trnAsignacionid:
-            targetEntity: TrnAsignacion
+        idValeProvisional:
+            targetEntity: ValeProvisional
             cascade: {  }
             mappedBy: catProductoid
             inversedBy: null
             joinTable: null
             orderBy: null
-        idValeProvisional:
-            targetEntity: ValeProvisional
+        trnAsignacionid:
+            targetEntity: TrnAsignacion
             cascade: {  }
             mappedBy: catProductoid
             inversedBy: null

@@ -122,22 +122,6 @@ Minsal\CoreBundle\Entity\TrnAsignacion:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:
-        catProductoid:
-            targetEntity: CatProducto
-            cascade: {  }
-            mappedBy: null
-            inversedBy: trnAsignacionid
-            joinTable:
-                name: distribucion_producto
-                joinColumns:
-                    -
-                        name: trn_asignacionid
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: cat_productoid
-                        referencedColumnName: id
-            orderBy: null
         idCatEstablecimiento:
             targetEntity: CatEstablecimiento
             cascade: {  }
@@ -152,6 +136,22 @@ Minsal\CoreBundle\Entity\TrnAsignacion:
                 inverseJoinColumns:
                     -
                         name: id_cat_establecimiento
+                        referencedColumnName: id
+            orderBy: null
+        catProductoid:
+            targetEntity: CatProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: trnAsignacionid
+            joinTable:
+                name: distribucion_producto
+                joinColumns:
+                    -
+                        name: trn_asignacionid
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: cat_productoid
                         referencedColumnName: id
             orderBy: null
     lifecycleCallbacks: {  }

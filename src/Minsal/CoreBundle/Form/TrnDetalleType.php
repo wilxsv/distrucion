@@ -13,7 +13,7 @@ class TrnDetalleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('cpm')->add('cantidadDistribuir')->add('cantidadSugerida')->add('existenciaAlmacenes')->add('existenciaFarmacia')->add('apiEstablecimientoid')->add('verificar')->add('fechaCreacion')->add('fechaModificacion')->add('idTrnValidacion')->add('idTrnAsignacion')->add('idTrnEntregas');
+        $builder->add('cpm')->add('cantidadDistribuir')->add('cantidadSugerida')->add('existenciaAlmacenes')->add('existenciaFarmacia')->add('apiEstablecimientoid')->add('verificar')->add('fechaCreacion')->add('fechaModificacion')->add('idTrnValidacion')->add('trnAsignacionid')->add('idTrnEntregas');
     }
     
     /**

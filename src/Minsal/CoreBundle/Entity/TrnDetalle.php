@@ -67,7 +67,7 @@ class TrnDetalle
     /**
      * @var \Minsal\CoreBundle\Entity\DistribucionProducto
      */
-    private $idTrnAsignacion;
+    private $trnAsignacionid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -323,26 +323,26 @@ class TrnDetalle
     }
 
     /**
-     * Set idTrnAsignacion
+     * Set trnAsignacionid
      *
-     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $idTrnAsignacion
+     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $trnAsignacionid
      * @return TrnDetalle
      */
-    public function setIdTrnAsignacion(\Minsal\CoreBundle\Entity\DistribucionProducto $idTrnAsignacion = null)
+    public function setTrnAsignacionid(\Minsal\CoreBundle\Entity\DistribucionProducto $trnAsignacionid = null)
     {
-        $this->idTrnAsignacion = $idTrnAsignacion;
+        $this->trnAsignacionid = $trnAsignacionid;
 
         return $this;
     }
 
     /**
-     * Get idTrnAsignacion
+     * Get trnAsignacionid
      *
      * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
      */
-    public function getIdTrnAsignacion()
+    public function getTrnAsignacionid()
     {
-        return $this->idTrnAsignacion;
+        return $this->trnAsignacionid;
     }
 
     /**
