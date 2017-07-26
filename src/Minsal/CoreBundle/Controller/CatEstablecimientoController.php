@@ -187,10 +187,10 @@ class CatEstablecimientoController extends Controller
         $Asignacions = $stmt->fetchAll();
         $session = $request->getSession();
         $productos = $session->get('productosSesion');
-        for $producto in $productos{
-          if ($producto['id'] == $catProducto->getId())
+        foreach ($productos as $producto){
+          if ($producto["id"] == $catProducto->getId())
           {
-            $total = $producto['sum'];
+            $total = $producto["cantidadasignada"];
           }
         }
         return $this->render('catestablecimiento/asignacionesProducto.html.twig', array(
