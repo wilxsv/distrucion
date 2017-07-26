@@ -14,14 +14,14 @@
         </tr>
       </thead>
       <tbody>
-        <!--for-->
+        {% for v in vale.getCatProductoid()%}
         <tr>
-          <td>6851651</td>
-          <td>descripcion</td>
+          <td>{{v.getId()}}</td>
+          <td>{{v.getNombreLargoInsumo()}}</td>
           <td>CO</td>
            <td>465987</td>
           <tr>
-      <!--endfor-->
+      {%endfor%}
       </tbody>
     </table>
 
