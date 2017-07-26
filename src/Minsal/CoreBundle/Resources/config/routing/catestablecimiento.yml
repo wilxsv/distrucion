@@ -22,3 +22,8 @@ establecimientos_delete:
     path:     /{id}/delete
     defaults: { _controller: "MinsalCoreBundle:CatEstablecimiento:delete" }
     methods:  DELETE
+
+establecimientos_productos:
+  path:       /{id}/productos
+  defaults:   { _controller: "MinsalCoreBundle:CatEstablecimiento:getProductos"}
+  methods:    GET
