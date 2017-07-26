@@ -48,7 +48,7 @@ class CtlGrupo
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -71,7 +71,7 @@ class CtlGrupo
     /**
      * Get nombreGrupo
      *
-     * @return string
+     * @return string 
      */
     public function getNombreGrupo()
     {
@@ -94,7 +94,7 @@ class CtlGrupo
     /**
      * Get registroSchema
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getRegistroSchema()
     {
@@ -117,7 +117,7 @@ class CtlGrupo
     /**
      * Get enableSchema
      *
-     * @return integer
+     * @return integer 
      */
     public function getEnableSchema()
     {
@@ -140,7 +140,7 @@ class CtlGrupo
     /**
      * Get codigoGrupo
      *
-     * @return integer
+     * @return integer 
      */
     public function getCodigoGrupo()
     {
@@ -163,7 +163,7 @@ class CtlGrupo
     /**
      * Get apiGruposuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CtlGrupo
+     * @return \Minsal\CoreBundle\Entity\CtlGrupo 
      */
     public function getApiGruposuministroid()
     {
@@ -186,14 +186,10 @@ class CtlGrupo
     /**
      * Get catSuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CatSuministro
+     * @return \Minsal\CoreBundle\Entity\CatSuministro 
      */
     public function getCatSuministroid()
     {
         return $this->catSuministroid;
-    }
-
-    public function __toString(){
-      return $this->nombreGrupo;
     }
 }

@@ -100,17 +100,23 @@ class TrnAsignacion
     private $idCatEstablecimiento;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $catProductoid;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->idCatEstablecimiento = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->catProductoid = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -133,7 +139,7 @@ class TrnAsignacion
     /**
      * Get apiAlmacenid
      *
-     * @return integer
+     * @return integer 
      */
     public function getApiAlmacenid()
     {
@@ -156,7 +162,7 @@ class TrnAsignacion
     /**
      * Get descripcion
      *
-     * @return string
+     * @return string 
      */
     public function getDescripcion()
     {
@@ -179,7 +185,7 @@ class TrnAsignacion
     /**
      * Get fechadistribucion
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechadistribucion()
     {
@@ -202,7 +208,7 @@ class TrnAsignacion
     /**
      * Get fechacorte
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechacorte()
     {
@@ -225,7 +231,7 @@ class TrnAsignacion
     /**
      * Get mesesCpm
      *
-     * @return integer
+     * @return integer 
      */
     public function getMesesCpm()
     {
@@ -248,7 +254,7 @@ class TrnAsignacion
     /**
      * Get mesesDistribucion
      *
-     * @return integer
+     * @return integer 
      */
     public function getMesesDistribucion()
     {
@@ -271,7 +277,7 @@ class TrnAsignacion
     /**
      * Get mesesAdministracion
      *
-     * @return integer
+     * @return integer 
      */
     public function getMesesAdministracion()
     {
@@ -294,7 +300,7 @@ class TrnAsignacion
     /**
      * Get mesesSeguridad
      *
-     * @return integer
+     * @return integer 
      */
     public function getMesesSeguridad()
     {
@@ -317,7 +323,7 @@ class TrnAsignacion
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechaCreacion()
     {
@@ -340,7 +346,7 @@ class TrnAsignacion
     /**
      * Get fechaModificaion
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechaModificaion()
     {
@@ -363,7 +369,7 @@ class TrnAsignacion
     /**
      * Get prioridad
      *
-     * @return string
+     * @return string 
      */
     public function getPrioridad()
     {
@@ -386,7 +392,7 @@ class TrnAsignacion
     /**
      * Get segUsuarioid
      *
-     * @return \Minsal\CoreBundle\Entity\SegUsuario
+     * @return \Minsal\CoreBundle\Entity\SegUsuario 
      */
     public function getSegUsuarioid()
     {
@@ -409,7 +415,7 @@ class TrnAsignacion
     /**
      * Get catEstadosid
      *
-     * @return \Minsal\CoreBundle\Entity\CatEstados
+     * @return \Minsal\CoreBundle\Entity\CatEstados 
      */
     public function getCatEstadosid()
     {
@@ -432,7 +438,7 @@ class TrnAsignacion
     /**
      * Get catProgramaid
      *
-     * @return \Minsal\CoreBundle\Entity\CatProgramas
+     * @return \Minsal\CoreBundle\Entity\CatProgramas 
      */
     public function getCatProgramaid()
     {
@@ -455,7 +461,7 @@ class TrnAsignacion
     /**
      * Get catSuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CatSuministro
+     * @return \Minsal\CoreBundle\Entity\CatSuministro 
      */
     public function getCatSuministroid()
     {
@@ -478,7 +484,7 @@ class TrnAsignacion
     /**
      * Get apiGruposuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CtlGrupo
+     * @return \Minsal\CoreBundle\Entity\CtlGrupo 
      */
     public function getApiGruposuministroid()
     {
@@ -511,10 +517,43 @@ class TrnAsignacion
     /**
      * Get idCatEstablecimiento
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getIdCatEstablecimiento()
     {
         return $this->idCatEstablecimiento;
+    }
+
+    /**
+     * Add catProductoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProducto $catProductoid
+     * @return TrnAsignacion
+     */
+    public function addCatProductoid(\Minsal\CoreBundle\Entity\CatProducto $catProductoid)
+    {
+        $this->catProductoid[] = $catProductoid;
+
+        return $this;
+    }
+
+    /**
+     * Remove catProductoid
+     *
+     * @param \Minsal\CoreBundle\Entity\CatProducto $catProductoid
+     */
+    public function removeCatProductoid(\Minsal\CoreBundle\Entity\CatProducto $catProductoid)
+    {
+        $this->catProductoid->removeElement($catProductoid);
+    }
+
+    /**
+     * Get catProductoid
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCatProductoid()
+    {
+        return $this->catProductoid;
     }
 }

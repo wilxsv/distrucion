@@ -33,7 +33,7 @@
                 </button>
               {% else %}
 
-                <a id="habilitar" href="{{ "/validaciones/#{producto.iddetalle}" }}">
+                <a id="habilitar" href="{{ "/validaciones/#{producto.detalle_id}" }}">
                    <button type="button" class="btn btn-default btn-sm">
                      <span class="glyphicon glyphicon-comment"></span>
                    </button>
@@ -59,7 +59,7 @@
 
     function activar(event){
       if( !$('#ver').is(":checked") ){
-        
+
       }
     }
     $(document).ready(function(){

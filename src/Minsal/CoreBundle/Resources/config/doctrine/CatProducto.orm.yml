@@ -59,4 +59,11 @@ Minsal\CoreBundle\Entity\CatProducto:
             inversedBy: null
             joinTable: null
             orderBy: null
+        trnAsignacionid:
+            targetEntity: TrnAsignacion
+            cascade: {  }
+            mappedBy: catProductoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }

@@ -3,15 +3,15 @@
 {% block body %}
     <h1>Creando Validacion para Producto </h1>
 
-    <p>Cantidad Asignada: {{trnDetalle.getCantidadSugerida()}}</p>
-    <p>Existencia: {{trnDetalle.getExistenciaAlmacenes()}}</p>
-    <p>Consumo Promedio: {{trnDetalle.getCpm()}}</p>
+    <p>Cantidad Asignada: {{ detalle.cantidad_sugerida }}</p>
+    <p>Existencia: {{ detalle.existencia_almacenes }}</p>
+    <p>Consumo Promedio: {{ detalle.cpm }}</p>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Guardar Observacion" />
     {{ form_end(form) }}
 
-    
+
 
 {% endblock %}

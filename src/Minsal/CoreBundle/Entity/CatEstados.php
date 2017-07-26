@@ -23,7 +23,7 @@ class CatEstados
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -46,14 +46,10 @@ class CatEstados
     /**
      * Get estado
      *
-     * @return string
+     * @return string 
      */
     public function getEstado()
     {
         return $this->estado;
-    }
-
-    public function __toString(){
-      return $this->estado;
     }
 }

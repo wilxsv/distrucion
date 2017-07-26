@@ -4,41 +4,47 @@ namespace Minsal\CoreBundle\Controller;
 
 use Minsal\CoreBundle\Entity\TrnAsignacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trnasignacion controller.
  *
+ * @Route("asignaciones")
  */
 class TrnAsignacionController extends Controller
 {
     /**
      * Lists all trnAsignacion entities.
      *
+     * @Route("/", name="asignaciones_index")
+     * @Method("GET")
      */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+     public function indexAction()
+     {
+         $em = $this->getDoctrine()->getManager();
 
-        //$trnAsignacions = $em->getRepository('MinsalCoreBundle:TrnAsignacion')->findAll();
-        //$
-        $sql = "select a.id, a.descripcion, a.fechadistribucion, a.prioridad, est.estado from trn_asignacion a
-        inner join trn_establecimientosdistribucion ed on ed.trn_asignacionid = a.id
-        inner join cat_establecimiento e on e.id = ed.id_cat_establecimiento
-        inner join cat_estados est on est.id = a.cat_estadosid where e.id = 1142";
-        $em = $this->getDoctrine()->getManager();
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute();
-        $trnAsignacions = $stmt->fetchAll();
-        //return $trnAsignacions;
-        return $this->render('trnasignacion/index.html.twig', array(
-            'trnAsignacions' => $trnAsignacions,
-        ));
-    }
+         //$trnAsignacions = $em->getRepository('MinsalCoreBundle:TrnAsignacion')->findAll();
+         //$
+         $sql = "select a.id, a.descripcion, a.fechadistribucion, a.prioridad, est.estado from trn_asignacion a
+         inner join trn_establecimientosdistribucion ed on ed.trn_asignacionid = a.id
+         inner join cat_establecimiento e on e.id = ed.id_cat_establecimiento
+         inner join cat_estados est on est.id = a.cat_estadosid where e.id = 1142";
+         $em = $this->getDoctrine()->getManager();
+         $stmt = $em->getConnection()->prepare($sql);
+         $stmt->execute();
+         $trnAsignacions = $stmt->fetchAll();
+         //return $trnAsignacions;
+         return $this->render('trnasignacion/index.html.twig', array(
+             'trnAsignacions' => $trnAsignacions,
+         ));
+     }
 
     /**
      * Creates a new trnAsignacion entity.
      *
+     * @Route("/new", name="asignaciones_new")
+     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -51,7 +57,7 @@ class TrnAsignacionController extends Controller
             $em->persist($trnAsignacion);
             $em->flush();
 
-            return $this->redirectToRoute('asingaciones_show', array('id' => $trnAsignacion->getId()));
+            return $this->redirectToRoute('asignaciones_show', array('id' => $trnAsignacion->getId()));
         }
 
         return $this->render('trnasignacion/new.html.twig', array(
@@ -63,6 +69,8 @@ class TrnAsignacionController extends Controller
     /**
      * Finds and displays a trnAsignacion entity.
      *
+     * @Route("/{id}", name="asignaciones_show")
+     * @Method("GET")
      */
     public function showAction(TrnAsignacion $trnAsignacion)
     {
@@ -77,6 +85,8 @@ class TrnAsignacionController extends Controller
     /**
      * Displays a form to edit an existing trnAsignacion entity.
      *
+     * @Route("/{id}/edit", name="asignaciones_edit")
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, TrnAsignacion $trnAsignacion)
     {
@@ -87,7 +97,7 @@ class TrnAsignacionController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('asingaciones_edit', array('id' => $trnAsignacion->getId()));
+            return $this->redirectToRoute('asignaciones_edit', array('id' => $trnAsignacion->getId()));
         }
 
         return $this->render('trnasignacion/edit.html.twig', array(
@@ -100,6 +110,8 @@ class TrnAsignacionController extends Controller
     /**
      * Deletes a trnAsignacion entity.
      *
+     * @Route("/{id}", name="asignaciones_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, TrnAsignacion $trnAsignacion)
     {
@@ -112,7 +124,7 @@ class TrnAsignacionController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('asingaciones_index');
+        return $this->redirectToRoute('asignaciones_index');
     }
 
     /**
@@ -125,7 +137,7 @@ class TrnAsignacionController extends Controller
     private function createDeleteForm(TrnAsignacion $trnAsignacion)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('asingaciones_delete', array('id' => $trnAsignacion->getId())))
+            ->setAction($this->generateUrl('asignaciones_delete', array('id' => $trnAsignacion->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
@@ -143,12 +155,12 @@ class TrnAsignacionController extends Controller
       //Obteniendo el entity manager
       $em = $this->getDoctrine()->getManager();
       //Sentencia pura SQL
-      $sql = "select p.id, p.nombre_largo_insumo, t.verificar, t.id_trn_validacion, t.cantidad_sugerida, t.id as idDetalle, a.id as idAsignacion from cat_producto as p
-              inner join distribucion_producto as d on p.id = d.cat_productoid
-              inner join trn_asignacion as a on d.trn_asignacionid = a.id
-              inner join trn_detalle as t on d.trn_detalleid = t.id
-              where a.id = ".$trnAsignacion->getId()."
-            ";
+      $sql = "select p.id, dp.trn_asignacionid , p.nombre_largo_insumo, d.verificar, d.id as detalle_id,
+              d.cantidad_sugerida, d.id_trn_validacion
+              from cat_producto as p
+              inner join distribucion_producto as dp on dp.cat_productoid = p.id
+              right join trn_detalle as d on p.id = d.cat_productoid and dp.trn_asignacionid = d.trn_asignacionid
+              where dp.trn_asignacionid = ".$trnAsignacion->getId()."";
       $em = $this->getDoctrine()->getManager();
       $stmt = $em->getConnection()->prepare($sql);
       $stmt->execute();

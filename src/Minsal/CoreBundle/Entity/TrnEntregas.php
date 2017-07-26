@@ -60,7 +60,7 @@ class TrnEntregas
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -83,7 +83,7 @@ class TrnEntregas
     /**
      * Get cantidadDistribuida
      *
-     * @return string
+     * @return string 
      */
     public function getCantidadDistribuida()
     {
@@ -106,7 +106,7 @@ class TrnEntregas
     /**
      * Get trnDetalleid
      *
-     * @return integer
+     * @return integer 
      */
     public function getTrnDetalleid()
     {
@@ -129,7 +129,7 @@ class TrnEntregas
     /**
      * Get fechaDocumeento
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechaDocumeento()
     {
@@ -152,7 +152,7 @@ class TrnEntregas
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechaCreacion()
     {
@@ -175,7 +175,7 @@ class TrnEntregas
     /**
      * Get fechaModificacion
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getFechaModificacion()
     {
@@ -198,7 +198,7 @@ class TrnEntregas
     /**
      * Get idValeProvisional
      *
-     * @return \Minsal\CoreBundle\Entity\ValeProvisional
+     * @return \Minsal\CoreBundle\Entity\ValeProvisional 
      */
     public function getIdValeProvisional()
     {
@@ -231,7 +231,7 @@ class TrnEntregas
     /**
      * Get idTrnDetalle
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getIdTrnDetalle()
     {

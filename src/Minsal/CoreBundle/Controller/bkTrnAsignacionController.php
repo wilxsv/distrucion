@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Trnasignacion controller.
- * 
+ *
  */
 class TrnAsignacionController extends Controller
 {
@@ -143,12 +143,18 @@ class TrnAsignacionController extends Controller
       //Obteniendo el entity manager
       $em = $this->getDoctrine()->getManager();
       //Sentencia pura SQL
-      $sql = "select p.id, p.nombre_largo_insumo, t.verificar, t.id_trn_validacion, t.cantidad_sugerida, t.id as idDetalle, a.id as idAsignacion from cat_producto as p
-              inner join distribucion_producto as d on p.id = d.cat_productoid
-              inner join trn_asignacion as a on d.trn_asignacionid = a.id
-              inner join trn_detalle as t on d.trn_detalleid = t.id
-              where a.id = ".$trnAsignacion->getId()."
-            ";
+      // $sql = "select p.id, p.nombre_largo_insumo, t.verificar, t.id_trn_validacion, t.cantidad_sugerida, t.id as idDetalle, a.id as idAsignacion from cat_producto as p
+      //         inner join distribucion_producto as d on p.id = d.cat_productoid
+      //         inner join trn_asignacion as a on d.trn_asignacionid = a.id
+      //         inner join trn_detalle as t on d.trn_detalleid = t.id
+      //         where a.id = ".$trnAsignacion->getId()."
+      //       ";
+      //
+      $sql = "select p.id, dp.trn_asignacionid , p.nombre_largo_insumo, d.verificar, d.id as detalle_id
+              from cat_producto as p
+              inner join distribucion_producto as dp on dp.cat_productoid = p.id
+              right join trn_detalle as d on p.id = d.cat_productoid and dp.trn_asignacionid = d.trn_asignacionid
+              where dp.trn_asignacionid = ".$trnAsignacion->getId()."";
       $em = $this->getDoctrine()->getManager();
       $stmt = $em->getConnection()->prepare($sql);
       $stmt->execute();

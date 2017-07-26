@@ -13,14 +13,9 @@ class TrnAsignacionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('apiAlmacenid')->add('descripcion')->add('fechadistribucion')
-              ->add('fechacorte')->add('mesesCpm')->add('mesesDistribucion')
-              ->add('mesesAdministracion')->add('mesesSeguridad')->add('fechaCreacion')
-              ->add('fechaModificaion')->add('prioridad')->add('segUsuarioid')
-              ->add('catEstadosid')->add('catProgramaid')->add('catSuministroid')
-              ->add('apiGruposuministroid')->add('idCatEstablecimiento');
+        $builder->add('apiAlmacenid')->add('descripcion')->add('fechadistribucion')->add('fechacorte')->add('mesesCpm')->add('mesesDistribucion')->add('mesesAdministracion')->add('mesesSeguridad')->add('fechaCreacion')->add('fechaModificaion')->add('prioridad')->add('segUsuarioid')->add('catEstadosid')->add('catProgramaid')->add('catSuministroid')->add('apiGruposuministroid')->add('idCatEstablecimiento')->add('catProductoid');
     }
-
+    
     /**
      * {@inheritdoc}
      */

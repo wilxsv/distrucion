@@ -45,11 +45,6 @@ class TrnDetalle
     private $apiEstablecimientoid;
 
     /**
-     * @var integer
-     */
-    private $catProductoid;
-
-    /**
      * @var boolean
      */
     private $verificar;
@@ -68,6 +63,11 @@ class TrnDetalle
      * @var \Minsal\CoreBundle\Entity\TrnValidacion
      */
     private $idTrnValidacion;
+
+    /**
+     * @var \Minsal\CoreBundle\Entity\DistribucionProducto
+     */
+    private $trnAsignacionid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -231,29 +231,6 @@ class TrnDetalle
     }
 
     /**
-     * Set catProductoid
-     *
-     * @param integer $catProductoid
-     * @return TrnDetalle
-     */
-    public function setCatProductoid($catProductoid)
-    {
-        $this->catProductoid = $catProductoid;
-
-        return $this;
-    }
-
-    /**
-     * Get catProductoid
-     *
-     * @return integer 
-     */
-    public function getCatProductoid()
-    {
-        return $this->catProductoid;
-    }
-
-    /**
      * Set verificar
      *
      * @param boolean $verificar
@@ -343,6 +320,29 @@ class TrnDetalle
     public function getIdTrnValidacion()
     {
         return $this->idTrnValidacion;
+    }
+
+    /**
+     * Set trnAsignacionid
+     *
+     * @param \Minsal\CoreBundle\Entity\DistribucionProducto $trnAsignacionid
+     * @return TrnDetalle
+     */
+    public function setTrnAsignacionid(\Minsal\CoreBundle\Entity\DistribucionProducto $trnAsignacionid = null)
+    {
+        $this->trnAsignacionid = $trnAsignacionid;
+
+        return $this;
+    }
+
+    /**
+     * Get trnAsignacionid
+     *
+     * @return \Minsal\CoreBundle\Entity\DistribucionProducto 
+     */
+    public function getTrnAsignacionid()
+    {
+        return $this->trnAsignacionid;
     }
 
     /**

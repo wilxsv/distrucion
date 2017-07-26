@@ -33,41 +33,52 @@ class TrnValidacionController extends Controller
      * Creates a new trnValidacion entity.
      *
      */
-    public function newAction(TrnDetalle $detalle, Request $request)
+    public function newAction($id, Request $request)
     {
         $session = $request->getSession();
         $trnValidacion = new Trnvalidacion();
         $form = $this->createForm('Minsal\CoreBundle\Form\TrnValidacionType', $trnValidacion);
         $form->handleRequest($request);
         $idPasado = $session->get('idAsignacion');
-
+        $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
             $trnValidacion->setFechaModificacion(new \DateTime());
             $trnValidacion->setEstadoVerificado(true);
-            $detalle->setFechaModificacion(new \DateTime());
-            $detalle->setVerificar(true);
+
+            //$detalle->setFechaModificacion(new \DateTime());
+            //$detalle->setVerificar(true);
+
             //$trnValidacion->setSegUsuarioid(); agregar cuando se tenga autenticacion
-            $em = $this->getDoctrine()->getManager();
-            $detalle->setIdTrnValidacion($trnValidacion);
+            //$em = $this->getDoctrine()->getManager();
+            //$detalle->setIdTrnValidacion($trnValidacion);
 
 
             $idPasado = $session->get('idAsignacion');
-            // $asignacion = $this->getDoctrine()->getRepository('CoreBundle:TrnAsignacion')
-            //                ->find($idPasado);
-            //
-            // $verificado = $this->getDoctrine()->getRepository('CoreBundle:CatEstados')
-            //               ->findOneBy( array('estado'=>'VERFICADO') );
-            // $asignacion->set
-
             $em->persist($trnValidacion);
-            $em->persist($detalle);
             $em->flush();
+            
+            $fecha = new \DateTime();
+            $sql = "UPDATE trn_detalle SET verificar=true, fecha_modificacion=:fecha,
+            id_trn_validacion=".$trnValidacion->getId()." where
+            trn_detalle.id=".$id."";
+            //$em = $this->getDoctrine()->getManager();
+            $stmt = $em->getConnection()->prepare($sql);
+            $fecha = $fecha->format('d/m/Y');
+            $stmt->execute(array('fecha'=>$fecha));
+
             return $this->redirectToRoute('asignaciones_productos', array('id' => $idPasado));
         }
 
+        $sql = "select cantidad_sugerida, existencia_almacenes, cpm from public.trn_detalle
+                WHERE trn_detalle.id=2";
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $detalle = $stmt->fetchAll();
+
         return $this->render('trnvalidacion/new.html.twig', array(
             'trnValidacion' => $trnValidacion,
-            'trnDetalle' => $detalle,
+            'detalle' => $detalle[0],
             'form' => $form->createView(),
             'idpasado' => $idPasado,
         ));
