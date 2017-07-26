@@ -24,18 +24,28 @@
   $(document).ready(function(){
     // console.log($('#cantidad').val());
     // console.log($('minsal_corebundle_trnvalidacion_cantidadPrelimimar').val());
-    $("form").submit(function(e){
+    $('#minsal_corebundle_trnvalidacion_observacion').prop("required",true);
+    $('#minsal_corebundle_trnvalidacion_cantidadPrelimimar').prop("required",true);
 
-        let cantidad = $('#cantidad').val();
-        let preliminar = $('#minsal_corebundle_trnvalidacion_cantidadPrelimimar').val();
-        if(preliminar>cantidad){
-          //console.log("NO ENVIAR");
-          alert( "La cantidad preliminar debe ser menor o igual a la cantidad asignada." );
-          e.preventDefault();
-        }
 
     });
-  });
+
+  $("form").submit(function(e){
+    let cantidad = $('#cantidad').val();
+    let preliminar = $('#minsal_corebundle_trnvalidacion_cantidadPrelimimar').val();
+    cantidad = parseInt(cantidad);
+    preliminar = parseInt(preliminar);
+    console.log("Cantidad: " + cantidad);
+    console.log("Preliminar: " + preliminar);
+    if(preliminar>cantidad){
+      //console.log("NO ENVIAR");
+      alert( "La cantidad preliminar debe ser menor o igual a la cantidad asignada." );
+      e.preventDefault();
+    }
+  })
+
+
+
 
   </script>
 {% endblock %}

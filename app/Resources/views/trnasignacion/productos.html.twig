@@ -18,6 +18,12 @@
       <tbody>
       {% for producto in productos%}
           <tr>
+            {#
+              Los productos que deben ser verificados, deben contener el valor
+              de false en su relacion con detalle.
+              Aquellos productos que no necesitan verificacion o han sido
+              verificados, el valor en su detalle sera true.
+            #}
               {% if producto.verificar == false%}
               <td><input type="checkbox" id="ver"></td>
               {% elseif producto.verificar == true%}
@@ -27,6 +33,12 @@
               <td>{{producto.nombre_largo_insumo}}</td>
               <td>{{producto.cantidad_sugerida}}</td>
               <td>
+                {#
+                  Cuando un detalle de producto ya posee una obervacion,
+                  esto se refleja en su llave foranea id_trn_validacion
+                  Si ya tiene asignado una observacion, ya no se pueden agregar
+                  mas.
+                #}
                 {% if producto.id_trn_validacion %}
                 <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-check"></span>
