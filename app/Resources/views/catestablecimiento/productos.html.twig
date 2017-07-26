@@ -4,7 +4,7 @@
   <h1>Detalle de Productos {{ establecimiento }}</h1>
 
   <table>
-  <form action={{ path ('establecimientos_index') }}
+  <form action={{ path ('establecimientos_vale') }}
       <thead>
           <tr>
               <th>Codigo</th>
@@ -12,9 +12,9 @@
               <th>UM</th>
               <th>Existencias</th>
               <th>Cantidad Asignada</th>
-              <th>Detalles</th>
-              <th>Cantidad a Despachar</th>
               <th>Selecciona</>
+              <th>Cantidad a Despachar</th>
+              <th>Detalles</th>
           </tr>
       </thead>
       <tbody>
@@ -25,12 +25,13 @@
               <td>{{ producto.unidad_medida }}</td>
               <td>{{ producto.sum }}</td>
               <td>{{ producto.cantidadasignada }}</td>
-              <td><a href={{ path ('establecimientos_asignaciones', { 'id': producto.id }) }}>Ver Detalles</a></td>
-              <td><input type="number" min="0" max={{ producto.cantidadasignada }}></td>
               <td><input type="checkbox" value={{ producto.id }}></td>
+              <td>{{ total }}</td>
+              <td><a href={{ path ('establecimientos_asignaciones', { 'id': producto.id }) }}>Ver Detalles</a></td>
           </tr>
       {% endfor%}
       <tr>
+              <td></td>
               <td></td>
               <td></td>
               <td></td>

@@ -8,6 +8,7 @@
             <tr>
                 <th>Establecimiento</th>
                 <th>Nombre del Establecimiento</th>
+                <th>Prioridad</th>
                 <th>Productos</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('establecimientos_show', { 'id': catEstablecimiento.establecimiento }) }}">{{ catEstablecimiento.establecimiento }}</a></td>
                 <td>{{ catEstablecimiento.nombre }}</td>
+                <td>{{ catEstablecimiento.prioridad }}</td>
                 <td><a href="{{ path('establecimientos_productos', { 'id' : catEstablecimiento.establecimiento }) }}">Ver Productos Asociados</a></td>
             </tr>
         {% endfor %}

@@ -5,6 +5,7 @@
   <h1>Listado de Asignaciones</h1>
   <center></center>
   <table>
+  <form action = {{ path ('establecimientos_productos', {'id' : establecimiento.id})}}
     <thead>
       <tr>
         <th>Fecha</th>
@@ -23,7 +24,7 @@
         <td>{{asignacion.descripcion}}</td>
         <td>{{asignacion.cantidad_distribuir}}</td>
         <td>estado</td>
-        <td></td>
+        <td><input type="number" name="cantidad" min=0 max={{ asignacion.cantidad_distribuir }}></td>
       </tr>
       {%endfor%}
       <tr>
@@ -31,9 +32,20 @@
         <td></td>
         <td>Total Asignado</td>
         <td>{{ total }}</td>
+        <input type="hidden" name="total" value={{ total }}>
+        <td>Total a Despachar</td>
         <td></td>
       </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="submit" value="Finalizar"></td>
+      </tr>
     </tbody>
+    </form>
   </table>
 
 {% endblock%}
