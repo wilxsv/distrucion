@@ -5,6 +5,7 @@ namespace Minsal\CoreBundle\Controller;
 use Minsal\CoreBundle\Entity\CatEstablecimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Minsal\CoreBundle\Entity\CatProducto;
 
 /**
  * Catestablecimiento controller.
@@ -169,5 +170,23 @@ class CatEstablecimientoController extends Controller
         )
 
       );
+    }
+
+    public function productoAsignacionesAction(CatProducto $catProducto)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $sql = "select a.fecha_creacion, a.id, a.descripcion, d.cantidad_distribuir from trn_detalle d inner join distribucion_producto dp
+        on d.trn_asignacionid = dp.trn_asignacionid and d.cat_productoid = dp.cat_productoid
+        inner join trn_asignacion a on dp.trn_asignacionid = a.id
+        inner join cat_producto p on dp.cat_productoid = p.id and d.cat_productoid = ".$catProducto->getId();
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $Asignacions = $stmt->fetchAll();
+
+        return $this->render('catestablecimiento/asignacionesProducto.html.twig', array(
+            'asignaciones' => $Asignacions,
+        ));
     }
 }
