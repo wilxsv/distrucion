@@ -12,6 +12,7 @@
         <th>Descripción</th>
         <th>Cantidad</th>
         <th>Estado</th>
+        <th>Cantidad a Despachar</th>
       </tr>
     </thead>
     <tbody>
@@ -22,12 +23,13 @@
         <td>{{asignacion.descripcion}}</td>
         <td>{{asignacion.cantidad_distribuir}}</td>
         <td>estado</td>
+        <td></td>
       </tr>
       {%endfor%}
       <tr>
         <td></td>
         <td></td>
-        <td>Total a Asignar</td>
+        <td>Total Asignado</td>
         <td>{{ total }}</td>
         <td></td>
       </tr>
