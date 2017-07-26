@@ -23,7 +23,7 @@ class CatEstablecimientoController extends Controller
         //$catEstablecimientos = $em->getRepository('MinsalCoreBundle:CatEstablecimiento')->findAll();
 
         //Sentencia sql para traer los establecimientos que tienen establecimientos
-        $sql = "select e.id as Establecimiento, e.nombre from cat_establecimiento as e
+        $sql = "select distinct e.id as Establecimiento, e.nombre from cat_establecimiento as e
         inner join trn_establecimientosdistribucion as i on i.id_cat_establecimiento =  e.id
         inner join trn_asignacion as a on a.id = i.trn_asignacionid;";
 
@@ -154,7 +154,7 @@ class CatEstablecimientoController extends Controller
                 on p.id = dp.cat_productoid inner join trn_detalle as d
                 on d.cat_productoid = dp.cat_productoid and d.trn_asignacionid = dp.trn_asignacionid inner join trn_productoslote as pl
                 on pl.cat_productoid = p.id
-                where e.id = 1140
+                where e.id = ".$establecimiento->getId()."
                 group by (pl.api_loteid, p.codigo_sinab, p.nombre_largo_insumo, p.unidad_medida)) as fo
                 order by fo.api_loteid) as foo
                 group by (foo.codigo_sinab, foo.nombre_largo_insumo, foo.unidad_medida, foo.cantidadasignada);
