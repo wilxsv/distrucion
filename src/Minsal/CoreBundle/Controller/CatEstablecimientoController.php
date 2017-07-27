@@ -147,6 +147,12 @@ class CatEstablecimientoController extends Controller
         $nombreEstablecimiento = $establecimiento->getNombre();
         $em = $this->getDoctrine()->getManager();
         $productoActual = $session->get('productoActual');
+        if ($productoActual == null){
+          $id = 0;
+        }
+        else{
+          $id = $productoActual->getId();
+        }
         $total = 0.00;
         if (isset($_GET["total"]))
         {
@@ -179,7 +185,7 @@ class CatEstablecimientoController extends Controller
         return $this->render('catestablecimiento/productos.html.twig', array(
           'productos' => $productos,
           'establecimiento' => $nombreEstablecimiento,
-          'id' => $productoActual->getId(),
+          'id' => $id,
           'total' => $total
         )
 
@@ -218,6 +224,7 @@ class CatEstablecimientoController extends Controller
 
     public function valeAction(Request $request){
       $productos = $request->get('products');
+      $cantidades = $request->get('cantidades');
       if ($productos == null) {
         $this->addFlash('error', 'No seleciono ningun producto');
         return $this->redirectToRoute('establecimientos_productos', array('id' => $request->getSession()->get('establecimientoSesion')->getId()));
@@ -233,7 +240,8 @@ class CatEstablecimientoController extends Controller
         $em->persist($vale);
         $em->flush();
         return $this->render("catestablecimiento/vale.html.twig",array(
-          'vale' => $vale
+          'vale' => $vale,
+          'cantidades' => $cantidades
         ));
       }
     }
