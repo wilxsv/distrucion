@@ -33,11 +33,12 @@
               <td>{{ producto.cantidadasignada }}</td>
 
               <td><input type="checkbox" name="products[]" value={{ producto.id }}></td>
-              {% if (id == producto.id) %}
+              <!--{% if (id == producto.id) %}
               <td>{{ total }}</td>
               {% else %}
               <td>0.00</td>
-              {% endif %}
+              {% endif %}-->
+              <td><input type="number" name="cantidades[]" min="0" max={{ producto.cantidadasignada }}></td>
               <td><a href={{ path ('establecimientos_asignaciones', { 'id': producto.id }) }}>Ver Detalles</a></td>
 
           </tr>
