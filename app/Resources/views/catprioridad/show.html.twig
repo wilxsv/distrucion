@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catprioridad</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ catPrioridad.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ catPrioridad.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catprioridad_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

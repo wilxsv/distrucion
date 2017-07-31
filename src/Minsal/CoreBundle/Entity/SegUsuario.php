@@ -65,7 +65,7 @@ class SegUsuario
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -88,7 +88,7 @@ class SegUsuario
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -111,7 +111,7 @@ class SegUsuario
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -134,7 +134,7 @@ class SegUsuario
     /**
      * Get tokenSinab
      *
-     * @return string 
+     * @return string
      */
     public function getTokenSinab()
     {
@@ -157,7 +157,7 @@ class SegUsuario
     /**
      * Get establecimientoid
      *
-     * @return integer 
+     * @return integer
      */
     public function getEstablecimientoid()
     {
@@ -180,7 +180,7 @@ class SegUsuario
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaCreacion()
     {
@@ -203,7 +203,7 @@ class SegUsuario
     /**
      * Get fechaModificacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaModificacion()
     {
@@ -226,7 +226,7 @@ class SegUsuario
     /**
      * Get salt
      *
-     * @return string 
+     * @return string
      */
     public function getSalt()
     {
@@ -259,10 +259,14 @@ class SegUsuario
     /**
      * Get idSegRol
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIdSegRol()
     {
         return $this->idSegRol;
+    }
+
+    public function __toString() {
+        return $this->nombre;
     }
 }

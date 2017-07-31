@@ -22,7 +22,7 @@ trnasignacion_delete:
     path:     /{id}/delete
     defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:delete" }
     methods:  DELETE
-
+    
 trnasignacion_ajax:
     path:     /ajax
     defaults: { _controller: "MinsalCoreBundle:TrnAsignacion:ajax" }

@@ -116,7 +116,7 @@ class TrnAsignacion
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -139,7 +139,7 @@ class TrnAsignacion
     /**
      * Get apiAlmacenid
      *
-     * @return integer 
+     * @return integer
      */
     public function getApiAlmacenid()
     {
@@ -162,7 +162,7 @@ class TrnAsignacion
     /**
      * Get descripcion
      *
-     * @return string 
+     * @return string
      */
     public function getDescripcion()
     {
@@ -185,7 +185,7 @@ class TrnAsignacion
     /**
      * Get fechadistribucion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechadistribucion()
     {
@@ -208,7 +208,7 @@ class TrnAsignacion
     /**
      * Get fechacorte
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechacorte()
     {
@@ -231,7 +231,7 @@ class TrnAsignacion
     /**
      * Get mesesCpm
      *
-     * @return integer 
+     * @return integer
      */
     public function getMesesCpm()
     {
@@ -254,7 +254,7 @@ class TrnAsignacion
     /**
      * Get mesesDistribucion
      *
-     * @return integer 
+     * @return integer
      */
     public function getMesesDistribucion()
     {
@@ -277,7 +277,7 @@ class TrnAsignacion
     /**
      * Get mesesAdministracion
      *
-     * @return integer 
+     * @return integer
      */
     public function getMesesAdministracion()
     {
@@ -300,7 +300,7 @@ class TrnAsignacion
     /**
      * Get mesesSeguridad
      *
-     * @return integer 
+     * @return integer
      */
     public function getMesesSeguridad()
     {
@@ -323,7 +323,7 @@ class TrnAsignacion
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaCreacion()
     {
@@ -346,7 +346,7 @@ class TrnAsignacion
     /**
      * Get fechaModificaion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaModificaion()
     {
@@ -369,7 +369,7 @@ class TrnAsignacion
     /**
      * Get prioridad
      *
-     * @return string 
+     * @return string
      */
     public function getPrioridad()
     {
@@ -392,7 +392,7 @@ class TrnAsignacion
     /**
      * Get segUsuarioid
      *
-     * @return \Minsal\CoreBundle\Entity\SegUsuario 
+     * @return \Minsal\CoreBundle\Entity\SegUsuario
      */
     public function getSegUsuarioid()
     {
@@ -415,7 +415,7 @@ class TrnAsignacion
     /**
      * Get catEstadosid
      *
-     * @return \Minsal\CoreBundle\Entity\CatEstados 
+     * @return \Minsal\CoreBundle\Entity\CatEstados
      */
     public function getCatEstadosid()
     {
@@ -438,7 +438,7 @@ class TrnAsignacion
     /**
      * Get catProgramaid
      *
-     * @return \Minsal\CoreBundle\Entity\CatProgramas 
+     * @return \Minsal\CoreBundle\Entity\CatProgramas
      */
     public function getCatProgramaid()
     {
@@ -461,7 +461,7 @@ class TrnAsignacion
     /**
      * Get catSuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CatSuministro 
+     * @return \Minsal\CoreBundle\Entity\CatSuministro
      */
     public function getCatSuministroid()
     {
@@ -484,7 +484,7 @@ class TrnAsignacion
     /**
      * Get apiGruposuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CtlGrupo 
+     * @return \Minsal\CoreBundle\Entity\CtlGrupo
      */
     public function getApiGruposuministroid()
     {
@@ -517,7 +517,7 @@ class TrnAsignacion
     /**
      * Get catProductoid
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCatProductoid()
     {
@@ -550,10 +550,98 @@ class TrnAsignacion
     /**
      * Get idCatEstablecimiento
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIdCatEstablecimiento()
     {
         return $this->idCatEstablecimiento;
+    }
+
+    public function __toString() {
+        return $this->descripcion;
+    }
+    /**
+     * @var \Minsal\CoreBundle\Entity\CatPrioridad
+     */
+    private $idPrioridad;
+
+
+    /**
+     * Set idPrioridad
+     *
+     * @param \Minsal\CoreBundle\Entity\CatPrioridad $idPrioridad
+     * @return TrnAsignacion
+     */
+    public function setIdPrioridad(\Minsal\CoreBundle\Entity\CatPrioridad $idPrioridad = null)
+    {
+        $this->idPrioridad = $idPrioridad;
+
+        return $this;
+    }
+
+    /**
+     * Get idPrioridad
+     *
+     * @return \Minsal\CoreBundle\Entity\CatPrioridad 
+     */
+    public function getIdPrioridad()
+    {
+        return $this->idPrioridad;
+    }
+    /**
+     * @var boolean
+     */
+    private $porEstadistica;
+
+    /**
+     * @var boolean
+     */
+    private $porPrograma;
+
+
+    /**
+     * Set porEstadistica
+     *
+     * @param boolean $porEstadistica
+     * @return TrnAsignacion
+     */
+    public function setPorEstadistica($porEstadistica)
+    {
+        $this->porEstadistica = $porEstadistica;
+
+        return $this;
+    }
+
+    /**
+     * Get porEstadistica
+     *
+     * @return boolean 
+     */
+    public function getPorEstadistica()
+    {
+        return $this->porEstadistica;
+    }
+
+    /**
+     * Set porPrograma
+     *
+     * @param boolean $porPrograma
+     * @return TrnAsignacion
+     */
+    public function setPorPrograma($porPrograma)
+    {
+        $this->porPrograma = $porPrograma;
+
+        return $this;
+    }
+
+    /**
+     * Get porPrograma
+     *
+     * @return boolean 
+     */
+    public function getPorPrograma()
+    {
+        return $this->porPrograma;
     }
 }

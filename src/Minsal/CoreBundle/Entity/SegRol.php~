@@ -45,7 +45,7 @@ class SegRol
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -68,7 +68,7 @@ class SegRol
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -91,7 +91,7 @@ class SegRol
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaCreacion()
     {
@@ -114,7 +114,7 @@ class SegRol
     /**
      * Get fechaModificacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaModificacion()
     {
@@ -147,10 +147,14 @@ class SegRol
     /**
      * Get segUsuarioid
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSegUsuarioid()
     {
         return $this->segUsuarioid;
+    }
+
+    public function __toString() {
+        return $this->nombre;
     }
 }

@@ -1,0 +1,18 @@
+Minsal\CoreBundle\Entity\CatPrioridad:
+    type: entity
+    table: cat_prioridad
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+    lifecycleCallbacks: {  }

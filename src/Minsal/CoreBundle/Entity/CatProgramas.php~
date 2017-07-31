@@ -33,7 +33,7 @@ class CatProgramas
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,7 +56,7 @@ class CatProgramas
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -79,7 +79,7 @@ class CatProgramas
     /**
      * Get registroSchema
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRegistroSchema()
     {
@@ -102,10 +102,14 @@ class CatProgramas
     /**
      * Get enableSchema
      *
-     * @return integer 
+     * @return integer
      */
     public function getEnableSchema()
     {
         return $this->enableSchema;
+    }
+
+    public function __toString() {
+        return $this->nombre;
     }
 }

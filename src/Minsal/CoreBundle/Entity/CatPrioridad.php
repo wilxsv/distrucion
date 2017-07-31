@@ -5,9 +5,9 @@ namespace Minsal\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CatEstados
+ * CatPrioridad
  */
-class CatEstados
+class CatPrioridad
 {
     /**
      * @var integer
@@ -17,7 +17,7 @@ class CatEstados
     /**
      * @var string
      */
-    private $estado;
+    private $nombre;
 
 
     /**
@@ -31,29 +31,29 @@ class CatEstados
     }
 
     /**
-     * Set estado
+     * Set nombre
      *
-     * @param string $estado
-     * @return CatEstados
+     * @param string $nombre
+     * @return CatPrioridad
      */
-    public function setEstado($estado)
+    public function setNombre($nombre)
     {
-        $this->estado = $estado;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get estado
+     * Get nombre
      *
      * @return string
      */
-    public function getEstado()
+    public function getNombre()
     {
-        return $this->estado;
+        return $this->nombre;
     }
 
     public function __toString() {
-        return $this->estado;
+        return $this->nombre;
     }
 }

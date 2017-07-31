@@ -1,59 +1,76 @@
 {% extends 'base.html.twig' %}
 
+{% block header_css %}
+<link href="{{ asset('assets/') }}distro/css/jquery.css" rel="stylesheet" type="text/css">
+{% endblock%}
+
+{% block viewtitle %} Asignaciones {% endblock %}
+
+{% block navigationlink %}
+<a class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light"
+href="{{ path('trnasignacion_new') }}">Nueva asignación</a>
+{% endblock %}
+
 {% block body %}
-    <h1>Trnasignacions list</h1>
+<h3>Listado de asignaciones</h3>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Apialmacenid</th>
-                <th>Descripcion</th>
-                <th>Fechadistribucion</th>
-                <th>Fechacorte</th>
-                <th>Mesescpm</th>
-                <th>Mesesdistribucion</th>
-                <th>Mesesadministracion</th>
-                <th>Mesesseguridad</th>
-                <th>Fechacreacion</th>
-                <th>Fechamodificaion</th>
-                <th>Prioridad</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for trnAsignacion in trnAsignacions %}
-            <tr>
-                <td><a href="{{ path('trnasignacion_show', { 'id': trnAsignacion.id }) }}">{{ trnAsignacion.id }}</a></td>
-                <td>{{ trnAsignacion.apiAlmacenid }}</td>
-                <td>{{ trnAsignacion.descripcion }}</td>
-                <td>{% if trnAsignacion.fechadistribucion %}{{ trnAsignacion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if trnAsignacion.fechacorte %}{{ trnAsignacion.fechacorte|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ trnAsignacion.mesesCpm }}</td>
-                <td>{{ trnAsignacion.mesesDistribucion }}</td>
-                <td>{{ trnAsignacion.mesesAdministracion }}</td>
-                <td>{{ trnAsignacion.mesesSeguridad }}</td>
-                <td>{% if trnAsignacion.fechaCreacion %}{{ trnAsignacion.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if trnAsignacion.fechaModificaion %}{{ trnAsignacion.fechaModificaion|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ trnAsignacion.prioridad }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('trnasignacion_show', { 'id': trnAsignacion.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('trnasignacion_edit', { 'id': trnAsignacion.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<table id="tblasignacion" class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Descripcion</th>
+      <th>Fechadistribucion</th>
+      <th>Fechacreacion</th>
+      <th>Fechamodificaion</th>
+      <th>Estado</th>
+      <th>Prioridad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for trnAsignacion in trnAsignacions %}
+    <tr>
+      <td><a href="{{ path('trnasignacion_show', { 'id': trnAsignacion.id }) }}">{{ trnAsignacion.id }}</a></td>
+      <td>{{ trnAsignacion.descripcion }}</td>
+      <td>{% if trnAsignacion.fechadistribucion %}{{ trnAsignacion.fechadistribucion|date('Y-m-d') }}{% endif %}</td>
+      <td>{% if trnAsignacion.fechaCreacion %}{{ trnAsignacion.fechaCreacion|date('Y-m-d') }}{% endif %}</td>
+      <td>{% if trnAsignacion.fechaModificaion %}{{ trnAsignacion.fechaModificaion|date('Y-m-d') }}{% endif %}</td>
+      <td>{{ trnAsignacion.catEstadosid }}</td>
+      <td>{{ trnAsignacion.idPrioridad }}</td>
+      <td>
+        <ul>
+          <li>
+            <a href="{{ path('trnasignacion_show', { 'id': trnAsignacion.id }) }}">Mostrar</a>
+          </li>
+          <li>
+            <a href="{{ path('trnasignacion_edit', { 'id': trnAsignacion.id }) }}">Editar</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('trnasignacion_new') }}">Create a new trnAsignacion</a>
-        </li>
-    </ul>
+{% block footer_js %}
+<script src="{{ asset('assets/') }}distro/js/jquery_003.js"></script>
+<!-- start - This is for export functionality only -->
+<script src="{{ asset('assets/') }}distro/js/dataTables.js"></script>
+
+<script>
+$.extend( $.fn.dataTable.defaults, {
+  "language": {
+    "url": "{{ asset('assets/') }}distro/js/datatable_es-es.json"
+  }
+});
+</script>
+
+<script>
+$(document).ready(function () {
+  $('#tblasignacion').DataTable();
+});
+</script>
+<!--Style Switcher -->
+<script src="{{ asset('assets/') }}distro/js/jkuery.js"></script>
 {% endblock %}

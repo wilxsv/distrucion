@@ -21,7 +21,7 @@ minsal_core_catestados:
 minsal_core_catprogramas:
         resource: "@MinsalCoreBundle/Resources/config/routing/catprogramas.yml"
         prefix:   /catprogramas
-        
+
 minsal_core_catsuministro:
         resource: "@MinsalCoreBundle/Resources/config/routing/catsuministro.yml"
         prefix:   /catsuministro
@@ -53,6 +53,11 @@ minsal_core_trnvalidacion:
 minsal_core_valeprovisional:
         resource: "@MinsalCoreBundle/Resources/config/routing/valeprovisional.yml"
         prefix:   /valeprovisional
+
+minsal_core_catprioridad:
+        resource: "@MinsalCoreBundle/Resources/config/routing/catprioridad.yml"
+        prefix:   /catprioridad
+
 
 
 minsal_core_homepage:

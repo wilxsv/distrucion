@@ -17,6 +17,9 @@ Minsal\CoreBundle\Entity\TrnAsignacion:
         IDX_141DE0A576A39933:
             columns:
                 - api_gruposuministroid
+        IDX_141DE0A523BDDE75:
+            columns:
+                - id_prioridad
     id:
         id:
             type: integer
@@ -70,11 +73,17 @@ Minsal\CoreBundle\Entity\TrnAsignacion:
             type: date
             nullable: true
             column: fecha_modificaion
-        prioridad:
-            type: text
+        porEstadistica:
+            type: boolean
+            nullable: false
+            default: false
+            column: por_estadistica
+        porPrograma:
+            type: boolean
             nullable: true
-            length: null
-            fixed: false
+            comment: 'si es false, debe considerarse que entonces la asignacion debe ser realizada por tipo suministro'
+            default: false
+            column: por_programa
     manyToOne:
         segUsuarioid:
             targetEntity: SegUsuario
@@ -119,6 +128,15 @@ Minsal\CoreBundle\Entity\TrnAsignacion:
             inversedBy: null
             joinColumns:
                 api_gruposuministroid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idPrioridad:
+            targetEntity: CatPrioridad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_prioridad:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:

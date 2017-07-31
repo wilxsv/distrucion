@@ -78,7 +78,7 @@ class CatSuministro
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -101,7 +101,7 @@ class CatSuministro
     /**
      * Get nombreSuministro
      *
-     * @return string 
+     * @return string
      */
     public function getNombreSuministro()
     {
@@ -124,7 +124,7 @@ class CatSuministro
     /**
      * Get detalleSuministro
      *
-     * @return string 
+     * @return string
      */
     public function getDetalleSuministro()
     {
@@ -147,7 +147,7 @@ class CatSuministro
     /**
      * Get registroSchema
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRegistroSchema()
     {
@@ -170,7 +170,7 @@ class CatSuministro
     /**
      * Get detalleSchema
      *
-     * @return string 
+     * @return string
      */
     public function getDetalleSchema()
     {
@@ -193,7 +193,7 @@ class CatSuministro
     /**
      * Get userIdSchema
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserIdSchema()
     {
@@ -216,7 +216,7 @@ class CatSuministro
     /**
      * Get ipUserSchema
      *
-     * @return string 
+     * @return string
      */
     public function getIpUserSchema()
     {
@@ -239,7 +239,7 @@ class CatSuministro
     /**
      * Get estadoSchema
      *
-     * @return integer 
+     * @return integer
      */
     public function getEstadoSchema()
     {
@@ -262,7 +262,7 @@ class CatSuministro
     /**
      * Get enableSchema
      *
-     * @return integer 
+     * @return integer
      */
     public function getEnableSchema()
     {
@@ -285,7 +285,7 @@ class CatSuministro
     /**
      * Get codificacionSuministro
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodificacionSuministro()
     {
@@ -308,7 +308,7 @@ class CatSuministro
     /**
      * Get rolSolicitaSuministro
      *
-     * @return integer 
+     * @return integer
      */
     public function getRolSolicitaSuministro()
     {
@@ -331,7 +331,7 @@ class CatSuministro
     /**
      * Get rolValidaSuministro
      *
-     * @return integer 
+     * @return integer
      */
     public function getRolValidaSuministro()
     {
@@ -354,10 +354,14 @@ class CatSuministro
     /**
      * Get catSuministroid
      *
-     * @return \Minsal\CoreBundle\Entity\CatSuministro 
+     * @return \Minsal\CoreBundle\Entity\CatSuministro
      */
     public function getCatSuministroid()
     {
         return $this->catSuministroid;
+    }
+
+    public function __toString() {
+        return $this->nombreSuministro;
     }
 }

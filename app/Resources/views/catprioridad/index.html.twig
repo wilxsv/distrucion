@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catprioridads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catPrioridad in catPrioridads %}
+            <tr>
+                <td><a href="{{ path('catprioridad_show', { 'id': catPrioridad.id }) }}">{{ catPrioridad.id }}</a></td>
+                <td>{{ catPrioridad.nombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('catprioridad_show', { 'id': catPrioridad.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

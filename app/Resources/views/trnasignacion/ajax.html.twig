@@ -1,6 +1,40 @@
 {% if rest %}
+<!--Si selecciona asignacion por programa-->
+{% if programa is defined %}
+<label for="minsal_corebundle_trnasignacion_catProgramaid">Programas:</label>
+<select class="form-control select2" data-placeholder="Seleccione el programa" style="width: 100%;"
+id="minsal_corebundle_trnasignacion_catProgramaid" name="minsal_corebundle_trnasignacion[catProgramaid]">
+ <option value=""></option>
+ {% for p in programa %}
+  <option value="{{ p.id }}">{{ p.nombre }}</option>
+ {% endfor %}
+</select>
+<script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
+<script type="text/javascript">$(function () { $("#minsal_corebundle_trnasignacion_catProgramaid").select2(); }); </script>
+{% endif %}
+
+<!--Si selecciona asignacion por tipo de suministro carga los grupos-->
+{% if tiposuministro is defined %}
+<label for="minsal_corebundle_trnasignacion_catSuministroid">Suminstro:</label>
+<select class="form-control select2" data-placeholder="Seleccione el suministro" style="width: 100%;"
+id="minsal_corebundle_trnasignacion_catSuministroid" name="minsal_corebundle_trnasignacion[catSuministroid]"
+onchange="cargarGrupo(this.value);">
+ <option value=""></option>
+ {% for s in tiposuministro %}
+  <option value="{{ s.id }}">{{ s.nombreSuministro }}</option>
+ {% endfor %}
+</select>
+<script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
+<script type="text/javascript">$(function () { $("#minsal_corebundle_trnasignacion_catSuministroid").select2(); }); </script>
+{% endif %}
+
+<!--Si selecciona un grupo carga los subgrupos-->
  {% if suministro is defined %}
-  <select class="form-control select2" data-placeholder="Seleccione el grupo" style="width: 90%;" id="minsal_cuadro_basico_grupo" name="minsal_cuadro_basico[grupo]" onchange="cargarSubGrupo(this.value);">
+ <label for="minsal_corebundle_trnasignacion_apiGruposuministroid">Grupo:</label>
+  <select class="form-control select2" data-placeholder="Seleccione el grupo"
+  id="minsal_corebundle_trnasignacion_apiGruposuministroid"
+  name="minsal_corebundle_trnasignacion[apiGruposuministroid]"
+  onchange="cargarSubGrupo(this.value);">
    <option value=""></option>
    {% for s in suministro %}
     <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
@@ -9,8 +43,11 @@
   <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
   <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_grupo").select2(); }); </script>
  {% endif %}
+
+<!--Si selecciona un subgrupo-->
  {% if grupo is defined %}
-  <select class="form-control select2" data-placeholder="Seleccione el sub grupo" style="width: 90%;" id="minsal_cuadro_basico_subgrupo" name="minsal_cuadro_basico[subgrupo]" onchange="cargarInsumo(this.value);">
+ <label for="minsal_cuadro_basico_subgrupo">Sub Grupo:</label>
+  <select class="form-control select2" data-placeholder="Seleccione el sub grupo" id="minsal_cuadro_basico_subgrupo" name="minsal_cuadro_basico[subgrupo]" onchange="cargarInsumo(this.value);">
    <option value=""></option>
    {% for s in grupo %}
     <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
@@ -19,17 +56,19 @@
   <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
   <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_subgrupo").select2(); }); </script>
  {% endif %}
+
  {% if insumo is defined %}
-  <select class="form-control select2" multiple="multiple"  data-placeholder="Seleccione el sub grupo" style="width: 90%;height: 50%;" id="minsal_cuadro_basico_insumo" name="minsal_cuadro_basico[insumo][]">
+  <select class="form-control selector_multiple" multiple="multiple" style="width: 100%;" id="minsal_cuadro_basico_insumo" name="minsal_cuadro_basico[insumo][]">
    <option value=""></option>
    {% for s in insumo %}
-    <option value="{{ s.id }}">{{ s.nombreLargoInsumo }}</option>
+    <option value="">{{ s.nombreLargoInsumo }}</option>
    {% endfor %}
   </select>  <br/>
   <input type="submit" value="Guardar" class="btn btn-primary" />
   <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
   <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_insumo").select2(); }); </script>
  {% endif %}
+
 {% else %}
  {% if cuadro is defined %}
   <section class="content">

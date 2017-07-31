@@ -1,0 +1,12 @@
+catprioridad_index:
+    path:     /
+    defaults: { _controller: "MinsalCoreBundle:CatPrioridad:index" }
+    methods:  GET
+
+catprioridad_show:
+    path:     /{id}/show
+    defaults: { _controller: "MinsalCoreBundle:CatPrioridad:show" }
+    methods:  GET
+
+
+

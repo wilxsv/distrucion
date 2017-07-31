@@ -2,9 +2,6 @@ Minsal\CoreBundle\Entity\CtlGrupo:
     type: entity
     table: ctl_grupo
     indexes:
-        IDX_501FC6D876A39933:
-            columns:
-                - api_gruposuministroid
         IDX_501FC6D8F44034C1:
             columns:
                 - cat_suministroid
@@ -37,16 +34,12 @@ Minsal\CoreBundle\Entity\CtlGrupo:
             nullable: true
             unsigned: false
             column: codigo_grupo
+        grupoId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: grupo_id
     manyToOne:
-        apiGruposuministroid:
-            targetEntity: CtlGrupo
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                api_gruposuministroid:
-                    referencedColumnName: id
-            orphanRemoval: false
         catSuministroid:
             targetEntity: CatSuministro
             cascade: {  }
