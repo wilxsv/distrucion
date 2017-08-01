@@ -155,42 +155,35 @@ class TrnAsignacionController extends Controller
           return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'suministro'=> $result));
 
         } elseif ($request->get('grupo') != NULL && is_numeric($request->get('grupo')) ){
+          $result = $em->createQuery("SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupoId = ".$request->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
+          return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
 
-          $result = $em->createQuery(
-            "SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupoId = ".$request->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
-            return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result, 'insumo'=>$this->obtenerProductos($request->get('grupo'))));
+        } elseif ($request->get('producto') != NULL && is_numeric($request->get('producto')) ){
+          $result =   $em->createQuery("SELECT p.id, CONCAT(p.codigoSinab, ' - ', p.nombreLargoInsumo) AS nombre FROM MinsalCoreBundle:CatProducto p WHERE p.grupoid = ".$request->get('producto')." ORDER BY p.codigoSinab")->getResult();
+          return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));//$this->obtenerProductos($request->get('grupo'))));
 
-          }  elseif ($request->get('subgrupo') != NULL && is_numeric($request->get('subgrupo')) ){
-            $result = $em->createQuery( "SELECT g.id, g.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo g WHERE g.grupoid = ".$request->query->get('subgrupo')." ORDER BY g.nombreLargoInsumo" )->getResult();
-            return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));
-
-          }  elseif ($request->get('cuadro') != NULL && is_numeric($request->get('cuadro')) ){
-            $result = $em->createQuery( "SELECT i.nombreLargoInsumo FROM MinsalCoreBundle:CtlInsumo i JOIN i.ctlEstablecimientoid e JOIN e.idTipoEstablecimiento t WHERE t.id = ".$request->get('cuadro')." GROUP BY i.nombreLargoInsumo ORDER BY i.nombreLargoInsumo " )->getResult();
-            $result2 = $em->createQuery( "SELECT e FROM MinsalCoreBundle:CtlEstablecimiento e WHERE e.idTipoEstablecimiento = ".$request->get('cuadro')." ORDER BY e.idMunicipio, e.nombre " )->getResult();
-            return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> FALSE, 'cuadro'=> $result, 'establecimiento'=> $result2));
-
-          } else {
-            return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> FALSE ));
-          }
-          //return new Response($request->get('suministro'));
-
+        } else {
+          return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> FALSE ));
         }
+        //return new Response($request->get('suministro'));
 
-        public function obtenerProductos(int $grupo)
-        {
-          /*se obtienen los productos*/
-          $res = array();
-          $service_url = 'http://192.168.1.4:8080/v1/suministros/?tocken=eccbc87e4b5ce2fe28308fd9f2a7baf3&idgrupo={$grupo}';
-          $curl = curl_init($service_url);
-          curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-          $curl_response = curl_exec($curl);
-          curl_close($curl);
-          $respuesta = json_decode($curl_response,true);
-
-          foreach ($respuesta['respuesta'] as $productos ) {
-            $res = array("id" => $productos["id"], "nombreLargoInsumo" => $productos["nombre_largo_insumo"]);
-          }
-
-          return $res;
-        }
       }
+
+      public function obtenerProductos(int $grupo)
+      {
+        /*se obtienen los productos*/
+        $res = array();
+        $service_url = 'http://192.168.1.4:8080/v1/suministros/?tocken=eccbc87e4b5ce2fe28308fd9f2a7baf3&idgrupo={$grupo}';
+        $curl = curl_init($service_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $curl_response = curl_exec($curl);
+        curl_close($curl);
+        $respuesta = json_decode($curl_response,true);
+
+        foreach ($respuesta['respuesta'] as $productos ) {
+          $res = array("id" => $productos["id"], "nombreLargoInsumo" => $productos["nombre_largo_insumo"]);
+        }
+
+        return $res;
+      }
+    }

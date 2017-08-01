@@ -41,67 +41,34 @@ onchange="cargarGrupo(this.value);">
    {% endfor %}
   </select>
   <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
-  <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_grupo").select2(); }); </script>
+  <script type="text/javascript">$(function () { $("#minsal_corebundle_trnasignacion_apiGruposuministroid").select2(); }); </script>
  {% endif %}
 
 <!--Si selecciona un subgrupo-->
  {% if grupo is defined %}
  <label for="minsal_cuadro_basico_subgrupo">Sub Grupo:</label>
-  <select class="form-control select2" data-placeholder="Seleccione el sub grupo" id="minsal_cuadro_basico_subgrupo" name="minsal_cuadro_basico[subgrupo]" onchange="cargarInsumo(this.value);">
+  <select class="form-control select2" data-placeholder="Seleccione el sub grupo"
+  id="minsal_corebundle_trnasignacion_catSubGruposuministroid" name="minsal_corebundle_trnasignacion_catSubGruposuministroid[subgrupo]">
    <option value=""></option>
    {% for s in grupo %}
     <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
    {% endfor %}
   </select>
   <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
-  <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_subgrupo").select2(); }); </script>
+  <script type="text/javascript">$(function () { $("#minsal_corebundle_trnasignacion_catSubGruposuministroid").select2(); }); </script>
  {% endif %}
 
  {% if insumo is defined %}
-  <select class="form-control selector_multiple" multiple="multiple" style="width: 100%;" id="minsal_cuadro_basico_insumo" name="minsal_cuadro_basico[insumo][]">
+  <select class="form-control selector_multiple" multiple="multiple" style="width: 100%;"
+  id="minsal_corebundle_trnasignacion_catProductoid"
+  name="minsal_corebundle_trnasignacion[catProductoid][]">
    <option value=""></option>
    {% for s in insumo %}
-    <option value="">{{ s.nombreLargoInsumo }}</option>
+    <option value="{{ s.id }}">{{ s.nombre }}</option>
    {% endfor %}
-  </select>  <br/>
-  <input type="submit" value="Guardar" class="btn btn-primary" />
-  <script src="{{ asset('assets/') }}core/plugins/select2/select2.full.min.js"></script>
-  <script type="text/javascript">$(function () { $("#minsal_cuadro_basico_insumo").select2(); }); </script>
+  </select>
  {% endif %}
 
-{% else %}
- {% if cuadro is defined %}
-  <section class="content">
-   <div class="row">
-    <div class="col-md-6">
-     <div class="box">
-      <div class="box-header"><h3 class="box-title">Cuadro basico</h3></div>
-       <div class="box-body no-padding">
-        <table class="table table-striped">
-        <tbody>
-         <tr><th >Producto</th></tr>
-         {% for e in cuadro %}
-          <tr><td>{{ e.nombreLargoInsumo }}</td></tr>
-         {% endfor %}
-        </tbody></table>
-       </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-     <div class="box">
-      <div class="box-header"><h3 class="box-title">Establecimientos</h3></div>
-       <div class="box-body no-padding">
-        <table class="table table-striped">
-        <tbody>
-         <tr><th >Municipio</th><th >Establecimientos</th></tr>
-         {% for e in establecimiento %}
-          <tr><td>{{ e.idMunicipio }}</td><td>{{ e.nombre }}</td></tr>
-         {% endfor %}
-        </tbody></table>
-       </div>
-      </div>
-    </div>
-   </div>
-  </section>
- {% endif %}
+
+
 {% endif %}

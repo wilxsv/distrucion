@@ -215,6 +215,14 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
             <script type="text/javascript">
+            function argarProductos(p, s, g, sg){
+              var data = {
+                'p':p,
+                's':s,
+                'sg':sg
+              }
+              cargarData(data, $('#producto_select'));
+            }
             function cargarSubGrupo(valor){
               var data={
                 'grupo':valor
@@ -258,8 +266,6 @@
 
             (function () {
               $('#minsal_corebundle_trnasignacion_porPrograma').change(function() {
-                //0 por suministro
-                //1 por programa
                 cargarSuministro(!this.checked);
               }).change();
 
@@ -270,9 +276,17 @@
 
               $("btnSubmit").hide();
               $('#asignacionWizard').wizard({
-
                 onFinish: function () {
                   $('#btnSubmit').click();
+                },
+                onNext: function(e) {
+                  if(e.index == 1){
+                    var p = $("#minsal_corebundle_trnasignacion_catProgramaid").val();
+                    var s = $("#minsal_corebundle_trnasignacion_catSuministroid").val();
+                    var g = $("#minsal_corebundle_trnasignacion_apiGruposuministroid").val();
+                    var sg= $("#minsal_corebundle_trnasignacion_catSubGruposuministroid").val();
+                    cargarProductos(p, s, g, sg);
+                  }
                 },
                 buttonLabels: {
                   next: 'Siguiente',
