@@ -158,9 +158,20 @@ class TrnAsignacionController extends Controller
           $result = $em->createQuery("SELECT g.id, g.nombreGrupo FROM MinsalCoreBundle:CtlGrupo g WHERE g.grupoId = ".$request->get('grupo')." ORDER BY g.nombreGrupo" )->getResult();
           return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'grupo'=> $result));
 
-        } elseif ($request->get('producto') != NULL && is_numeric($request->get('producto')) ){
-          $result =   $em->createQuery("SELECT p.id, CONCAT(p.codigoSinab, ' - ', p.nombreLargoInsumo) AS nombre FROM MinsalCoreBundle:CatProducto p WHERE p.grupoid = ".$request->get('producto')." ORDER BY p.codigoSinab")->getResult();
-          return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE, 'insumo'=> $result));//$this->obtenerProductos($request->get('grupo'))));
+        } elseif ($request->get('producto') != NULL ){
+          if($request->get('opsubgrupo') != NULL && $request->get('opsubgrupo') > 0){
+             $param = $request->get('opsubgrupo');
+             $url = 'http://192.168.1.13:8080/v1/suministros/?tocken=eccbc87e4b5ce2fe28308fd9f2a7baf3&idGrupo='.$param;
+          }
+          elseif($request->get('opgrupo') != NULL && $request->get('opgrupo') > 0){
+             $param = $request->get('opgrupo');
+             $url = 'http://192.168.1.13:8080/v1/suministros/?tocken=eccbc87e4b5ce2fe28308fd9f2a7baf3&idGrupo='.$param;
+          }elseif($request->get('opsuministro') != NULL && $request->get('opsuministro') > 0){
+             $param = $request->get('opsuministro');
+             $url = 'http://192.168.1.13:8080/v1/suministros/?tocken=eccbc87e4b5ce2fe28308fd9f2a7baf3&idTipo='.$param;
+          }
+          //$result =   $em->createQuery("SELECT p.id, CONCAT(p.codigoSinab, ' - ', p.nombreLargoInsumo) AS nombre FROM MinsalCoreBundle:CatProducto p WHERE p.grupoid = ".$request->get('producto')." ORDER BY p.codigoSinab")->getResult();
+          return $this->render('trnasignacion/ajax.html.twig', array( 'rest'=> TRUE,'insumo'=> $this->obtenerProductos($url)));
 
         } else {
           return $this->render('trndistribucion/ajax.html.twig', array( 'rest'=> FALSE ));
@@ -169,19 +180,19 @@ class TrnAsignacionController extends Controller
 
       }
 
-      public function obtenerProductos(int $grupo)
+      public function obtenerProductos(string $url)
       {
         /*se obtienen los productos*/
         $res = array();
-        $service_url = 'http://192.168.1.4:8080/v1/suministros/?tocken=eccbc87e4b5ce2fe28308fd9f2a7baf3&idgrupo={$grupo}';
+        $service_url = $url;
         $curl = curl_init($service_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $curl_response = curl_exec($curl);
         curl_close($curl);
         $respuesta = json_decode($curl_response,true);
 
-        foreach ($respuesta['respuesta'] as $productos ) {
-          $res = array("id" => $productos["id"], "nombreLargoInsumo" => $productos["nombre_largo_insumo"]);
+        foreach ($respuesta['respuesta'] as   $key=>$val ) {
+          $res[] = array("id" => $val["id"], "nombre" => $val["codigo_sinab"].' - '.$val["nombre_largo_insumo"]);
         }
 
         return $res;

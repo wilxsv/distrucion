@@ -1,4 +1,6 @@
 {% if rest %}
+
+{% if url is defined  %}{{ url }}{% endif %}
 <!--Si selecciona asignacion por programa-->
 {% if programa is defined %}
 <label for="minsal_corebundle_trnasignacion_catProgramaid">Programas:</label>
@@ -35,7 +37,7 @@ onchange="cargarGrupo(this.value);">
   id="minsal_corebundle_trnasignacion_apiGruposuministroid"
   name="minsal_corebundle_trnasignacion[apiGruposuministroid]"
   onchange="cargarSubGrupo(this.value);">
-   <option value=""></option>
+   <option value="0">(Todos los grupos)</option>
    {% for s in suministro %}
     <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
    {% endfor %}
@@ -49,7 +51,7 @@ onchange="cargarGrupo(this.value);">
  <label for="minsal_cuadro_basico_subgrupo">Sub Grupo:</label>
   <select class="form-control select2" data-placeholder="Seleccione el sub grupo"
   id="minsal_corebundle_trnasignacion_catSubGruposuministroid" name="minsal_corebundle_trnasignacion_catSubGruposuministroid[subgrupo]">
-   <option value=""></option>
+   <option value="0">(Todos los sungrupos)</option>
    {% for s in grupo %}
     <option value="{{ s.id }}">{{ s.nombreGrupo }}</option>
    {% endfor %}
@@ -62,11 +64,12 @@ onchange="cargarGrupo(this.value);">
   <select class="form-control selector_multiple" multiple="multiple" style="width: 100%;"
   id="minsal_corebundle_trnasignacion_catProductoid"
   name="minsal_corebundle_trnasignacion[catProductoid][]">
-   <option value=""></option>
+
    {% for s in insumo %}
     <option value="{{ s.id }}">{{ s.nombre }}</option>
    {% endfor %}
   </select>
+
  {% endif %}
 
 
